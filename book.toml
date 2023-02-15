@@ -1,0 +1,24 @@
+[book]
+authors = [""]
+language = "en"
+multilingual = false
+src = "src"
+title = "Elemente de Informatica Mobila 🌐"
+
+[build]
+build-dir = "public"
+
+[output.html]
+additional-css = ["./assets/custom.css", "tabbed-code-blocks.css"]
+additional-js = ["tabbed-code-blocks.js"]
+git-repository-url = "https://gitlab.cs.pub.ro/eim/labs"
+edit-url-template = "https://gitlab.cs.pub.ro/eim/labs/edit/main/{path}"
+no-section-label = true
+
+[preprocessor.toc]
+command = "./mdbook-toc"
+renderer = ["html"]
+
+[output.html.fold]
+enable = true
+level = 0

@@ -1,0 +1,844 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Elemente de Informatica Mobila 🌐</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./assets/custom.css">
+        <link rel="stylesheet" href="tabbed-code-blocks.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="labs.html">Elemente de Informatica Mobila 📱</a></li><li class="chapter-item affix "><li class="part-title">Cursuri</li><li class="spacer"></li><li class="chapter-item "><a href="courses/course1.html">1. Introducere</a></li><li class="chapter-item "><a href="courses/course2.html">2. Android Internals</a></li><li class="chapter-item "><a href="courses/course3.html">3. Generalități despre radio</a></li><li class="chapter-item "><a href="courses/course4.html">4. Acces la mediu</a></li><li class="chapter-item "><a href="courses/course5.html">5. Sisteme celulare</a></li><li class="chapter-item "><a href="courses/course6.html">6. Rețele WiFi</a></li><li class="chapter-item "><a href="courses/course7.html">7. Mobilitate la nivel rețea</a></li><li class="chapter-item "><a href="courses/course8.html">8. Mobilitate la nivel transport</a></li><li class="chapter-item "><a href="courses/course9.html">9. SIP și VoIP</a></li><li class="chapter-item "><a href="courses/course10.html">10. Poziționare</a></li><li class="chapter-item affix "><li class="part-title">Laboratoare</li><li class="spacer"></li><li class="chapter-item "><a href="lab1/lab1.html">1. Introducere in Programarea Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="lab1/android.html">Sistemul de Operare Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="lab1/versions.html">Versiuni</a></li><li class="chapter-item "><a href="lab1/architecture.html">Arhitectura</a></li><li class="chapter-item "><a href="lab1/functionalities.html">Funcționalități</a></li><li class="chapter-item "><a href="lab1/iphone.html">Android vs iPhone</a></li><li class="chapter-item "><a href="lab1/community.html">Comunitatea</a></li></ol></li><li class="chapter-item "><a href="lab1/environment.html">Mediu de dezvoltare</a></li><li class="chapter-item "><a href="lab1/git.html">Versionare (Git)</a></li><li class="chapter-item "><a href="lab1/android_studio.html">Android Studio</a></li><li class="chapter-item "><a href="lab1/activity.html">Activitate de laborator</a></li></ol></li><li class="chapter-item "><a href="lab2/lab2.html">2. Structura unei Aplicații (I) - Activități</a></li><li class="chapter-item "><a href="lab3/lab3.html">3. Proiectarea Interfețelor Grafice</a></li><li class="chapter-item "><a href="lab4/lab4.html">4. Structura unei Aplicații (II) - Intenții</a></li><li class="chapter-item "><a href="lab5/lab5.html">5. Structura unei Aplicații (III) - Servicii</a></li><li class="chapter-item "><a href="lab6/lab6.html">6. Comunicația prin Sockeți TCP</a></li><li class="chapter-item "><a href="lab7/lab7.html">7. Invocarea de Servicii Web prin Protocolul HTTP</a></li><li class="chapter-item "><a href="lab8/lab8.html">8. Descoperirea Serviciilor de Rețea</a></li><li class="chapter-item "><a href="lab9/lab9.html">9. Gestiunea Apelurilor Multimedia folosind SIP & VoIP</a></li><li class="chapter-item "><a href="lab10/lab10.html">10. Utilizarea Serviciilor de Localizare</a></li><li class="chapter-item affix "><li class="part-title">Resurse</li><li class="chapter-item "><a href="resources/groups.html">Împărțirea pe Semigrupe</a></li><li class="chapter-item "><a href="resources/rules.html">Regulament</a></li><li class="chapter-item "><a href="resources/announcements.html">Anunțuri</a></li><li class="chapter-item "><a href="resources/calendar.html">Calendar</a></li><li class="chapter-item "><a href="resources/groups.html">Împărțirea pe Semigrupe</a></li><li class="chapter-item "><a href="resources/solutions.html">Soluții laborator</a></li><li class="chapter-item "><a href="resources/register.html">Catalog</a></li><li class="chapter-item "><a href="resources/team.html">Echipa</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Elemente de Informatica Mobila 🌐</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://gitlab.cs.pub.ro/eim/labs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="elemente-de-informatică-mobilă"><a class="header" href="#elemente-de-informatică-mobilă">Elemente de Informatică Mobilă</a></h1>
+<h2 id="resurse"><a class="header" href="#resurse">Resurse</a></h2>
+<ul>
+<li><a href="resources/rules.html">Regulament</a></li>
+<li><a href="resources/announcements.html">Anunțuri</a></li>
+<li><a href="resources/calendar.html">Calendar</a></li>
+<li><a href="resources/groups.html">Împărțirea pe Semigrupe</a></li>
+<li><a href="resources/solutions.html">Soluții laborator</a></li>
+<li><a href="resources/register.html">Catalog</a></li>
+<li><a href="resources/team.html">Echipa</a></li>
+<li><a href="http://wi-fi.cs.pub.ro/eim">Site bilete</a></li>
+</ul>
+<h2 id="orar"><a class="header" href="#orar">Orar</a></h2>
+<div class="table-wrapper"><table><thead><tr><th><strong>Seria</strong></th><th><strong>Zi</strong></th><th><strong>Ora</strong></th><th><strong>Sala</strong></th><th><strong>Instructor</strong></th></tr></thead><tbody>
+<tr><td>C1 + opționali</td><td>marți</td><td>12.00-14.00</td><td>EC101</td><td>Dragoș</td></tr>
+</tbody></table>
+</div>
+<h3 id="laborator"><a class="header" href="#laborator">Laborator</a></h3>
+<div class="table-wrapper"><table><thead><tr><th><strong>Grupa</strong></th><th><strong>Zi</strong></th><th><strong>Ora</strong></th><th><strong>Sala</strong></th><th><strong>Asistent</strong></th></tr></thead><tbody>
+<tr><td>331C1</td><td>luni</td><td>10.00-12.00</td><td>EG106</td><td>Vlad</td></tr>
+</tbody></table>
+</div>
+<hr />
+<p><strong>Notă</strong></p>
+<p>Săptămâna de laborator începe joi (8.00-10.00) și se termină luni (12.00-14.00). </p>
+<hr />
+<div style="break-before: page; page-break-before: always;"></div><h1 id="introducere"><a class="header" href="#introducere">Introducere</a></h1>
+<iframe class="is-fullwidth" height="722" marginheight="0" marginwidth="0" src="https://ctipub-my.sharepoint.com/personal/dragos_niculescu_upb_ro/_layouts/15/Doc.aspx?sourcedoc={3d9005d1-e656-4a30-8f2c-b79de69db6a9}&amp;action=embedview&amp;wdAr=1.334174022698613">    
+</iframe> <div style="break-before: page; page-break-before: always;"></div><h1 id="android-internals"><a class="header" href="#android-internals">Android Internals</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="generalități-despre-radio"><a class="header" href="#generalități-despre-radio">Generalități despre radio</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="acces-la-mediu"><a class="header" href="#acces-la-mediu">Acces la mediu</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mobilitate-la-nivel-rețea"><a class="header" href="#mobilitate-la-nivel-rețea">Mobilitate la nivel rețea</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mobilitate-la-nivel-rețea-1"><a class="header" href="#mobilitate-la-nivel-rețea-1">Mobilitate la nivel rețea</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mobilitate-la-nivel-transport"><a class="header" href="#mobilitate-la-nivel-transport">Mobilitate la nivel transport</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sip-și-voip"><a class="header" href="#sip-și-voip">SIP și VoIP</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mobilitate-la-nivel-transport-1"><a class="header" href="#mobilitate-la-nivel-transport-1">Mobilitate la nivel transport</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sip-și-voip-1"><a class="header" href="#sip-și-voip-1">SIP și VoIP</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="introducere-în-programarea-android"><a class="header" href="#introducere-în-programarea-android">Introducere în Programarea Android</a></h1>
+<p>In acest laborator vom vedea cum putem dezvolta si rula prima noastra aplicatie
+Android.</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="android---prezentare-generală"><a class="header" href="#android---prezentare-generală">Android - Prezentare Generală</a></h3>
+<p>Android este un SO mobil bazat pe o versiune modificată de Linux (pentru
+gestiunea componentelor hardware, a proceselor și a memoriei) și biblioteci Java
+(pentru telefonie (audio/video), conectivitate, grafică, programarea
+interfețelor cu utilizatorul). Este un produs open-source (putând fi dezvoltat
+de producătorii de dispozitive mobile cu extensii proprietare pentru a-și
+particulariza platforma), dezvoltat în prezent de compania Google, conceput pe
+ideea transformării dispozitivelor mobile în adevărate mașini de calcul. Google
+încearcă totuși să realizeze tranziția de la AOSP (Android Open Source Project)
+către GMS (Google Mobile Services), peste care sunt construite cele mai multe
+aplicații, în încercarea de a-și apăra acest proiect în fața concurenței. În
+acest sens, a fost dezvoltat <strong>proiectul Google One</strong>, prin care este oferit un
+set de specificații (ecran de 4.5 inchi - 845x480 pixeli, procesor quad-core,
+memorie 1GB RAM, spațiu de stocare 4GB, suport pentru dual sim) pe care
+producătorii de dispozitive mai ieftine trebuie să le respecte astfel încât
+acestea să fie compatibile cu un sistem Android, fără a întâmpina probleme de
+performanță. Acesta include toate aplicațiile și serviciile Google, la care se
+pot adăuga și altele, furnizate de producător sau operatorul de telefonie
+mobilă. În acest fel, se asigură calitatea (păstrând renumele Android) și
+controlul asupra veniturilor. Comunitatea Android este în creștere, mai multe
+companii renunțând la propriul sistem de operare în favoarea acestuia, pentru a
+putea face față fenomenului iPhone.</p>
+<p>În condițiile în care pe piața dispozitivelor mobile aplicațiile sunt cele care
+aduc avantajul competițional, beneficiul Android este reprezentat de abordarea
+unitară pentru dezvoltarea aplicațiilor. Cu alte cuvinte, o aplicație dezvoltată
+conform API-ului Android va putea rula pe mai multe dispozitive mobile pe care
+este instalat sistemul de operare respectiv.</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="versiuni-android"><a class="header" href="#versiuni-android">Versiuni Android</a></h3>
+<p>Pana in acest moment au fost lansate mai multe versiune de Android. In tabelul
+de mai jos le putem observa.</p>
+<div class="table-wrapper"><table><thead><tr><th>Versiune Android</th><th>Nivel API</th><th>Data Lansării</th><th>Nume de Cod</th><th>Cota de Piață</th></tr></thead><tbody>
+<tr><td>10</td><td>29</td><td>03.09.2019</td><td>??</td><td>0.?%</td></tr>
+<tr><td>9</td><td>28</td><td>21.08.2017</td><td>Pie</td><td>0.?%</td></tr>
+<tr><td>8.1 - 8.1</td><td>26-27</td><td>21.08.2017</td><td>Oreo</td><td>0.?%</td></tr>
+<tr><td>7.1 - 7.1.1</td><td>25</td><td>04.10.2016</td><td>Nougat</td><td>0.3%</td></tr>
+<tr><td>7.0</td><td>24</td><td>22.08.2016</td><td>Nougat</td><td>0.9%</td></tr>
+<tr><td>6.0 - 6.0.1</td><td>23</td><td>05.10.2015</td><td>Marshmellow</td><td>30.7%</td></tr>
+<tr><td>5.1 - 5.1.1</td><td>22</td><td>09.03.2015</td><td>Lollipop</td><td>23.1%</td></tr>
+<tr><td>5.0 - 5.0.2</td><td>21</td><td>12.11.2014</td><td>Lollipop</td><td>9.8%</td></tr>
+<tr><td>4.4W - 4.4W.2</td><td>20</td><td>25.06.2014</td><td>KitKat ext</td><td></td></tr>
+<tr><td>4.4 - 4.4.4</td><td>19</td><td>31.10.2013</td><td>KitKat</td><td>21.9%</td></tr>
+<tr><td>4.3</td><td>18</td><td>24.07.2013</td><td>Jelly Bean</td><td>1.6%</td></tr>
+<tr><td>4.2.x</td><td>17</td><td>13.11.2012</td><td>Jelly Bean</td><td>5.7%</td></tr>
+<tr><td>4.1.x</td><td>16</td><td>09.07.2012</td><td>Jelly Bean</td><td>4.0%</td></tr>
+<tr><td>4.0.3 - 4.0.4</td><td>15</td><td>16.12.2011</td><td>Ice Cream Sandwich</td><td>1.0%</td></tr>
+<tr><td>4.0 - 4.0.2</td><td>14</td><td>19.10.2011</td><td>Ice Cream Sandwich</td><td></td></tr>
+<tr><td>3.2</td><td>13</td><td>15.07.2011</td><td>Honeycomb</td><td></td></tr>
+<tr><td>3.1</td><td>12</td><td>10.05.2011</td><td>Honeycomb</td><td></td></tr>
+<tr><td>3.0</td><td>11</td><td>22.02.2011</td><td>Honeycomb</td><td></td></tr>
+<tr><td>2.3.3 - 2.3.7</td><td>10</td><td>09.02.2011</td><td>Gingerbread</td><td>1.0%</td></tr>
+<tr><td>2.3 - 2.3.2</td><td>9</td><td>06.12.2010</td><td>Gingerbread</td><td></td></tr>
+<tr><td>2.2 - 2.2.3</td><td>8</td><td>20.05.2010</td><td>Froyo</td><td></td></tr>
+<tr><td>2.1</td><td>7</td><td>12.01.2010</td><td>Eclair</td><td></td></tr>
+<tr><td>2.0.1</td><td>6</td><td>03.12.2009</td><td>Eclair</td><td></td></tr>
+<tr><td>2.0</td><td>5</td><td>26.10.2009</td><td>Eclair</td><td></td></tr>
+<tr><td>1.6</td><td>4</td><td>15.09.2009</td><td>Donut</td><td></td></tr>
+<tr><td>1.5</td><td>3</td><td>30.04.2009</td><td>Cupcake</td><td></td></tr>
+<tr><td>1.1</td><td>2</td><td>09.02.2009</td><td></td><td></td></tr>
+<tr><td>1.0</td><td>1</td><td>23.09.2008</td><td></td><td></td></tr>
+</tbody></table>
+</div>
+<p><img src="lab1/images/android_api_7.png" alt="" /></p>
+<p>Pentru identificarea versiunilor se folosesc, de regulă, trei sisteme:</p>
+<ul>
+<li>un număr, ce respectă formatul major.minor[.build], desemnând dacă
+modificările aduse sunt substanțiale sau reprezintă ajustări ale unor probleme
+identificate anterior; versiunea curentă este 10, lansată la sfârșitul anului
+2019;</li>
+<li>un nivel de API (același putând grupa un număr de mai multe versiuni), prin
+care se indică funcționalitățile expuse către programatori; versiunea curentă
+are nivelul de API 29;</li>
+<li>o denumire, având un nume de cod inspirat din lumea dulciurilor; termenii
+respectivi încep cu inițiale care respectă ordinea alfabetică; versiunea curentă
+este Q.</li>
+</ul>
+<p>În momentul în care se ia decizia cu privire la versiunea pentru care se
+dezvoltă o aplicație Android, trebuie avute în vedere și cotele de piață ale
+dispozitivelor mobile. Dezvoltarea unei aplicații Android pentru cea mai nouă
+versiune are avantajul de a se putea utiliza cele mai noi funcționalități expuse
+prin API. Dezvoltarea unei aplicații Android pentru cea mai veche versiune are
+avantajul unei adresabilități pe scară largă. Un compromis în acest sens poate
+fi obținut prin intermediul <strong>bibliotecilor de suport</strong>, dezvoltate pentru
+fiecare versiune, prin intermediul cărora pot fi utilizate la niveluri de API
+mai mici funcționalități din niveluri de API mai mari (în limita capabilităților
+dispozitivului mobil respectiv). Utilizarea acestora reprezintă o practică
+recomandată în dezvoltarea aplicațiilor Android.</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="arhitectura-android"><a class="header" href="#arhitectura-android">Arhitectura Android</a></h3>
+<p>Arhitectura sistemului de operare Android cuprinde cinci secțiuni grupate pe
+patru niveluri:</p>
+<p><img src="lab1/images/android_architecture.png" alt="" /></p>
+<ul>
+<li><strong>Kernelul Linux</strong> (cu unele modificări) conține driver-ele pentru diferitele
+componente hardware (ecran, cameră foto, tastatură, antenă WiFi, memorie flash,
+dispozitive audio), fiind responsabil cu gestiunea proceselor, memoriei,
+perifericelor (audio/video, GPS, WiFi), dispozitivelor de intrare/ieșire,
+rețelei și a consumului de energie; de asemenea, au fost implementate și unele
+îmbunătățiri:</li>
+<li><strong>Binder</strong>, sistemul de comunicație inter-proces, a fost adaptat, întrucât
+reprezintă mediul de comunicație principal dintre aplicații și sistemul de
+operare, inclusiv funcțiile (serviciile) dispozitivului mobil; expunerea sa este
+realizată prin intermediul AIDL (Android Interface Definition Language) prin
+care pot fi manipulate obiecte transformate în primitive utilizate la
+comunicația propriu-zisă dintre aplicații și sistemul de operare;</li>
+<li><strong>Logger</strong>, sistemul de jurnalizare, este esențial în cazul în care trebuie
+realizată depanarea aplicațiilor, în special pentru a detecta anumite situații
+particulare (informații cu privire la rețea, senzori); acesta este capabil să
+agrege datele provenite atât de la aplicația propriu-zisă cât și de la sistemul
+de operare, datele fiind disponibile prin intermediul unor utilitare
+specializate;</li>
+<li>sistemul prin intermediul căruia se previne transferul sistemului de operare într-o stare de latență (<strong>wake locks</strong>), în care consumul de energie este redus, întrucât se blochează execuția oricărei aplicații; utilizarea unui astfel de mecanism trebuie realizată cu precauție, întrucât poate determina epuizarea bateriei;</li>
+<li>sistemul de <strong>alarme</strong> oferă posibilitatea ca anumite sarcini să fie planificate la anumite momente de timp, putând fi executate, chiar dacă sistemul de operare se găsește într-o stare de latență;</li>
+<li><strong>Viking Killer</strong> este un mecanism prin care sistemul de operare revendică
+memoria utilizată, atunci când nivelul acesteia atinge un anumit prag
+(aplicațiile Android care au fost rulate anterior sunt de regulă stocate în
+memorie pentru a se putea comuta rapid între ele, de vreme ce încărcarea în
+memorie este o operație costisitoare);</li>
+<li><strong>YAFFS2</strong> (Yet Another Flash File System) este un sistem de fișiere adecvat
+pentru cipuri flash bazate pe porți NAND; platforma Android este stocată pe mai
+multe partiții, ceea ce îi conferă flexibilitate la actualizări, împiedicând
+modificarea sa în timpul rulării (<strong>/boot</strong> - conține secvența de pornire,
+<strong>/system</strong> - stochează fișierele de sistem și aplicațiile încorporate,
+<strong>/recovery</strong> - deține o imagine din care se poate restaura sistemul de
+operare, <strong>/data</strong> - include aplicațiile instalate și datele aferente
+acestora, <strong>/cache</strong> - utilizată pentru fișiere temporare, folosind memoria
+RAM, pentru acces rapid).</li>
+<li><strong>Bibliotecile</strong> (user-space) conțin codul care oferă principalele
+funcționalități a sistemului de operare Android, făcând legătura între kernel și
+aplicații. Sunt incluse aici motorul open-source pentru navigare WebKit,
+biblioteca FreeType pentru suportul seturilor de caractere, baza de date SQLite
+utilizată atât ca spațiu de stocare cât și pentru partajarea datelor specifice
+aplicațiilor, biblioteca libc (Bionic),  biblioteca de sistem C bazată pe BSD și
+optimizată pentru dispozitive mobile bazate pe Linux, biblioteci pentru redarea
+și înregistrarea de conținut audio/video (bazate pe OpenCORE de la PacketVideo),
+biblioteci SSL pentru asigurarea securității pe Internet și Surface Manager,
+bibliotecă pentru controlul accesului la sistemul de afișare care suportă 2D și
+3D. Aceste biblioteci nu sunt expuse prin API, reprezentând detalii de
+implementare Android.</li>
+<li><strong>Motorul Android</strong> rulează serviciile de platformă precum și aplicațiile care
+le utilizează, fiind reprezentat de:</li>
+<li><strong>ART (Android Runtime)</strong> este mașina virtuală Java care a fost implementată
+începând cu versiunea 5.0, folosind un tip de compilare AOH (Ahead of Time), în
+care bytecode-ul este transpus în cod mașină la momentul instalării, astfel
+încât acesta este executat direct de mediul dispozitivului mobil;
+compatibilitatea cu versiuni anterioare (care folosesc mașina virtuală Dalvik,
+ce se bazează pe un compilator JIT - Just in Time) este asigurată prin
+transformarea pachetelor în format .dex (Dalvik Executable) la momentul
+compilării, urmând ca translatarea în format .oat să se realizeze la momentul
+instalării; fiecare aplicație Android rulează în procesul propriu, într-o
+instanță a mașinii virtuale ART, izolând astfel codul și datele sale prin
+intermediul unor permisiuni, care se aplică inclusiv la comunicația prin
+intermediul interfețelor de comunicare oferite de sistemul de operare Android;</li>
+<li><strong>Zygote</strong> este procesul care gestionează toate aplicațiile, fiind lansat în
+execuție odată cu sistemul de operare:
+<ul>
+<li>inițial, creează o instanță a mașinii virtuale Java pentru sistemul de operare
+Android, în contextul căreia plasează serviciile de bază: gestiunea energiei,
+telefonie, furnizori de conținut, gestiunea pachetelor, serviciul de localizare,
+serviciul de notificări;</li>
+<li>atunci când este necesar să lanseze în execuție o anumită aplicație, se clonează, partajând astfel componentele sistemului de operare Android, astfel încât să se asigure performanța (timp de execuție) și eficiența (memorie folosită), de vreme ce fiecare aplicație trebuie rulată în propria sa instanță a mașinii virtuale Java;</li>
+</ul>
+</li>
+<li><strong>Cadrul pentru Aplicații</strong> expune diferitele funcționalități ale sistemului
+de operare Android către programatori, astfel încât aceștia să le poată utiliza
+în aplicațiile lor.</li>
+<li>La nivelul de <strong>aplicații</strong> se regăsesc atât produsele împreună cu care este
+livrat dispozitivul mobil (Browser, Calculator, Camera, Contacts, Clock, FM
+Radio, Launcher, Music Player, Phone, S Note, S Planner, Video Player, Voice
+Recorder), cât și produsele instalate de pe Play Store sau cele dezvoltate de
+programatori.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="funcționalități-android"><a class="header" href="#funcționalități-android">Funcționalități Android</a></h3>
+<p>De vreme ce Android este un produs open-source,
+producătorii având posibilitatea de a-l modifica în mod gratuit, nu
+există configurații hardware sau software standard. Totuși, Android
+implementează următoarele funcționalități:</p>
+<ul>
+<li><strong>stocare</strong> - folosește SQLite, o bază de date relațională ce utilizează resurse puține</li>
+<li><strong>conectivitate</strong> - suportă GSM/CDMA, GPRS, EDGE, 3G, IDEN, EV-DO, UMTS, Bluetooth (inclusiv A2DP si AVRCP), WiFi, LTE, WiMAX</li>
+<li><strong>WiFi Direct</strong> - tehnologie care permite aplicațiilor să se descopere și să se interconecteze peste o conexiune punct-la-punct având lățime de bandă mare</li>
+<li><strong>Android Beam</strong> - o tehnologie bazată pe NFC (Near Field Communication) care permite utilizatorilor să partajeze conținut instant, prin apropierea dispozitivelor mobile respective</li>
+<li><strong>mesagerie</strong> - atât SMS cât și MMS</li>
+<li><strong>navigare pe Internet</strong> - bazat pe motorul open source pentru navigare WebKit impreună cu motorul JavaScript de la Chrome V8 suportând HTML5 și CSS3</li>
+<li><strong>multimedia</strong> - suportă formatele H.263, H.264 (într-un container 3GP sau MP4), MPEG-4 SP, AMR, AMR-WB (într-un container 3GP), AAC, HE-AAC (într-un container MP4 sau 3GP), MP3, MIDI, Ogg Vorbis, WAV, JPEG, PNG, GIF si BMP</li>
+<li><strong>grafică</strong> - 2D optimizată, 3D (OpenGL ES)</li>
+<li><strong>senzori</strong> - accelerometru, cameră foto, busolă digitală (magnetometru), senzor de proximitate, GPS / AGPS</li>
+<li><strong>multi-touch</strong> - suportă ecrane cu posibilitate de contact în mai multe puncte concomitent</li>
+<li><strong>multi-tasking</strong> - permite rularea de aplicații cu mai multe fire de execuție</li>
+<li><strong>GCM (Google Cloud Messaging)</strong> - serviciu ce permite dezvoltatorilor să trimită date de dimensiuni mici către utilizatori pe dispozitive Android, fără a avea nevoie de o soluție de sincronizare proprietară</li>
+<li><strong>multi-Language</strong> - suport pentru text unidirecțional și bidirecțional</li>
+<li><strong>suport pentru aplicații Flash</strong> (până în versiunea 4.3)</li>
+<li><strong>legătură la Internet</strong> - suportă partajarea conexiunilor la Internet ca punct de distribuție cu fir / fără fir</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="android-vs-iphone"><a class="header" href="#android-vs-iphone">Android vs. iPhone</a></h3>
+<p>Piața de telefoane inteligente este dominată de Android (care - potrivit
+estimărilor - își va menține supremația până în 2018), cu 82.8% (peste
+un miliard de dispozitive vândute) pe întreg anul 2015, în timp ce Apple
+deține doar 13.9%, la nivel mondial.</p>
+<p>În 2015, numărul de aplicații disponibile pentru platforma Android le-a
+depășit pe cele destinată dispozitivelor Apple (1.6 milioane, comparativ
+cu 1.5 milioane). Și în privința numărului de descărcări Android se află
+în fața Apple cu aproximativ 25%. Totuși, politica de distribuție a
+aplicațiilor (faptul că aplicațiile iPhone pot fi instalate numai prin
+intermediul App Store, în timp ce Android pune la dispoziție mai multe
+posibilități - Play Store, Amazon App Store, prin conexiune USB de la
+calculator, prin email sau prin pagina Internet a organizației), la care
+se adaugă numărul mare de programe gratuite și posibilitatea de piratare
+mai ușoară se traduce prin încasările obținute, Apple generând un profit
+mult mai mare din aplicații decât Google (cifrele oficiale nu sunt
+disponibile încă). O altă explicație a acestei situații este dată și de
+potența financiară a posesorilor de produse Apple (valoarea unui iPhone
+fiind de aproximativ 600 dolari) față de puterea de cumpărare a
+persoanelor ce dețin un telefon Android (al cărui preț mediu este de
+200-300 dolari), existând o corespondență directă cu disponibilitatea de
+a achiziționa aplicații. De asemenea, statisticile arată că utilizatorii
+Apple își folosesc mult mai intens dispozitivele pentru accesarea de
+conținut Internet decât cei cumpărătorii de produse echipate cu Android.</p>
+<p>Aplicațiile destinate dispozitivelor mobile reprezintă un segment extrem
+de productiv al economiei, doar vânzările din AppStore depășind
+încasările obținute din producția de filme de la Holywood. Ca tematică,
+cele mai multe aplicații aparțin domeniului social (jocuri, fotografie,
+muzică, aplicații culinare, stil de viață), urmate de cele destinate
+gestionării unor segmente ale unor afaceri.</p>
+<p>În privința limbajului de programare utilizat pentru dezvoltarea de
+aplicații mobile, iPhone folosește <strong>Objective-C</strong>, similar cu C++,
+care nu se bucură însă de o răspândire prea largă (cu excepția
+aplicațiilor pentru iPhone), în timp ce Android utilizează <strong>Java</strong>
+(limbajul de programare cel mai adoptat pe scară largă în cadrul
+corporațiilor) dar și <strong>C/C++</strong>, prin care se pot apela (cu o
+oarecare dificultate) aplicații native, prin suport JNI (numărul
+bibliotecilor disponibile în cazul C/C++ este mai redus decât în Java,
+însă viteza aplicațiilor este mai mare). Dezvoltarea aplicațiilor pentru
+iPhone se poate realiza numai folosind mașini Mac (echipate cu MacOS),
+în timp ce aplicațiile Android pot fi scrise în orice sistem de operare
+cu Java și Eclipse (atât PC-uri cât și Mac-uri echipate cu Windows,
+Linux sau MacOS). În această situație, se pune problema cotelor de piață
+ale sistemelor de operare în cadrul companiilor dezvoltatoare de
+software, care creează sau nu oportunități pentru dezvoltarea unui
+anumit tip de aplicații (la începutul lui 2016, sistemele de operare
+Windows dețineau 90,60% din piață, OS X 7,68%, sistemele de operare cu
+kernel Linux 1,71%, iar alte sisteme de operare 0,01%).</p>
+<p>Așadar, dacă pentru utilizare personală nu se poate stabili un
+câștigător clar între Android și iPhone (deși produsul celor de la Apple
+pare să aibă un ușor avantaj printr-un număr mai mare de aplicații și
+prin loialitatea clienților), în cazul aplicațiilor dezvoltate de
+corporații situația este inversă, date fiind posibilitățile de instalare
+și limbajul de programare folosit.</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="comunitatea-programatorilor-android"><a class="header" href="#comunitatea-programatorilor-android">Comunitatea programatorilor Android</a></h3>
+<p>Ajunsă deja la a șaptea versiune, Android este o platformă care beneficiază de
+experiența a numeroși dezvoltatori ce poate fi exploatată:</p>
+<ul>
+<li><a href="http://developer.android.com/training/index.html">Google Android Training</a> conține o serie de tutoriale și exemple de clase grupate în funcție de diferite subiecte, utile pentru deprinderea cunoștințelor de bază pentru dezvoltarea aplicațiilor Android.</li>
+<li><a href="http://www.stackoverflow.com/questions/tagged/android">Stack Overflow</a> este un forum pentru programatori editat în mod colaborativ, conținând întrebări și răspunsuri la acestea (cele mai bune putând fi identificate cu ușurință prin voturile primite de la participanți). Este destul de probabil ca o întrebare să își găsească deja răspunsul pe acestă resursă.</li>
+<li><a href="http://groups.google.com/group/android-discuss">Android Discuss</a> este o listă de discuții monitorizată îndeaproape de echipa Android de la Google astfel încât reprezintă un loc unde pot fi clarificate numeroase nelămuriri putând fi însușite diferite sfaturi și trucuri.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h5 id="cerințe-pentru-dezvoltarea-unei-aplicații-android-obligatoriu"><a class="header" href="#cerințe-pentru-dezvoltarea-unei-aplicații-android-obligatoriu">Cerințe pentru dezvoltarea unei aplicații Android (obligatoriu)</a></h5>
+<p>Pentru dezvoltarea unei aplicații Android sunt necesare:</p>
+<ul>
+<li><a href="eim:tutoriale:java">kit-ul de dezvoltare pentru limbajul de programare Java</a></li>
+<li><a href="eim:tutoriale:sdk_android">SDK-ul de Android</a><code>, pentru care se descarcă definițiile corespunzătoare unuia sau mai multor niveluri de API</code></li>
+<li>un mediu integrat de dezvoltare (IDE)`
+<ul>
+<li><a href="eim:tutoriale:android_studio">Android Studio</a></li>
+</ul>
+</li>
+<li>un dispozitiv pe care să se ruleze aplicațiile`
+<ul>
+<li>un emulator`
+<ul>
+<li><a href="eim:tutoriale:genymotion">Genymotion</a></li>
+<li><a href="eim:tutoriale:android_virtual_device">Android Virtual Device</a> (livrat împreună cu SDK-ul de Android)</li>
+</ul>
+</li>
+<li>un telefon mobil cu sistemul de operare Android pentru care s-a dezvoltat aplicația\ \ Pentru a se putea rula o aplicație pe un dispozitiv mobil fizic, trebuie să se activeze posibilitatea de depanare prin USB, din //Settings// → //System// → //Developer Options//. Această opțiune trebuie activată, ca de altfel și opțiunea //Debugging// → //Android Debugging// (pe unele sisteme poate apărea ca //USB Debugging//).\ \ <img src="lab1/images/android_debugging02.png" alt="" /></li>
+</ul>
+</li>
+</ul>
+<p>Dacă telefonul nu este recunoscut la conectarea prin USB, trebuie
+instalate niște reguli pentru udev, conform instrucțiunilor de pe
+<a href="http://unix.stackexchange.com/questions/119128/linux-mint-16-android-device-not-listed-with-lsusb">stackexchange</a>:</p>
+<pre><code>student@eim-lab:~$ sudo bash 
+student@eim-lab:~# lsusb
+</code></pre>
+<p>După ce s-a identificat dispozitivul mobil (prin intermediul comenzii
+<em>lsusb</em>), se precizează o regulă pentru acesta:</p>
+<pre><code>student@eim-lab:~# cat /etc/udev/rules.d/51-android.rules
+
+&lt;file text /etc/udev/rules.d/51-android.rules&gt; SUBSYSTEM==\&quot;usb\&quot;,
+ATTR{idVendor}==\&quot;18d1\&quot;, ATTR{idProduct}==\&quot;d002\&quot;, MODE=\&quot;0660\&quot;,
+GROUP=\&quot;plugdev\&quot;, SYMLINK+=\&quot;android%n\&quot;
+</code></pre>
+<p>Se reîncarcă dispozitivele conectate prin USB:</p>
+<p><code>student@eim-lab:~# /etc/init.d/udev restart</code></p>
+<p>Fie că ați instalat un emulator, fie un telefon conectat prin cablu USB,
+puteti verifica că el este pornit si este vizibil</p>
+<p><code>/opt/Android/SDK/platform-tools/adb devices</code></p>
+<p>Dacă dispozitivul este listat, va puteti conecta la prompt:</p>
+<p><code>/opt/Android/SDK/platform-tools/adb shell</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="versionare"><a class="header" href="#versionare">Versionare</a></h1>
+<p>In cadrul laboratorului vom folosi <code>git</code> pentru versionare.</p>
+<p>Daca nu ati mai folosit git pana acuma, va trebui sa va configurati username-ul si mail-ul cu care vreti sa
+semnati viitoarele commit-uri.</p>
+<pre><code class="language-Bash">$ git config --global user.name &quot;YOUR_USERNAME&quot;
+$ git config --global user.email &quot;your_email@gmail.com&quot;
+</code></pre>
+<p>Vom creea un nou folder si in el o sa initializam un repository.</p>
+<pre><code class="language-Bash">❯ mkdir my_git_repo
+❯ cd my_git_repo
+❯ touch README.md
+# initializam un nou repository
+❯ git init
+</code></pre>
+<p>Acuma o sa scrie &quot;Hello World&quot; in fisier si o sa facem primul nostru commit</p>
+<pre><code class="language-Bash"># Aici puteti edita fisierul cu orice vreti voi
+❯echo &quot;Hello world&quot; &gt; README.md
+# Urmatoarea comanda ne va afisa statusul repo-ului
+❯ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+	README.md
+# Facem urmatoarea operatie: Adaugam fisierul README.md in commit
+❯ git add README.md
+# Inregistram commit-ul
+❯ git commit -m &quot;Added README.md to the repo&quot;
+</code></pre>
+<p>De fiecare data cand facem modificari, o sa folosit <code>git add</code> si <code>git commit</code>.
+Pentru a afisa un log folosim <code>git log</code>.</p>
+<pre><code class="language-Bash">git log
+
+commit 70fc4d5fe8c2bbd674a2812ef85178716c7f15ca (HEAD -&gt; master)
+Author: My Username &lt;my_email@gmail.com&gt;
+Date:   Thu Feb 16 00:46:32 2023 +0200
+
+    Add README.md to the repo
+</code></pre>
+<p>Pentru a vedea diferentele fata de ultimul commit:</p>
+<pre><code class="language-Bash">
+git diff HEAD HEAD^
+</code></pre>
+<p>Acuma, vom folosi Github pentru a stoca repository-ul online. Va trebui
+sa va faceti un cont pe Github si sa creati un repository nou.</p>
+<pre><code class="language-Bash"># Adaugam un loc de stocare online, o singura data
+git remote add origin git@github.com:some_repo_you_created
+# Incarcam tot ce avem pe local pe online, de fiecare data cand
+# vrem sa facem update la ce este online
+git push -u origin master
+</code></pre>
+<p>Daca vreti sa aflati mai multe, va recomandam urmatorul <a href="https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/">articol</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="crearea-unei-aplicații-android-în-android-studio"><a class="header" href="#crearea-unei-aplicații-android-în-android-studio">Crearea unei aplicații Android în Android Studio</a></h3>
+<p>Pentru a crea o aplicație Android se selectează <strong>Start a New Android
+Studio project</strong>.</p>
+<p><img src="lab1/images/android_studio_project01.png" alt="" /></p>
+<p>Configurarea proiectului presupune specificarea unor parametri:</p>
+<ul>
+<li>denumirea aplicației;</li>
+<li>domeniul companiei care dezvoltă aplicația respectivă.</li>
+</ul>
+<p>Pe baza valorilor introduse, se generează denumirea pachetului care va
+identifica în mod unic aplicația. Acesta este format din domeniu (scris
+în formă inversă) la care se adaugă denumirea aplicației (din care sunt
+eliminate caracterele albe).</p>
+<p>De asemenea, este necesar să se indice locația la care va fi plasat
+proiectul respectiv.</p>
+<p><img src="lab1/images/android_studio_project02.png" alt="" /></p>
+<p>Se indică platforma căreia îi este destinată aplicația Android:</p>
+<ul>
+<li>dispozitiv mobil (telefon sau tabletă), caz în care trebuie să se precizeze valoarea minimă a nivelului de API pentru care se dezvoltă aplicația (cea mai scăzută valoare a platformei pe care poate rula aplicația);</li>
+<li>obiect vestimentar (ceas, brățară);</li>
+<li>televizor;</li>
+<li>dispozitiv pentru automobil;</li>
+<li>ochelari inteligenția;</li>
+</ul>
+<p><img src="lab1/images/android_studio_project03.png" alt="" /></p>
+<p>Este selectat tipul de actvitate care va fi vizualizată în momentul în
+care aplicația Android este pornită (//Blank Activity//, //Empty
+Activity//, //Fullscreen Activity//, //Google AdMob Activity//, //Google
+Maps Activity//, //Login Activity//, //Master/Detail Flow//,
+//Navigation Drawer Activity//, //Scrolling Activity//, //Settings
+Activity//, //Tabbed Activity//).</p>
+<p><img src="lab1/images/android_studio_project04.png" alt="" /></p>
+<p>Se stabilește o denumire pentru activitatea principală, precum și
+denumirea fișierelor în care vor fi plasate structura interfeței
+grafice, respectiv a meniului asociat. Se poate preciza, de asemenea,
+folosirea de fragmente în cadrul activității.</p>
+<p><img src="lab1/images/android_studio_project05.png" alt="" /></p>
+<p>Se apasă butonul <strong>Finish</strong>.</p>
+<p>Rularea unei aplicații Android se face prin intermediul unei pictograme
+asociate unei liste de selecție, în care sunt plasate toate aplicațiile
+disponibile în cadrul mediului integrat de dezvoltare. Se poate folosi
+și prescurtarea <em>Shift + F10</em>.</p>
+<p><img src="lab1/images/android_studio_project06.png" alt="" /></p>
+<p>Utilizatorul are posibilitatea de a selecta dispozitivul pe care va fi
+rulată aplicația, dintre cele conectate la mașina pe care se rulează.</p>
+<p><img src="lab1/images/android_studio_project07.png" alt="" /></p>
+<p><img src="lab1/images/android_studio_project08.png" alt="" /></p>
+<h4 id="testarea-exemplelor-de-aplicații-android-în-android-studio"><a class="header" href="#testarea-exemplelor-de-aplicații-android-în-android-studio">Testarea exemplelor de aplicații Android în Android Studio</a></h4>
+<p>Accesarea unui exemplu de aplicație Android se face prin intermediul
+opțiunii //Import an Android code sample//.</p>
+<p><img src="lab1/images/android_studio_sample_project01.png" alt="" /></p>
+<p>Pot fi consultate mai multe proiecte Android, pentru fiecare existând
+posibilitatea de a vizualiza codul sursă, disponibil în cadrul unui
+depozit GitHub. Gruparea aplicațiilor Android este realizată pe
+categorii tematice.</p>
+<p><img src="lab1/images/android_studio_sample_project02.png" alt="" /></p>
+<p>Un exemplu de aplicație Android, care se descarcă din contextul
+depozitului Github, poate fi redenumită, stabilindu-se și locația la
+care va fi stocată.</p>
+<p><img src="lab1/images/android_studio_sample_project03.png" alt="" /></p>
+<p><img src="lab1/images/android_studio_sample_project04.png" alt="" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="activitate-de-laborator"><a class="header" href="#activitate-de-laborator">Activitate de Laborator</a></h1>
+<ul>
+<li>Să se instaleze toate instrumentele necesare pentru a putea dezvolta o aplicație Android.
+<ul>
+<li>kit de dezvoltare pentru limbajul de programare Java;</li>
+<li>SDK pentru Android;</li>
+<li>mediu integrat de dezvoltare Android Studio cu plugin-uri pentru Android, Genymotion;</li>
+<li>emulator Genymotion în care se configurează un dispozitiv virtual Phone - 7.0 - API 24 - 960x540;</li>
+</ul>
+</li>
+<li>Să se instaleze Git, în cazul în care nu există deja.</li>
+<li>Să se acceseze <a href="http://www.github.com">GitHub</a> și să se creeze un cont.</li>
+<li>Să se realizeze configurațiile globale, specificând informații precum <strong>user.name</strong>, <strong>user.email</strong>, <strong>core.editor</strong>, <strong>merge.tool</strong>. Verificați faptul că informațiile au fost introduse corect, prin două metode diferite. 
+<pre><code class="language-Bash">student@eim-lab:~$ git config --global user.name &quot;Perfect Student&quot;
+student@eim-lab:~$ git config --global user.email &quot;perfect_student@cti.pub.ro&quot;
+student@eim-lab:~$ git config --global core.editor gedit
+student@eim-lab:~$ git config --global merge.tool diff Verificarea valorii pe care o au variabilele de configurare poate fi realizată în mai multe moduri: student@eim-lab:~$ git config --list
+student@eim-lab:~$ cat .git/config student@eim-lab:~$ git config user.name
+student@eim-lab:~$ git config user.email
+student@eim-lab:~$ git config core.editor
+student@eim-lab:~$ git config merge.tool
+</code></pre>
+</li>
+<li>Să se creeze un depozit pe contul Github creat, denumit 'Laborator01'. Inițial, acesta trebuie să fie gol (nu trebuie să bifați nici adăugarea unui fișier <strong>README.md</strong>, nici a fișierului <strong>.gitignore</strong> sau a a fișierului <strong>LICENSE</strong>).`</li>
+<li>Să se cloneze în directorul de pe discul local conținutul depozitului la distanță de la <a href="https://www.github.com/eim-lab/Laborator01">www.github.com/eim-lab/Laborator01</a>. În urma acestei operații, directorul Laborator01 va trebui să se conțină un director <strong>labtaks</strong> care conține proiectele AndroidStudio denumite <strong>MyFirstAndroidApplication</strong>, fișierele <strong>README.md</strong> și <strong>LICENSE</strong> și un fișier <strong>.gitignore</strong> care indică tipurile de fișiere (extensiile) ignorate. student@eim-lab:~$ git clone <a href="https://www.github.com/eim-lab/Laborator01.git">https://www.github.com/eim-lab/Laborator01.git</a></li>
+<li>Să se încarce conținutul descărcat în cadrul depozitului 'Laborator01' de pe contul Github personal.  student@eim-lab:~$ cd Laborator01<code>tudent@eim-lab:~/Laborator01$ git remote add Laborator01_perfectstudent</code><a href="https://github.com/perfectstudent/Laborator01"><code>https://github.com/perfectstudent/Laborator01</code></a>
+tudent@eim-lab:~/Laborator01$ git push Laborator01_perfectstudent master`</li>
+<li>Să se ruleze aplicația schelet:`
+<ul>
+<li>în Android Studio: //Open an existing Android Studio project// și se indică directorul Laborator01/labtasks/androidstudio;`</li>
+</ul>
+</li>
+<li>În fișierul <strong>MainActivity.java</strong> din pachetul <strong>ro.pub.cs.systems.eim.lab01</strong> (directorul <strong>src</strong>), să se modifice metoda <strong>onClick</strong> a clasei interne <strong>ButtonClickListener</strong> astfel încât:`
+<ul>
+<li>mesajul afișat să includă numele utilizatorului, așa cum apare în widget-ul de tip <strong>EditBox</strong>;
+<pre><code class="language-java">greetingTextView.setText(greetingTextView.getText().toString().replace(&quot;xxx&quot;, &quot;\n&quot;+userNameEditText.getText()));
+</code></pre>
+</li>
+<li>să se aplice un efect de fade, astfel încât mesajul afișat să dispară treptat în decurs de <strong>TRANSPARENCY_EFFECT_DURATION</strong> milisecunde.</li>
+</ul>
+<pre><code class="language-java">AlphaAnimation fadeEffect = new AlphaAnimation(1.0f, 0.0f);
+fadeEffect.setDuration(TRANSPARENCY_EFFECT_DURATION);
+fadeEffect.setFillAfter(true);
+greetingTextView.setAnimation(fadeEffect);
+</code></pre>
+</li>
+<li>Să se încarce modificările realizate în cadrul depozitului 'Laborator01' de pe contul Github personal, folosind un mesaj sugestiv.
+<pre><code class="language-bash">student@eim-lab:~/Laborator01$ git add MyFirstAndroidApplication/src/ro/pub/cs/systems/eim/lab01.MainActivity.java
+student@eim-lab:~/Laborator01$ git commit -m &quot;implemented functionality for customized message and fade effect&quot;
+student@eim-lab:~/Laborator01$ git push Laborator01_perfectstudent master
+</code></pre>
+</li>
+<li>Să se ruleze un exemplu de proiect Android, dintre cele disponibile, folosind dispozivitul virtual instalat în cadrul emulatorului Genymotion. Să se simuleze un eveniment de tipul rotirea ecranului și să se observe modul în care se comportă aplicația.
+<ul>
+<li>în Android Studio, <strong>AccelerometerPlay</strong> , din cadrul categoriei //Getting Started//. (sau <code>[</code>https://github.com/googlearchive/android-AccelerometerPlay<code>](https://github.com/googlearchive/android-AccelerometerPlay)</code>)</li>
+</ul>
+</li>
+</ul>
+<h5 id="resurse-utile-resurse_utile"><a class="header" href="#resurse-utile-resurse_utile">Resurse Utile {#resurse_utile}</a></h5>
+<p><a href="http://developer.android.com/about/dashboards/index.html">Dashboards</a>\\
+<a href="http://developer.android.com/sdk/index.html">Download Android Studio and SDK Tools - Android
+Developers</a>\\
+<a href="https://www.genymotion.com">Genymotion</a>\\ <a href="http://stackoverflow.com/questions/10863613/how-to-upgrade-glibc-from-version-2-13-to-2-15-on-debian">How to upgrade
+glibc from version 2.13 to 2.15 on
+Debian?</a>\\
+<a href="http://www.mobilespoon.net/2015/02/mobile-war-by-numbers-ios-vs-android.html">Mobile War By The Numbers: iOS vs. Android, Apps, Web and More...
+</a>\\
+<a href="http://git-scm.com/book">Scott CHACON, Pro Git, Apress,
+2009</a> - capitolele 1-3\\
+<a href="https://github.com/">GitHub</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="structura-unei-aplicații-i---activități"><a class="header" href="#structura-unei-aplicații-i---activități">Structura unei Aplicații (I) - Activități</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="proiectarea-interfețelor-grafice"><a class="header" href="#proiectarea-interfețelor-grafice">Proiectarea Interfețelor Grafice</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="structura-unei-aplicații-ii---intenții"><a class="header" href="#structura-unei-aplicații-ii---intenții">Structura unei Aplicații (II) - Intenții</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="structura-unei-aplicații-iii---servicii"><a class="header" href="#structura-unei-aplicații-iii---servicii">Structura unei Aplicații (III) - Servicii</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="comunicația-prin-sockeți-tcp"><a class="header" href="#comunicația-prin-sockeți-tcp">Comunicația prin Sockeți TCP</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="invocarea-de-servicii-web-prin-protocolul-http"><a class="header" href="#invocarea-de-servicii-web-prin-protocolul-http">Invocarea de Servicii Web prin Protocolul HTTP</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="descoperirea-serviciilor-de-rețea"><a class="header" href="#descoperirea-serviciilor-de-rețea">Descoperirea Serviciilor de Rețea</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="gestiunea-apelurilor-multimedia-folosind-sip--voip"><a class="header" href="#gestiunea-apelurilor-multimedia-folosind-sip--voip">Gestiunea Apelurilor Multimedia folosind SIP &amp; VoIP</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="utilizarea-serviciilor-de-localizare"><a class="header" href="#utilizarea-serviciilor-de-localizare">Utilizarea Serviciilor de Localizare</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Împărțirea-pe-semigrupe"><a class="header" href="#Împărțirea-pe-semigrupe">Împărțirea pe Semigrupe</a></h1>
+<ul>
+<li>În cadrul unei ore de laborator pot participa maxim 15 studenți.</li>
+<li>Transferurile între intervale orare sunt permise atâta vreme cât nu este depășită capacitatea laboratorului, la schimb cu un alt student, pentru a se asigura o echilibrare a încărcării. Mutări ale studenților sunt permise până în săptămâna a 2-a, după care formațiile de lucru rămân definitive. Transferurile se fac în persoană, cu acordul asistentului, în măsura spațiului disponibil.</li>
+<li>Marcarea persoanelor care și-au schimbat semigrupa din care făceau parte se face prin font italic.</li>
+<li>Restanțierii pot participa la orele de laborator în oricare dintre intervale, fără a depăși însă limita impusă cu privire la numărul de locuri.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="regulament"><a class="header" href="#regulament">Regulament</a></h1>
+<hr />
+<p>Disciplina Elemente de Informatică Mobilă este inclusă în planul de învățământ al specializării C1: Arhitectura Sistemelor de Calcul, fiind destinată studenților anului IV din cadrul Facultății de Automatică și Calculatoare a Universității &quot;Politehnica&quot; București, programul de studii Calculatoare. </p>
+<p>Sunt prevăzute, săptămânal, 2 ore de curs, desfășurate în sala EC101 și 2 ore de laborator, desfășurate în sala EG106 (laboratorul Ixia). În urma promovării acestei discipline vor fi obținute 5 puncte de credit transferabile (ECTS).</p>
+<h2 id="notare"><a class="header" href="#notare">Notare</a></h2>
+<hr />
+<p>Nota la disciplina Elemente de Informatică Mobilă este formată din:</p>
+<ul>
+<li>test final (30%)</li>
+<li>activitate pe parcursul semestrului (70% + 10% bonus lab + 10% bonus curs)</li>
+</ul>
+<pre><code>Final 	ACTIVITATE PE PARCURS
+30% 	Test curs 	Colocvii 	Bonus lab 	Bonus curs
+            20% 	  50% 	       10% 	        10% 
+</code></pre>
+<p>Pentru promovarea disciplinei, este necesar să se întrunească, <strong>în ordine</strong>, următoarele condiții:</p>
+<ul>
+<li>maximum 4 absențe la laborator </li>
+<li>obținerea unui punctaj de minim 35% din punctajul de laborator, partial, bonus lab (50% + 20% + 10%)</li>
+<li>obținerea unui punctaj general (≥ 50%)</li>
+</ul>
+<h3 id="test-final"><a class="header" href="#test-final">Test final</a></h3>
+<p>Testul final este scris și se desfașoară în sesiunea de vară. El poate fi susținut de studenții cu o activitate corespunzătoare pe parcursul semestrului (minim 35p obținute pe parcurs). Este permis accesul cu orice fel de materiale, cu condiția ca acestea să fie individuale și să se găsească pe suport fizic. Nu este permis accesul cu dispozitive electronice de comunicare.</p>
+<h3 id="test-parțial"><a class="header" href="#test-parțial">Test parțial</a></h3>
+<p>La mijlocul semestrului va fi programat un test din materialul predat în prealabil. </p>
+<h3 id="colocvii"><a class="header" href="#colocvii">Colocvii</a></h3>
+<p>In săptămânile ~6 și 14, în cadrul orelor de laborator, se vor desfășura două colocvii la care prezența este obligatorie. Colocviul este un test practic, desfășurat pe parcursul unui interval de timp limitat, în care se solicită rezolvarea unui set de sarcini punctate independent. Pe tot parcursul colocviului, este permisă consultarea documentației, inclusiv în format electronic. Este strict interzisă folosirea oricăror mijloace de comunicație pentru a colabora cu colegii sau cu alte persoane.</p>
+<p>Punctajul total maxim pentru cele două colocvii este de 50%, acesta este distribuit 20% primului colocviu, 30% celui de-al doilea.
+Nu este posibilă refacerea colocviilor în sesiunile de restanțe.</p>
+<h3 id="bonus-laborator"><a class="header" href="#bonus-laborator">Bonus laborator</a></h3>
+<p>Prezența și activitatea la laborator nu fac parte din notă, aceasta considerând doar cele 2 colocvii. 
+Pe parcursul celor 2 ore de laborator veți avea însă acces (doar din EG106) la un chestionar de 3 întrebări / 3 minute care verifică parcurgerea materialului pregătitor acelei săptămâni (întrebările au un singur răspuns corect). Pentru a avea acces la chestionare, trebuie să folosiți conturile de <a href="https://acs.curs.pub.ro/%7CMoodle">Moodle</a> pe site-ul <a href="http://wi-fi.cs.pub.ro/eim">wi-fi.cs.pub.ro/eim</a></p>
+<p>Scorul obținut la aceste chestionare va adăuga încă 10% (1 punct la nota finală).</p>
+<h3 id="bonus-curs"><a class="header" href="#bonus-curs">Bonus curs</a></h3>
+<p>Un sistem similar de bonusuri bazat pe același cont va fi disponibil si pentru curs. 
+La unele cursuri veti primi bilete cu coduri de acces care vă permit accesul la un chestionar online cu întrebări din cursul la care ați participat. Întrebările pot avea mai multe răspunsuri corecte, și nu se punctează parțial decât în cazul în care nu marcați vreunul dintre răspunsurile incorecte (De exemplu dacă răspunsurile a și c sunt corecte, și bifați doar a, veți primi 50% din întrebare; dacă bifați și f, veți primi 0 pentru acea întrebare). </p>
+<p>Scorul obținut la aceste chestionare va adăuga încă 10% (1 punct la nota finală).</p>
+<h3 id="restanță"><a class="header" href="#restanță">Restanță</a></h3>
+<p>Exemenele din sesiunea de restanță se desfășoară <strong>oral</strong>, și sunt pentru punctajul corespunzător examenului(30%), nu pentru punctajele obținute pe parcurs. Nu se pot reface în restanță: punctajele de laborator, testul parțial, punctajele de bonus de la laborator/curs.</p>
+<h2 id="organizare"><a class="header" href="#organizare">Organizare</a></h2>
+<hr />
+<ul>
+<li>
+<p>Laboratorul se desfășoară pe semigrupe, are alocate 2 ore săptămânal și se desfășoară în sala EG106 (laboratorul Ixia). </p>
+</li>
+<li>
+<p>Laboratoarele sunt obligatorii (cf. Regulamentului UPB), dar un maximum de 4 absențe sunt acceptabile. </p>
+</li>
+<li>
+<p>Este permis transferul de studenți între semigrupe în săptămânile 1-2 ale semestrului (printr-o cerere în persoană către asistentul de laborator), la schimb, atâta timp cât nu se depășește numărul de 15 studenți per interval orar. <strong>Din săptămâna 2 nu se mai permit nici un fel de modificări</strong> în formația de studiu. Studenții  care refac laboratorul în acest an universitar pot veni la orice laborator, în funcție de orarul celorlalte materii.</p>
+</li>
+<li>
+<p>Adresarea între cadrul didactic şi studenţi se va face la persoana a II-a singular.</p>
+</li>
+<li>
+<p>Ideal, fiecare laborator va începe la :05 pentru ca impactul asupra studenţilor ce întârzie să fie minim. După acest interval de timp, accesul studenților în sală nu va mai fi permis.</p>
+</li>
+<li>
+<p>Fiecare laborator va dispune de un suport electronic care se va publica pe site cu o zi înainte de ora în cauză. Acesta va consta dintr-un document (in format wiki) în care noţiunile sunt expuse amănunţit şi din unul sau mai multe (schelete de) proiecte ce vor fi utilizate pentru rezolvarea sarcinilor ce vizează fixarea cunoştinţelor expuse teoretic.</p>
+</li>
+<li>
+<p>Este <strong>OBLIGATORIU</strong> ca studenţii să parcurgă suportul de laborator înainte de desfăşurarea orei - in special sectiunile marcate ca fiind obligatorii -, astfel încât să fie familiarizaţi cu problematica acestuia.</p>
+</li>
+<li>
+<p>În prima parte a laboratorului (maxim 20 de minute) se vor prezenta noţiunile cu care urmează să se lucreze în cadrul orei şi care vor fi evaluate in cadrul colocviilor.</p>
+</li>
+<li>
+<p>În a doua parte a laboratorului, se vor rezolva sarcini în legătură cu tematica în cauză.</p>
+</li>
+<li>
+<p>Rezolvările la sarcinile propuse în cadrul laboratorului vor fi publicate pe [[https://github.com/eim-lab|contul de github]] al disciplinei.</p>
+</li>
+<li>
+<p>BYOD Sunteţi încurajaţi ca la orele de laborator să veniţi cu laptopurile personale și/sau cu dispozitivele mobile personale. Astfel, veți avea configurate pe mașinile proprii mediile de lucru necesare rezolvării sarcinilor de la orele de laborator, care pot fi continuate și acasă.</p>
+</li>
+<li>
+<p>În situația în care veți lucra folosind calculatoarele din laborator, se recomandă încărcarea codului sursă aferent proiectului Android în contul personal de GitHub, astfel încât să se poată relua procesul de implementare de pe orice mașină.</p>
+</li>
+</ul>
+<h2 id="frauda-academică"><a class="header" href="#frauda-academică">Frauda Academică</a></h2>
+<hr />
+<p>Se consideră fraudă academică orice incercare de colaborare cu colegii sau cu alte persoane, inclusiv prin intermediul mijloacelor de comunicare electronice, in timpul colocviilor sau al examenului scris.</p>
+<p>Într-o astfel de situație, se va anula întregul punctaj aferent activității de pe parcursul semestrului, ceea ce atrage dupa sine refacerea disciplinei în anul universitar următor.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="anunțuri"><a class="header" href="#anunțuri">Anunțuri</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="calendar"><a class="header" href="#calendar">Calendar</a></h1>
+<iframe class="is-fullwidth" height="722" marginheight="0" marginwidth="0" src="https://calendar.google.com/calendar/embed?src=r2ppbvnjccrhig0a63rbjniqp8%40group.calendar.google.com&ctz=Europe/Bucharest">    
+</iframe> <div style="break-before: page; page-break-before: always;"></div><h1 id="Împărțirea-pe-semigrupe-1"><a class="header" href="#Împărțirea-pe-semigrupe-1">Împărțirea pe Semigrupe</a></h1>
+<ul>
+<li>În cadrul unei ore de laborator pot participa maxim 15 studenți.</li>
+<li>Transferurile între intervale orare sunt permise atâta vreme cât nu este depășită capacitatea laboratorului, la schimb cu un alt student, pentru a se asigura o echilibrare a încărcării. Mutări ale studenților sunt permise până în săptămâna a 2-a, după care formațiile de lucru rămân definitive. Transferurile se fac în persoană, cu acordul asistentului, în măsura spațiului disponibil.</li>
+<li>Marcarea persoanelor care și-au schimbat semigrupa din care făceau parte se face prin font italic.</li>
+<li>Restanțierii pot participa la orele de laborator în oricare dintre intervale, fără a depăși însă limita impusă cu privire la numărul de locuri.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="soluții-laborator"><a class="header" href="#soluții-laborator">Soluții laborator</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="catalog"><a class="header" href="#catalog">Catalog</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="echipa"><a class="header" href="#echipa">Echipa</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="tabbed-code-blocks.js"></script>
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,1 @@
+# Comunicația prin Sockeți TCP

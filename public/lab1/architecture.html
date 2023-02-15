@@ -1,0 +1,303 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Arhitectura - Elemente de Informatica Mobila 🌐</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././assets/custom.css">
+        <link rel="stylesheet" href="../tabbed-code-blocks.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../labs.html">Elemente de Informatica Mobila 📱</a></li><li class="chapter-item affix "><li class="part-title">Cursuri</li><li class="spacer"></li><li class="chapter-item "><a href="../courses/course1.html">1. Introducere</a></li><li class="chapter-item "><a href="../courses/course2.html">2. Android Internals</a></li><li class="chapter-item "><a href="../courses/course3.html">3. Generalități despre radio</a></li><li class="chapter-item "><a href="../courses/course4.html">4. Acces la mediu</a></li><li class="chapter-item "><a href="../courses/course5.html">5. Sisteme celulare</a></li><li class="chapter-item "><a href="../courses/course6.html">6. Rețele WiFi</a></li><li class="chapter-item "><a href="../courses/course7.html">7. Mobilitate la nivel rețea</a></li><li class="chapter-item "><a href="../courses/course8.html">8. Mobilitate la nivel transport</a></li><li class="chapter-item "><a href="../courses/course9.html">9. SIP și VoIP</a></li><li class="chapter-item "><a href="../courses/course10.html">10. Poziționare</a></li><li class="chapter-item affix "><li class="part-title">Laboratoare</li><li class="spacer"></li><li class="chapter-item expanded "><a href="../lab1/lab1.html">1. Introducere in Programarea Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../lab1/android.html">Sistemul de Operare Android</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../lab1/versions.html">Versiuni</a></li><li class="chapter-item expanded "><a href="../lab1/architecture.html" class="active">Arhitectura</a></li><li class="chapter-item "><a href="../lab1/functionalities.html">Funcționalități</a></li><li class="chapter-item "><a href="../lab1/iphone.html">Android vs iPhone</a></li><li class="chapter-item "><a href="../lab1/community.html">Comunitatea</a></li></ol></li><li class="chapter-item "><a href="../lab1/environment.html">Mediu de dezvoltare</a></li><li class="chapter-item "><a href="../lab1/git.html">Versionare (Git)</a></li><li class="chapter-item "><a href="../lab1/android_studio.html">Android Studio</a></li><li class="chapter-item "><a href="../lab1/activity.html">Activitate de laborator</a></li></ol></li><li class="chapter-item "><a href="../lab2/lab2.html">2. Structura unei Aplicații (I) - Activități</a></li><li class="chapter-item "><a href="../lab3/lab3.html">3. Proiectarea Interfețelor Grafice</a></li><li class="chapter-item "><a href="../lab4/lab4.html">4. Structura unei Aplicații (II) - Intenții</a></li><li class="chapter-item "><a href="../lab5/lab5.html">5. Structura unei Aplicații (III) - Servicii</a></li><li class="chapter-item "><a href="../lab6/lab6.html">6. Comunicația prin Sockeți TCP</a></li><li class="chapter-item "><a href="../lab7/lab7.html">7. Invocarea de Servicii Web prin Protocolul HTTP</a></li><li class="chapter-item "><a href="../lab8/lab8.html">8. Descoperirea Serviciilor de Rețea</a></li><li class="chapter-item "><a href="../lab9/lab9.html">9. Gestiunea Apelurilor Multimedia folosind SIP & VoIP</a></li><li class="chapter-item "><a href="../lab10/lab10.html">10. Utilizarea Serviciilor de Localizare</a></li><li class="chapter-item affix "><li class="part-title">Resurse</li><li class="chapter-item "><a href="../resources/groups.html">Împărțirea pe Semigrupe</a></li><li class="chapter-item "><a href="../resources/rules.html">Regulament</a></li><li class="chapter-item "><a href="../resources/announcements.html">Anunțuri</a></li><li class="chapter-item "><a href="../resources/calendar.html">Calendar</a></li><li class="chapter-item "><a href="../resources/groups.html">Împărțirea pe Semigrupe</a></li><li class="chapter-item "><a href="../resources/solutions.html">Soluții laborator</a></li><li class="chapter-item "><a href="../resources/register.html">Catalog</a></li><li class="chapter-item "><a href="../resources/team.html">Echipa</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Elemente de Informatica Mobila 🌐</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://gitlab.cs.pub.ro/eim/labs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://gitlab.cs.pub.ro/eim/labs/edit/main/src/lab1/architecture.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h3 id="arhitectura-android"><a class="header" href="#arhitectura-android">Arhitectura Android</a></h3>
+<p>Arhitectura sistemului de operare Android cuprinde cinci secțiuni grupate pe
+patru niveluri:</p>
+<p><img src="images/android_architecture.png" alt="" /></p>
+<ul>
+<li><strong>Kernelul Linux</strong> (cu unele modificări) conține driver-ele pentru diferitele
+componente hardware (ecran, cameră foto, tastatură, antenă WiFi, memorie flash,
+dispozitive audio), fiind responsabil cu gestiunea proceselor, memoriei,
+perifericelor (audio/video, GPS, WiFi), dispozitivelor de intrare/ieșire,
+rețelei și a consumului de energie; de asemenea, au fost implementate și unele
+îmbunătățiri:</li>
+<li><strong>Binder</strong>, sistemul de comunicație inter-proces, a fost adaptat, întrucât
+reprezintă mediul de comunicație principal dintre aplicații și sistemul de
+operare, inclusiv funcțiile (serviciile) dispozitivului mobil; expunerea sa este
+realizată prin intermediul AIDL (Android Interface Definition Language) prin
+care pot fi manipulate obiecte transformate în primitive utilizate la
+comunicația propriu-zisă dintre aplicații și sistemul de operare;</li>
+<li><strong>Logger</strong>, sistemul de jurnalizare, este esențial în cazul în care trebuie
+realizată depanarea aplicațiilor, în special pentru a detecta anumite situații
+particulare (informații cu privire la rețea, senzori); acesta este capabil să
+agrege datele provenite atât de la aplicația propriu-zisă cât și de la sistemul
+de operare, datele fiind disponibile prin intermediul unor utilitare
+specializate;</li>
+<li>sistemul prin intermediul căruia se previne transferul sistemului de operare într-o stare de latență (<strong>wake locks</strong>), în care consumul de energie este redus, întrucât se blochează execuția oricărei aplicații; utilizarea unui astfel de mecanism trebuie realizată cu precauție, întrucât poate determina epuizarea bateriei;</li>
+<li>sistemul de <strong>alarme</strong> oferă posibilitatea ca anumite sarcini să fie planificate la anumite momente de timp, putând fi executate, chiar dacă sistemul de operare se găsește într-o stare de latență;</li>
+<li><strong>Viking Killer</strong> este un mecanism prin care sistemul de operare revendică
+memoria utilizată, atunci când nivelul acesteia atinge un anumit prag
+(aplicațiile Android care au fost rulate anterior sunt de regulă stocate în
+memorie pentru a se putea comuta rapid între ele, de vreme ce încărcarea în
+memorie este o operație costisitoare);</li>
+<li><strong>YAFFS2</strong> (Yet Another Flash File System) este un sistem de fișiere adecvat
+pentru cipuri flash bazate pe porți NAND; platforma Android este stocată pe mai
+multe partiții, ceea ce îi conferă flexibilitate la actualizări, împiedicând
+modificarea sa în timpul rulării (<strong>/boot</strong> - conține secvența de pornire,
+<strong>/system</strong> - stochează fișierele de sistem și aplicațiile încorporate,
+<strong>/recovery</strong> - deține o imagine din care se poate restaura sistemul de
+operare, <strong>/data</strong> - include aplicațiile instalate și datele aferente
+acestora, <strong>/cache</strong> - utilizată pentru fișiere temporare, folosind memoria
+RAM, pentru acces rapid).</li>
+<li><strong>Bibliotecile</strong> (user-space) conțin codul care oferă principalele
+funcționalități a sistemului de operare Android, făcând legătura între kernel și
+aplicații. Sunt incluse aici motorul open-source pentru navigare WebKit,
+biblioteca FreeType pentru suportul seturilor de caractere, baza de date SQLite
+utilizată atât ca spațiu de stocare cât și pentru partajarea datelor specifice
+aplicațiilor, biblioteca libc (Bionic),  biblioteca de sistem C bazată pe BSD și
+optimizată pentru dispozitive mobile bazate pe Linux, biblioteci pentru redarea
+și înregistrarea de conținut audio/video (bazate pe OpenCORE de la PacketVideo),
+biblioteci SSL pentru asigurarea securității pe Internet și Surface Manager,
+bibliotecă pentru controlul accesului la sistemul de afișare care suportă 2D și
+3D. Aceste biblioteci nu sunt expuse prin API, reprezentând detalii de
+implementare Android.</li>
+<li><strong>Motorul Android</strong> rulează serviciile de platformă precum și aplicațiile care
+le utilizează, fiind reprezentat de:</li>
+<li><strong>ART (Android Runtime)</strong> este mașina virtuală Java care a fost implementată
+începând cu versiunea 5.0, folosind un tip de compilare AOH (Ahead of Time), în
+care bytecode-ul este transpus în cod mașină la momentul instalării, astfel
+încât acesta este executat direct de mediul dispozitivului mobil;
+compatibilitatea cu versiuni anterioare (care folosesc mașina virtuală Dalvik,
+ce se bazează pe un compilator JIT - Just in Time) este asigurată prin
+transformarea pachetelor în format .dex (Dalvik Executable) la momentul
+compilării, urmând ca translatarea în format .oat să se realizeze la momentul
+instalării; fiecare aplicație Android rulează în procesul propriu, într-o
+instanță a mașinii virtuale ART, izolând astfel codul și datele sale prin
+intermediul unor permisiuni, care se aplică inclusiv la comunicația prin
+intermediul interfețelor de comunicare oferite de sistemul de operare Android;</li>
+<li><strong>Zygote</strong> este procesul care gestionează toate aplicațiile, fiind lansat în
+execuție odată cu sistemul de operare:
+<ul>
+<li>inițial, creează o instanță a mașinii virtuale Java pentru sistemul de operare
+Android, în contextul căreia plasează serviciile de bază: gestiunea energiei,
+telefonie, furnizori de conținut, gestiunea pachetelor, serviciul de localizare,
+serviciul de notificări;</li>
+<li>atunci când este necesar să lanseze în execuție o anumită aplicație, se clonează, partajând astfel componentele sistemului de operare Android, astfel încât să se asigure performanța (timp de execuție) și eficiența (memorie folosită), de vreme ce fiecare aplicație trebuie rulată în propria sa instanță a mașinii virtuale Java;</li>
+</ul>
+</li>
+<li><strong>Cadrul pentru Aplicații</strong> expune diferitele funcționalități ale sistemului
+de operare Android către programatori, astfel încât aceștia să le poată utiliza
+în aplicațiile lor.</li>
+<li>La nivelul de <strong>aplicații</strong> se regăsesc atât produsele împreună cu care este
+livrat dispozitivul mobil (Browser, Calculator, Camera, Contacts, Clock, FM
+Radio, Launcher, Music Player, Phone, S Note, S Planner, Video Player, Voice
+Recorder), cât și produsele instalate de pe Play Store sau cele dezvoltate de
+programatori.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../lab1/versions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../lab1/functionalities.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../lab1/versions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../lab1/functionalities.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../tabbed-code-blocks.js"></script>
+
+
+    </body>
+</html>
