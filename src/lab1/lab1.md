@@ -1,4 +1,4 @@
 # Introducere în Programarea Android
 
-In acest laborator vom vedea cum putem dezvolta și rula prima noastră aplicație
+În acest laborator vom vedea cum putem instala mediul de dezvoltare Android Studio, dezvolta și rula prima noastră aplicație
 Android.
