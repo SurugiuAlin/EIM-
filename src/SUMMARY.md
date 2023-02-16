@@ -40,7 +40,6 @@
 - [10. Utilizarea Serviciilor de Localizare](lab10/lab10.md)
 
 # Resurse
-- [Împărțirea pe Semigrupe](resources/groups.md)
 - [Regulament](resources/rules.md)
 - [Anunțuri](resources/announcements.md)
 - [Calendar](resources/calendar.md)
