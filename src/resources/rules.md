@@ -20,18 +20,18 @@ Final 	ACTIVITATE PE PARCURS
 ```
 
 Pentru promovarea disciplinei, este necesar să se întrunească, **în ordine**, următoarele condiții:
-  * maximum 4 absențe la laborator 
-  * obținerea unui punctaj de minim 35% din punctajul de laborator, partial, bonus lab (50% + 20% + 10%)
+  * maximum 3 absențe la laborator 
+  * obținerea unui punctaj de minim 40% din punctajul de laborator, partial, bonus lab (50% + 20% + 10%)
   * obținerea unui punctaj general (≥ 50%)
  
 
 ### Test final
 
-Testul final este scris și se desfașoară în sesiunea de vară. El poate fi susținut de studenții cu o activitate corespunzătoare pe parcursul semestrului (minim 35p obținute pe parcurs). Este permis accesul cu orice fel de materiale, cu condiția ca acestea să fie individuale și să se găsească pe suport fizic. Nu este permis accesul cu dispozitive electronice de comunicare.
+Testul final este scris și se desfașoară în sesiunea de vară. El poate fi susținut de studenții cu o activitate corespunzătoare pe parcursul semestrului (minim 35p obținute pe parcurs). Este permis accesul cu  cu notițe scrise de mână pe o singură foaie A4 (față+verso). Nu este permis accesul cu dispozitive electronice de comunicare.
 
 ### Test parțial
 
-La mijlocul semestrului va fi programat un test din materialul predat în prealabil. 
+La mijlocul semestrului va fi programat un test din materialul predat în prealabil. Este permis accesul cu  cu notițe scrise de mână pe o singură foaie A4 (față+verso). Nu este permis accesul cu dispozitive electronice de comunicare.
 
 ### Colocvii
 
@@ -60,7 +60,7 @@ Exemenele din sesiunea de restanță se desfășoară **oral**, și sunt pentru 
 
   * Laboratorul se desfășoară pe semigrupe, are alocate 2 ore săptămânal și se desfășoară în sala EG106 (laboratorul Ixia). 
   
-  * Laboratoarele sunt obligatorii (cf. Regulamentului UPB), dar un maximum de 4 absențe sunt acceptabile. 
+  * Laboratoarele sunt obligatorii (cf. Regulamentului UPB), dar un maximum de 3 absențe sunt acceptabile. 
 
   * Este permis transferul de studenți între semigrupe în săptămânile 1-2 ale semestrului (printr-o cerere în persoană către asistentul de laborator), la schimb, atâta timp cât nu se depășește numărul de 15 studenți per interval orar. **Din săptămâna 2 nu se mai permit nici un fel de modificări** în formația de studiu. Studenții  care refac laboratorul în acest an universitar pot veni la orice laborator, în funcție de orarul celorlalte materii.
 
