@@ -3,7 +3,9 @@
 Android este un SO mobil bazat pe o versiune modificată de Linux (pentru
 gestiunea componentelor hardware, a proceselor și a memoriei) și biblioteci Java
 (pentru telefonie (audio/video), conectivitate, grafică, programarea
-interfețelor cu utilizatorul). Este un produs open-source (putând fi dezvoltat
+interfețelor cu utilizatorul). 
+
+Este un produs open-source (putând fi dezvoltat
 de producătorii de dispozitive mobile cu extensii proprietare pentru a-și
 particulariza platforma), dezvoltat în prezent de compania Google, conceput pe
 ideea transformării dispozitivelor mobile în adevărate mașini de calcul. Google

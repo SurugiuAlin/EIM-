@@ -36,7 +36,6 @@ de mai jos le putem observa.
 
 
 
-
 ![](images/android_api_7.png)
 
 Pentru identificarea versiunilor se folosesc, de regulă, trei sisteme:
