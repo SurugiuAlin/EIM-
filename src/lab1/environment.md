@@ -1,4 +1,4 @@
-##### Cerințe pentru dezvoltarea unei aplicații Android (obligatoriu)
+## Cerințe pentru dezvoltarea unei aplicații Android
 
 Pentru dezvoltarea unei aplicații Android sunt necesare:
 
@@ -14,13 +14,11 @@ Pentru dezvoltarea unei aplicații Android sunt necesare:
   aplicația
   
 Pentru a se putea rula o aplicație pe un dispozitiv mobil fizic,
-trebuie să se activeze posibilitatea de depanare prin USB, din //Settings// →
+trebuie să se activeze posibilitatea de depanare prin USB, din Settings →
 *System* → *Developer Options*. Această opțiune trebuie activată, ca de
 altfel și opțiunea *Debugging* → *Android Debugging* (pe unele sisteme poate
 apărea ca *USB Debugging*).
   
-![](images/android_debugging02.png)
-
 ---
 **Note**
 

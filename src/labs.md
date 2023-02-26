@@ -1,17 +1,8 @@
 # Elemente de Informatică Mobilă
 
-## Resurse
-
-* [Regulament](resources/rules.md)
-* [Anunțuri](resources/announcements.md)
-* [Calendar](resources/calendar.md)
-* [Împărțirea pe Semigrupe](resources/groups.md)
-* [Soluții laborator](https://github.com/eim-lab)
-* [Catalog](https://docs.google.com/spreadsheets/d/1yu4tHd6AoyoBk2PLvV89t2lcwsp0kDz4QcBapZACvXw/edit?usp=sharing)
-* [Echipa](resources/team.md)
-* [Site bilete](http://wi-fi.cs.pub.ro/eim)
 
 ## Orar
+---
 
 ### Curs
 
@@ -21,6 +12,7 @@
 
 
 ### Laborator
+
 
 | **Grupa** | **Zi**     | **Ora**     | **Sala**    | **Asistent** |
 |-----------|------------|-------------|-------------|--------------|
@@ -35,12 +27,19 @@
 |           | vineri     | 08.00-10.00 | EG106       | Mădălina     |
 |           | Kotlin Prj | TBD         | Teams       | Bianca/Vlad  |
 
----
-**Notă**
+> Săptămâna de laborator începe joi (8.00-10.00) și se termină luni (12.00-14.00). 
 
-Săptămâna de laborator începe joi (8.00-10.00) și se termină luni (12.00-14.00). 
-
+## Resurse
 ---
+
+* [Regulament](resources/rules.md)
+* [Anunțuri](resources/announcements.md)
+* [Calendar](resources/calendar.md)
+* [Împărțirea pe Semigrupe](resources/groups.md)
+* [Soluții laborator](https://github.com/eim-lab)
+* [Catalog](https://docs.google.com/spreadsheets/d/1yu4tHd6AoyoBk2PLvV89t2lcwsp0kDz4QcBapZACvXw/edit?usp=sharing)
+* [Echipa](resources/team.md)
+* [Site bilete](http://wi-fi.cs.pub.ro/eim)
 
 ## Contribuții laborator
 Oricine poate contribui pentru a îmbunătăți laboratoarele. Scheletul

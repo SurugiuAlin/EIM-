@@ -24,7 +24,7 @@ Acuma o sa scrie "Hello World" in fisier si o sa facem primul nostru commit
 
 ```Bash
 # Aici puteti edita fisierul cu orice vreti voi
-❯echo "Hello world" > README.md
+❯ echo "Hello world" > README.md
 # Urmatoarea comanda ne va afisa statusul repo-ului
 ❯ git status
 On branch master
