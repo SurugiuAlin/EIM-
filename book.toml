@@ -14,6 +14,7 @@ additional-js = ["tabbed-code-blocks.js"]
 git-repository-url = "https://gitlab.cs.pub.ro/eim/labs"
 edit-url-template = "https://gitlab.cs.pub.ro/eim/labs/edit/main/{path}"
 no-section-label = true
+default-theme = "Rust"
 
 [preprocessor.toc]
 command = "./mdbook-toc"
