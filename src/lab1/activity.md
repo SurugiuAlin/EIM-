@@ -1,9 +1,9 @@
 # Activitate de Laborator 
 
 **1.** Să se instaleze toate instrumentele necesare pentru a putea dezvolta o aplicație Android.
-    - kit de dezvoltare pentru limbajul de programare Java (JDK)
-   - Android Studio (include Android SDK + AVD))
-    - emulator Genymotion în care se configurează un dispozitiv virtual Phone - 7.0 - API 24 - 960x540;
+  - kit de dezvoltare pentru limbajul de programare Java (JDK)
+  - Android Studio (include Android SDK + AVD))
+  - emulator Genymotion în care se configurează un dispozitiv virtual Phone - 7.0 - API 24 - 960x540;
 
 **2.** Să se creeze un repo pe [GitHub](http://www.github.com) cu scheletul laboratorului.
 
@@ -33,13 +33,13 @@ fișier **.gitignore** care indică tipurile de fișiere (extensiile) ignorate.
     ```
 
 **3.** Să se ruleze aplicația schelet:
-    - în Android Studio: *Open an existing Android Studio project* și se indică directorul Laborator01/labtasks/androidstudio;
+  - în Android Studio: *Open an existing Android Studio project* și se indică directorul Laborator01/labtasks/androidstudio;
   
 **4.** În fișierul **MainActivity.java** din pachetul **ro.pub.cs.systems.eim.lab01**
 (directorul **src**), să se modifice metoda **onClick** a clasei interne
 **ButtonClickListener** astfel încât:
 
-    - mesajul afișat să includă numele utilizatorului, așa cum apare în widget-ul de tip **EditBox**;
+  - mesajul afișat să includă numele utilizatorului, așa cum apare în widget-ul de tip **EditBox**;
 
        ```java
        greetingTextView.setText(greetingTextView.getText().toString().replace("xxx", "\n"+userNameEditText.getText()));
