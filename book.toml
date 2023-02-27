@@ -12,7 +12,7 @@ build-dir = "public"
 additional-css = ["./assets/custom.css", "tabbed-code-blocks.css"]
 additional-js = ["tabbed-code-blocks.js"]
 git-repository-url = "https://gitlab.cs.pub.ro/eim/labs"
-edit-url-template = "https://gitlab.cs.pub.ro/eim/labs/edit/main/{path}"
+edit-url-template = "https://gitlab.cs.pub.ro/eim/labs/edit/master/{path}"
 no-section-label = true
 default-theme = "Rust"
 

@@ -1,14 +1,16 @@
-# Text for the PCom labs
+# Text for the EIM labs
 
 ## How to use
 
-We use Markdown for the lab text. We use pull requests to update the content. The `main` branch is automatically published at the following address: https://pcom.pages.upb.ro/labs/
+We use Markdown for the lab text. We use pull requests to update the content.
+The `master` branch is automatically published at the following address:
+https://eim.pages.upb.ro
 We recommend using [language tool](https://languagetool.org/) for spell checking.
 
 ### Directly (easies)
 
 We can edit the contents directly from the browser by using the GitLab IDE. The content for each lab is in the `src` folder. For example,
-to edit the first lab, we can go to any of the [lab's markdown files](https://gitlab.cs.pub.ro/pcom/labs/-/blob/main/src/lab1/about.md),
+to edit the first lab, we can go to any of the [lab's markdown files](https://gitlab.cs.pub.ro/-/ide/project/eim/eim.pages.upb.ro/edit/master/-/src/lab1/activity.md),
 click on the `Open in Web IDE` button and edit the markdown. In a similar fashion, each page has an edit button on the top right corner,
 you can press it to make changes to a page.
 
