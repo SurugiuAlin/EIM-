@@ -1,11 +1,8 @@
 # Activitate de Laborator 
 
-
-
 - Să se instaleze toate instrumentele necesare pentru a putea dezvolta o aplicație Android.
-  - kit de dezvoltare pentru limbajul de programare Java;
-  - SDK pentru Android;
-  - mediu integrat de dezvoltare Android Studio cu plugin-uri pentru Android, Genymotion;
+  - kit de dezvoltare pentru limbajul de programare Java (JDK)
+  - Android Studio (include Android SDK + AVD))
   - emulator Genymotion în care se configurează un dispozitiv virtual Phone - 7.0 - API 24 - 960x540;
 
 - Să se acceseze [GitHub](http://www.github.com) și să se creeze un cont.
@@ -66,4 +63,4 @@ student@eim-lab:~$ git clone
 
 - Să se ruleze un exemplu de proiect Android, dintre cele disponibile, folosind dispozivitul virtual instalat în cadrul emulatorului Genymotion. Să se simuleze un eveniment de tipul rotirea ecranului și să se observe modul în care se comportă aplicația.
 
-  - în Android Studio, **AccelerometerPlay** , din cadrul categoriei //Getting Started//. (sau `[`https://github.com/googlearchive/android-AccelerometerPlay`](https://github.com/googlearchive/android-AccelerometerPlay)`)
+- în Android Studio, **AccelerometerPlay** , din cadrul categoriei *Getting Started*. (sau [AccelerometerPlay](https://github.com/googlearchive/android-AccelerometerPlay)
