@@ -39,10 +39,16 @@
 - [9. Gestiunea Apelurilor Multimedia folosind SIP & VoIP](lab9/lab9.md)
 - [10. Utilizarea Serviciilor de Localizare](lab10/lab10.md)
 
-# Resurse
+# Informaţii Administrative
 - [Regulament](resources/rules.md)
 - [Anunțuri](resources/announcements.md)
 - [Calendar](resources/calendar.md)
 - [Împărțirea pe Semigrupe](resources/groups.md)
 - [Echipa](resources/team.md)
+
+# Documentatie
+
+- [Colocviu 1](resources/practical1.md)
+- [Colocviu 2](resources/practical2.md)
+- [Documentație Examen](resources/exam.md)
 
