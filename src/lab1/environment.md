@@ -1,4 +1,4 @@
-## Cerințe pentru dezvoltarea unei aplicații Android
+## Mediu de dezvoltare
 
 Pentru dezvoltarea unei aplicații Android sunt necesare:
 
