@@ -44,7 +44,5 @@
 - [Anunțuri](resources/announcements.md)
 - [Calendar](resources/calendar.md)
 - [Împărțirea pe Semigrupe](resources/groups.md)
-- [Soluții laborator](resources/solutions.md)
-- [Catalog](resources/register.md)
 - [Echipa](resources/team.md)
 
