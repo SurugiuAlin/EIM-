@@ -4,6 +4,18 @@
 
 * 27.01.2023 bine ați venit în semestrul 2, anul universitar 2022 - 2023
 
+## Resurse
+---
+
+* [Regulament](resources/rules.md)
+* [Anunțuri](resources/announcements.md)
+* [Calendar](resources/calendar.md)
+* [Împărțirea pe Semigrupe](resources/groups.md)
+* [Soluții laborator](https://github.com/eim-lab)
+* [Catalog](https://docs.google.com/spreadsheets/d/1yu4tHd6AoyoBk2PLvV89t2lcwsp0kDz4QcBapZACvXw/edit?usp=sharing)
+* [Echipa](resources/team.md)
+* [Site bilete](http://wi-fi.cs.pub.ro/eim)
+
 
 ## Orar
 ---
@@ -32,18 +44,6 @@
 |           | Kotlin Prj | TBD         | Teams       | Bianca/Vlad  |
 
 > Săptămâna de laborator începe joi (8.00-10.00) și se termină luni (12.00-14.00). 
-
-## Resurse
----
-
-* [Regulament](resources/rules.md)
-* [Anunțuri](resources/announcements.md)
-* [Calendar](resources/calendar.md)
-* [Împărțirea pe Semigrupe](resources/groups.md)
-* [Soluții laborator](https://github.com/eim-lab)
-* [Catalog](https://docs.google.com/spreadsheets/d/1yu4tHd6AoyoBk2PLvV89t2lcwsp0kDz4QcBapZACvXw/edit?usp=sharing)
-* [Echipa](resources/team.md)
-* [Site bilete](http://wi-fi.cs.pub.ro/eim)
 
 ## Contribuții laborator
 Oricine poate contribui pentru a îmbunătăți laboratoarele. Scheletul
