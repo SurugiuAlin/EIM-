@@ -8,7 +8,6 @@
 ---
 
 * [Regulament](resources/rules.md)
-* [Anunțuri](resources/announcements.md)
 * [Calendar](resources/calendar.md)
 * [Împărțirea pe Semigrupe](resources/groups.md)
 * [Soluții laborator](https://github.com/eim-lab)
