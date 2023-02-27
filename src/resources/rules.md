@@ -42,7 +42,7 @@ Nu este posibilă refacerea colocviilor în sesiunile de restanțe.
 
 ### Bonus laborator
 Prezența și activitatea la laborator nu fac parte din notă, aceasta considerând doar cele 2 colocvii. 
-Pe parcursul celor 2 ore de laborator veți avea însă acces (doar din EG106) la un chestionar de 3 întrebări / 3 minute care verifică parcurgerea materialului pregătitor acelei săptămâni (întrebările au un singur răspuns corect). Pentru a avea acces la chestionare, trebuie să folosiți conturile de [Moodle](https://acs.curs.pub.ro/|Moodle) pe site-ul [wi-fi.cs.pub.ro/eim](http://wi-fi.cs.pub.ro/eim)
+Pe parcursul celor 2 ore de laborator veți avea însă acces (doar din EG106) la un chestionar de 3 întrebări / 3 minute care verifică parcurgerea materialului pregătitor acelei săptămâni (întrebările au un singur răspuns corect). Pentru a avea acces la chestionare, trebuie să folosiți conturile de [Moodle](https://acs.curs.pub.ro/) pe site-ul [wi-fi.cs.pub.ro/eim](http://wi-fi.cs.pub.ro/eim)
 
 Scorul obținut la aceste chestionare va adăuga încă 10% (1 punct la nota finală).
 
@@ -76,7 +76,7 @@ Exemenele din sesiunea de restanță se desfășoară **oral**, și sunt pentru 
 
   * În a doua parte a laboratorului, se vor rezolva sarcini în legătură cu tematica în cauză.
 
-  * Rezolvările la sarcinile propuse în cadrul laboratorului vor fi publicate pe [[https://github.com/eim-lab|contul de github]] al disciplinei.
+  * Rezolvările la sarcinile propuse în cadrul laboratorului vor fi publicate pe [contul de github](https://github.com/eim-lab) al disciplinei.
 
   * BYOD Sunteţi încurajaţi ca la orele de laborator să veniţi cu laptopurile personale și/sau cu dispozitivele mobile personale. Astfel, veți avea configurate pe mașinile proprii mediile de lucru necesare rezolvării sarcinilor de la orele de laborator, care pot fi continuate și acasă.
 
