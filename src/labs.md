@@ -1,5 +1,9 @@
 # Elemente de Informatică Mobilă
 
+## Anunțuri
+
+* 27.01.2023 bine ați venit în semestrul 2, anul universitar 2022 - 2023
+
 
 ## Orar
 ---
