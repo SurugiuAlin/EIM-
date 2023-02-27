@@ -2,16 +2,17 @@
 
 Pentru dezvoltarea unei aplicații Android sunt necesare:
 
-- [kit-ul de dezvoltare pentru limbajul de programare Java](https://ocw.cs.pub.ro/courses/eim/tutoriale/java)
-- [SDK-ul de Android](https://ocw.cs.pub.ro/courses/eim/tutoriale/sdk_android), pentru care se descarcă definițiile corespunzătoare unuia sau mai multor niveluri de API
-- un mediu integrat de dezvoltare (IDE)
-  - [Android Studio](https://ocw.cs.pub.ro/courses/eim/tutoriale/android_studio)
-- un dispozitiv pe care să se ruleze aplicațiile`
+- OpenJDK
+- Android SDK pentru care se descarcă definițiile corespunzătoare unuia sau mai multor niveluri de API
+- [Android Studio](https://ocw.cs.pub.ro/courses/eim/tutoriale/android_studio)
+- un dispozitiv pe care să se ruleze aplicațiile
   - un emulator
     - [Genymotion](https://ocw.cs.pub.ro/courses/eim/tutoriale/genymotion)
     - [Android Virtual Device](https://ocw.cs.pub.ro/courses/eim/tutoriale/android_virtual_device) (livrat împreună cu SDK-ul de Android)
   - un telefon mobil cu sistemul de operare Android pentru care s-a dezvoltat
   aplicația
+
+> In general, trebuie sa instalam doar Android Studio pentru ca se va ocupa el de instalat Java, Android SDK si AVD. Doar Genymotion trebuie instalat separat.
   
 Pentru a se putea rula o aplicație pe un dispozitiv mobil fizic,
 trebuie să se activeze posibilitatea de depanare prin USB, din Settings →
