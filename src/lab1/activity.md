@@ -60,6 +60,3 @@ fișier **.gitignore** care indică tipurile de fișiere (extensiile) ignorate.
    student@eim-lab:~/Laborator01$ git commit -m "implemented functionality for customized message and fade effect"
    student@eim-lab:~/Laborator01$ git push my_origin master
    ```
-
-**6.** Să se ruleze un exemplu de proiect Android, dintre cele disponibile, folosind dispozivitul virtual instalat în cadrul emulatorului Genymotion. Să se simuleze un eveniment de tipul rotirea ecranului și să se observe modul în care se comportă aplicația.
-  - în Android Studio, **AccelerometerPlay** , din cadrul categoriei *Getting Started*. (sau [AccelerometerPlay](https://github.com/googlearchive/android-AccelerometerPlay)
