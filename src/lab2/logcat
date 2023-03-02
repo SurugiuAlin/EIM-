@@ -1,0 +1,151 @@
+#### LogCat
+
+Jurnalele sistemului de operare conțin cele mai importante informații
+pentru programator. Acestea descriu toate acțiunile realizate de către
+dispozitivul mobil, excepțiile apărute precum și alte informații
+necesare depanării. Ele pot fi vizualizate în panoul denumit **LogCat**.
+
+---
+**Note**
+
+LogCat nu trebuie confundat cu Console, în care sunt
+afișate mesajele provenind de la Eclipse.\
+
+---
+
+De regulă, la pornirea unei aplicații, utilizatorul este întrebat dacă
+dorește să monitorizeze mesajele provenind de la dispozitivul mobil,
+indicându-se și nivelul de prioritate prin care acestea vor fi filtrate
+(`verbose`, `debug`, `info`, `warning`, `error`, `assert`).
+
+![](images/logcat_launch1.png)
+
+Ulterior, acest *Window* → *Show View* → *Other...* → *Android* →
+*LogCat*
+
+![](images/logcat_launch2.png)
+
+Fiecare mesaj din această listă este insoțit de următoarele informații
+(fiecare pe cate o coloană):
+
+-   *Level* (tipul mesajului)
+    -   **V** - *Verbose* - informații suplimentare afișate de programe
+        (de obicei la cerere, se folosesc la depistarea problemelor de
+        funcționare rezultate din cauza configurării greșite a
+        programelor)
+    -   **D** - *Debug* - mesaj utile la depanare
+    -   **I** - *Information* - mesaj informativ
+    -   **W** - *Warning* - mesaj de avertizare (excepțiile ce nu sunt
+        foarte importante, neavând un impact semnificativ asupra
+        componentei)
+    -   **E** - *Error* - mesaj de eroare (excepțiile ce întrerup o
+        componentă)
+    -   **A** - *Assert* - mesaj ce indică faptul că o condiție
+        esențială pentru rularea aplicației nu a fost îndeplinită
+-   *Time* - data și ora la care a fost generat mesajul
+-   *PID* - identificatorul procesului ce a generat mesajul
+-   *TID* - identificatorul firului de execuție ce a general mesajul
+-   *Application* - aplicațtia care a generat mesajul
+-   *Tag* - eticheta sau categoria mesajului (util pentru definirea de
+    filtre)
+-   *Text* - conținutul propriu-zis al mesajului
+
+Este de remarcat faptul că fiecare mesaj reprezintă câte o linie de
+text. În cazul excepțiilor, întrucât acestea conțin în general mai multe
+linii, cuprinzând foarte multă informație, ele vor fi reprezentate de
+mai multe mesaje.
+
+![](images/logcat_messages.png)
+
+Există două mecanisme prin care utilizatorii pot genera astfel de
+mesaje:
+
+-   metodele statice ale clasei
+    [Log](http:*developer.android.com/reference/android/util/Log.html),
+    care primesc ca parametru prioritatea mesajului, eticheta și mesajul
+    propriu
+    zis`Log.[wdiea] (Log.DEBUG, "log sample", "this is a log message using 'log sample' tag");`Pentru
+    a se evita specificarea priorității mesajului de fiecare dată, se
+    pot utiliza metode specifice, care primesc ca parametrii doar
+    denumirea etichetei și mesajul ce se dorește a fi jurnalizat:
+
+<center>
+
+| Nivel de Prioritate | Metodă       | Observații                                                      |
+|---------------------|--------------|-----------------------------------------------------------------|
+| `ERROR`             | `Log.e(...)` | erori                                                           |
+| `WARNING`           | `Log.w(...)` | avertismente                                                    |
+| `INFO`              | `Log.i(...)` | mesaje de informare                                             |
+| `DEBUG`             | `Log.d(...)` | mesaje utilizate pentru depanare; pot fi filtrate (ignorate)    |
+| `VERBOSE`           | `Log.v(...)` | utilizate doar de programatori, pentru dezvoltarea aplicațiilor |
+
+</center>
+
+-   *System.out.println* mesajele către consola standard
+    (stdout)`System.out.println("this is a message to the standard console");`Mesajele
+    transmise sub această formă vor fi de tipul `Information` și vor
+    avea eticheta `System.out`.
+
+O altă funcționalitate importantă este posibilitatea de filtrare a
+mesajelor de tip jurnal. Deoarece LogCat afișează toate mesajele de log
+din sistem, urmărirea unor anumite mesaje poate fi dificilă. Pentru a
+facilita această sarcină, se pot genera filtre în funcție de anumite
+valori ale:
+
+-   etichetei
+-   mesajului propriu-zis
+-   PID
+-   denumirii aplicației
+-   nivelului minim al tipului de mesaj (`verbose` → `assert`)
+
+Un filtru se creează prin apăsarea butonului plus de culoare verde din
+bara panoului Log (respectiv LogCat în Eclipse). In Android Studio,
+LogCat se poate accesa din partea stânga jos a IDE-ului.
+
+<img src="/eim/laboratoare/logcat_2.png" class="align-center" width="900" alt="logcat_2.png" />
+
+<img src="/eim/laboratoare/laborator02/logcat_message_filter_settings.png" class="align-center" alt="logcat_message_filter_settings.png" />
+
+Se recomandă să se configureze un număr cât mai mare de mesaje de
+jurnalizare care să fie stocate în memoria tampon (*Window* →
+*Preferences* → *Android* → *LogCat*) întrucât după depășirea valorii
+respective, monitorizarea nu va mai fi posibilă.
+
+![](images/logcat_configuration.png)
+
+**Simularea unor evenimente de tip întrerupere pentru emulator**
+\<spoiler> Întrucât emulatorul de Android nu poate simula toate
+funcțiile unui telefon real, pentru a se putea testa comportamentul
+aplicațiilor în cazul apariției unor evenimente de tip întrerupere,
+DDMS(deprecated) pune la dispoziție un panou ***Emulator Control***,
+prin care pot fi controlate:
+
+-   starea conexiunii de voce / date
+-   primirea unui apel telefonic / SMS (apel, pierdere apel)
+-   date primite de la GPS
+
+![](images/ddms_emulator_control.png)
+
+---
+**Note**
+
+În cazul testării pe dispozitive mobile reale, aceste
+funcționalități nu vor fi disponibile prin intermediul ADM.\
+
+---
+
+---
+**Note**
+
+Emulatorul Genymotion nu permite simularea nici unuia
+dintre evenimentele de mai sus prin intermediul DDMS.\
+
+---
+
+Din cadrul emulatoarelor (deci nu folosind DDMS) mai pot fi simulate
+evenimente de tip:
+
+-   cameră foto
+-   accelerometru
+
+\</spoiler>
