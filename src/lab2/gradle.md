@@ -50,7 +50,7 @@ regulă două secțiuni:
     -   `testCompile` și `androidTestCompile` - indică pachete care
         conțin biblioteci pentru teste unitare.
 
-``` .gradle
+```
 apply plugin: 'com.android.application'
 
 android {
