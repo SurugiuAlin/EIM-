@@ -90,7 +90,7 @@ pe ecran.\
 
 Procesările realizate în metoda `onPause()` nu trebuie să
 ocupe un interval de timp prea mare întrucât în caz contrar ar bloca
-noua activitate care urmează să fie lansată în execuție.\
+noua activitate care urmează să fie lansată în execuție.
 
 ---
 
@@ -101,7 +101,7 @@ Procesul în contextul căruia rulează o activitate nu poate fi
 distrus de sistemul de operare până ce nu s-a terminat apelul metodei
 `onPause()`, aceasta fiind singura metodă care este apelată în mod
 garantat **înainte** de a se solicita memoria pe care activitatea o
-folosește.\
+folosește.
 
 ---
 
@@ -123,7 +123,7 @@ folosește.\
 
 Distincția între cele două situații în care o activitate este
 distrusă poate fi realizată prin intermediul metodei
-`isFinishing()`.\
+`isFinishing()`.
 
 ---
 

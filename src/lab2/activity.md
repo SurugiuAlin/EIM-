@@ -24,6 +24,6 @@ produce un eveniment (primirea unui apel telefonic, apăsarea tastelor
 O activitate trebuie să își gestioneze corespunzător
 comportamentul (inclusiv folosirea memoriei) în cazul producerii
 diferitelor evenimente, salvând și restaurând starea de fiecare dată
-când aplicația este oprită, respectiv (re)pornită.\
+când aplicația este oprită, respectiv (re)pornită.
 
 ---

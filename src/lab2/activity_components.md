@@ -34,7 +34,6 @@ este caracterizată prin următoarele proprietăți:
     activitatea trebuie inclusă în meniul dispozitivului mobil pentru a
     putea fi lansată în execuție.
 
-\
 
 ---
 

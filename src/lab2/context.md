@@ -17,9 +17,6 @@ fi obținut printr-un apel de forma:
 
 ``` java
 Context context = getApplicationContext(); * definita in clasa Context
-```
-
-``` java
 Context context = getApplication();        * definita in clasa Activity
 ```
 
@@ -30,6 +27,6 @@ Pentru a se evita utilizarea ineficientă a memoriei (*eng.*
 memory leak), în situația în care obiectele trebuie să existe pe toată
 durata aplicației, se recomandă ca acestea să refere contextul
 aplicației (nu al activității), astfel încât să nu fie condiționate de
-diverse evenimente din ciclul de viață al acestora.\
+diverse evenimente din ciclul de viață al acestora.
 
 ---
