@@ -3,27 +3,10 @@
 Jurnalele sistemului de operare conțin cele mai importante informații
 pentru programator. Acestea descriu toate acțiunile realizate de către
 dispozitivul mobil, excepțiile apărute precum și alte informații
-necesare depanării. Ele pot fi vizualizate în panoul denumit **LogCat**.
+necesare depanării. Ele pot fi vizualizate în panoul denumit **LogCat**. 
+Dacă acesta nu este vizibil în bara de jos, el poate să fie accesat din bara de sus: View -> Tool Windows -> Logcat.
 
 ---
-**Note**
-
-LogCat nu trebuie confundat cu Console, în care sunt
-afișate mesajele provenind de la Eclipse.\
-
----
-
-De regulă, la pornirea unei aplicații, utilizatorul este întrebat dacă
-dorește să monitorizeze mesajele provenind de la dispozitivul mobil,
-indicându-se și nivelul de prioritate prin care acestea vor fi filtrate
-(`verbose`, `debug`, `info`, `warning`, `error`, `assert`).
-
-![](images/logcat_launch1.png)
-
-Ulterior, acest *Window* → *Show View* → *Other...* → *Android* →
-*LogCat*
-
-![](images/logcat_launch2.png)
 
 Fiecare mesaj din această listă este insoțit de următoarele informații
 (fiecare pe cate o coloană):
@@ -61,7 +44,7 @@ Există două mecanisme prin care utilizatorii pot genera astfel de
 mesaje:
 
 -   metodele statice ale clasei
-    [Log](http:*developer.android.com/reference/android/util/Log.html),
+    [Log](http:developer.android.com/reference/android/util/Log.html),
     care primesc ca parametru prioritatea mesajului, eticheta și mesajul
     propriu
     zis`Log.[wdiea] (Log.DEBUG, "log sample", "this is a log message using 'log sample' tag");`Pentru
@@ -91,37 +74,20 @@ mesajelor de tip jurnal. Deoarece LogCat afișează toate mesajele de log
 din sistem, urmărirea unor anumite mesaje poate fi dificilă. Pentru a
 facilita această sarcină, se pot genera filtre în funcție de anumite
 valori ale:
+- **package:mine** este folosit pentru a filtra mesajele care corespund doar aplicației noastre.
+- **tag~:.\*lifecycle** Pentru etichetă se pot folosi expresii regulate cu ajutorul '~'.
+- **level:debug** nivelul minim al tipului de mesaj
+- **mesajului propriu-zis**
+- **is:crash** pentru a păstra doar mesajele care conțin informații despre crash.
+![](images/logcat_filters_example.png)
 
--   etichetei
--   mesajului propriu-zis
--   PID
--   denumirii aplicației
--   nivelului minim al tipului de mesaj (`verbose` → `assert`)
-
-Un filtru se creează prin apăsarea butonului plus de culoare verde din
-bara panoului Log (respectiv LogCat în Eclipse). In Android Studio,
-LogCat se poate accesa din partea stânga jos a IDE-ului.
-
-<img src="/eim/laboratoare/logcat_2.png" class="align-center" width="900" alt="logcat_2.png" />
-
-<img src="/eim/laboratoare/laborator02/logcat_message_filter_settings.png" class="align-center" alt="logcat_message_filter_settings.png" />
-
-Se recomandă să se configureze un număr cât mai mare de mesaje de
-jurnalizare care să fie stocate în memoria tampon (*Window* →
-*Preferences* → *Android* → *LogCat*) întrucât după depășirea valorii
-respective, monitorizarea nu va mai fi posibilă.
-
-![](images/logcat_configuration.png)
 
 **Simularea unor evenimente de tip întrerupere pentru emulator**
-\<spoiler> Întrucât emulatorul de Android nu poate simula toate
-funcțiile unui telefon real, pentru a se putea testa comportamentul
-aplicațiilor în cazul apariției unor evenimente de tip întrerupere,
-DDMS(deprecated) pune la dispoziție un panou ***Emulator Control***,
-prin care pot fi controlate:
+Pentru a se putea testa comportamentul aplicațiilor în cazul apariției unor evenimente de tip întrerupere,
+AVD pune la dispoziție **Extended Controls**, care oferă următoarele funcționalități:
 
--   starea conexiunii de voce / date
 -   primirea unui apel telefonic / SMS (apel, pierdere apel)
+-   starea conexiunii de voce / date
 -   date primite de la GPS
 
 ![](images/ddms_emulator_control.png)
@@ -129,23 +95,14 @@ prin care pot fi controlate:
 ---
 **Note**
 
-În cazul testării pe dispozitive mobile reale, aceste
-funcționalități nu vor fi disponibile prin intermediul ADM.\
+Emulatorul Genymotion nu permite simularea nici unuia dintre evenimentele de mai sus.
 
 ---
 
----
-**Note**
-
-Emulatorul Genymotion nu permite simularea nici unuia
-dintre evenimentele de mai sus prin intermediul DDMS.\
-
----
-
-Din cadrul emulatoarelor (deci nu folosind DDMS) mai pot fi simulate
-evenimente de tip:
+Din cadrul emulatoarelor mai pot fi simulate evenimente de tip:
 
 -   cameră foto
+-   starea bateriei
 -   accelerometru
-
-\</spoiler>
+-   proximitate
+-   temperatura ambientală
