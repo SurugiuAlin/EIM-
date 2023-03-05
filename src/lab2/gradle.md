@@ -17,10 +17,7 @@ regulă două secțiuni:
 -   `android` - conține proprietățile aplicației Android
     -   `compileSdkVersion` - reprezintă versiunea de SDK care va fi
         utilizată pentru compilarea proiectului Android
-    -   `buildToolsVersion` - reprezintă versiunea de Android SDK Build
-        Tools folosită pentru construirea fișierului care va fi instalat
-        pe dispozitivul mobil
-    -   defaultConfig - conține diferite configurări
+    -   `defaultConfig` - conține diferite configurări
         -   `applicationId` - pachetul care identifică **în mod unic**
             aplicația Android
         -   `midSdkVersion` - platforma minimă pe care se garantează că
@@ -54,15 +51,14 @@ regulă două secțiuni:
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 33
     defaultConfig {
         applicationId "ro.pub.systems.eim.lab02.activitylifecyclemonitor"
-        minSdkVersion 16
-        targetSdkVersion 25
+        minSdkVersion 24
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
         release {
@@ -70,9 +66,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
+
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.2.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 }
 ```
