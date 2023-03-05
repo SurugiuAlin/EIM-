@@ -17,10 +17,7 @@ regulă două secțiuni:
 -   `android` - conține proprietățile aplicației Android
     -   `compileSdkVersion` - reprezintă versiunea de SDK care va fi
         utilizată pentru compilarea proiectului Android
-    -   `buildToolsVersion` - reprezintă versiunea de Android SDK Build
-        Tools folosită pentru construirea fișierului care va fi instalat
-        pe dispozitivul mobil
-    -   defaultConfig - conține diferite configurări
+    -   `defaultConfig` - conține diferite configurări
         -   `applicationId` - pachetul care identifică **în mod unic**
             aplicația Android
         -   `midSdkVersion` - platforma minimă pe care se garantează că
