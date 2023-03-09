@@ -108,7 +108,7 @@ anterior.
 
 Să se transfere comportamentul de restaurare a stării pe metoda
 `onCreate()` și să se identifice diferențele de implementare
-([Hint](https:developer.android.com/guide/components/activities/activity-lifecycle.html#saras)).
+([Hint](https://developer.android.com/guide/components/activities/activity-lifecycle.html#saras)).
 
 **9.** Să se încarce modificările realizate în cadrul depozitului
 `Laborator02` de pe contul Github personal, folosind un mesaj sugestiv.
