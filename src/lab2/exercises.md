@@ -3,7 +3,7 @@
 **1.** În contul Github personal, să se creeze un depozit denumit
 'Laborator02' in care vom pune aplicatia la care vom lucra astazi.
 
-- Să se cloneze [scheletul laboratorului](https:www.github.com/eim-lab/Laborator02).
+- Să se cloneze [scheletul laboratorului](https://github.com/eim-lab/Laborator02).
 - Să se încarce conținutul descărcat în cadrul depozitului `Laborator02` de pe contul Github personal.
 Ne intereseaza doar folder-ul `labtasks`.
 
