@@ -66,7 +66,6 @@
     - [VideoView](lab3/video_view.md)
   - [Mecanisme pentru dispunerea controalelor (layout) -- obligatoriu](lab3/layout_types.md)
     - [LinearLayout (obligatoriu)](lab3/linear_layout.md)
-    - [AbsoluteLayout](lab3/absolute_layout.md)
     - [RelativeLayout](lab3/relative_layout.md)
     - [FrameLayout](lab3/frame_layout.md)
     - [TableLayout](lab3/table_layout.md)
