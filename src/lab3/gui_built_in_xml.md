@@ -59,7 +59,7 @@ alte moduri în care se poate găsi acesta), tema aplicației (stilul
 folosit), activitatea căreia îi este asociat, localizarea precum și
 nivelul de API.
 
-\<spoiler> În cadrul bibliotecii de controale, organizarea elementelor
+În cadrul bibliotecii de controale, organizarea elementelor
 grafice se face prin împărțirea lor în mai multe categorii:
 
 -   forme de bază (*Widgets*);
@@ -162,4 +162,4 @@ afișează, tipurile de date acceptate de la utilizator, informațiile
 ajutătoare. Fiecare parametru va fi indicat prin sintaxa
 `android:proprietate="valoare"` unde `proprietate` și `valoare` trebuie
 să respecte restricțiile definite în clasa ce descrie controlul
-respectiv. \</spoiler>
+respectiv.
