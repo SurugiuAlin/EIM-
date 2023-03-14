@@ -21,7 +21,10 @@ abordări:
         fiecare orientare a ecranului, plasate în `/res/layout`,
         respectiv în `/res/layout-land`
     2.  programatic, detectând modificarea dimensiunilor dispozitivului
-        de afișare în metoda `onCreate()` `@Override
+        de afișare în metoda `onCreate()`
+
+        ```java
+        @Override
         public void onCreate(Bundle state) {
           super.onCreate(state);
           WindowManager windowManager = getWindowManager();
@@ -33,7 +36,7 @@ abordări:
             * create graphic user interface for landscape mode
           }
         }
-        `
+        ```
 
 De asemenea, o activitate poate fi forțată să afișeze conținutul
 folosind un singur tip de orientare, indiferent de poziția în care se
@@ -55,15 +58,3 @@ rezoluții diferite sau prezintă probleme de performanță.
 
 În situația în care se dorește spațierea controalelor grafice, poate fi
 utilizat un obiect de tip `android.widget.Space`.
-
-Dacă se folosesc elemente grafice definite de utilizator, se poate
-recurge la etichetele `<merge>` sau `<include>` pentru a le reutiliza
-(în loc de a le duplica). De asemenea, un obiect de tip
-[ViewStub](http:*developer.android.com/reference/android/view/ViewStub.html)
-poate fi încărcat în mod dinamic la rulare (numai atunci când este
-nevoie), în loc de a fi definit static în cadrul interfeței XML.
-
-Pentru optimizarea unei interfețe grafice pot fi utilizate și alte
-utilitare cum ar fi *Hierarchy View* sau
-[Lint](http:*developer.android.com/tools/debugging/improving-w-lint.html).
-\</spoiler>
