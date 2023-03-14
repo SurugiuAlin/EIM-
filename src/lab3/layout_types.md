@@ -1,4 +1,4 @@
-### Mecanisme pentru dispunerea controalelor (layout) -- obligatoriu
+### Mecanisme pentru dispunerea controalelor (layout) 
 
 Controalele Android fac parte din cadrul unui grup (obiect de tip
 `android.view.ViewGroup`) care definește și modul în care acestea sunt
@@ -21,12 +21,10 @@ Cele mai utilizate tipuri de grupuri de componente vizuale sunt
 `LinearLayout`, `AbsoluteLayout`, `RelativeLayout`, `FrameLayout`,
 `TableLayout` și `GridLayout`.
 
-\<note>Există și alte tipuri de controale derivate din pachetul
+>Există și alte tipuri de controale derivate din pachetul
 `android.view.ViewGroup`, care au rolul de containere pentru anumite
 colecții de informații, cu care utilizatorul poate interacționa în mod
-direct: `ListView`, `GridView`, `ScrollView`, `ImageSwitcher`.\
-
----
+direct: `ListView`, `GridView`, `ScrollView`, `ImageSwitcher`.
 
 Elementele de tip layout pot fi imbricate (conținute) unele într-altele,
 astfel încât se pot proiecta interfețe grafice în care modul de
@@ -101,7 +99,7 @@ cadrul componentei.\
 **Note**
 
 Pentru această proprietate este permisă și precizarea de
-valori negative.\
+valori negative.
 
 ---
 
