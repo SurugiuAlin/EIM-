@@ -40,7 +40,7 @@ evitată, întrucât a fost înlocuită începând cu nivelul de API 8.\
 -   `wrap_content` - dacă se dorește ca obiectul să fie restrâns la
     dimensiunile conținutului său.
 
-\<note>În situația în care nu se specifică cel puțin valorile
+În situația în care nu se specifică cel puțin valorile
 `layout_width` și `layout_height` pentru un anumit control, se va genera
 o excepție întrucât interfața grafică nu poate fi încărcată
 corespunzător.\
@@ -106,8 +106,8 @@ rezoluție (`dp`) este:
 
 px = dp \* (resolution_category) / 160
 
-\<note>Se observă că 1 `px` este echivalent cu 1 `dp` pe un ecran cu
-rezoluția 160 dpi, considerată drept referință în Android.\
+Se observă că 1 `px` este echivalent cu 1 `dp` pe un ecran cu
+rezoluția 160 dpi, considerată drept referință în Android.
 
 ---
 

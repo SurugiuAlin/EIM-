@@ -7,7 +7,7 @@ curent este distrusă și apoi recreată. Aplicațiile trebuie să gestioneze
 astfel de situații, adaptând interfața grafică în funcție de suprafața
 de care dispun.
 
-\<spoiler> În acest scop, poate fi adoptată una din următoarele
+În acest scop, poate fi adoptată una din următoarele
 abordări:
 
 1.  **ancorarea** elementelor grafice (de regulă, de cele patru colțuri

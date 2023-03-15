@@ -10,7 +10,7 @@ XML prin proprietatea `android:visibility` care poate lua valorile
 sau `View.GONE`. De regulă, afișarea unei componente este realizată în
 mod dinamic, ca rezultat al unei metode de tratare a unui eveniment.
 
-\<spoiler> ---
+---
 **Note**
 
 Dimensiunea obiectului de tip `FrameLayout` ar
@@ -46,4 +46,3 @@ sunt:
     acestora, realizate prin intermediul operatorului `|`, pe biți).
 
 ![](images/frame_layout_sample.png)
-\</spoiler>

@@ -5,7 +5,7 @@ Un element de tip `android.widget.RadioButton` este tot un buton cu două
 stări (selectat / neselectat), de obicei utilizat pentru selecția unei
 singure opțiuni dintr-o listă, excluderea mutuală fiind realizată prin
 includerea mai multor obiecte de acest tip într-o componentă de tip
-`android.widget.RadioGropup`. \<spoiler> \<note>Un obiect de tip
+`android.widget.RadioGropup`. Un obiect de tip
 `RadioButton` se poate afla și în afara unui grup la fel cum un obiect
 de tip `RadioGroup` poate conține și alte controale decât
 butoane.\
@@ -49,4 +49,4 @@ dată când se realizează o selecție, ci preluarea acesteia la un moment
 dat de timp ulterior, va fi utilizată metoda `getCheckedRadioButtonId()`
 din clasa `RadioGroup` care întoarce identificatorul butonului (din
 clasa `R.id`) care a fost selectat (sau -1 dacă nu este selectat nici un
-buton radio din cadrul grupului). \</spoiler>
+buton radio din cadrul grupului).

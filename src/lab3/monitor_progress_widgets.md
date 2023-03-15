@@ -40,8 +40,6 @@ de progres în acest caz este aceea că trebuie așteptată încărcarea mai
 multor resurse înainte ca utilizatorul să poată interacționa cu
 aplicația respectivă.
 
-\<columns 100% 50%>
-
 ``` java
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +48,6 @@ protected void onCreate(Bundle savedInstanceState) {
   setProgressBarIndeterminateVisibility(true);
 }
 ```
-
-\<newcolumn>
 
 ``` java
 @Override
@@ -62,8 +58,6 @@ protected void onCreate(Bundle savedInstanceState) {
   setProgress(0); * valoarea maxima implicita este 10000
 }
 ```
-
-\</columns>
 
 De remarcat faptul că metoda `requestWindowFeature()` trebuie apelată
 înainte de încărcarea propriu-zisă a interfeței grafice prin metoda

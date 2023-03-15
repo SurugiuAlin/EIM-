@@ -6,7 +6,7 @@ derivat din `android.view.ViewGroup`) care va cuprinde toate
 controalele, acesta fiind argumentul cu care va fi apelată metoda
 `setContentView()`.
 
-\<spoiler> Pentru fiecare control vor fi specificate (manual, prin
+Pentru fiecare control vor fi specificate (manual, prin
 apelul metodei corespunzătoare) diferitele caracteristici,
 asociindu-i-se și un identificator (uzual, acesta poate fi orice număr
 întreg). Pentru fiecare proprietate a unui control grafic, sunt definite
@@ -19,7 +19,7 @@ programatic metodele de tip getter și setter corespunzătoare.
 identificator prin apelul metodei `setId()`, valoarea acestui parametru
 va fi `NO_ID`, astfel încât acesta nu va mai putea fi referit în cod
 (spre exemplu, pentru poziționarea elementelor interfeței grafice
-relativ, unele față de altele). \
+relativ, unele față de altele).
 
 ---
 
@@ -98,5 +98,3 @@ public class LayoutSample2Activity extends Activity {
 
 }
 ```
-
-\</spoiler>

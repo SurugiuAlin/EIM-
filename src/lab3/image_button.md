@@ -5,7 +5,7 @@ Un obiect de tip `ImageButton` (definit de clasa
 imagini, specificată în fişierul XML prin proprietatea `android:src` sau
 programatic prin intermediul metodei `setImageResource()`.
 
-\<spoiler> ---
+---
 **Note**
 
 Imaginea asociată unui buton de tip `ImageButton`
@@ -61,5 +61,3 @@ aceea, imaginea pentru starea normală a controlului trebuie să se
 regăsească întotdeauna după toate celelalte cazuri particulare, în caz
 contrar aceasta fiind afișată întotdeauna de vreme ce nu impune nici o
 restricție asupra componentei.\
-
---- \</spoiler>

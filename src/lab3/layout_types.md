@@ -7,7 +7,7 @@ pot lua, motiv pentru care o astfel de componentă este referită și sub
 denumirea de layout. Acest element nu vizează însă tratarea
 evenimentelor legate de interacțiunea cu utilizatorul.
 
-\<note>În Android, denumirea de layout este utilizată și pentru
+În Android, denumirea de layout este utilizată și pentru
 fișierele de resurse care definesc interfața grafică corespunzătoare
 unei activități, a unui fragment sau a unui alt element din interfața
 grafică, plasate în `/res/layout` (respectiv în `/res/layout-land`).

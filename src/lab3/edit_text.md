@@ -4,7 +4,7 @@
 utilizator. Implementarea sa pornește de la obiectul de tip `TextView`,
 astfel încât sunt moștenite toate proprietățile sale.
 
-\<spoiler> În mod obișnuit, valoarea introdusă va fi afișată doar pe o
+În mod obișnuit, valoarea introdusă va fi afișată doar pe o
 linie. Dacă se dorește redimensionarea controlului pe măsură ce este
 introdus un text de dimensiuni mai mari, va trebui specificată
 proprietatea `inputType="textMultiLine"`. De asemenea, se poate
@@ -50,5 +50,3 @@ dicționarului ce conține cele mai frecvent folosite cuvinte. De
 asemenea, poate fi selectată (evidențiată) un fragment din textul
 respectiv (programatic, această funcționalitate poate fi obținută prin
 metodele `setSelection()` / `selectAll()`).
-
-\</spoiler>

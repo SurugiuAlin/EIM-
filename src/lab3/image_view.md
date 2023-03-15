@@ -13,8 +13,6 @@ aceasta putând proveni:
             încărcat din resursa respectivă, ulterior putând fi
             realizate și unele modificări
 
-\<spoiler>
-
 ``` java
 ImageView someImageView = (ImageView)findViewById(R.id.some_image_view);
 Bitmap someBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.some_image);
@@ -49,4 +47,4 @@ Pentru un astfel de obiect pot fi precizate parametrii precum lățimea și
 înălțimea maximă (`maxWidth`, respectiv `maxHeight`), precum și
 mecanismul folosit pentru scalarea conținutului în situația în care
 suprafața pe care se realizează afișarea este diferită de dimensiunile
-reale ale resursei (`scaleType`). \</spoiler>
+reale ale resursei (`scaleType`).

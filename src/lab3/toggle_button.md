@@ -6,7 +6,7 @@ neselectat), asemenea unui checkbox sau radiobutton. Implicit, atunci
 când este selectat, acesta afișează o bară de culoare albastră în partea
 sa inferioară, iar atunci când nu este selectat, o bară de culoare gri.
 
-\<spoiler> Textele afișate pentru valorile stărilor pot fi controlate în
+Textele afișate pentru valorile stărilor pot fi controlate în
 fișierul XML prin intermediul proprietăților `android:textOn` respectiv
 `android:textOff`, iar programatic prin metodele `setTextOn()` și
 `setTextOff()`.
@@ -19,10 +19,7 @@ sunt *ON*, respectiv *OFF*.\
 
 ---
 
----
 **Note**
 
 Atributul `text`, moștenit de la obiectul de tip `Button`, nu
 este utilizat cu toate că poate fi definit.\
-
---- \</spoiler>

@@ -5,7 +5,7 @@ componentelor într-un format tabelar, folosind însă o sintaxă mult mai
 flexibilă. Totodată, acest mecanism este și mult mai eficient din
 punctul de vedere al randării.
 
-\<spoiler> Astfel, pentru specificarea numărului de rânduri și de
+Astfel, pentru specificarea numărului de rânduri și de
 coloane se vor utiliza proprietățile `rowCount` și `columnCount`,
 indicându-se pentru fiecare element grafic în parte poziția la care va
 fi plasat, prin atributele `layout_row` și `layout_column`. În cazul în
@@ -42,4 +42,3 @@ folosind biblioteca de suport v7 (revizie ulterioara versiunii
 ---
 
 ![](images/grid_layout_sample.png)
-\</spoiler>

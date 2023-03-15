@@ -3,8 +3,6 @@
 Controlul de tip `TextView` este utilizat pentru afișarea unui text
 către utilizator, fără ca acesta să aibă posibilitatea de a-l modifica.
 
-\<spoiler>
-
 Conținutul pe care îl afișează un obiect `TextView` este indicat de
 proprietatea `text`. De regulă, acesta referă o constantă definită în
 resursa care conține șirurile de caractere utilizate în cadrul
@@ -77,9 +75,9 @@ agregate folosind operatorul `|` (pe biți).\
 
 ---
 
-\<note>Nu întotdeauna este detectat tipul corect de informație și în
+Nu întotdeauna este detectat tipul corect de informație și în
 unele cazuri se poate realiza transferul către un alt tip de activitate
-sau cu informații eronate.\
+sau cu informații eronate.
 
 ---
 
@@ -100,6 +98,4 @@ parametru care indică tipul de conținut. \
 care să o evidențieze, însă fără a permite utilizatorului să lanseze în
 execuție o altă activitate prin intermediul ei, se poate utiliza
 atributul `linksClickable` (având valoarea `false`).
-
-\</spoiler>
 

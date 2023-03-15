@@ -4,7 +4,6 @@ O componentă de tip buton ce are atașat un text este definită de clasa
 `android.widget.Button`, fiind caracterizată prin proprietatea `text`,
 ce conține mesajul pe care acesta îl va afișa.
 
-\<spoiler> ---
 **Note**
 
 În clasa `android.R.string` sunt definite mai
@@ -13,7 +12,7 @@ multe constante care pot fi utilizate ca etichete pentru butoane (*OK*,
 
 ---
 
-\<note>Se obișnuiește ca butoanele să fie stilizate, în sensul că sunt
+Se obișnuiește ca butoanele să fie stilizate, în sensul că sunt
 afișate fără un chenar, prin precizarea atributului `style`, având
 valoarea `"?android:attr/borderlessButtonStyle"`.\
 
@@ -58,5 +57,3 @@ eveniment:
 În cazul folosirii de clase interne, membrii din clasa
 părinte ce se doresc a fi accesați trebuie să aibă imutabili (trebuie
 declarate cu atributul `final`).\
-
---- \</spoiler>

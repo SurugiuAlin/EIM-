@@ -10,8 +10,6 @@ caractere introdus de utilizator și valorile existente în lista de
 propuneri. Se poate afișa și un text sugestiv în cadrul listei de
 sugestii, prin proprietatea `completionHint`.
 
-\<spoiler>
-
 ``` java
 AutoCompleteTextView coursesAutoCompleteTextView = (AutoCompleteTextView)findViewById(R.id.courses_auto_complete_text_view);
 
@@ -25,10 +23,9 @@ Sugestia este oferită pentru întregul conținut al componentei, astfel
 încât dacă se dorește specificarea mai multor cuvinte, nu se va lua în
 calcul fiecare dintre acestea.
 
-\<note>Un astfel de control nu constrânge utilizatorul să introducă doar
+Un astfel de control nu constrânge utilizatorul să introducă doar
 valori din lista de sugestii, conținutul controlului grafic putând fi
-oarecare.\
+oarecare.
 
 ---
 
-\</spoiler>
