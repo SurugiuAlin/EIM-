@@ -1,6 +1,6 @@
 # Laborator 04. Structura unei Aplicații (II)
 
-## Intenții (obligatoriu)
+## Intenții
 
 Conceptul de intenție în Android este destul de complex (și unic),
 putând fi definit ca o acțiune având asociată o serie de informații,
@@ -165,19 +165,16 @@ acestor parametri, acțiunea poate fi executată prin transmiterea
 acestuia ca parametru al metodei `startActivity()` sau `startService()`,
 disponibile în clasa `android.content.Context`.
 
-\<columns 100% 50%>
 
 ``` java
 startActivity(intent);
 ```
 
-\<newcolumn>
 
 ``` java
 startService(intent);
 ```
 
-\</columns>
 
 Terminarea unei activități (moment în care se realizează revenirea la
 activitatea părinte) este realizată prin apelul metodei `finish()`.
