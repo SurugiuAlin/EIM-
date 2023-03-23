@@ -997,112 +997,6 @@ eficiența.\
 
 \</spoiler>
 
-#### Gestiunea intențiilor cu difuzare native
-
-\<spoiler> Cele mai multe servicii de sistem transmit intenții cu
-difuzare pentru a semnala faptul că s-au produs anumite modificări la
-nivelul stării dispozitivului mobil sau al aplicațiilor (primirea unui
-apel telefonic / mesaj, schimbarea nivelului de încărcare al bateriei,
-conectivitatea la Internet).
-
-<table>
-<thead>
-<tr class="header">
-<th><strong>ACȚIUNE</strong></th>
-<th><strong>DESCRIERE</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>ACTION_BATTERY_CHANGED</code></td>
-<td>acțiune transmisă în momentul în care se modifică nivelul de încărcare al bateriei; starea bateriei este disponibilă în secțiunea <code>extra</code>, prin intermediul cheii <code>EXTRA_STATUS</code>, putând avea valorile:<br />
-♦ <code>BatteryManager.BATTERY_STATUS_CHARGING</code><br />
-♦ <code>BatteryManager.BATTERY_STATUS_FULL</code></td>
-</tr>
-<tr class="even">
-<td><code>ACTION_BATTERY_LOW</code></td>
-<td>acțiune transmisă în momentul în care nivelul de încărcare al bateriei este scăzut, impunându-se încărcarea acesteia</td>
-</tr>
-<tr class="odd">
-<td><code>ACTION_BATTERY_OKAY</code></td>
-<td>acțiune transmisă în momentul în care nivelul de încărcare al bateriei este acceptabil</td>
-</tr>
-<tr class="even">
-<td><code>ACTION_BATTERY_CONNECTED</code></td>
-<td>acțiune transmisă în momentul în care bateria este conectată la o sursă de energie externă</td>
-</tr>
-<tr class="odd">
-<td><code>ACTION_BATTERY_DISCONNECTED</code></td>
-<td>acțiune transmisă în momentul în care bateria este deconectată de la o sursă de energie externă</td>
-</tr>
-<tr class="even">
-<td><code>ACTION_BOOT_COMPLETED</code></td>
-<td>acțiune transmisă în momentul în care a fost realizată complet secvența de pornire a dispozitivului mobil (aplicația poate primi o astfel de intenție cu difuzare dacă deține permisiunea <code>RECEIVE_BOOT_COMPLETED</code>)</td>
-</tr>
-<tr class="odd">
-<td><code>ACTION_CAMERA_BUTTON</code></td>
-<td>acțiune transmisă în momentul în momentul în care este accesat butonul pentru pornirea camerei foto</td>
-</tr>
-<tr class="even">
-<td><code>ACTION_DATE_CHANGED</code> / <code>ACTION_TIME_CHANGED</code></td>
-<td>acțiuni transmise în momentul în care data calendaristică sau timpul sunt modificate manual (nu datorită progresului său natural)</td>
-</tr>
-<tr class="odd">
-<td><code>ACTION_DOCK_EVENT</code></td>
-<td>acțiune transmisă în momentul în care dispozitivul mobil este ancorat, printr-un dispozitiv de birou sau de mașină, stare plasată în secțiunea <code>extra</code> prin intermediul cheii <code>ETRA_DOCK_STATE</code></td>
-</tr>
-<tr class="even">
-<td><code>ACTION_MEDIA_EJECT</code></td>
-<td>acțiune transmisă în momentul în care este îndepărtat un mediu de stocare extern (util în situația în care aplicația scrie / citește de pe acesta, pentru a salva conținutul și pentru a le închide)</td>
-</tr>
-<tr class="odd">
-<td><code>ACTION_MEDIA_MOUNTED</code> / <code>ACTION_MEDIA_UNMOUNTED</code></td>
-<td>acțiuni transmise de fiecare dată când dispozitive de stocare externe sunt adăugate sau îndepărtate cu succes</td>
-</tr>
-<tr class="even">
-<td><code>ACTION_NEW_OUTGOING_CALL</code></td>
-<td>acțiune transmisă în momentul în care urmează să fie format un număr de telefon, a cărui valoare este plasată în secțiunea <code>extra</code>, prin intermediul cheii <code>EXTRA_PHONE_NUMBER</code> (aplicația poate primi o astfel de intenție cu difuzare dacă deține permisiunea <code>PROCESS_OUTGOING_CALLS</code></td>
-</tr>
-<tr class="odd">
-<td><code>ACTION_SCREEN_OFF</code> / <code>ACTION_SCREEN_ON</code></td>
-<td>acțiuni transmise în momentul în care ecranul este închis, respectiv este deschis</td>
-</tr>
-<tr class="even">
-<td><code>ACTION_TIMEZONE_CHANGED</code></td>
-<td>acțiune transmisă în momentul în care zona de timp a telefonului este modificată, a cărui valoare (identificator) este plasată în secțiunea <code>extra</code> prin intermediul cheii <code>time-zone</code></td>
-</tr>
-</tbody>
-</table>
-
----
-**Note**
-
-Pentru aceste tipuri de intenții cu difuzare, înregistrarea
-și deînregistrarea unor obiecte de tip ascultător poate fi realizată
-numai programatic, în codul sursă.\
-
----
-
-În cazul unei aplicații Android, foarte importante sunt și modificările
-în privința conectivității la Internet (inclusiv parametrii precum
-lățimea de bandă, latența) întrucât acestea pot fi semnificative în
-privința luării unor decizii legate de realizarea anumitor actualizări
-sau de descărcarea unor fișiere având dimensiuni mari. O astfel de
-funcționalitate poate fi definită prin implementarea unui obiect
-ascultător, care procesează acțiunea
-`android.net.conn.CONNECTIVITY_CHANGE`
-(`ConnectivityManager.CONNECTIVITY_ACTION`). Se transmise o intenție cu
-difuzie nepersistentă care nu conține informații suplimentare cu privire
-la schimbarea stării.
-
-``` java
-ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-boolean isConnected = networkInfo.isConnectedOrConnecting();
-boolean isMobile = (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE);
-```
-
-\</spoiler> \<hidden>
 
 ## Fragmente (opțional)
 
@@ -1471,7 +1365,9 @@ Operația de adăugare a unui fragment poate fi realizată:
 1.  static, în cadrul fișierului XML, prin intermediul elementului
     `<fragment>`, în situația în care sunt definite interfețe grafice
     pentru fiecare dintre tipurile de suprafețe de afișare suportate;
-    `<LinearLayout xmlns:android="http:*schemas.android.com/apk/res/android"
+
+    ```xml
+    <LinearLayout xmlns:android="http:*schemas.android.com/apk/res/android"
       xmlns:tools="http:*schemas.android.com/tools"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -1494,12 +1390,14 @@ Operația de adăugare a unui fragment poate fi realizată:
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     </LinearLayout>
+    ```
     `
 2.  dinamic (programatic), în cadrul codului sursă, prin definirea unor
     containere (obiecte de tip `FrameLayout`, care pot conține un sigur
     element vizibil) în cadrul interfețele grafice în care pot fi
     plasate fragmentele la diferite momente de timp.
-    `<LinearLayout xmlns:android="http:*schemas.android.com/apk/res/android"
+    ```xml
+    <LinearLayout xmlns:android="http:*schemas.android.com/apk/res/android"
       xmlns:tools="http:*schemas.android.com/tools"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -1520,6 +1418,7 @@ Operația de adăugare a unui fragment poate fi realizată:
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     </LinearLayout>
+    ```
     ` În metoda `onCreate()` corespunzătoare activității, se creează un
     obiect de tip `FragmentManager` pentru care se definesc operațiile
     care trebuie realizate (atomic) în cadrul unei tranzacții (obiectul
@@ -1557,7 +1456,6 @@ se va încerca restaurarea unor fragmente (în containere care nu exista
 dorește ca un container să fie afișat în cadrul unei interfețe grafice
 aferente unei configurații, se poate folosi atributul `visibility`.
 
-\<columns 100% 50%>
 
 ``` xml
 <LinearLayout ... >
@@ -1571,7 +1469,6 @@ aferente unei configurații, se poate folosi atributul `visibility`.
 </LinearLayout>
 ```
 
-\<newcolumn>
 
 ``` java
 FrameLayout frame1 = (FrameLayout)findViewById(R.id.frame1);
@@ -1737,9 +1634,6 @@ public class SomeActivity extends Activity implements OnEventProducedListener {
 }
 ```
 
-\</hidden>
-
-\</spoiler>
 
 ## Activitate de Laborator
 
@@ -1909,27 +1803,30 @@ Să se implementeaze interacțiunea cu utilizatorul a aplicației.
         intent.putParcelableArrayListExtra(ContactsContract.Intents.Insert.DATA, contactData);
         startActivity(intent);
         ```
-        ` Intenția pentru realizarea acestei operații are asociată
+        - Intenția pentru realizarea acestei operații are asociată
         acțiunea `ContactsContract.Intents.Insert.ACTION` și tipul
         `ContactsContract.RawContacts.CONTENT_TYPE`. Informațiile care
         se doresc a fi completate sunt atașate în câmpul `extra` al
         acesteia, având cheile:  
-        ✔ `ContactsContract.Intents.Insert.NAME`;  
-        ✔ `ContactsContract.Intents.Insert.PHONE`;  
-        ✔ `ContactsContract.Intents.Insert.EMAIL`;  
-        ✔ `ContactsContract.Intents.Insert.POSTAL`;  
-        ✔ `ContactsContract.Intents.Insert.JOB_TITLE`;  
-        ✔ `ContactsContract.Intents.Insert.COMPANY`;  
+         - ✔ `ContactsContract.Intents.Insert.NAME`;  
+         - ✔ `ContactsContract.Intents.Insert.PHONE`;  
+         - ✔ `ContactsContract.Intents.Insert.EMAIL`;  
+         - `ContactsContract.Intents.Insert.POSTAL`;  
+         - ✔ `ContactsContract.Intents.Insert.JOB_TITLE`;  
+         - ✔ `ContactsContract.Intents.Insert.COMPANY`;  
         Pentru site-ul web și identificatorul de mesagerie instantanee,
         se folosește un tablou de elemente `ContentValues` în care se
         specifică înregistrări de tipul `CommonDataKinds.Website.URL`,
         respectiv `CommonDataKinds.Im.DATA`;  
         Pentru a putea gestiona agenda telefonică, este necesar ca în
         fișierul `AndroidManifest.xml` să fie specificate următoarele
-        permisiuni: `<uses-permission
+        permisiuni: `
+        ```xml
+        <uses-permission
           android:name="android.permission.READ_CONTACTS" />
         <uses-permission
           android:name="android.permission.WRITE_CONTACTS" />
+        ```
         `
     -   butonul *Cancel* - termină aplicația Android: `finish();
         `
