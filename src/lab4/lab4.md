@@ -1872,7 +1872,8 @@ Să se implementeaze interacțiunea cu utilizatorul a aplicației.
     -   butonul *Save* - lansează în execuție aplicația Android nativă
         pentru stocarea unui contact în agenda telefonică, după ce în
         prealabil au fost preluate informațiile din controalele grafice:
-        `Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
+        ```java
+        Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
         intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
         if (name != null) {
           intent.putExtra(ContactsContract.Intents.Insert.NAME, name);
@@ -1907,6 +1908,7 @@ Să se implementeaze interacțiunea cu utilizatorul a aplicației.
         }
         intent.putParcelableArrayListExtra(ContactsContract.Intents.Insert.DATA, contactData);
         startActivity(intent);
+        ```
         ` Intenția pentru realizarea acestei operații are asociată
         acțiunea `ContactsContract.Intents.Insert.ACTION` și tipul
         `ContactsContract.RawContacts.CONTENT_TYPE`. Informațiile care
@@ -1953,7 +1955,9 @@ Metoda de tratare a evenimentului de tip accesare a butonului de stocare
 a numărului de telefon în agenda telefonică invocă o intenție asociată
 aplicației *Contacts Manager*, transmițând și numărul de telefon în
 câmpul `extra` asociat acesteia, identificabil prin intermediul unei
-chei. `String phoneNumber = phoneNumberEditText.getText().toString();
+chei. 
+```java
+String phoneNumber = phoneNumberEditText.getText().toString();
 if (phoneNumber.length() > 0) {
   Intent intent = new Intent("ro.pub.cs.systems.eim.lab04.contactsmanager.intent.action.ContactsManagerActivity");
   intent.putExtra("ro.pub.cs.systems.eim.lab04.contactsmanager.PHONE_NUMBER_KEY", phoneNumber);
@@ -1961,7 +1965,7 @@ if (phoneNumber.length() > 0) {
 } else {
   Toast.makeText(getApplication(), getResources().getString(R.string.phone_error), Toast.LENGTH_LONG).show();
 }
-`
+```
 
 Definiți în prealabil constanta `CONTACTS_MANAGER_REQUEST_CODE` și
 valoarea string `phone_error` în fișierele corespunzătoare din folderul
@@ -1979,6 +1983,7 @@ sau `Activity.RESULT_CANCELED`).
 -   în fișierul `AndroidManifest.xml` se modifică filtrul de intenții
     (acțiunea și categoria), astfel încât activitatea să poată fi rulată
     doar prin intermediul unei intenții `<manifest ...>
+    ```xml
       <application ...>
         <activity
           android:name=".graphicuserinterface.ContactsManagerActivity"
@@ -1990,11 +1995,13 @@ sau `Activity.RESULT_CANCELED`).
         </activity>
       </application>
     </manifest>
+    ```
     `
 -   în metoda `onCreate()` a activității aplicației `ContactsManager`
     este verificată intenția cu care este pornită, și în cazul în care
     aceasta nu este nulă, este preluată informația din secțiunea
     `extra`, identificată prin cheia
+    ```java
     `ro.pub.cs.systems.eim.lab04.contactsmanager.PHONE_NUMBER_KEY`,
     conținutul său fiind plasat în cadrul câmpului text corespunzător:
     `Intent intent = getIntent();
@@ -2005,8 +2012,9 @@ sau `Activity.RESULT_CANCELED`).
       } else {
         Toast.makeText(this, getResources().getString(R.string.phone_error), Toast.LENGTH_LONG).show();
       }
-    } 
-    `
+    }
+    ```
+
 -   pe metodele de tratare a evenimentelor de accesare a butoanelor:
     -   *Save* - este lansată în execuție aplicația nativă pentru
         gestiunea agendei telefonice, folosind un cod de cerere prin
@@ -2023,6 +2031,7 @@ sau `Activity.RESULT_CANCELED`).
     *ContactsManager*, în momentul în care s-a părăsit aplicația nativă
     pentru gestiunea agendei telefonice, se verifică codul de cerere și
     se transmite înapoi un rezultat:
+    ```java
     `public void onActivityResult(int requestCode, int resultCode, Intent intent) {
     switch(requestCode) {
       case Constants.CONTACTS_MANAGER_REQUEST_CODE:
@@ -2031,6 +2040,7 @@ sau `Activity.RESULT_CANCELED`).
         break;
       }
     }
+    ```
     `
 
 Datorită faptului că aplicația Android *Contacts Manager* nu dispune de
@@ -2063,45 +2073,3 @@ student@eim-lab:~/Laborator04$ git commit -m "implemented taks for laboratory 04
 student@eim-lab:~/Laborator04$ git push origin master
 `
 
-## Resurse Utile
-
-[Intents and Intent
-Filters(android.com)](https:*developer.android.com/guide/components/intents-filters.html)  
-[Joseph ANNUZZI, Jr, Lauren DARCEY, Shane CONDER, Introduction to
-Android Application Development - Developer's Library, 4th Edition,
-Addison-Wesley,
-2013](http:*ptgmedia.pearsoncmg.com/images/9780321940261/samplepages/0321940261.pdf) -
-capitolul 4, subcapitolele *Organizing Activity Components with
-Fragments*, *Managing Activity Transition with Intents*, *Working with
-Services*, *Receiving and Broadcasting Intents*  
-[Bill PHILLIPS, Brian HARDY, Android Programming. The Big Nerd Ranch
-Guide, Pearson Technology Group,
-2013](http:*www.bignerdranch.com/we-write/android-programming/) -
-capitolele 5, 7, 10, 21, 23, 29, 30  
-[Reto MEIER, Professional Android for Application Development, John
-Wiley & Sons,
-2012](http:*www.amazon.com/Professional-Android-4-Application-Development/dp/1118102274) -
-capitolul 4 (*Introducing Fragments*), 5 (*Introducing Intents*)  
-[Ronan SCHWARZ, Phil DUTSON, James STEELE, Nelson TO, Android
-Developer's Cookbook, Building Applications with the Android SDK, 2nd
-Edition, Addison Wesley,
-2013](http:*books.google.ro/books/about/The_Android_Developer_s_Cookbook.html?id=Y4JR2yI2Fo0C&redir_esc=y) -
-capitolele 2, 7  
-[Wei Meng LEE, Beginning Android 4 Application Development, Wiley,
-2012](http:*eu.wiley.com/WileyCDA/WileyTitle/productCd-1118199545.html)  
-[Satya KOMATINENI, Dave MACLEAN, Pro Android 4, Apress,
-2012](http:*www.apress.com/9781430239307)  
-[Dezvoltarea aplicațiilor pentru
-Android](http:*android.rosedu.org/wiki/)  
-[Android Programming Tutorials - Core
-Servlets](http:*www.coreservlets.com/android-tutorial) - secțiunile
-Intents - part I, II & III  
-[Android Intents -
-Tutorial](http:*www.vogella.com/tutorials/AndroidIntent/article.html)
-
-## Android Fundamentals
-
-[Android
-Intents](https:*docs.google.com/presentation/d/1kjxsI9brdVRIx3rqoB0H-1-PmVlzJbiQNf4PyqzZKJM/edit#slide=id.g116e4ee7f0_0_171)
-[Explicit and Implicit
-Intents](https:*docs.google.com/presentation/d/1DSl-LNN7Kp3gQ9ZadBe8clWNGhs_8xdcYQoxZbF5cRk/edit#slide=id.g116d7d9d49_3_13)
