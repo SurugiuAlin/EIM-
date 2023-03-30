@@ -1700,7 +1700,6 @@ protected void onPause() {
 }
 ```
 
-\</spoiler>
 
 **d)** Să se oprească serviciul printr-un apel al metodei
 [stopService()](http:*developer.android.com/reference/android/content/Context.html#stopService%28android.content.Intent%29).
@@ -1793,7 +1792,6 @@ protected void onNewIntent(Intent intent) {
 }
 ```
 
-\</spoiler>
 
 **10.** **\[Opțional\]** Să se încarce în mediul integrat de dezvoltare
 Android Studio proiectul *BoundedServiceActivity* din directorul
@@ -1811,7 +1809,6 @@ care oferă o referință către serviciu prin intermediul metodei
 furnizată ca rezultat al metodei
 [onBind()](http:*developer.android.com/reference/android/app/Service.html#onBind%28android.content.Intent%29).
 
-\<spoiler Indicații de Rezolvare>
 
 ``` java
 public class BoundedService extends Service {
@@ -1831,7 +1828,6 @@ public class BoundedService extends Service {
 }
 ```
 
-\</spoiler>
 
 **b)** În clasa `BoundedService` din pachetul
 `ro.pub.cs.systems.eim.lab05.boundedserviceactivity.service`, să se
@@ -1856,7 +1852,6 @@ Vor fi suprascrise metodele:
     se distruge referința la serviciu și se actualizează variabila care
     reține starea legăturii dintre serviciu și activitate.
 
-\<spoiler Indicații de Rezolvare>
 
 ``` java
 private ServiceConnection serviceConnection = new ServiceConnection() {
@@ -1875,7 +1870,6 @@ private ServiceConnection serviceConnection = new ServiceConnection() {
 };
 ```
 
-\</spoiler>
 
 **d)** Să se atașeze, respectiv să se detașeze activitatea la / de
 serviciu, în cadrul metodelor de callback corespunzătoare stării în care
@@ -1890,7 +1884,6 @@ aceasta poate interacționa cu utilizatorul.
     se actualizează variabila care reține starea legăturii dintre
     serviciu și activitate.
 
-\<spoiler Indicații de Rezolvare>
 
 ``` java
 @Override
@@ -1910,7 +1903,6 @@ protected void onStop() {
 }
 ```
 
-\</spoiler>
 
 **e)** Să se implementeze o clasă ascultător pentru evenimentul de tip
 apăsare corespunzător controlului grafic de tip buton. În cadrul metodei
@@ -1920,7 +1912,6 @@ câmpului text, împreună cu data și ora la care a fost furnizat.
 
 ![](images/boundedservice.png)
 
-\<spoiler Indicații de Rezolvare>
 
 ``` java
 private class GetMessageFromServiceButtonListener implements View.OnClickListener {
@@ -1932,8 +1923,6 @@ private class GetMessageFromServiceButtonListener implements View.OnClickListene
   }
 }
 ```
-
-\</spoiler>
 
 **f)** Să se afișeze mesaje sugestive pe metodele de callback ale
 activității și ale serviciului și să se observe care este momentul în
@@ -1947,38 +1936,3 @@ momentul în care se apasă tasta *Home*?
     student@eim:~/Laborator05$ git commit -m "implemented taks for laboratory 05"
     student@eim:~/Laborator05$ git push Laborator05_perfectstudent master
 
-## Resurse Utile
-
-[Services](http:*developer.android.com/guide/components/services.html)  
-[Bound
-Services](http:*developer.android.com/guide/components/bound-services.html)  
-[Android Service and Broadcast Receiver
-Example](http:*www.truiton.com/2014/09/android-service-broadcastreceiver-example/)  
-[Android Services -
-Tutorial](http:*www.vogella.com/tutorials/AndroidServices/article.html)  
-[Dave MacLEAN, Satya KOMATINENI, Grant ALLEN, Pro Android
-5](http:*www.apress.com/9781430246800) - capitolele 16
-(*BroadcastReceivers and Long-Running Services*) și 17 (*Exploring the
-Alarm Manager*)  
-[Marko GARGENTA, Masumi NAKAMURA, Learning Android, 2nd
-Edition](https:*www.google.ro/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&ved=0ahUKEwi0s9rqzdDLAhXJE5oKHU3fAuMQFggtMAM&url=http%3A%2F%2Fwww.finebook.ir%2Fdownload%2Fbook%2F93%2F14466%2Flearning-android-2nd-edition.pdf&usg=AFQjCNGIRprt7ZbFjuYCQZ7NwaO5B8W2kQ&sig2=IZ4xFOFiHl7gnHZpNrLy7A&cad=rja) -
-capitolele 10 (*Services*) și 13 (*Broadcast Receivers*)  
-[Reto MEIER, Android 4 Application
-Development](http:*yuliana.lecturer.pens.ac.id/Android/Buku/professional_android_4_application_development.pdf),
-capitolul 5 (*Intents and Broadcast Receivers*)  
-[Joseph ANNUZZI, Jr, Lauren DARCEY, Shane CONDER, Introduction to
-Android Application Development - Developer's Library, 4th Edition,
-Addison-Wesley,
-2013](http:*ptgmedia.pearsoncmg.com/images/9780321940261/samplepages/0321940261.pdf) -
-capitolul 4, subcapitolele *Working with Services*, *Receiving and
-Broadcasting Intents*  
-[Bill PHILLIPS, Brian HARDY, Android Programming. The Big Nerd Ranch
-Guide, Pearson Technology Group,
-2013](http:*www.bignerdranch.com/we-write/android-programming/) -
-capitolele 29 (*Background Services*), 30 (*Broadcast Intents*)  
-
-## Android Developer Fundamentals
-
-[Services](https:*docs.google.com/presentation/d/1SdawmBYLrDKcLxwtvB09B5ffK7Bd9cj-677qI5Unekg/edit#slide=id.g116d7d9d49_3_13)  
-[AsyncTask](https:*docs.google.com/presentation/d/1A7anDTS8NQCunbxoJnqJqkSHNFCvRIn9moE7Zww-gds/edit#slide=id.g116d7d9d49_3_13)  
-[Broadcasts](https:*docs.google.com/presentation/d/1qF9Yeau7uHIP7_aOHWgPU_RnfxACZzGyAZIzcJWz0R0/edit#slide=id.g116d7d9d49_3_13)
