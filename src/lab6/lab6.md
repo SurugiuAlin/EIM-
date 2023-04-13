@@ -1034,7 +1034,7 @@ depozitului la distanță de la
 În urma acestei operații, directorul Laborator06 va trebui să se conțină
 directoarele `labtasks`, `samples` și `solutions`.
 
-    student@eim:~$ git clone https:*www.github.com/eim-lab/Laborator06.git
+    student@eim:~$ git clone https:www.github.com/eim-lab/Laborator06.git
 
 **3.** Să se încarce conținutul descărcat în cadrul depozitului
 'Laborator06' de pe contul Github personal.
@@ -1166,7 +1166,7 @@ continuare după ce aplicația Android este distrusă? Ce se întâmplă în
 momentul în care se dorește să se repornească aplicația Android? Cum ar
 putea fi remediată această problemă?
 
-\<spoiler Indicații de Rezolvare> Aplicația Android este distrusă, însă
+Indicații de Rezolvare: Aplicația Android este distrusă, însă
 resursele utilizate de acestea nu sunt eliberate, motiv pentru care
 serverul continuă să gestioneze solicitările primite de la clienți.
 
@@ -1193,15 +1193,13 @@ public void onDestroy() {
 }
 ```
 
-\</spoiler>
-
 **c)** Să se simuleze faptul că operația de comunicare dintre client și
 server durează o perioadă de timp mai mare (spre exemplu, 3 secunde). Ce
 se întâmplă în momentul în care există mai multe solicitări trimise
 simultan de mai mulți clienți (din console diferite)? Monitorizați
 timpul de răspuns în această situație.
 
-\<spoiler Indicații de Rezolvare> Metoda `Thread.sleep()`, primind ca
+Indicații de Rezolvare: Metoda `Thread.sleep()`, primind ca
 parametru un interval de timp (exprimat în milisecunde) simulează o
 așteptare, după care execuția aplicației Android este reluată în mod
 normal.
@@ -1217,7 +1215,6 @@ try {
 }
 ```
 
-\</spoiler>
 
 **d)** Să se implementeze comunicația pentru fiecare conexiune dintre
 client și server pe un fir de execuție separat, astfel încât pe server,
