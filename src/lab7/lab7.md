@@ -590,7 +590,7 @@ Prelucrarea unui răspuns HTTP se poate realiza:
 ### Volley
 
 
-[Volley](http:developer.android.com/training/volley/index.html) este o
+[Volley](https://google.github.io/volley/) este o
 bibliotecă open-source (disponibilă prin intermediul Android Open-Source
 Project) ce oferă facilități pentru interogarea de resurse disponibile
 prin intermediul protocolului HTTP.
