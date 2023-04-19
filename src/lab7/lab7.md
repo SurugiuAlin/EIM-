@@ -370,7 +370,7 @@ stocat la URL-ul accesat.
 
 ### Apache HTTP Components
 
-[Apache HTTP Components](https:*hc.apache.org/) este un proiect
+[Apache HTTP Components](https:hc.apache.org/) este un proiect
 open-source, dezvoltat sub licență Apache, punând la dispoziția
 utilizatorilor o bibliotecă Java pentru accesarea de resurse prin
 intermediul protocolului HTTP. Funcționalitatea poate fi utilizată în
@@ -387,17 +387,17 @@ pe scară largă.
 
 Componentele Apache HTTP Components sunt:
 
--   [HttpCore](https:*hc.apache.org/httpcomponents-core-ga/index.html)
+-   [HttpCore](https:hc.apache.org/httpcomponents-core-ga/index.html)
     este un set de componente de transport care pot fi utilizate pentru
     dezvoltarea de servicii robuste, la nivel de server și client; sunt
     implementate atât un model blocant pentru operații de intrare/ieșire
     (bazat pe `java.io`) cât și un model asincron, bazat pe evenimente
     (bazat pe `java.nio`);
--   [HttpClient](https:*hc.apache.org/httpcomponents-client-ga/index.html)
+-   [HttpClient](https:hc.apache.org/httpcomponents-client-ga/index.html)
     este o implementare a unui agent compatibil cu HTTP/1.1 care oferă
     funcționalități pentru autentificare la nivel de client, pentru
     gestiunea stării și a conexiunii;
--   [HttpAsyncClient](https:*hc.apache.org/httpcomponents-asyncclient-dev/index.html)
+-   [HttpAsyncClient](https:hc.apache.org/httpcomponents-asyncclient-dev/index.html)
     este un modul complementar destinat situațiilor în care se dorește
     să se ofere suport pentru un număr mare de conexiuni concurente,
     parametrii precum nivelul de transfer al datelor nu sunt foarte
@@ -423,16 +423,16 @@ android {
 
 Conform API-ului Apache HTTP Components, conexiunile HTTP sunt
 gestionate mai ales prin intermediul clasei
-[HttpClient](https:*hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/HttpClient.html),
+[HttpClient](https:hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/HttpClient.html),
 care oferă suport complet pentru acest protocol de comunicație.
 Frecvent, ca implementare a acestei interfețe se utilizează
-[DefaultHttpClient](https:*hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/client/DefaultHttpClient.html).
+[DefaultHttpClient](https:hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/client/DefaultHttpClient.html).
 
 Un astfel de obiect poate folosit pentru transmiterea unor cereri de tip
 `GET`
-([HttpGet](https:*hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/methods/HttpGet.html))
+([HttpGet](https:hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/methods/HttpGet.html))
 sau `POST`
-([HttpPost](https:*hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/methods/HttpPost.html))
+([HttpPost](https:hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/methods/HttpPost.html))
 și prelucrarea răspunsurilor corespunzătoare.
 
 Metoda `GET` este folosită pentru obținerea conținutului unei pagini
@@ -469,9 +469,9 @@ try {
 ```
 
 Alternativ, poate fi utilizat un obiect de tip
-[ResponseHandler](https:*hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/ResponseHandler.html)
+[ResponseHandler](https:hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/ResponseHandler.html)
 (cu implementarea
-[BasicResponseHandler](https:*hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/client/BasicResponseHandler.html))
+[BasicResponseHandler](https:hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/client/BasicResponseHandler.html))
 care va fi transmis ca parametru metodei `execute()`, astfel încât
 rezultatul acesteia să fie un șir de caractere conținând resursa care se
 dorește a fi descărcată.
@@ -511,7 +511,7 @@ sunt:
     client pe baza cărora serverul web va genera conținutul**;
 4.  **atașarea datelor respective la obiectul de tip `HttpPost` (apelând
     metoda `setEntity()`) prin intermediul unei entități
-    [UrlEncodedFormEntity](https:*hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/entity/UrlEncodedFormEntity.html)
+    [UrlEncodedFormEntity](https:hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/entity/UrlEncodedFormEntity.html)
     care primește ca parametru informațiile ce trebuie transmise și
     mecanismul de codificare a datelor**;
 5.  realizarea propriu-zisă a cererii HTTP prin apelul metodei
@@ -550,7 +550,7 @@ try {
 Prelucrarea unui răspuns HTTP se poate realiza:
 
 -   prin prelucrarea obiectului de tip
-    [HttpEntity](https:*hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/entity/UrlEncodedFormEntity.html),
+    [HttpEntity](https:hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/entity/UrlEncodedFormEntity.html),
     utilizând fluxuri de intrare/ieșire:  
     `BufferedReader bufferedReader = null;
     StringBuilder result = new StringBuilder();
@@ -618,7 +618,7 @@ Pentru utilizarea bibliotecii Volley este necesar să se realizeze
 următoarele operații:
 
 1.  descărcarea codului sursă de la depozitul unde este întreținută
-    `student@eim-lab:~$ git clone https:*www.github.com/google/volley
+    `student@eim-lab:~$ git clone https:www.github.com/google/volley
     `
 2.  referirea proiectului ca bibliotecă în Android Studio
     -   *File* -> *New* -> *Import Module...*
@@ -646,7 +646,7 @@ următoarele operații:
         `
 
 Volley gestionează o structură de date
-[RequestQueue](https:*android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/RequestQueue.java)
+[RequestQueue](https:android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/RequestQueue.java)
 care are rolul de a controla modul în care sunt tratate cererile.
 Aceasta distribuie cererile care trebuie procesate concurent către
 firele de execuție care se ocupă de comunicația prin rețea, realizând de
@@ -780,34 +780,34 @@ Volley definește mai multe tipuri de cerere standard, în funcție de
 tipul de date pe care îl are resursa care va fi accesată prin
 intermediul protocolului HTTP:
 
-1.  [StringRequest](https:*android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/StringRequest.java)
+1.  [StringRequest](https:android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/StringRequest.java)
     furnizează un rezultat de tip șir de caractere, în orice format,
     folosind un mecanism de codificare;
-2.  [ImageRequest](https:*android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/ImageRequest.java)
+2.  [ImageRequest](https:android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/ImageRequest.java)
     întoarce o resursă de tip imagine, disponibilă la o anumită locație
     (URL), aceasta fiind transmisă sub formă de bitmap decodificat (și
     posibil redimensionat, dacă se solicită acest lucru); operațiile
     costisitoare sunt realizate de firele de execuție responsabile de
     comunicația prin rețea;
-    1.  [ImageLoader](https:*android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/ImageLoader.java)
+    1.  [ImageLoader](https:android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/ImageLoader.java)
         oferă funcționalitatea de gestiune a cache-ului, care este
         stocat în memorie (dacă s-ar fi utilizat discul local, ar fi
         existat un impact asupra firului de execuție principal),
         transmițând mai multe resurse la un moment dat;
-    2.  [NetworkImageView](https:*android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/NetworkImageView.java)
+    2.  [NetworkImageView](https:android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/NetworkImageView.java)
         reprezintă un tip de element al interfeței grafice, specializat
         pentru resurse de tip imagine disponibilă la o locație la
         distanță, accesibilă prin intermediul comunicației în rețea.
-3.  [JsonRequest](https:*android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/JsonRequest.java)
+3.  [JsonRequest](https:android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/JsonRequest.java)
     suportă două implementări:
-    1.  [JsonObjectRequest](https:*android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/JsonObjectRequest.java)
-    2.  [JsonArrayRequest](https:*android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/JsonArrayRequest.java)
+    1.  [JsonObjectRequest](https:android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/JsonObjectRequest.java)
+    2.  [JsonArrayRequest](https:android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/toolbox/JsonArrayRequest.java)
 
 În situația în care se dorește implementarea unui tip de cerere definită
 de utilizator, trebuie să se respecte câteva condiții:
 
 -   clasa trebuie să fie derivată din
-    [Request\<T>](https:*android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/Request.java);
+    [Request\<T>](https:android.googlesource.com/platform/frameworks/volley/+/master/src/main/java/com/android/volley/Request.java);
 -   clasa trebuie să implementeze metodele:
     -   `parseNetworkResponse(NetworkResponse)` care construiește
         rezultatul (`Response.success()`, respectiv `Response.error()`)
@@ -1301,7 +1301,7 @@ de etichete, utilizându-se doar caracterele `"`, `,`, `{`, `}`, `[` și
 -   valorile de tip șir de caractere trebuie să se găsească între
     ghilimele (nu sunt permise apostroafele în acest caz).
 
-Potrivit [RFC 4627](https:*www.ietf.org/rfc/rfc4627.txt), tipul MIME al
+Potrivit [RFC 4627](https:www.ietf.org/rfc/rfc4627.txt), tipul MIME al
 documentelor reprezentate în format JSON treuie să fie în mod necesar
 `application/json`.
 
@@ -1309,11 +1309,11 @@ Există [numeroase servicii
 web](http:www.programmableweb.com/category/all/apis?data_format=21173)
 care își expun funcționalitatea prin intermediul unor documente JSON:
 
--   [Google](https:*developers.google.com/custom-search/json-api/v1/overview?csw=1);
--   [Yahoo](https:*developer.yahoo.com/);
+-   [Google](https:developers.google.com/custom-search/json-api/v1/overview?csw=1);
+-   [Yahoo](https:developer.yahoo.com/);
 -   [Geonames](http:www.geonames.org/export/web-services.html);
--   [Twitter](https:*dev.twitter.com/);
--   [Flickr](https:*www.flickr.com/services/api/).
+-   [Twitter](https:dev.twitter.com/);
+-   [Flickr](https:www.flickr.com/services/api/).
 
 În Android, prelucrarea documentelor reprezentate în format JSON este
 realizată prin intermediul clasei
@@ -1514,24 +1514,24 @@ sau a a fișierului `LICENSE`).
 
 **2.** Să se cloneze în directorul de pe discul local conținutul
 depozitului la distanță de la
-[](https:*www.github.com/eim-lab/Laborator07).
+[](https:www.github.com/eim-lab/Laborator07).
 
 În urma acestei operații, directorul Laborator07 va trebui să se conțină
 directoarele `labtasks`, `samples` și `solutions`.
 
-    student@eim-lab:~$ git clone https:*www.github.com/eim-lab/Laborator07.git
+    student@eim-lab:~$ git clone https:www.github.com/eim-lab/Laborator07.git
 
 **3.** Să se încarce conținutul descărcat în cadrul depozitului
 'Laborator07' de pe contul Github personal.
 `student@eim-lab:~$ cd Laborator07
-student@eim-lab:~/Laborator07$ git remote add Laborator07_perfectstudent https:*github.com/perfectstudent/Laborator07
+student@eim-lab:~/Laborator07$ git remote add Laborator07_perfectstudent https:github.com/perfectstudent/Laborator07
 student@eim-lab:~/Laborator07$ git push Laborator07_perfectstudent master
 `
 
 **4.** Să se importe în mediul integrat de dezvoltare Android Studio
 proiectul `CalculatorWebService` din directorul `labtasks`.
 
-<https:*ocw.cs.pub.ro/courses/_media/eim/laboratoare/laborator07/calculatorwebservice.zip>
+<https:ocw.cs.pub.ro/courses/_media/eim/laboratoare/laborator07/calculatorwebservice.zip>
 
 **4a.** Să se verifice în browser funcționarea serverului
 [serverului](http:wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/)
@@ -1539,8 +1539,8 @@ pentru GET și POST
 
 **4b.** Să se verifice la linia de comandă functionarea severului
 
-      * <code shell> curl  -X  POST  --data 'operation=times&t1=9&t2=2' https:*wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/expr_post.php</code>
-      * <code shell> curl  "https:*wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/expr_get.php?operation=times&t1=9&t2=2" </code> 
+      * <code shell> curl  -X  POST  --data 'operation=times&t1=9&t2=2' https:wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/expr_post.php</code>
+      * <code shell> curl  "https:wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/expr_get.php?operation=times&t1=9&t2=2" </code> 
 
 **4c.** studiați implementarea serverului în php
 
@@ -1990,4 +1990,4 @@ Components](http:hc.apache.org/httpcomponents-client-4.4.x/index.html)
 ### Android Developer Fundamentals
 
 [Internet
-Connection](https:*docs.google.com/presentation/d/176imWmYy31qcCpkkk0mhx66LKrlhrCZPHGfEn9tBZlE/edit#slide=id.g116d7d9d49_3_13)
+Connection](https:docs.google.com/presentation/d/176imWmYy31qcCpkkk0mhx66LKrlhrCZPHGfEn9tBZlE/edit#slide=id.g116d7d9d49_3_13)
