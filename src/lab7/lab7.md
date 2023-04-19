@@ -263,7 +263,7 @@ următoarelor etape:
     de reutilizare a resurselor folosite de conexiune (sockeți TCP),
     dacă proprietatea `http.keepAlive` nu specifică altfel.
 
-\<note>Implicit, clasa `HttpURLConnection` folosește metoda `GET`.
+Implicit, clasa `HttpURLConnection` folosește metoda `GET`.
 Metoda `POST` este utilizată numai în situația în care a fost apelată în
 prealabil metoda `setDoOutput(true)`.
 
@@ -980,7 +980,7 @@ reprezentat de un obiect
 intermediul căruia pot fi accesate toate atributele și valorile asociate
 acestora.
 
-\<note>Inclusiv nodul rădăcină (de tip `org.jsoup.nodes.Document`) este
+Inclusiv nodul rădăcină (de tip `org.jsoup.nodes.Document`) este
 derivat din `org.jsoup.nodes.Element`.\
 
 ---
