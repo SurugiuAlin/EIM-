@@ -17,7 +17,7 @@ responsabil cu transferul de hipertext (text structurat ce conține
 legături) dintre un client (de regulă, un navigator) și un server web,
 interacțiunea dintre acestea (prin intermediul unei conexiuni TCP
 persistente pe portul 80) fiind reglementată de [RFC
-2616](http:*www.rfc-editor.org/rfc/rfc2616.txt). HTTP este un protocol
+2616](http:www.rfc-editor.org/rfc/rfc2616.txt). HTTP este un protocol
 fără stare, pentru persistența informațiilor între accesări fiind
 necesar să se utilizeze soluții adiacente (cookie, sesiuni, rescrierea
 URL-urilor, câmpuri ascunse).
@@ -203,14 +203,14 @@ Mesajul conține și **antetele de răspuns**, având forma
 
 În Android, comunicația dintre un server web si un client poate fi
 gestionată prin intermediul clasei
-[HttpURLConnection](http:*developer.android.com/reference/java/net/HttpURLConnection.html),
+[HttpURLConnection](http:developer.android.com/reference/java/net/HttpURLConnection.html),
 care pune la dispoziție aceleași funcționalități ca în cazul Java SE.
 
 O aplicație ce utilizează această clasă presupune implementarea
 următoarelor etape:
 
 1.  instanțierea unui obiect
-    [URL](http:*developer.android.com/reference/java/net/URL.html) prin
+    [URL](http:developer.android.com/reference/java/net/URL.html) prin
     intermediul căruia pot fi obținute informații cu privire la resursa
     respectivă (protocolul utilizat, mașina pe care se găsește resursa
     respectivă, portul pe care poate fi accesată, fișierul accesat,
@@ -239,11 +239,11 @@ următoarelor etape:
     -   informații referitoare la mecanismele de gestiune a stării
         (cookie-uri) - în condițiile în care HTTP este un protocol fără
         stare; se utilizează clasele
-        [CookieManager](http:*developer.android.com/reference/java/net/CookieManager.html),
-        [CookieHandler](http:*developer.android.com/reference/java/net/CookieHandler.html),
+        [CookieManager](http:developer.android.com/reference/java/net/CookieManager.html),
+        [CookieHandler](http:developer.android.com/reference/java/net/CookieHandler.html),
         care gestionează la nivelul întregii mașini virtuale obiectele
         de tipul
-        [HttpCookie](http:*developer.android.com/reference/java/net/HttpCookie.html).
+        [HttpCookie](http:developer.android.com/reference/java/net/HttpCookie.html).
 3.  utilizarea unui flux de intrare / flux de ieșire pentru transferul
     de informații; se folosesc, obiectele / metodele:
     -   `BufferedInputStream` / `getInputStream()`;
@@ -376,7 +376,7 @@ utilizatorilor o bibliotecă Java pentru accesarea de resurse prin
 intermediul protocolului HTTP. Funcționalitatea poate fi utilizată în
 cadrul oricărei mașini virtuale Java și era inclusă și în platforma
 Android până în API Level 23 (Marshmellow) [când a fost
-exclusă](http:*developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-apache-http-client),
+exclusă](http:developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-apache-http-client),
 fiind invocate probleme legate de compatibilitate pentru anumite
 platforme precum și utilizarea excesivă a rețelei cu impact asupra
 consumului de energie. În schimb, se recomandă utilizarea clasei
@@ -453,7 +453,7 @@ sunt:
 ``` java
 try {
   HttpClient httpClient = new DefaultHttpClient();
-  HttpGet httpGet = new HttpGet("http:*www.server.com");
+  HttpGet httpGet = new HttpGet("http:www.server.com");
   HttpResponse httpGetResponse = httpClient.execute(httpGet);
   HttpEntity httpGetEntity = httpGetResponse.getEntity();
   if (httpGetEntity != null) {  
@@ -489,7 +489,7 @@ de 2048 de caractere și folosind numai caractere ASCII:
 
 ``` java
 * ...
-HttpGet httpGet = new HttpGet("http:*www.server.com?attribute1=value1&...&attributen=valuen");
+HttpGet httpGet = new HttpGet("http:www.server.com?attribute1=value1&...&attributen=valuen");
 * ...
 ```
 
@@ -523,7 +523,7 @@ sunt:
 ``` java
 try {
   HttpClient httpClient = new DefaultHttpClient();        
-  HttpPost httpPost = new HttpPost("http:*www.server.com");
+  HttpPost httpPost = new HttpPost("http:www.server.com");
     
   List<NameValuePair> params = new ArrayList<NameValuePair>();        
   params.add(new BasicNameValuePair("attribute1", "value1"));
@@ -589,8 +589,8 @@ Prelucrarea unui răspuns HTTP se poate realiza:
 
 ### Volley
 
-\<spoiler>
-[Volley](http:*developer.android.com/training/volley/index.html) este o
+
+[Volley](http:developer.android.com/training/volley/index.html) este o
 bibliotecă open-source (disponibilă prin intermediul Android Open-Source
 Project) ce oferă facilități pentru interogarea de resurse disponibile
 prin intermediul protocolului HTTP.
@@ -931,8 +931,6 @@ CustomRequest<JSONArray> customRequest = new CustomRequest(
 VolleyController.getInstance(getActivity().getApplicationContext()).addToRequestQueue(customRequest);
 ```
 
-\</spoiler>
-
 ## Prelucrare DOM (Document Object Model)
 
 Documentele HTML au o structură arborescentă, având drept rădăcină un
@@ -952,7 +950,7 @@ valoare, putând avea și o structură care nu le include:
 `<TipElement />`
 
 O soluție pentru parsarea unui document HTML este reprezentată de
-biblioteca [Jsoup](http:*jsoup.org/packages/jsoup-1.8.2.jar).
+biblioteca [Jsoup](http:jsoup.org/packages/jsoup-1.8.2.jar).
 
 ---
 **Note**
@@ -964,21 +962,21 @@ compilare (*Build Path* → *Add to Build Path...*).\
 ---
 
 Prin intermediul metodei statice
-[parse()](http:*jsoup.org/apidocs/org/jsoup/Jsoup.html#parse(java.lang.String))
+[parse()](http:jsoup.org/apidocs/org/jsoup/Jsoup.html#parse(java.lang.String))
 ce primește ca parametru conținutul resursei care se dorește a fi
 analizată (codul sursă al paginii HTML), se obține un obiect
-[Document](http:*jsoup.org/apidocs/org/jsoup/nodes/Document.html), care
+[Document](http:jsoup.org/apidocs/org/jsoup/nodes/Document.html), care
 permite parcurgerea ierarhiei de elemente.
 
 Pentru un obiect de tipul `org.jsoup.nodes.Document`, pot fi obținute
 secțiunile componente `<head>` și `<meta>` prin intermediul metodelor
-[head()](http:*jsoup.org/apidocs/org/jsoup/nodes/Document.html#head()),
+[head()](http:jsoup.org/apidocs/org/jsoup/nodes/Document.html#head()),
 respectiv
-[body()](http:*jsoup.org/apidocs/org/jsoup/nodes/Document.html#body()).
+[body()](http:jsoup.org/apidocs/org/jsoup/nodes/Document.html#body()).
 
 Fiecare etichetă din codul sursă corespunzător unei pagini HTML este
 reprezentat de un obiect
-[Element](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html), prin
+[Element](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html), prin
 intermediul căruia pot fi accesate toate atributele și valorile asociate
 acestora.
 
@@ -991,109 +989,109 @@ Pentru un element, pot fi realizate următoarele operații:
 
 -   obținerea (listei) unor elemente componente:
     -   deținând un anumit identificator - [getElementById(String
-        id)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementById(java.lang.String));
+        id)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementById(java.lang.String));
     -   care au o anumită etichetă - [getElementsByTag(String
-        tag)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByTag(java.lang.String));
+        tag)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByTag(java.lang.String));
     -   ce fac parte din cadrul unei clase - [getElementsByClass(String
-        className)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByClass(java.lang.String));
+        className)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByClass(java.lang.String));
     -   în funcție de o proprietate:
         -   pentru care se precizează atributul
             -   [getElementsByAttribute(String
-                key)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttribute(java.lang.String));
+                key)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttribute(java.lang.String));
             -   [getElementsByAttributeStarting(String
-                keyPrefix)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeStarting(java.lang.String));
+                keyPrefix)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeStarting(java.lang.String));
         -   pentru care se precizează valoarea
             -   [getElementsByAttributeValueStarting(String key, String
-                valuePrefix)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValueStarting(java.lang.String, java.lang.String))
+                valuePrefix)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValueStarting(java.lang.String, java.lang.String))
             -   [getElementsByAttributeValueContaining(String key,
                 String
-                match)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValueContaining(java.lang.String, java.lang.String))
+                match)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValueContaining(java.lang.String, java.lang.String))
             -   [getElementsByAttributeValueEnding(String key, String
-                valueSuffix)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValueEnding(java.lang.String, java.lang.String))
+                valueSuffix)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValueEnding(java.lang.String, java.lang.String))
             -   [getElementsByAttributeValueMatching(String key, Pattern
-                pattern)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValueMatching(java.lang.String, java.util.regex.Pattern))
+                pattern)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValueMatching(java.lang.String, java.util.regex.Pattern))
             -   [getElementsByAttributeValueMatching(String key, String
-                regex)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValueMatching(java.lang.String, java.lang.String));
+                regex)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValueMatching(java.lang.String, java.lang.String));
         -   pentru care se precizează atât atributul cât și valoarea -
             [getElementsByAttributeValue(String key, String
-            value)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValue(java.lang.String, java.lang.String)).
+            value)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValue(java.lang.String, java.lang.String)).
 -   navigare în cadrul ierarhiei de elemente:
     -   obținerea elementului părinte:
-        [parent()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#parent());
+        [parent()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#parent());
         în situația în care se dorește obținerea tuturor elementelor
         părinte (până la rădăcină), se poate folosi metoda
-        [parents()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#parents());
+        [parents()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#parents());
     -   obținerea elementelor copii:
-        [children()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#children()),
+        [children()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#children()),
         [child(int
-        index)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#child(int)) -
+        index)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#child(int)) -
         numerotarea făcându-se în acest caz începând cu 0.
     -   obținerea elementelor de pe același nivel:
-        [siblingElements()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#siblingElements()),
-        [firstElementSibling()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#firstElementSibling()),
-        [lastElementSibling()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#lastElementSibling()),
-        [nextElementSibling()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#nextElementSibling()),
-        [previousElementSibling()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#previousElementSibling());
+        [siblingElements()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#siblingElements()),
+        [firstElementSibling()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#firstElementSibling()),
+        [lastElementSibling()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#lastElementSibling()),
+        [nextElementSibling()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#nextElementSibling()),
+        [previousElementSibling()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#previousElementSibling());
 -   investigarea unor informații cu privire la proprietăți:
     -   identificatorul -
-        [id()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#id());
+        [id()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#id());
     -   eticheta -
-        [tag()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#tag()),
-        [tagName()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#tagName());
+        [tag()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#tag()),
+        [tagName()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#tagName());
     -   clasa / clasele -
-        [className()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#className())
+        [className()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#className())
         /
-        [classNames()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#classNames());
+        [classNames()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#classNames());
     -   atribut:
         -   lista tuturor atributelor -
-            [attributes()](http:*jsoup.org/apidocs/org/jsoup/nodes/TextNode.html#attributes());
+            [attributes()](http:jsoup.org/apidocs/org/jsoup/nodes/TextNode.html#attributes());
         -   valoarea asociată unui anumit atribut - [attribute(String
-            attributeKey)](http:*jsoup.org/apidocs/org/jsoup/select/Elements.html#attr(java.lang.String));
+            attributeKey)](http:jsoup.org/apidocs/org/jsoup/select/Elements.html#attr(java.lang.String));
     -   textul conținut, din care sunt eliminate caracterele albe,
         acesta fiind totodată normalizat:
-        [text()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#text());
+        [text()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#text());
     -   datele, pentru etichetele `<script>`, respectiv `<style>` -
-        [data()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#data()).
+        [data()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#data()).
 -   actualizarea codului sursă corespunzător paginii HTML:
     -   înainte de element:
         -   [prepend(String
-            html)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#prepend(java.lang.String))
+            html)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#prepend(java.lang.String))
         -   [prependText(String
-            text)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#prependText(java.lang.String))
+            text)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#prependText(java.lang.String))
         -   [prependElement(String
-            tagName)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#prependElement(java.lang.String))
+            tagName)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#prependElement(java.lang.String))
     -   după element:
         -   [append(String
-            html)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#append(java.lang.String))
+            html)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#append(java.lang.String))
         -   [appendText(String
-            text)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#appendText(java.lang.String))
+            text)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#appendText(java.lang.String))
         -   [appendElement(String
-            tagName)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#appendElement(java.lang.String))
+            tagName)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#appendElement(java.lang.String))
     -   lista copiilor unui element:
         -   înainte - [prependChild(Node
-            child)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#prependChild(org.jsoup.nodes.Node))
+            child)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#prependChild(org.jsoup.nodes.Node))
         -   după - [appendChild(Node
-            child)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#appendChild(org.jsoup.nodes.Node))
+            child)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#appendChild(org.jsoup.nodes.Node))
     -   prin specificarea conținutului său [html(String
-        html)](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#html(java.lang.String))
+        html)](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#html(java.lang.String))
 
 Unele dintre metode ce furnizează liste de elemente întorc rezultate de
 tipul
-[Elements](http:*jsoup.org/apidocs/org/jsoup/select/Elements.html),
+[Elements](http:jsoup.org/apidocs/org/jsoup/select/Elements.html),
 care nu este altceva decât un vector de elemente (fiind derivat din
 `ArrayList<Element>`), ce poate fi iterat (prin intermediul metodei
-[iterator()](http:*docs.oracle.com/javase/1.5.0/docs/api/java/util/List.html#iterator())).
+[iterator()](http:docs.oracle.com/javase/1.5.0/docs/api/java/util/List.html#iterator())).
 De asemenea, pot fi obținute referințe către primul, respectiv ultimul
 element din listă prin intermediul metodelor
-[first()](http:*jsoup.org/apidocs/org/jsoup/select/Elements.html#first()),
+[first()](http:jsoup.org/apidocs/org/jsoup/select/Elements.html#first()),
 respectiv
-[last()](http:*jsoup.org/apidocs/org/jsoup/select/Elements.html#last()).
+[last()](http:jsoup.org/apidocs/org/jsoup/select/Elements.html#last()).
 
 ### Exemplu
 
 Se dorește listarea disciplinelor pentru care materialele didactice sunt
 disponibile pe platforma [Open
-CourseWare](http:*ocw.cs.pub.ro/courses), vizualizându-se, pentru
+CourseWare](http:ocw.cs.pub.ro/courses), vizualizându-se, pentru
 fiecare dintre acestea, pictograma asociată și denumirea disciplinei de
 învățământ.
 
@@ -1254,7 +1252,7 @@ private class OCWCoursesDisplayerAsyncTask extends AsyncTask<Void, Void, List<OC
 ## Prelucrare JSON (JavaScript Object Notation) - opțional
 
 Unele servicii web folosesc [formatul
-JSON](http:*en.wikipedia.org/wiki/JSON) pentru transferul de date
+JSON](http:en.wikipedia.org/wiki/JSON) pentru transferul de date
 întrucât, spre diferență de XML care implică numeroase informații
 suplimentare, acesta optimizează cantitatea de date implicate. De
 asemenea, este foarte ușor pentru un utilizator uman să prelucreze
@@ -1297,7 +1295,7 @@ de etichete, utilizându-se doar caracterele `"`, `,`, `{`, `}`, `[` și
 ```
 
 În Android este suportat formatul JSON strict, așa cum este descris pe
-[](http:*json.org/):
+[](http:json.org/):
 
 -   denumirile de atribute trebuie să se găsească între ghilimele;
 -   valorile de tip șir de caractere trebuie să se găsească între
@@ -1308,50 +1306,50 @@ documentelor reprezentate în format JSON treuie să fie în mod necesar
 `application/json`.
 
 Există [numeroase servicii
-web](http:*www.programmableweb.com/category/all/apis?data_format=21173)
+web](http:www.programmableweb.com/category/all/apis?data_format=21173)
 care își expun funcționalitatea prin intermediul unor documente JSON:
 
 -   [Google](https:*developers.google.com/custom-search/json-api/v1/overview?csw=1);
 -   [Yahoo](https:*developer.yahoo.com/);
--   [Geonames](http:*www.geonames.org/export/web-services.html);
+-   [Geonames](http:www.geonames.org/export/web-services.html);
 -   [Twitter](https:*dev.twitter.com/);
 -   [Flickr](https:*www.flickr.com/services/api/).
 
 În Android, prelucrarea documentelor reprezentate în format JSON este
 realizată prin intermediul clasei
-[JSONObject](http:*developer.android.com/reference/org/json/JSONObject.html)
+[JSONObject](http:developer.android.com/reference/org/json/JSONObject.html)
 care a fost integrată parțial (cu unele funcționalități lipsă), fără a
 se specifica clar versiunea care este utilizată.
 
 Un document JSON poate fi construit în mai multe moduri:
 
--   [JSONObject()](http:*developer.android.com/reference/org/json/JSONObject.html#JSONObject%28%29) -
+-   [JSONObject()](http:developer.android.com/reference/org/json/JSONObject.html#JSONObject%28%29) -
     construiește un obiect JSON vid, care nu conține nici o asociere
     (atribut, valoare);
 -   [JSONObject(Map
-    copyFrom)](http:*developer.android.com/reference/org/json/JSONObject.html#JSONObject%28java.util.Map%29) -
+    copyFrom)](http:developer.android.com/reference/org/json/JSONObject.html#JSONObject%28java.util.Map%29) -
     contruiește un obiect JSON pe baza unor asocieri prealabile; o
     astfel de metodă este utilizată mai ales în situația în care se
     dorește să se transmită informații către un serviciu web;
 -   [JSONObject(String
-    json)](http:*developer.android.com/reference/org/json/JSONObject.html#JSONObject%28java.lang.String%29) -
+    json)](http:developer.android.com/reference/org/json/JSONObject.html#JSONObject%28java.lang.String%29) -
     construiește un obiect JSON prin parsarea unui șir de caractere; o
     astfel de metodă este utilizată mai ales în situația în care sunt
     primite informații de la un serviciu web, care trebuie să fie
     prelucrate;
 -   [JSONObject(JSONTokener
-    readFrom)](http:*developer.android.com/reference/org/json/JSONObject.html#JSONObject%28org.json.JSONTokener%29) -
+    readFrom)](http:developer.android.com/reference/org/json/JSONObject.html#JSONObject%28org.json.JSONTokener%29) -
     construiește un obiect JSON pe baza valorii următoare disponibile în
     cadrul unui obiect
-    [JSONTokener](http:*developer.android.com/reference/org/json/JSONTokener.html);
+    [JSONTokener](http:developer.android.com/reference/org/json/JSONTokener.html);
 -   [JSONObject(JSONObject copyFrom, String\[\]
-    names)](http:*developer.android.com/reference/org/json/JSONObject.html#JSONObject%28org.json.JSONObject,%20java.lang.String[]%29) -
+    names)](http:developer.android.com/reference/org/json/JSONObject.html#JSONObject%28org.json.JSONObject,%20java.lang.String[]%29) -
     construiește un obiect JSON prin filtrarea asocierilor existente
     într-un obiect `JSONObject`, pe baza unor denumiri de atribute
     existente.
 
 De regulă, metodele care operează cu obiecte JSON pot genera excepția
-[JSONException](http:*developer.android.com/reference/org/json/JSONException.html)
+[JSONException](http:developer.android.com/reference/org/json/JSONException.html)
 în situația în care sunt întâlnite documente care nu sunt bine formate.
 
 ---
@@ -1366,46 +1364,46 @@ baza unei componente Java Bean.\
 Gestiunea obiectelor JSON se face:
 
 -   pentru citire, prin intermediul metodelor de tip [get(String
-    name)](http:*developer.android.com/reference/org/json/JSONObject.html#get%28java.lang.String%29),
+    name)](http:developer.android.com/reference/org/json/JSONObject.html#get%28java.lang.String%29),
     care furnizează un obiect generic (de tip `Object`), aceasta fiind
     supraîncărcată și pentru tipurile `boolean`, `double`, `int`,
     `long`, `String`, `JSONObject`, `JSONArray`;
 -   pentru scriere, prin intermediul metodelor de tip [put(String name,
     Object
-    value)](http:*developer.android.com/reference/org/json/JSONObject.html#put%28java.lang.String,%20java.lang.Object%29),
+    value)](http:developer.android.com/reference/org/json/JSONObject.html#put%28java.lang.String,%20java.lang.Object%29),
     care furnizeză un rezultat de tip `JSONObject`, existând și
     implementări specifice pentru tipurile `boolean`, `double`, `int`,
     `long`.
 
 Verificarea faptului că un document JSON deține un anumit atribut se
 face prin invocarea metodei [has(String
-name)](http:*developer.android.com/reference/org/json/JSONObject.html#has%28java.lang.String%29).
+name)](http:developer.android.com/reference/org/json/JSONObject.html#has%28java.lang.String%29).
 Funcționalitatea inversă este furnizată de metoda [isNull(String
-name)](http:*developer.android.com/reference/org/json/JSONObject.html#isNull%28java.lang.String%29),
+name)](http:developer.android.com/reference/org/json/JSONObject.html#isNull%28java.lang.String%29),
 aceasta verificând și dacă valoarea asociată atributului respectiv este
 `null`.
 
 Dimensiunea unui obiect `JSONObject`, reprezentat sub forma numărului de
 asocieri de tip (cheie, valoare) este furnizat de metoda
-[length()](http:*developer.android.com/reference/org/json/JSONObject.html#length%28%29).
+[length()](http:developer.android.com/reference/org/json/JSONObject.html#length%28%29).
 
 Reprezentarea unui obiect JSON sub forma unui șir de caractere poate fi
 obținută prin intermediul metodelor:
 
--   [toString()](http:*developer.android.com/reference/org/json/JSONObject.html#toString%28%29) -
+-   [toString()](http:developer.android.com/reference/org/json/JSONObject.html#toString%28%29) -
     formă compactă;
 -   [toString(int
-    indentSpaces)](http:*developer.android.com/reference/org/json/JSONObject.html#toString%28%29) -
+    indentSpaces)](http:developer.android.com/reference/org/json/JSONObject.html#toString%28%29) -
     formă utilizată în scop de depanare.
 
 Unele metode furnizează vectori de obiecte JSON, reprezentate de clasa
-[JSONArray](http:*developer.android.com/reference/org/json/JSONArray.html),
+[JSONArray](http:developer.android.com/reference/org/json/JSONArray.html),
 în care accesul la obiecte se face indexat, începând cu 0:
 
--   [names()](http:*developer.android.com/reference/org/json/JSONObject.html#names%28%29) -
+-   [names()](http:developer.android.com/reference/org/json/JSONObject.html#names%28%29) -
     lista numelor dintr-un obiect JSON;
 -   [toJSONArray(JSONArray
-    names)](http:*developer.android.com/reference/org/json/JSONObject.html#toJSONArray%28org.json.JSONArray%29) -
+    names)](http:developer.android.com/reference/org/json/JSONObject.html#toJSONArray%28org.json.JSONArray%29) -
     lista valorilor asociate unor atribute dintr-un vector de obiecte
     JSON.
 
@@ -1415,7 +1413,7 @@ Se dorește să se implementeze o aplicație Android care să afișeze
 informații cu privire la cutremurele care s-au produs într-un anumit
 areal geografic (desemnat prin coordonatele nord, sud, est, vest) pe
 baza rezultatelor furnizate de serviciul web [Geonames
-Earthquakes](http:*api.geonames.org/earthquakesJSON).
+Earthquakes](http:api.geonames.org/earthquakesJSON).
 
 Detaliile care se doresc a fi vizualizate pentru fiecare cutremur în
 parte sunt:
@@ -1441,7 +1439,7 @@ utilizator:
 
 **Exemplu**. O adresă Internet de la care pot fi accesate rezultate în
 format JSON este:
-[](http:*api.geonames.org/earthquakesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&username=eim-lab).
+[](http:api.geonames.org/earthquakesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&username=eim-lab).
 
 Rezultatele sunt furnizate în următorul format:
 
@@ -1536,7 +1534,7 @@ proiectul `CalculatorWebService` din directorul `labtasks`.
 <https:*ocw.cs.pub.ro/courses/_media/eim/laboratoare/laborator07/calculatorwebservice.zip>
 
 **4a.** Să se verifice în browser funcționarea serverului
-[serverului](http:*wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/)
+[serverului](http:wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/)
 pentru GET și POST
 
 **4b.** Să se verifice la linia de comandă functionarea severului
@@ -1604,7 +1602,7 @@ proiectul `XkcdCartoonDisplayer` din directorul `labtasks`.
 
 Se cere să se implementeze o aplicație Android care afișează, într-un
 control grafic de tip `ImageView`, cea mai recentă caricatură de pe
-pagina Internet [xkcd](http:*www.xkcd.com). De asemenea, va putea fi
+pagina Internet [xkcd](http:www.xkcd.com). De asemenea, va putea fi
 vizualizat titlul acestei caricaturi, adresa Internet la care aceasta
 poate fi accesată precum și butoane de legătură către caricatura
 precedentă, respectiv caricatura următoare (în situația în care aceasta
@@ -1621,10 +1619,10 @@ Pentru realizarea aplicației, vor trebui urmați următorii pași:
 -   obținerea titlului caricaturii (se poate realiza o căutare după
     eticheta `<div>` care deține un atribut `id` cu valoarea `ctitle`,
     folosind metoda
-    [getElementsByAttributeValue()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValue%28java.lang.String,%20java.lang.String%29));
+    [getElementsByAttributeValue()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByAttributeValue%28java.lang.String,%20java.lang.String%29));
     ulterior, se va prelua conținutul acestei etichete prin intermediul
     metodei
-    [ownText()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#ownText()):
+    [ownText()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#ownText()):
     `Element divTagIdCtitle = htmlTag.getElementsByAttributeValue(Constants.ID_ATTRIBUTE, Constants.CTITLE_VALUE).first();
     xkcdCartoonInformation.setCartoonTitle(divTagIdCtitle.ownText());
     `
@@ -1633,24 +1631,23 @@ Pentru realizarea aplicației, vor trebui urmați următorii pași:
     valoarea `comic`, folosind metoda `getElementsByAttributeValue()`);
     aceasta conține la rândul ei un element `<img>` care poate fi
     accesat prin intermediul metodei
-    [getElementsByTag()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByTag%28java.lang.String%29);
+    [getElementsByTag()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#getElementsByTag%28java.lang.String%29);
     adresa Internet a caricaturii este reprezentată de valoarea
     atributului `src`, furnizată de metoda
-    [attr()](http:*jsoup.org/apidocs/org/jsoup/nodes/Element.html#attr%28java.lang.String,%20java.lang.String%29):
+    [attr()](http:jsoup.org/apidocs/org/jsoup/nodes/Element.html#attr%28java.lang.String,%20java.lang.String%29):
     `Element divTagIdComic = htmlTag.getElementsByAttributeValue(Constants.ID_ATTRIBUTE, Constants.COMIC_VALUE).first();
     String cartoonInternetAddress = divTagIdComic.getElementsByTag(Constants.IMG_TAG).attr(Constants.SRC_ATTRIBUTE);
     `
 -   obținerea caricaturii, pe baza adresei Internet la care este
     găzduită, se face prin fluxul de intrare corespunzător entității
     HTTP, care va fi decodificat prin intermediul metodei
-    [BitmapFactory.decodeStream()](http:*developer.android.com/reference/android/graphics/BitmapFactory.html#decodeStream(java.io.InputStream)),
+    [BitmapFactory.decodeStream()](http:developer.android.com/reference/android/graphics/BitmapFactory.html#decodeStream(java.io.InputStream)),
     care întoarce un obiect de tip
-    [Bitmap](http:*developer.android.com/reference/android/graphics/Bitmap.html);
+    [Bitmap](http:developer.android.com/reference/android/graphics/Bitmap.html);
     asocierea unui astfel de obiect ca sursă a unui control grafic ce
     tip `ImageView` se face prin intermediul metodei
-    [setImageBitmap()](http:*developer.android.com/reference/android/widget/ImageView.html#setImageBitmap(android.graphics.Bitmap));
+    [setImageBitmap()](http:developer.android.com/reference/android/widget/ImageView.html#setImageBitmap(android.graphics.Bitmap));
 
-\<spoiler>
 
 ``` java
             Element divTagIdCtitle = htmlTag.getElementsByAttributeValue(Constants.ID_ATTRIBUTE, Constants.CTITLE_VALUE).first();
@@ -1663,11 +1660,8 @@ Pentru realizarea aplicației, vor trebui urmați următorii pași:
             xkcdCartoonInformation.setCartoonUrl(cartoonUrl);
 ```
 
-\</spoiler>
 
 ## Opțional (request cu Volley)
-
-\<spoiler>
 
 -   alternativ, se poate folosi biblioteca open-source Volley, care pune
     la dispoziție un obiect specializat pentru descărcarea de imagini și
@@ -1696,8 +1690,6 @@ Pentru realizarea aplicației, vor trebui urmați următorii pași:
     );
     VolleyController.getInstance(xkcdCartoonImageView.getContext()).addToRequestQueue(cartoonRequest);
     `
-
-\</spoiler>
 
 -   obținerea adreselor Internet corespunzătoare caricaturilor
     anterioară, respectiv următoare, care vor fi asociate obiectului
@@ -1782,21 +1774,21 @@ new XKCDCartoonDisplayerAsyncTask().execute(Constants.XKCD_INTERNET_ADDRESS);
 
  Atenție, site-ul xkcd a trecut la https, ceea ce
 pornește un
-[bug](https:*stackoverflow.com/questions/29916962/javax-net-ssl-sslhandshakeexception-javax-net-ssl-sslprotocolexception-ssl-han)
+[bug](https:stackoverflow.com/questions/29916962/javax-net-ssl-sslhandshakeexception-javax-net-ssl-sslprotocolexception-ssl-han)
 din Android \< 5.0, deci pentru rulare trebuie să folosiți o imagine de
 Android cu versiune mai nouă decât Lollipop. \
 
 ---
 
-     * Nu clickați aici decât dupa ce ați rezolvat exercițiul: [[https:*xkcd.com/1174/|mandatory recursive reference]]  m( 
+     * Nu clickați aici decât dupa ce ați rezolvat exercițiul: [[https:xkcd.com/1174/|mandatory recursive reference]]  m( 
 
 **6.** Să se importe în mediul integrat de dezvoltare Android Studio
 proiectul `GoogleSearcher` din directorul `labtasks`.
 
 Se cere să se implementeze o aplicație Android care să realizeze o
-căutare folosind motorul [Google](http:*www.google.com), rezultatul
+căutare folosind motorul [Google](http:www.google.com), rezultatul
 fiind expus printr-un control grafic de tip
-[WebView](http:*developer.android.com/reference/android/webkit/WebView.html).
+[WebView](http:developer.android.com/reference/android/webkit/WebView.html).
 
 ![](images/07googlesearcher.png)
 
@@ -1807,7 +1799,7 @@ acestea vor fi legate prin intermediul caracterului `+`.
 Adresa Internet care conține rezultatele căutării după anumite cuvinte
 cheie este formată din:
 
--   URL-ul de bază: <http:*www.google.com/>
+-   URL-ul de bază: <http:www.google.com/>
 -   lista cuvintelor cheie după care se realizează căutarea:
     search?q=cuvant_cheie<sub>1</sub>+cuvant_cheie<sub>2</sub>+...+cuvant_cheie<sub>n</sub>
 
@@ -1815,11 +1807,11 @@ cheie este formată din:
 
 În situația în care se dorește să se caute după șirul de caractere
 `"android developers"`, adresa Internet la care se găsesc rezultatele
-căutării este: <http:*www.google.ro/search?q=android+developers>.
+căutării este: <http:www.google.ro/search?q=android+developers>.
 
 Încărcarea conținutului unei pagini Internet în cadrul controlului
 grafic de tip `WebView` se face prin intermediul metodei
-[loadDataWithBaseURL](http:*developer.android.com/reference/android/webkit/WebView.html#loadDataWithBaseURL(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String))
+[loadDataWithBaseURL](http:developer.android.com/reference/android/webkit/WebView.html#loadDataWithBaseURL(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String))
 care primește ca parametrii:
 
 -   URL-ul de bază, față de care vor fi rezolvate adresele relative;
@@ -1831,7 +1823,7 @@ care primește ca parametrii:
     se specifică valoarea `null`, valoarea sa va fi `about:blank`).
 
 ``` java
-googleResultsWebView.loadDataWithBaseURL("http:*www.google.com", content, "text/html", "UTF-8", null);
+googleResultsWebView.loadDataWithBaseURL("http:www.google.com", content, "text/html", "UTF-8", null);
 ```
 
 **7.** (opțional) Să se importe în mediul integrat de dezvoltare Android
@@ -1841,7 +1833,7 @@ Se cere să se implementeze o aplicație Android care să afișeze
 informații cu privire la obiectivele turistice dintr-un areal geografic
 (desemnat prin coordonatele nord, sud, est, vest) pe baza rezultatelor
 furnizate de serviciul web [Geonames
-Paces](http:*api.geonames.org/citiesJSON).
+Paces](http:api.geonames.org/citiesJSON).
 
 Detaliile care se doresc a fi vizualizate pentru fiecare obiectiv
 turistic în parte sunt:
@@ -1869,7 +1861,7 @@ precum și cu privire la numele de utilizator:
 
 **Exemplu**. O adresă Internet de la care pot fi accesate rezultate în
 format JSON este:
-[](http:*api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&username=pdsd).
+[](http:api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&username=pdsd).
 
 Rezultatele sunt furnizate în următorul format:
 
@@ -1959,41 +1951,41 @@ student@eim-lab:~/Laborator07$ git push Laborator07_perfectstudent master
 
 [Andrew S. TANENBAUM, David J. WETHERALL, Computer Networks, 5th
 Edition, Pearson Education,
-2011](http:*www.amazon.com/Computer-Networks-Edition-Andrew-Tanenbaum/dp/0132126958) -
+2011](http:www.amazon.com/Computer-Networks-Edition-Andrew-Tanenbaum/dp/0132126958) -
 secțiunea 7.3.4, *HTTP - The HyperText Transfer Protocol*, pp. 683-692  
 [List of HTTP Status
-Codes](http:*en.wikipedia.org/wiki/List_of_HTTP_status_codes)  
+Codes](http:en.wikipedia.org/wiki/List_of_HTTP_status_codes)  
 [Bill PHILLIPS, Brian HARDY, Android Programming. The Big Nerd Ranch
 Guide, Pearson Technology Group,
-2013](http:*www.bignerdranch.com/we-write/android-programming/) -
+2013](http:www.bignerdranch.com/we-write/android-programming/) -
 capitolul 26, *HTTP & Background Tasks*  
 [Ronan SCHWARZ, Phil DUTSON, James STEELE, Nelson TO, Android
 Developer's Cookbook, Building Applications with the Android SDK, 2nd
 Edition, Addison Wesley,
-2013](http:*books.google.ro/books/about/The_Android_Developer_s_Cookbook.html?id=Y4JR2yI2Fo0C&redir_esc=y) -
+2013](http:books.google.ro/books/about/The_Android_Developer_s_Cookbook.html?id=Y4JR2yI2Fo0C&redir_esc=y) -
 capitolul 10 - *Networking*, secțiunea *Using web content*  
 [Wei Meng LEE, Beginning Android 4 Application Development, Wiley,
-2012](http:*eu.wiley.com/WileyCDA/WileyTitle/productCd-1118199545.html) -
+2012](http:eu.wiley.com/WileyCDA/WileyTitle/productCd-1118199545.html) -
 capitolul 10, *Networking*, secțiunile *How to connect to the web using
 HTTP*, *How to consume JSON web services*  
 [Satya KOMATINENI, Dave MACLEAN, Pro Android 4, Apress,
-2012](http:*www.apress.com/9781430239307) - capitolul 15, *Building and
+2012](http:www.apress.com/9781430239307) - capitolul 15, *Building and
 Consuming Services*  
 [Android Programming Tutorials - Core
-Servlets](http:*www.coreservlets.com/android-tutorial) - secțiunea
+Servlets](http:www.coreservlets.com/android-tutorial) - secțiunea
 *Networking II - HTTP and JSON Techniques*  
 [Dezvoltarea aplicațiilor pentru
-Android](http:*android.rosedu.org/wiki/laborator-07-servicii-de-retea#request-uri-http) -
+Android](http:android.rosedu.org/wiki/laborator-07-servicii-de-retea#request-uri-http) -
 partea I, *Request-uri HTTP*  
-[HttpURLConnection](http:*developer.android.com/reference/java/net/HttpURLConnection.html)  
+[HttpURLConnection](http:developer.android.com/reference/java/net/HttpURLConnection.html)  
 [Apache Http
-Components](http:*hc.apache.org/httpcomponents-client-4.4.x/index.html)  
-[HttpClient](http:*developer.android.com/reference/org/apache/http/client/HttpClient.html),
-[HttpGet](http:*developer.android.com/reference/org/apache/http/client/methods/HttpGet.html),
-[HttpPost](http:*developer.android.com/reference/org/apache/http/client/methods/HttpPost.html)  
-[Jsoup](http:*jsoup.org/)  
-[Formatul JSON](http:*en.wikipedia.org/wiki/JSON)  
-[JSONObject](http:*developer.android.com/reference/org/json/JSONObject.html)
+Components](http:hc.apache.org/httpcomponents-client-4.4.x/index.html)  
+[HttpClient](http:developer.android.com/reference/org/apache/http/client/HttpClient.html),
+[HttpGet](http:developer.android.com/reference/org/apache/http/client/methods/HttpGet.html),
+[HttpPost](http:developer.android.com/reference/org/apache/http/client/methods/HttpPost.html)  
+[Jsoup](http:jsoup.org/)  
+[Formatul JSON](http:en.wikipedia.org/wiki/JSON)  
+[JSONObject](http:developer.android.com/reference/org/json/JSONObject.html)
 
 ### Android Developer Fundamentals
 
