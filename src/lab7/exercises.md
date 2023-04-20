@@ -21,6 +21,7 @@ curl  "https://wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/expr_get.php?operat
 ```
 
 **2c.** Studiați implementarea serverului în php
+https://wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/
 
 **3.** Pe baza functionalitatii serverului, se cere să se implementeze in Android un calculator, care suportă
 operațiile de adunare/scădere/înmulțire/împărțire a două numere reale, pe baza
