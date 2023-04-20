@@ -17,7 +17,7 @@ pentru GET și POST
 ```console
 curl  -X  POST  --data 'operation=times&t1=9&t2=2' https://wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/expr_post.php
 
-curl  "https:*wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/expr_get.php?operation=times&t1=9&t2=2"
+curl  "https://wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/expr_get.php?operation=times&t1=9&t2=2"
 ```
 
 **2c.** Studiați implementarea serverului în php
