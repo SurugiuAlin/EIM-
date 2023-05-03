@@ -139,7 +139,56 @@ protected void onResume() {
 ```
 </details>
 
-## 6. Implementarea metodelor onCreateOptionsMenu și onOptionsItemSelected în clasa MainActivity:
+## 6. Implementarea metodei initViews în clasa MainActivity:
+<details>
+    <summary> initViews() </summary>
+
+```java
+private void initViews() {
+    ListView listMainChat = findViewById(R.id.list_conversation);
+    edCreateMessage = findViewById(R.id.ed_enter_message);
+    Button btnSendMessage = findViewById(R.id.btn_send_msg);
+
+    adapterMainChat = new ArrayAdapter<>(this, R.layout.message_layout);
+    listMainChat.setAdapter(adapterMainChat);
+
+    btnSendMessage.setOnClickListener(view -> sendMessage());
+}
+```
+</details>
+
+## 7. Implementarea metodei initBluetooth în clasa MainActivity:
+<details>
+    <summary> initBluetooth() </summary>
+
+```java
+private void initBluetooth() {
+    bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    if (bluetoothAdapter == null) {
+        Toast.makeText(this, "No bluetooth found", Toast.LENGTH_SHORT).show();
+    }
+}
+```
+</details>
+
+
+## 8. Crearea meniului pentru activitatea MainActivity:
+<details>
+    <summary> menu_main_activity.xml </summary>
+
+```xml
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_enable_bluetooth"
+        android:title="Enable Bluetooth" />
+    <item
+        android:id="@+id/menu_search_devices"
+        android:title="Search Devices" />
+</menu>
+```
+</details>
+
+## 9. Implementarea metodelor onCreateOptionsMenu și onOptionsItemSelected în clasa MainActivity:
 Creați meniul pentru a permite activarea Bluetooth și căutarea altor dispozitive.
 
 <details>
@@ -167,7 +216,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
 
 </details>
 
-## 7. Implementarea metodei onActivityResult în clasa MainActivity:
+## 10. Implementarea metodei onActivityResult în clasa MainActivity:
 Gestionați rezultatul activității DeviceListActivity pentru a obține adresa dispozitivului selectat și conectați-vă la acesta.
 
 <details>
@@ -186,26 +235,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 ```
 </details>
 
-## 7. Implementarea metodei onActivityResult în clasa MainActivity:
-Gestionați rezultatul activității DeviceListActivity pentru a obține adresa dispozitivului selectat și conectați-vă la acesta.
-
-<details>
-    <summary> onActivityResult() </summary>
-
-```java
-@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    int SELECT_DEVICE = 102;
-    if (requestCode == SELECT_DEVICE && resultCode == RESULT_OK) {
-        String address = data.getStringExtra("deviceAddress");
-        chatUtils.connect(bluetoothAdapter.getRemoteDevice(address));
-    }
-    super.onActivityResult(requestCode, resultCode, data);
-}
-```
-</details>
-
-## 8. Implementarea metodei enableBluetooth în clasa MainActivity:
+## 11. Implementarea metodei enableBluetooth în clasa MainActivity:
 Activați Bluetooth și faceți dispozitivul vizibil pentru alte dispozitive.
 
 <details>
@@ -229,7 +259,7 @@ private void enableBluetooth() {
 ```
 </details>
 
-## 9. Implementarea metodei sendMessage în clasa MainActivity:
+## 12. Implementarea metodei sendMessage în clasa MainActivity:
 Trimiteți mesaje prin intermediul conexiunii Bluetooth către alt dispozitiv.
 
 <details>
@@ -246,7 +276,37 @@ private void sendMessage() {
 ```
 </details>
 
-## 10. Implementarea metodei onDestroy în clasa MainActivity:
+## 13. Implementarea metodei checkPermissions în clasa MainActivity:
+<details>
+    <summary> checkPermissions() </summary>
+
+```java
+private void checkPermissions() {
+    if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        requestPermissionLauncher.launch(ACCESS_FINE_LOCATION);
+    } else {
+        selectDeviceLauncher.launch(new Intent(this, DeviceListActivity.class));
+    }
+}
+```
+</details>
+
+## 14. Implementarea metodei showPermissionDialog în clasa MainActivity:
+<details>
+    <summary> showPermissionDialog() </summary>
+
+```java
+private void showPermissionDialog() {
+    new AlertDialog.Builder(this)
+            .setCancelable(false)
+            .setMessage("Location permission is required.\nPlease grant")
+            .setPositiveButton("Grant", (dialogInterface, i) -> checkPermissions())
+            .setNegativeButton("Deny", (dialogInterface, i) -> finish()).show();
+}
+```
+</details>
+
+## 15. Implementarea metodei onDestroy în clasa MainActivity:
 Închideți conexiunea Bluetooth la închiderea aplicației.
 
 <details>
@@ -262,3 +322,4 @@ protected void onDestroy() {
 }
 ```
 </details>
+
