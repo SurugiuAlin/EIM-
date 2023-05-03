@@ -94,6 +94,7 @@
   - [MainActivity](lab9/main_activity.md)
   - [Communication with Bluetooth](lab9/communication_rfc_bluetooth.md)
   - [Bluetooth App UI](lab9/bluetooth_app_ui.md)
+  - [Resurse Utile](lab9/resources.md)
 - [10. Utilizarea Serviciilor de Localizare](lab10/lab10.md)
 
 # Informaţii Administrative
