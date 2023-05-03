@@ -1,9 +1,9 @@
 # Clasa DeviceListActivity
 DeviceListActivity este o clasă care afișează o listă de dispozitive Bluetooth disponibile și împerecheate, permițând utilizatorului să selecteze unul pentru a stabili o conexiune.
 
-Metoda `onCreate()` inițializează activitatea și layout-ul, apoi apelează metoda `init()`.
+1. Metoda `onCreate()` inițializează activitatea și layout-ul, apoi apelează metoda `init()`.
 <details>
-<summary>Metoda onCreate()</summary>
+<summary>onCreate()</summary>
 
 ```java
 @Override
@@ -15,10 +15,9 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 </details>
 
-Metoda `init()` inițializează componentele interfeței și înregistrează BroadcastReceiver pentru a detecta dispozitivele Bluetooth disponibile.
-
+2. Metoda `init()` inițializează componentele interfeței și înregistrează BroadcastReceiver pentru a detecta dispozitivele Bluetooth disponibile.
 <details>
-<summary>Metoda init()</summary>
+<summary>init()</summary>
 
 ```java
 private void init() {
@@ -47,9 +46,9 @@ private void init() {
 ```
 </details>
 
-Metoda `onDeviceClick()` este apelată atunci când utilizatorul selectează un dispozitiv din listă. Aceasta oprește procesul de descoperire și trimite adresa dispozitivului selectat ca rezultat.
+3. Metoda `onDeviceClick()` este apelată atunci când utilizatorul selectează un dispozitiv din listă. Aceasta oprește procesul de descoperire și trimite adresa dispozitivului selectat ca rezultat.
 <details>
-<summary>Metoda onDeviceClick()</summary>
+<summary> onDeviceClick()</summary>
 
 ```java
 private void onDeviceClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -71,9 +70,9 @@ private void onDeviceClick(AdapterView<?> adapterView, View view, int i, long l)
 ```
 </details>
 
-Metoda `populatePairedDevices()` adaugă dispozitivele împerecheate în lista corespunzătoare.
+4. Metoda `populatePairedDevices()` adaugă dispozitivele împerecheate în lista corespunzătoare.
 <details>
-<summary>Metoda populatePairedDevices()</summary>
+<summary>populatePairedDevices()</summary>
 
 ```java
 private void populatePairedDevices() {
@@ -88,10 +87,10 @@ private void populatePairedDevices() {
 ```
 </details>
 
-Metoda `onDiscoveryFinished()` este apelată atunci când procesul de descoperire a dispozitivelor Bluetooth este finalizat.
+5. Metoda `onDiscoveryFinished()` este apelată atunci când procesul de descoperire a dispozitivelor Bluetooth este finalizat.
 
 <details>
-<summary>Metoda onDiscoveryFinished()</summary>
+<summary>onDiscoveryFinished()</summary>
 
 ```java
 private void onDiscoveryFinished() {
@@ -102,9 +101,9 @@ private void onDiscoveryFinished() {
 ```
 </details>
 
-Metoda `scanDevices()` inițiază procesul de scanare a dispozitivelor Bluetooth disponibile.
+6. Metoda `scanDevices()` inițiază procesul de scanare a dispozitivelor Bluetooth disponibile.
 <details>
-<summary>Metoda scanDevices()</summary>
+<summary>scanDevices()</summary>
 
 ```java
 private void scanDevices() {
@@ -122,9 +121,9 @@ private void scanDevices() {
 
 </details>
 
-Metoda `onCreateOptionsMenu()` creează meniul din activitate.
+7. Metoda `onCreateOptionsMenu()` creează meniul din activitate.
 <details>
-<summary>Metoda onCreateOptionsMenu()</summary>
+<summary> onCreateOptionsMenu()</summary>
 
 
 ```java
@@ -136,9 +135,9 @@ public boolean onCreateOptionsMenu(Menu menu) {
 ```
 </details>
 
-Metoda `onOptionsItemSelected()` gestionează acțiunea de apăsare a butonului "Scan devices" din meniul activității.
+8. Metoda `onOptionsItemSelected()` gestionează acțiunea de apăsare a butonului "Scan devices" din meniul activității.
 <details>
-<summary>Metoda onOptionsItemSelected()</summary>
+<summary>onOptionsItemSelected()</summary>
 
 ```java
 @Override
@@ -181,7 +180,7 @@ private final BroadcastReceiver bluetoothDeviceListener = new BroadcastReceiver(
 
 Metoda `onDestroy()` este apelată atunci când activitatea este distrusă și se ocupă de dezînregistrarea BroadcastReceiver.
 <details>
-<summary>Metoda onDestroy()</summary>
+<summary> onDestroy()</summary>
 
 ```java
 @Override
