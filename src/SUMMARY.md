@@ -90,7 +90,9 @@
   - [Parsare JSON](lab7/json.md)
   - [Exercitii](lab7/exercises.md)
 - [8. Descoperirea Serviciilor de Rețea](lab8/lab8.md)
-- [9. Comunicare prin Bluetooth](lab9/lab9_new.md)
+- [9. Comunicare prin Bluetooth](lab9/overview.md)
+  - [MainActivity](lab9/main_activity.md)
+  - [Communication with Bluetooth](lab9/communication_rfc_bluetooth.md)
 - [10. Utilizarea Serviciilor de Localizare](lab10/lab10.md)
 
 # Informaţii Administrative
