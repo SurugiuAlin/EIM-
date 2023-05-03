@@ -17,6 +17,8 @@ Creați layout-ul pentru activitatea principală, care include un ListView pentr
 
 <details>
     <summary> activity_main.xml </summary>
+
+```xml
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -47,7 +49,73 @@ Creați layout-ul pentru activitatea principală, care include un ListView pentr
             android:text="Send" />
     </LinearLayout>
 </LinearLayout>
+```
 </details>
+
+<details>
+<summary> activity_device_list.xml </summary>
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/progress_scan_devices"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_paired_devices" />
+
+    <ListView
+        android:id="@+id/list_paired_devices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_available_devices" />
+
+    <ListView
+        android:id="@+id/list_available_devices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+```
+</details>
+
+<details>
+<summary> activity_device_list_item.xml </summary>
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/device_info"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+```
+</details>
+
+<details>
+<summary> message_layout.xml </summary>
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+```
+</details>
+
 
 ## 3. Crearea clasei ChatUtils:
 Creați clasa ChatUtils pentru a gestiona conexiunile Bluetooth și comunicarea între dispozitive.
