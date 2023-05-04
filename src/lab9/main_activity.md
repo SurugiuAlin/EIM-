@@ -131,7 +131,40 @@ public class ChatUtils {
 
 </details>
 
-## 4. Implementarea metodei onCreate în clasa MainActivity:
+## 4. Implementarea metodei initViews în clasa MainActivity:
+<details>
+    <summary> initViews() </summary>
+
+```java
+private void initViews() {
+    ListView listMainChat = findViewById(R.id.list_conversation);
+    edCreateMessage = findViewById(R.id.ed_enter_message);
+    Button btnSendMessage = findViewById(R.id.btn_send_msg);
+
+    adapterMainChat = new ArrayAdapter<>(this, R.layout.message_layout);
+    listMainChat.setAdapter(adapterMainChat);
+
+    btnSendMessage.setOnClickListener(view -> sendMessage());
+}
+```
+</details>
+
+## 5. Implementarea metodei initBluetooth în clasa MainActivity:
+<details>
+    <summary> initBluetooth() </summary>
+
+```java
+private void initBluetooth() {
+    bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    if (bluetoothAdapter == null) {
+        Toast.makeText(this, "No bluetooth found", Toast.LENGTH_SHORT).show();
+    }
+}
+```
+</details>
+
+
+## 6. Implementarea metodei onCreate în clasa MainActivity:
 Initializați componentele vizuale, Bluetooth și clasa ChatUtils în metoda onCreate() a clasei MainActivity.
 
 <details>
@@ -151,7 +184,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 </details>
 
-## 5. Implementarea metodei onResume în clasa MainActivity:
+## 7. Implementarea metodei onResume în clasa MainActivity:
 Asigurați-vă că metoda start() a clasei ChatUtils este apelată în metoda onResume() a clasei MainActivity.
 
 <details>
@@ -168,37 +201,6 @@ protected void onResume() {
 ```
 </details>
 
-## 6. Implementarea metodei initViews în clasa MainActivity:
-<details>
-    <summary> initViews() </summary>
-
-```java
-private void initViews() {
-    ListView listMainChat = findViewById(R.id.list_conversation);
-    edCreateMessage = findViewById(R.id.ed_enter_message);
-    Button btnSendMessage = findViewById(R.id.btn_send_msg);
-
-    adapterMainChat = new ArrayAdapter<>(this, R.layout.message_layout);
-    listMainChat.setAdapter(adapterMainChat);
-
-    btnSendMessage.setOnClickListener(view -> sendMessage());
-}
-```
-</details>
-
-## 7. Implementarea metodei initBluetooth în clasa MainActivity:
-<details>
-    <summary> initBluetooth() </summary>
-
-```java
-private void initBluetooth() {
-    bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-    if (bluetoothAdapter == null) {
-        Toast.makeText(this, "No bluetooth found", Toast.LENGTH_SHORT).show();
-    }
-}
-```
-</details>
 
 
 ## 8. Crearea meniului pentru activitatea MainActivity:
