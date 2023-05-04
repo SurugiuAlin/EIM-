@@ -1,6 +1,6 @@
 
-
-## 1. Descarcarea scheletului
+## 1. Configurarea proiectului în Android Studio:
+Creați un nou proiect Android în Android Studio, folosind o temă compatibilă cu AppCompatActivity. Adăugați următoarele dependințe în build.gradle:
 
 git clone https://github.com/nicolae1099/BluetoothChatApp-schelet.git
 
@@ -78,10 +78,10 @@ protected void onResume() {
 
 ## 8. Crearea meniului pentru activitatea MainActivity:
 Trebuie dat click pe res -> New -> Android Resource Directory. Iar la Resource Type se va selecta "menu". Ulterior, se va adauga urmatorul fisier xml in cadrul acelui director.
-<details>
-<summary> show image </summary>
+
+
 ![](images/create_menu.png)
-</details>
+
 
 <details>
     <summary> menu_main_activity.xml </summary>
