@@ -3,7 +3,7 @@ Clasa ChatUtils gestionează conexiunile Bluetooth și comunicarea între dispoz
 
 ## Constructor
 Constructorul inițializează handler, context, state și bluetoothAdapter.
-
+Cand se va importa `Handler`-ul, se va alege cel din `android.os`.
 <details>
 <summary>Constructorul</summary>
 
