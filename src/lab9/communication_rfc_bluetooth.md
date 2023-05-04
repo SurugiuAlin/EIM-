@@ -1,27 +1,6 @@
 # Clasa ChatUtils
 Clasa ChatUtils gestionează conexiunile Bluetooth și comunicarea între dispozitivele conectate.
 
-## Declararea variabilelor folosite:
-La inceputul clasei, se vor declara urmatoarele:
-
-```java
-    private final Handler handler;
-    private final BluetoothAdapter bluetoothAdapter;
-    private final Context context;
-
-    private AcceptThread acceptThread;
-    private ConnectThread connectThread;
-    private ConnectedThread connectedThread;
-
-    private final UUID APP_UUID = UUID.fromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
-
-    public static final int STATE_NONE = 0;
-    public static final int STATE_LISTEN = 1;
-    public static final int STATE_CONNECTING = 2;
-    public static final int STATE_CONNECTED = 3;
-
-    private int state;
-```
 
 ## Constructor
 Constructorul inițializează handler, context, state și bluetoothAdapter.
