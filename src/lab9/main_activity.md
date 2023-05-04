@@ -1,6 +1,5 @@
 
-## 1. Configurarea proiectului în Android Studio:
-Creați un nou proiect Android în Android Studio, folosind o temă compatibilă cu AppCompatActivity. Adăugați următoarele dependințe în build.gradle:
+## 1. Descarcarea scheletului
 
 git clone https://github.com/nicolae1099/BluetoothChatApp-schelet.git
 
