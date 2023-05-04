@@ -70,6 +70,18 @@ Pentru a functiona, aplicatia necesita urmatoarele permisiuni:
 ```
 </details>
 
+## 1.2 Declararea variabilelor folosite:
+La inceputul clasei se vor declara urmatoarele variabile:
+```java
+    private BluetoothAdapter bluetoothAdapter;
+    private ChatUtils chatUtils;
+
+    private EditText edCreateMessage;
+    private ArrayAdapter<String> adapterMainChat;
+
+    private String connectedDevice;
+```
+
 
 ## 2. Crearea layout-ului aplicației:
 Creați layout-ul pentru activitatea principală, care include un ListView pentru afișarea mesajelor și un EditText cu un buton pentru trimiterea mesajelor.
