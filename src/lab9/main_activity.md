@@ -266,8 +266,10 @@ protected void onResume() {
 
 ## 8. Crearea meniului pentru activitatea MainActivity:
 Trebuie dat click pe res -> New -> Android Resource Directory. Iar la Resource Type se va selecta "menu". Ulterior, se va adauga urmatorul fisier xml in cadrul acelui director.
+<details>
+<summary> show image </summary>
 ![](images/create_menu.png)
-
+</details>
 
 <details>
     <summary> menu_main_activity.xml </summary>
@@ -282,6 +284,23 @@ Trebuie dat click pe res -> New -> Android Resource Directory. Iar la Resource T
         android:title="Search Devices" />
 </menu>
 ```
+</details>
+
+<details>
+<summary> menu_device_list.xml </summary>
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_scan_devices"
+        android:icon="@drawable/ic_bluetooth_searching"
+        android:title="@string/str_menu_scan_devices"
+        app:showAsAction="always" />
+</menu>
+```
+
 </details>
 
 ## 9. Implementarea metodelor onCreateOptionsMenu și onOptionsItemSelected în clasa MainActivity:
