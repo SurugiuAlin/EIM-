@@ -133,6 +133,36 @@ Metodele createAndStartAcceptThread(), createAndStartConnectThread(device), canc
 ```
 </details>
 
+Alte metode auxiliare:
+
+<details>
+<summary> connectionLost(), connectionFailed() </summary>
+
+```java
+    private void connectionLost() {
+        Message message = handler.obtainMessage(Constants.MESSAGE_TOAST);
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.TOAST, "Connection Lost");
+        message.setData(bundle);
+        handler.sendMessage(message);
+
+        ChatUtils.this.start();
+    }
+```
+
+```java
+    private synchronized void connectionFailed() {
+        Message message = handler.obtainMessage(Constants.MESSAGE_TOAST);
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.TOAST, "Cant connect to the device");
+        message.setData(bundle);
+        handler.sendMessage(message);
+
+        ChatUtils.this.start();
+    }
+```
+</details>
+
 
 ## AcceptThread 
 AcceptThread așteaptă și acceptă conexiuni de la alte dispozitive Bluetooth.
