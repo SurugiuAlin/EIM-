@@ -263,6 +263,7 @@ protected void onResume() {
 
 
 ## 8. Crearea meniului pentru activitatea MainActivity:
+Trebuie dat click pe res -> New -> Android Resource Directory. Iar la Resource Type se va selecta "menu". Ulterior, se va adauga urmatorul fisier xml in cadrul acelui director.
 <details>
     <summary> menu_main_activity.xml </summary>
 
