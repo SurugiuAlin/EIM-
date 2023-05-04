@@ -19,22 +19,29 @@ Acest tutorial pas cu pas vă va arăta cum să creați o aplicație de chat fol
 Pentru a utiliza funcționalitatea Bluetooth, va trebui să adăugați următoarele permisiuni în fișierul `AndroidManifest.xml`:
 
 ```xml
-<uses-permission android:name="android.permission.BLUETOOTH"/>
-<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
 ```
 
 ## Activarea Bluetooth <a name="activarea-bluetooth"></a>
-Pentru a activa Bluetooth pe dispozitiv, vom folosi `BluetoothAdapter`. Mai întâi, obțineți o referință la adaptatorul Bluetooth, apoi verificați dacă Bluetooth este activat. Dacă nu este activat, solicitați utilizatorului să activeze Bluetooth.
+Pentru a activa Bluetooth pe dispozitiv, vom folosi BluetoothAdapter. Mai întâi, obțineți o referință la adaptatorul Bluetooth, apoi verificați dacă Bluetooth este activat. Dacă nu este activat, solicitați utilizatorului să activeze Bluetooth.
 
 ## Descoperirea dispozitivelor <a name="descoperirea-dispozitivelor"></a>
-Pentru a descoperi alte dispozitive Bluetooth, vom utiliza metoda `startDiscovery()` a `BluetoothAdapter`. De asemenea, vom înregistra un `BroadcastReceiver` pentru a primi informații despre dispozitivele descoperite.
+Pentru a descoperi alte dispozitive Bluetooth, vom utiliza metoda startDiscovery() a BluetoothAdapter. De asemenea, vom înregistra un BroadcastReceiver pentru a primi informații despre dispozitivele descoperite.
 
 ## Conectarea dispozitivelor <a name="conectarea-dispozitivelor"></a>
-După ce am descoperit alte dispozitive, vom crea o conexiune între dispozitivele noastre, folosind clasele `BluetoothServerSocket` și `BluetoothSocket`.
+După ce am descoperit alte dispozitive, vom crea o conexiune între dispozitivele noastre, folosind clasele BluetoothServerSocket și BluetoothSocket.
 
 ## Trimiterea și primirea mesajelor <a name="trimiterea-și-primirea-mesajelor"></a>
-Odată ce conexiunea este stabilită, vom utiliza `InputStream` și `OutputStream` pentru a trimite și a primi mesaje între dispozitive.
+Odată ce conexiunea este stabilită, vom utiliza InputStream și OutputStream pentru a trimite și a primi mesaje între dispozitive.
 
 ## Încheiere <a name="încheiere"></a>
 La finalul acestui tutorial, veți avea o aplicație funcțională de chat care utilizează Bluetooth pentru a comunica între dispozitive Android.
