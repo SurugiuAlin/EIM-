@@ -183,6 +183,34 @@ Alte metode auxiliare:
         ChatUtils.this.start();
     }
 ```
+
+```java
+     private synchronized void connected(BluetoothSocket socket, BluetoothDevice device) {
+        if (connectThread != null) {
+            connectThread.cancel();
+            connectThread = null;
+        }
+
+        if (connectedThread != null) {
+            connectedThread.cancel();
+            connectedThread = null;
+        }
+
+        connectedThread = new ConnectedThread(socket);
+        connectedThread.start();
+
+        Message message = handler.obtainMessage(Constants.MESSAGE_DEVICE_NAME);
+        Bundle bundle = new Bundle();
+        if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        bundle.putString(Constants.DEVICE_NAME, device.getName());
+        message.setData(bundle);
+        handler.sendMessage(message);
+
+        setState(STATE_CONNECTED);
+    }
+```
 </details>
 
 
