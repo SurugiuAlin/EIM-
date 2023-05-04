@@ -153,7 +153,7 @@ Creați layout-ul pentru activitatea principală, care include un ListView pentr
 </details>
 
 <details>
-<summary> activity_device_list_item.xml </summary>
+<summary> device_list_item.xml </summary>
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -174,6 +174,8 @@ Creați layout-ul pentru activitatea principală, care include un ListView pentr
     android:layout_height="wrap_content" />
 ```
 </details>
+
+
 
 
 ## 3. Crearea clasei ChatUtils:
