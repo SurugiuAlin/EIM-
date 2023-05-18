@@ -300,7 +300,9 @@ proprietăți:
     ```
 
 -   în fișierul `AndroidManifest.xml`
-    -   se indică permisiunile necesare: `<uses-permission
+    -   se indică permisiunile necesare: 
+        ```xml
+        <uses-permission
           android:name="android.permission.ACCESS_COARSE_LOCATION" />
         <uses-permission
           android:name="android.permission.ACCESS_FINE_LOCATION" />    
@@ -312,7 +314,7 @@ proprietăți:
           android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
         <uses-permission
           android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        `
+        ```
         -   `android.permission.ACCESS_COARSE_LOCATION` - obține locația
             utilizatorului folosind informațiile preluate prin rețele
             fără fir și datele corespunzătoare celulei în care se
@@ -370,7 +372,8 @@ proprietăți:
 -   se precizează regulile pentru obfuscatorul Proguard (în fișierul
     `proguard-rules.pro` din directorul *app*), astfel încât acesta să
     nu elimine clasele necesare:  
-    `-keep class * extends java.util.ListResourceBundle {
+    ```java
+    -keep class * extends java.util.ListResourceBundle {
       protected Object[][] getContents();
     }
     -keep public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
@@ -383,7 +386,7 @@ proprietăți:
     -keepnames class * implements android.os.Parcelable {
       public static final ** CREATOR;
     }
-    `
+    ```
 
 ### Dispozitiv Fizic
 
