@@ -96,6 +96,7 @@
   - [Bluetooth App UI](lab9/bluetooth_app_ui.md)
   - [Resurse Utile](lab9/resources.md)
 - [10. Utilizarea Serviciilor de Localizare](lab10/lab10.md)
+  - [Exercitii](lab10/exercises.md)
 
 # Informaţii Administrative
 - [Regulament](resources/rules.md)
