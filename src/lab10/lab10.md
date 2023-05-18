@@ -138,15 +138,18 @@ accesa orice serviciu Google.
         **1.** indicarea tipului de API folosit (în cazul de față
         *Google Maps Android API*)  
         <img src="/eim/laboratoare/laborator10/configurare04new.png" class="align-center" alt="configurare04new.png" />  
+        ![](images/configurare04new.png)
         **2.** generarea (automată) propriu-zisă a cheii, urmată de
         apăsarea butonului \\\\Done\\\\;  
         <img src="/eim/laboratoare/laborator10/configurare05new.png" class="align-center" alt="configurare05new.png" />  
+        ![](images/configurare05new.png)
         În secțiunea *Credentials* va putea fi vizualizată cheia creată,
         împreună cu denumirea sa. Pentru cheile care nu sunt
         restricționate, va fi vizibil semnul :!: care indică faptul că
         aceasta poate fi utilizată din orice context, ceea ce poate
         implica o breșă de securitate  
         <img src="/eim/laboratoare/laborator10/configurare06new.png" class="align-center" alt="configurare06new.png" />  
+        ![](images/configurare06new.png)
         Prin accesarea cheii respective, aceasta poate fi restricționată
         în sensul în care se precizează **contextul în care este
         folosită cheia** (în cazul de față, aplicații Android - *Android
@@ -200,19 +203,23 @@ accesa orice serviciu Google.
         se accesează butonul *Add package name and fingerprint* pentru a
         se specifica denumirea pachetului corespunzător aplicației
         Android care va accesa API-ul respectiv și certificatul SHA-1  
-        <img src="/eim/laboratoare/laborator10/configurare07new.png" class="align-center" alt="configurare07new.png" />  
+        <!-- img src="/eim/laboratoare/laborator10/configurare07new.png" class="align-center" alt="configurare07new.png" /-->  
+        ![](images/configurare07new.png)
         În secțiunea *Credentials* pot fi vizualizate cheile pentru API
         generate anterior  
-        <img src="/eim/laboratoare/laborator10/configurare08new.png" class="align-center" alt="configurare08new.png" />
+        <!-- img src="/eim/laboratoare/laborator10/configurare08new.png" class="align-center" alt="configurare08new.png" /-->
+        ![](images/configurare08new.png)
     -   în secțiunea *Credentials*, prin accesarea opțiunii *Create
         credentials* din care este selectat tipul de cheie necesar (în
         cazul de față *API key*); dacă nu se cunoaște tipul de cheie
         necesar, se poate selecta valoarea *Help me choose*  
         <img src="/eim/laboratoare/laborator10/configurare09new.png" class="align-center" alt="configurare09new.png" />  
+        ![](images/configurare09new.png)
         cheia respectivă va fi generată în mod automat, existând
         posibilitatea ca aceasta să fie restricționată, pentru a nu fi
         accesată din orice context  
         <img src="/eim/laboratoare/laborator10/configurare10new.png" class="align-center" alt="configurare10new.png" />
+        ![](images/configurare10new.png)
 
 **2.** Pe dispozitivul mobil (fizic sau virtual) pe care se va rula
 aplicația care accesează serviciul de localizare, trebuie să se găsească
