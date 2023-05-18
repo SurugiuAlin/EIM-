@@ -63,10 +63,13 @@ Astfel, funcționalitățile oferite pentru dezvoltatori sunt:
     set de date fiind determinată de tipul de activitate aflat în
     desfășurare.
 
-\<note>Este recomandat ca informațiile legate de localizarea
+---
+**Note**
+
+Este recomandat ca informațiile legate de localizarea
 dispozitivului mobil să se realizeze folosind API-ul pus la dispoziție
 de Google Play Services, în detrimentul mecanismelor precedente pentru
-localizare (disponibile în pachetul `android.location`).\
+localizare (disponibile în pachetul `android.location`).
 
 ---
 
@@ -83,12 +86,7 @@ astfel de funcționalitate.
 
 Trebuie să fiți autentificați folosind numele de
 utilizator și parola contului Google, altfel va trebui să vă creați un
-astfel de cont.\
-
----
-
----
-**Note**
+astfel de cont.
 
  În situația în care nu a fost creat un proiect Google
 API în prealabil, trebuie realizat acest lucru, prin selectarea opțiunii
@@ -115,7 +113,7 @@ Pentru fiecare proiect trebuie să se precizeze următorii parametri:
 mod implicit ca proiect curent.
 
 ![](images/createproject04new.png)
-\
+
 
 ---
 
@@ -161,16 +159,22 @@ accesa orice serviciu Google.
         utilitar, calea căte Java trebuie să se găsească în variabila de
         mediu `$PATH`, respectiv `%PATH`).  
         Linux
-        `student@eg-106:~$ export PATH=$PATH:/usr/local/java/jdk1.8.0_131/bin
+        ```shell
+        student@eg-106:~$ export PATH=$PATH:/usr/local/java/jdk1.8.0_131/bin
         student@eg-106:~$ keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
-        `  
+        ```
+
         Windows
-        `C:\Users\Student> set PATH=%PATH%;C:\Program Files\Java\jdk_1.8.0_131\bin
+        ```shell
+        C:\Users\Student> set PATH=%PATH%;C:\Program Files\Java\jdk_1.8.0_131\bin
         C:\Users\Student> keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
-        `  
+        ```
+
         Vor fi furnizate mai multe tipuri de amprente digitale, pentru
         cheia publică de tip Android fiind necesară cea de tip SHA-1
-        `Alias name: androiddebugkey
+
+        ```
+        Alias name: androiddebugkey
         Creation date: Mar 5, 2015
         Entry type: PrivateKeyEntry
         Certificate chain length: 1
@@ -196,16 +200,19 @@ accesa orice serviciu Google.
         0010: B8 C1 89 75                                        ...u
         ]
         ]
-        `  
-        se accesează butonul *Add package name and fingerprint* pentru a
+        ```
+
+        Se accesează butonul *Add package name and fingerprint* pentru a
         se specifica denumirea pachetului corespunzător aplicației
         Android care va accesa API-ul respectiv și certificatul SHA-1  
-        <!-- img src="/eim/laboratoare/laborator10/configurare07new.png" class="align-center" alt="configurare07new.png" /-->  
+
         ![](images/configurare07new.png)
+
         În secțiunea *Credentials* pot fi vizualizate cheile pentru API
         generate anterior  
-        <!-- img src="/eim/laboratoare/laborator10/configurare08new.png" class="align-center" alt="configurare08new.png" /-->
+
         ![](images/configurare08new.png)
+
     -   în secțiunea *Credentials*, prin accesarea opțiunii *Create
         credentials* din care este selectat tipul de cheie necesar (în
         cazul de față *API key*); dacă nu se cunoaște tipul de cheie
@@ -225,13 +232,16 @@ publică.
 **3.** Se instalează SDK-ul *Google Play Services*, necesar accesării
 serviciului de localizare prin intermediul unei aplicații Android.
 
--   Linux `student@eg-106:~$ cd /opt/android-sdk-linux/tools
+-   Linux
+    ```sh
+    student@eg-106:~$ cd /opt/android-sdk-linux/tools
     student@eg-106:/opt/android-sdk-linux/tools$ sudo ./android
-    `
+    ```
 -   Windows - se deschide un terminal cu drepturi de administrator
-    `C:\Users\Student> cd "..\..\Program Files (x86)\Android\android-sdk\tools"
+    ```
+    C:\Users\Student> cd "..\..\Program Files (x86)\Android\android-sdk\tools"
     C:\Program Files (x86)\Android\android-sdk\tools>android.bat
-    `
+    ```
 
 ![](images/configurare11new.png)
 
@@ -246,7 +256,10 @@ integrat de dezvoltare Android Studio, prin accesarea opțiunii *Tools* →
 
 ![](images/configurare12newandroidstudio.png)
 
-\<hidden> Biblioteca pentru accesarea funcționalității oferite de
+
+<details>
+<summary>Hidden</summary>
+Biblioteca pentru accesarea funcționalității oferite de
 serviciul de localizare se găsește la
 `<android-sdk>/extras/google/google_play_services/libproject/google-play-services_lib`.
 
@@ -263,7 +276,7 @@ către biblioteca *Google Play Services*, astfel descărcată.
       
     ![](images/configurare14.png)
 
-\</hidden>
+</details>
 
 **4.** În mediul integrat de dezvoltare Android Studio, se creează un
 proiect corespunzător unei aplicații Android, având următoarele
@@ -278,24 +291,13 @@ proprietăți:
 -   în fișierul `build.gradle` să se specifice dependința către
     biblioteca Google Play Services
     (`com.google.android.gms:play-services`), în secțiunea
-    `dependencies`: `...
+    `dependencies`:
+    ```
     dependencies {
       ...
       compile 'com.google.android.gms:play-services:10.2.4'
     }
-    `
-
-\<hidden>
-
--   pentru **Eclipse**, trebuie să existe o referință către biblioteca
-    *Google Play Services* (click dreapta pe denumirea proiectului în
-    *Package Explorer* → *Properties*), se accesează opțiunea *Android*
-    și se specifică referința către aceasta respectivă în secțiunea
-    *Library* (accesând butonul *Add*)  
-      
-    ![](images/configurare15.png)
-
-\</hidden>
+    ```
 
 -   în fișierul `AndroidManifest.xml`
     -   se indică permisiunile necesare: `<uses-permission
@@ -330,30 +332,38 @@ proprietăți:
         -   `android.permission.WRITE_EXTERNAL_STORAGE` - utilizează un
             spațiu de stocare pentru informațiile legate de hărți;
     -   pentru redarea hărților, precum și pentru operațiile de tip
-        zoom, este necesară folosirea bibliotecii OpenGL `<uses-feature
+        zoom, este necesară folosirea bibliotecii OpenGL 
+        ```xml
+          <uses-feature
           android:glEsVersion="0x00020000"
           android:required="true" /> 
-        `
+        ```
     -   în secțiunea `<application> ... </application>` se indică:
         -   cheia publică utilizată pentru accesarea funcționalității
-            legată de serviciile de localizare `<metadata
+            legată de serviciile de localizare 
+            ```xml
+              <metadata
               android:name="com.google.android.maps.v2.API_KEY"
               android:value="AIzaSyARiJhQ-Lj6HnzQwq7MqAvjWQtNkjVcprs" />
-            `
+            ```
         -   versiunea folosită pentru biblioteca Google Play Services
-            (preluată din cadrul proiectului referit) `<metadata
+            (preluată din cadrul proiectului referit) 
+            ```xml
+              <metadata
               android:name="com.google.android.gms.version"
               android:value="@integer/google_play_services_version" />
-            `
+            ```
     -   pentru a se asigura faptul că funcționalitatea nu va putea fi
         accesată decât prin intermediul aplicației Android, se va defini
         o permisiune, definindu-se o protecție la nivel de
-        semnătură:`<permission
+        semnătură:
+        ```xml
+        <permission
           android:name="ro.pub.cs.systems.eim.lab10.googlemaps.permission.MAPS_RECEIVE"
           android:protectionLevel="signature" />
         <uses-permission
           android:name="ro.pub.cs.systems.eim.lab10.googlemaps.permission.MAPS_RECEIVE" />
-        `
+        ```
 
 <!-- -->
 
@@ -374,27 +384,6 @@ proprietăți:
       public static final ** CREATOR;
     }
     `
-
-\<hidden> ---
-**Note**
-
-Pentru rularea proiectului Eclipse (construirea
-pachetului `.apk`) este necesară mai multă memorie ce trebuie alocată
-mașinii virtuale Java (datorate referinței către biblioteca Google Play
-Services), aceasta realizându-se prin intermediul valorilor furnizate în
-cadrul fișierului de configurare `eclipse.ini`:  
-`--launcher.XXMaxPermSize
-1024M
---launcher.XXMaxPermSize
-1024m
---launcher.appendVmargs
--vmargs
--Dosgi.requiredJavaVersion=1.7
--Xms1024m
--Xmx1024m
-` \
-
---- \</hidden>
 
 ### Dispozitiv Fizic
 
@@ -509,7 +498,7 @@ Harta Google este implementată în SDK-ul Android:
 Obiectele `MapView` și`MapFragment` sunt disponibile începând
 cu nivelul de API 12, asigurarea compatibilității cu versiunile
 anterioare fiind realizată prin intermediul bibliotecilor de
-suport.\
+suport.
 
 ---
 
@@ -545,11 +534,6 @@ care garantează faptul că obiectul furnizat este nenul. Metoda
 serviciul Google Play Services nu este disponibil pe dispozitivul mobil
 sau obiectul este distrus imediat după ce a fost creat.\
 
----
-
----
-**Note**
-
 Orice operație care implică un obiect de tipul
 `GoogleMap` trebuie realizată pe firul de execuție al interfeței grafice
 (principal), în caz contrar generându-se o excepție.\
@@ -584,7 +568,8 @@ pentru care se pot preciza următoarele informații:
     (care încapsulează informații precum latitudinea și longitudinea, de
     tip `double`), prin metoda
     [position(LatLng)](http:*developer.android.com/reference/com/google/android/gms/maps/model/MarkerOptions.html#position%28com.google.android.gms.maps.model.LatLng%29)
-    `marker.position(new LatLng(
+    ```java
+    marker.position(new LatLng(
       Double.parseDouble(latitudeContent), 
       Double.parseDouble(longitudeContent)
       )
