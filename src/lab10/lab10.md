@@ -107,7 +107,7 @@ Pentru fiecare proiect trebuie să se precizeze următorii parametri:
 -   identificatorul pentru proiect (este generat în mod automat, însă
     poate fi configurat suplimentar de către utilizator).
 
-<img src="/eim/laboratoare/laborator10/createproject03new.png" class="align-center" alt="createproject03new.png" />
+![](images/createproject03new.png)
 
 În situația în care există un singur proiect, acesta va fi selectat în
 mod implicit ca proiect curent.
@@ -137,7 +137,7 @@ accesa orice serviciu Google.
         *Google Maps Android API*)  
         ![](images/configurare04new.png)
         **2.** generarea (automată) propriu-zisă a cheii, urmată de
-        apăsarea butonului \\\\Done\\\\;  
+        apăsarea butonului `Done`;  
         ![](images/configurare05new.png)
         În secțiunea *Credentials* va putea fi vizualizată cheia creată,
         împreună cu denumirea sa. Pentru cheile care nu sunt
@@ -159,6 +159,7 @@ accesa orice serviciu Google.
         utilitar, calea căte Java trebuie să se găsească în variabila de
         mediu `$PATH`, respectiv `%PATH`).  
         Linux
+
         ```shell
         student@eg-106:~$ export PATH=$PATH:/usr/local/java/jdk1.8.0_131/bin
         student@eg-106:~$ keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
@@ -202,7 +203,7 @@ accesa orice serviciu Google.
         ]
         ```
 
-        Se accesează butonul *Add package name and fingerprint* pentru a
+    -   Se accesează butonul *Add package name and fingerprint* pentru a
         se specifica denumirea pachetului corespunzător aplicației
         Android care va accesa API-ul respectiv și certificatul SHA-1  
 
@@ -479,7 +480,7 @@ sau sexagesimal), după care se apasă butonul *Send*. Informații cu
 privire la locațiile disponibile pot fi precizate și sub forma unor
 fișiere gpx sau kml, care pot fi încărcate.
 
-<img src="/eim/laboratoare/laborator10/avd_emulator_control_new.png" class="align-center" alt="avd_emulator_control_new.png" />
+![](images/avd_emulator_control_new.png)
 
 ## Gestiunea unei Hărți Google
 
