@@ -2,7 +2,7 @@
 
 ## Anunțuri
 
-* 27.01.2023 bine ați venit în semestrul 2, anul universitar 2022 - 2023
+* 26.02.2024 bine ați venit în semestrul 2, anul universitar 2023 - 2024
 
 ## Resurse
 ---
@@ -23,26 +23,26 @@
 
 | **Seria**      | **Zi** | **Ora**     | **Sala** | **Instructor** |
 |----------------|--------|-------------|----------|----------------|
-| C1 + opționali | marți  | 16.00-18.00 | PR101    | Dragoș         |
+| C1 + opționali | marți  | 16.00-18.00 | EC105    | Dragoș         |
 
 
 ### Laborator
 
 
-| **Grupa** | **Zi**     | **Ora**     | **Sala**    | **Asistent** |
-|-----------|------------|-------------|-------------|--------------|
-|           | miercuri   | 08.00-10.00 | EG208       | Mădălina     |
-|           | miercuri   | 10.00-12.00 | EG106/Teams | Alex         |
-|           | joi        | 08.00-10.00 | EG106       | Bogdan       |
-|           | joi        | 10.00-12.00 | EG106       | ??           |
-|           | joi        | 12.00-14.00 | EG106       | Nic          |
-|           | joi        | 14.00-16.00 | EG106       | Nic          |
-|           | joi        | 16.00-18.00 | EG106       | Vlad         |
-|           | joi        | 18.00-20.00 | EG106       | Vlad         |
-|           | vineri     | 08.00-10.00 | EG106       | Mădălina     |
-|           | Kotlin Prj | TBD         | Teams       | Bianca/Vlad  |
+| **Grupa** | **Zi**     | **Ora**     | **Sala** | **Asistent** |
+|-----------|------------|-------------|----------|--------------|
+| 341C1     | marti      | 12.00-14.00 | EG106    | Nic          |
+| 341C1     | marti      | 14.00-16.00 | EG106    | Nic          |
+| 342C1     | miercuri   | 08.00-10.00 | EG106    | Alex         |
+| 342C1     | miercuri   | 10.00-12.00 | EG106    | Dragos       |
+| OPT       | miercuri   | 12.00-14.00 | EG106    | Dragos       |
+| OPT       | miercuri   | 14.00-16.00 | EG106    | Dragos       |
+| OPT       | miercuri   | 16.00-18.00 | EG106    | Dragos       |
+| 343C1     | vineri     | 12.00-14.00 | EG106    | Vlad         |
+| 343C1     | vineri     | 14.00-16.00 | EG106    | Vlad         |
+|           | Kotlin Prj | TBD         | Teams    | Bianca/Vlad  |
 
-> Săptămâna de laborator începe miercuri (8.00-10.00) și se termină vineri (8.00-10.00). 
+> Săptămâna de laborator începe vineri (12.00-14.00) și se termină miercuri (16.00-18.00). 
 
 ## Contribuții laborator
 Oricine poate contribui pentru a îmbunătăți laboratoarele. Scheletul

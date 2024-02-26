@@ -3,7 +3,7 @@
 
 Disciplina Elemente de Informatică Mobilă este inclusă în planul de învățământ al specializării C1: Arhitectura Sistemelor de Calcul, fiind destinată studenților anului IV din cadrul Facultății de Automatică și Calculatoare a Universității "Politehnica" București, programul de studii Calculatoare. 
 
-Sunt prevăzute, săptămânal, 2 ore de curs, desfășurate în sala EC101 și 2 ore de laborator, desfășurate în sala EG106 (laboratorul Ixia). În urma promovării acestei discipline vor fi obținute 5 puncte de credit transferabile (ECTS).
+Sunt prevăzute, săptămânal, 2 ore de curs, desfășurate în sala EC105 și 2 ore de laborator, desfășurate în sala EG106 (laboratorul Ixia). În urma promovării acestei discipline vor fi obținute 5 puncte de credit transferabile (ECTS).
 
 ## Notare
 ---------
@@ -21,30 +21,38 @@ Final 	ACTIVITATE PE PARCURS
 
 Pentru promovarea disciplinei, este necesar să se întrunească, **în ordine**, următoarele condiții:
   * maximum 3 absențe la laborator 
-  * obținerea unui punctaj de minim 40% din punctajul de laborator, partial, bonus lab (50% + 20% + 10%)
+  * obținerea unui punctaj de minim 40p din cele 80p pentru punctajul de laborator, partial, bonus lab (50p + 20p + 10p)
   * obținerea unui punctaj general (≥ 50%)
  
 
 ### Test final
 
-Testul final este scris și se desfașoară în sesiunea de vară. El poate fi susținut de studenții cu o activitate corespunzătoare pe parcursul semestrului (minim 35p obținute pe parcurs). Este permis accesul cu  cu notițe scrise de mână pe o singură foaie A4 (față+verso). Nu este permis accesul cu dispozitive electronice de comunicare.
+Testul final este scris și se desfașoară în sesiunea de vară. El poate
+fi susținut de studenții cu o activitate corespunzătoare pe parcursul
+semestrului (minim 40p obținute pe parcurs). Este permis accesul cu cu
+notițe scrise de mână pe o singură foaie A4 (față+verso). Nu este
+permis accesul cu dispozitive electronice de comunicare.
 
 ### Test parțial
 
-La mijlocul semestrului va fi programat un test din materialul predat în prealabil. Este permis accesul cu  cu notițe scrise de mână pe o singură foaie A4 (față+verso). Nu este permis accesul cu dispozitive electronice de comunicare.
+La mijlocul semestrului va fi programat un test din materialul predat
+în prealabil. Este permis accesul cu cu notițe scrise de mână pe o
+singură foaie A4 (față+verso). Nu este permis accesul cu dispozitive
+electronice de comunicare.
 
 ### Colocvii
 
 In săptămânile ~6 și 14, în cadrul orelor de laborator, se vor desfășura două colocvii la care prezența este obligatorie. Colocviul este un test practic, desfășurat pe parcursul unui interval de timp limitat, în care se solicită rezolvarea unui set de sarcini punctate independent. Pe tot parcursul colocviului, este permisă consultarea documentației, inclusiv în format electronic. Este strict interzisă folosirea oricăror mijloace de comunicație pentru a colabora cu colegii sau cu alte persoane.
 
-Punctajul total maxim pentru cele două colocvii este de 50%, acesta este distribuit 20% primului colocviu, 30% celui de-al doilea.
-Nu este posibilă refacerea colocviilor în sesiunile de restanțe.  
+Punctajul total maxim pentru cele două colocvii este de 50p, acesta
+este distribuit 20p primului colocviu, 30p celui de-al doilea.
+Nu este posibilă refacerea colocviilor în sesiunile de restanțe. 
 
 ### Bonus laborator
 Prezența și activitatea la laborator nu fac parte din notă, aceasta considerând doar cele 2 colocvii. 
 Pe parcursul celor 2 ore de laborator veți avea însă acces (doar din EG106) la un chestionar de 3 întrebări / 3 minute care verifică parcurgerea materialului pregătitor acelei săptămâni (întrebările au un singur răspuns corect). Pentru a avea acces la chestionare, trebuie să folosiți conturile de [Moodle](https://acs.curs.pub.ro/) pe site-ul [wi-fi.cs.pub.ro/eim](http://wi-fi.cs.pub.ro/eim)
 
-Scorul obținut la aceste chestionare va adăuga încă 10% (1 punct la nota finală).
+Scorul obținut la aceste chestionare va adăuga încă 10p (1 punct la nota finală).
 
 ### Bonus curs
 Un sistem similar de bonusuri bazat pe același cont va fi disponibil si pentru curs. 
