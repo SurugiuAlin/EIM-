@@ -38,8 +38,8 @@
 | OPT       | miercuri   | 12.00-14.00 | EG106    | Dragos       |
 | OPT       | miercuri   | 14.00-16.00 | EG106    | Dragos       |
 | OPT       | miercuri   | 16.00-18.00 | EG106    | Dragos       |
-| 343C1     | vineri     | 12.00-14.00 | EG106    | Vlad         |
 | 343C1     | vineri     | 14.00-16.00 | EG106    | Vlad         |
+| 343C1     | vineri     | 16.00-18.00 | EG106    | Vlad         |
 |           | Kotlin Prj | TBD         | Teams    | Bianca/Vlad  |
 
 > Săptămâna de laborator începe vineri (12.00-14.00) și se termină miercuri (16.00-18.00). 
