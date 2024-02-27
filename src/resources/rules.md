@@ -21,7 +21,9 @@ Final 	ACTIVITATE PE PARCURS
 
 Pentru promovarea disciplinei, este necesar să se întrunească, **în ordine**, următoarele condiții:
   * maximum 3 absențe la laborator 
-  * obținerea unui punctaj de minim 40p din cele 80p pentru punctajul de laborator, partial, bonus lab (50p + 20p + 10p)
+  * obținerea unui punctaj de minim, oricare dintre: 
+	1. fie 25p din cele 60p pentru colocvii + bonus lab (50p + 10p)
+	2. fie 40p din cele 80p pentru punctajul de colocvii + bonus lab + partial (50p + 20p + 10p)
   * obținerea unui punctaj general (≥ 50%)
  
 
