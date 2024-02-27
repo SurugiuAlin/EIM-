@@ -31,7 +31,7 @@ Pentru promovarea disciplinei, este necesar să se întrunească, **în ordine**
 
 Testul final este scris și se desfașoară în sesiunea de vară. El poate
 fi susținut de studenții cu o activitate corespunzătoare pe parcursul
-semestrului (minim 40p obținute pe parcurs). Este permis accesul cu cu
+semestrului (unul dintre minime obținute pe parcurs). Este permis accesul cu cu
 notițe scrise de mână pe o singură foaie A4 (față+verso). Nu este
 permis accesul cu dispozitive electronice de comunicare.
 
