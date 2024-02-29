@@ -15,12 +15,12 @@ In cadrul laboratoarelor vom folosi Android Studio. Android Studio este un IDE d
 3. Selectați Activitate de bază (nu implicit). Faceți clic pe Next.
 
 
-<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/73e63b490a2f4ae6_1440.png" alt="" style="height: 800px; width:800px;"/>
+<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/73e63b490a2f4ae6_1440.png" alt=""/>
 
 4. Denumiți-vă aplicația cu un nume precum My First app
 
 
-<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/3ffb3ca42472b4f6_1440.png" alt="" style="height: 800px; width:800px;"/>
+<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/3ffb3ca42472b4f6_1440.png" alt=""/>
 
 5. Asigurați-vă că Languages este setată la Java.
 
@@ -34,7 +34,7 @@ După acești pași, Android Studio va face urmatoarele lucruri:
 
 ### Structura proiectului
 
-<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/ecabcf48b6f7b9a1_1440.png" alt="" style="height: 800px; width:800px;"/>
+<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/ecabcf48b6f7b9a1_1440.png" alt=""/>
 
 Pe baza selectării de către tine a **Basic Activity** pentru proiectul tău, Android Studio a configurat un număr de fișiere pentru tine. Poți privi ierarhia fișierelor pentru aplicația ta în multiple moduri, unul dintre acestea este în **Project view**. Project view îți arată fișierele și folderele structurate într-un mod convenabil pentru lucrul cu un proiect Android. (Aceasta nu corespunde întotdeauna cu ierarhia fișierelor! Pentru a vedea ierarhia fișierelor, alege Project files view făcând click pe (3).)
 
