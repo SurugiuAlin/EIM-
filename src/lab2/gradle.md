@@ -1,4 +1,4 @@
-#### Gradle
+# Gradle
 
 Sistemul de build Android compilează resursele aplicației și codul sursă și le împachetează în Android Application Package (APK) APK sau Android App Bundles (AAB) pe care le poți testa, desfășura, semna și distribui.
 
