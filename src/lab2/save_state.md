@@ -25,3 +25,6 @@ protected void onSaveInstanceState(Bundle savedInstanceState) {
   savedInstanceState.putString("SOME_STRING_USED_AS_KEY", usernameEditText.getText().toString());
 }
 ```
+
+![](images/gestiune_stare_activitati.png)
+
