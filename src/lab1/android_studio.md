@@ -10,7 +10,7 @@ In cadrul laboratoarelor vom folosi Android Studio. Android Studio este un IDE d
 1. Deschideți Android Studio.
 2. În dialogul Welcome to Android Studio, faceți clic pe **Start a new Android Studio project**.
 
-<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/c7c8a5cc4c9029b_1440.png" alt="" style="height: 800px; width:800px;"/>
+<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/c7c8a5cc4c9029b_1440.png" alt="""/>
 
 3. Selectați Activitate de bază (nu implicit). Faceți clic pe Next.
 
