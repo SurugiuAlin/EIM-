@@ -1,4 +1,4 @@
-## Activitate de Laborator
+# Activitate de Laborator
 
 **1.** În contul de Gitlab de la facultate, să se creeze un depozit denumit
 'Laborator02' in care vom pune aplicatia la care vom lucra astazi.
