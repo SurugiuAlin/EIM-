@@ -26,7 +26,7 @@ Implicit, Logcat derulează până la final. Făcând click în fereastra Logcat
 
 #### Cum citim log-urile?
 
-Fiecare log conține o dată, marcaj temporal, ID de proces și thread, tag, numele pachetului, prioritate și mesaj asociat cu acesta. Tag-urile diferite au culori unice care ajută la identificarea tipului de log. Fiecare înregistrare în log are o prioritate care poate fi FATAL, ERROR, WARNING, INFO, DEBUG sau VERBOSE.
+Fiecare log conține o dată, marcaj temporal, ID de proces și thread, tag, numele pachetului, prioritate și mesaj asociat cu acesta. Tag-urile diferite au culori unice care ajută la identificarea tipului de log(de exemplu `SOME_TAG_TO_FILTER_IN_LOGCAT` in exemplul de mai sus). Fiecare înregistrare în log are o prioritate care poate fi FATAL, ERROR, WARNING, INFO, DEBUG sau VERBOSE.
 
 De exemplu, următorul mesaj de log are o prioritate de DEBUG și un tag de ProfileInstaller:
 
