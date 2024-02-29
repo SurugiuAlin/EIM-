@@ -1,10 +1,10 @@
 ## Activitate de Laborator
 
-**1.** În contul Github personal, să se creeze un depozit denumit
+**1.** În contul de Gitlab de la facultate, să se creeze un depozit denumit
 'Laborator02' in care vom pune aplicatia la care vom lucra astazi.
 
 - Să se cloneze [scheletul laboratorului](https://github.com/eim-lab/Laborator02).
-- Să se încarce conținutul descărcat în cadrul depozitului `Laborator02` de pe contul Github personal.
+- Să se încarce conținutul descărcat în cadrul depozitului `Laborator02` de pe contul Gitlab personal.
 Ne intereseaza doar folder-ul `labtasks`.
 
 **2.** Să se încarce în mediul integrat de dezvoltare Android Studio
@@ -27,8 +27,8 @@ având prioritatea `DEBUG` și eticheta
       - onStop()
       - onDestroy()
 
-**3.** Să se creeze un filtru, denumit `ActivityLifecycleMonitor`,
-astfel încât LogCat să afișeze doar mesajele care au eticheta
+**3.** Daca ne uitam in Logcat cand ruleaza aplicatia, o sa vedem foarte multe mesaje. 
+Vom filtra in LogCat să afișeze doar mesajele care au eticheta
 `activitylifecycle`, generate de aplicația
 `ro.pub.systems.eim.lab02.activitylifecyclemonitor` și au cel puțin
 prioritatea `debug`.
@@ -44,33 +44,15 @@ următoarelor evenimente:
       - se apasă butonul *Back*
       - se apasă butonul *OK* din cadrul aplicației (indiferent dacă datele de autentificare sunt corecte sau nu)
       - se apasă butonul *lista app* 
-      - se primește un apel telefonic\\ a) pentru AVD, se poate folosi *ADM* → *Emulator Control*\\ b) pentru Genymotion se poate simula doar formarea unui număr de telefon <code>
-
-Pe baza mesajelor, să se completeze tabelul de mai jos, indicând ordinea
-în care s-au apelat metodele respective:
-
-|                              | `onCreate()` | `onRestart()` | `onStart()` | `onResume()` | `onPause()` | `onStop()` | `onDestroy()` |
-|------------------------------|--------------|---------------|-------------|--------------|-------------|------------|---------------|
-| 1\) buton *Home*             |              |               | 3           | 4            | 1           | 2          |               |
-| 2\) buton *Back*             |              |               |             |              |             |            |               |
-| 3\) buton *OK* din aplicație |              |               |             |              |             |            |               |
-| 4\) buton *lista app*        |              |               |             |              |             |            |               |
-| 5\) apel telefonic           |              |               |             |              |             |            |               |
-| a\) acceptare                |              |               |             |              |             |            |               |
-| b\) respingere               |              |               |             |              |             |            |               |
-| 6\) rotire ecran             |              |               |             |              |             |            |               |
 
 **6.** Să se dezactiveze opțiunea de salvare a stării.
 
----
-**Note**
 
-În fișierul `activity_lifecycle_monitor.xml`, pentru fiecare
+> În fișierul `activity_lifecycle_monitor.xml`, pentru fiecare
 dintre elementele grafice pentru care se dorește să se dezactiveze
 opțiunea de salvare a stării, se va completa proprietatea
 `android:saveEnabled="false"`.
 
----
 
 Să se observe care este comportamentul în privința informațiilor
 reținute în elementele grafice de tip `EditText`, respectiv `CheckBox`,
@@ -110,5 +92,4 @@ Să se transfere comportamentul de restaurare a stării pe metoda
 `onCreate()` și să se identifice diferențele de implementare
 ([Hint](https://developer.android.com/guide/components/activities/activity-lifecycle.html#saras)).
 
-**9.** Să se încarce modificările realizate în cadrul depozitului
-`Laborator02` de pe contul Github personal, folosind un mesaj sugestiv.
+**9.** Să se încarce modificările realizate în cadrul laboratorului pe Gitlab folosint nume sugestive pentru commits.
