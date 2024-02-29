@@ -23,7 +23,6 @@
     - [Arhitectura](lab1/architecture.md)
   - [Android Studio](lab1/android_studio.md)
   - [Structura unei Aplicații](lab2/app_structure.md)
-    - [Contextul](lab2/context.md)
     - [Activitatea](lab2/activity.md)
       - [Componentele unei Activități](lab2/activity_components.md)
   - [Ciclul de Viață al unei Activități](lab2/activity_lifecycle.md)
