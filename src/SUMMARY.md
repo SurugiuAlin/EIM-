@@ -19,6 +19,9 @@
 # Laboratoare
 ----
 - [1. Structura unei Aplicații (I) - Activități](lab2/lab2.md)
+  - [Sistemul de Operare Android](lab1/android.md)
+    - [Arhitectura](lab1/architecture.md)
+  - [Android Studio](lab1/android_studio.md)
   - [Structura unei Aplicații](lab2/app_structure.md)
     - [Contextul](lab2/context.md)
     - [Activitatea](lab2/activity.md)
