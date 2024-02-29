@@ -1,4 +1,4 @@
-### Android - Prezentare Generală
+# Android
 
 Android este un OS bazat pe o versiune modificată de Linux (pentru
 gestiunea componentelor hardware, a proceselor și a memoriei) și biblioteci Java
