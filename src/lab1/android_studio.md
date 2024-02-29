@@ -65,3 +65,22 @@ Acest folder conține `AndroidManifest.xml`. Acest fișier descrie toate compone
 **navigation**: Acest folder conține graficul de navigare, care îi spune Android Studio cum să navigheze între diferite părți ale aplicației tale.
 
 **values**: Acest folder conține resurse, cum ar fi șiruri și culori, utilizate în aplicația ta.
+
+### Rularea Aplicatiei
+
+Pentru a permite Android Studio să comunice cu dispozitivul tău, trebuie să activezi **USB Debugging** pe dispozitivul tău Android.
+
+Pe Android 4.2 și versiunile superioare, ecranul **Developer options** este ascuns implicit. Pentru a afișa **Developer options** și pentru a activa **USB Debugging**:
+
+- Pe dispozitiv, deschide **Settings > About phone** și apasă de șapte ori pe **Build number**.
+- Revino la ecranul anterior (Settings). Developer options apare la partea de jos a listei. Apasă pe **Developer options**.
+- Activează **USB Debugging**.
+
+Acum poți conecta dispozitivul și rula aplicația din Android Studio. Vom rula peste 
+
+- Conectează dispozitivul la mașina de dezvoltare cu un cablu USB. Pe dispozitiv, s-ar putea să fie necesar să accepți permisiunea pentru USB debugging de pe dispozitivul de dezvoltare.
+- În Android Studio, click pe **Run** în bara de unelte din partea de sus a ferestrei.Dialogul Select Deployment Target se deschide cu lista de emulatoare disponibile și dispozitive conectate.
+- Selectează dispozitivul tău și fă click pe OK. Android Studio instalează aplicația pe dispozitivul tău și o rulează.
+
+
+> [Aici](https://developer.android.com/tools/adb#connect-to-a-device-over-wi-fi) gasiti un tutorial de cum puteti face asta peste Wifi.
