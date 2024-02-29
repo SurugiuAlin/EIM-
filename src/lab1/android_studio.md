@@ -10,17 +10,17 @@ In cadrul laboratoarelor vom folosi Android Studio. Android Studio este un IDE d
 1. Deschideți Android Studio.
 2. În dialogul Welcome to Android Studio, faceți clic pe **Start a new Android Studio project**.
 
-<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/c7c8a5cc4c9029b_1440.png" alt="" style="height: 100px; width:100px;"/>
+<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/c7c8a5cc4c9029b_1440.png" alt="" style="height: 800px; width:800px;"/>
 
 3. Selectați Activitate de bază (nu implicit). Faceți clic pe Next.
 
 
-<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/73e63b490a2f4ae6_1440.png" alt="" style="height: 100px; width:100px;"/>
+<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/73e63b490a2f4ae6_1440.png" alt="" style="height: 800px; width:800px;"/>
 
 4. Denumiți-vă aplicația cu un nume precum My First app
 
 
-<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/3ffb3ca42472b4f6_1440.png" alt="" style="height: 100px; width:100px;"/>
+<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/3ffb3ca42472b4f6_1440.png" alt="" style="height: 800px; width:800px;"/>
 
 5. Asigurați-vă că Languages este setată la Java.
 
