@@ -1,4 +1,4 @@
-### Crearea unei aplicații Android în Android Studio 
+# Crearea unei aplicații Android în Android Studio 
 
 In cadrul laboratoarelor vom folosi Android Studio. Android Studio este un IDE de Java/Kotlin bazat pe IntelliJ special modificat pentru dezvoltarea aplicatilor Android. [Aici](https://developer.android.com/studio/install) gasiti instructiunile de instalare si un link de download. 
 
