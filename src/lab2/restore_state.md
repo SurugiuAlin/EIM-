@@ -1,5 +1,4 @@
-
-##### Restaurarea Stării
+# Restaurarea Stării
 
 Încărcarea conținutului din obiectul de tip `Bundle` (în vederea
 restaurării stării) poate fi realizată:
