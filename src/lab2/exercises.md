@@ -65,28 +65,12 @@ dispozitivului mobil.
 **în condițiile în care este bifat elementul grafic de tip `CheckBox`**,
 să se salveze informațiile din interfața cu utilizatorul.
 
----
-**Note**
-
-Se vor folosi metodele `putString()` și `putBoolean()` ale
-clasei `Bundle`.  
-  
-Cheile sub care vor fi identificate valorile salvate sunt definite în
-interfața `Constants` din pachetul
-`ro.pub.cs.systems.eim.lab02.activitylifecyclemonitor.general`.  
-  
-Verificarea faptului că un element grafic de tip `CheckBox` este bifat
-se face prin intermediul metodei `isChecked()`.
-
----
-
-Să se observe comportamentul aplicației în condițiile producerii
-evenimentului descris anterior.
+> Să se observe comportamentul aplicației în condițiile producerii
+evenimentului de rotire de ecran.
 
 **8.** Să se implementeze metoda `onRestoreInstanceState()` astfel
 încât să se restaureze starea elementelor grafice. Să se observe
-comportamentul aplicației în condițiile producerii evenimentului descris
-anterior.
+comportamentul aplicației în condițiile producerii evenimentului de rotire de ecran.
 
 Să se transfere comportamentul de restaurare a stării pe metoda
 `onCreate()` și să se identifice diferențele de implementare
