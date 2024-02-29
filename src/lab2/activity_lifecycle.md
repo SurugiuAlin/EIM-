@@ -1,4 +1,4 @@
-#### Ciclul de Viață al unei Activități
+# Activity Lifecycle
 
 O schimbare majora adusa sistemului de baza Linux de catre Android a fost un nou **ciclu de viata al proceselor**. Pentru a economisii energie, procesele nu ruleaza decat atunci cand sunt folosite de catre utilizator. Regasim acest lucru in **lifecycle-ul activitatilor**.
 
