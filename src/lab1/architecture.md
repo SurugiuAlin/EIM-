@@ -1,7 +1,6 @@
 ### Arhitectura Android
 
-Arhitectura sistemului de operare Android cuprinde cinci secțiuni grupate pe
-patru niveluri:
+Arhitectura sistemului de operare Android are la baza kernel-ul Linux si aduce peste el mai multe modificari:
 
 ![](images/android_architecture.png)
 
