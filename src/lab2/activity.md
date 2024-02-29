@@ -1,4 +1,4 @@
-### Activity
+# Activity
 
 **O activitate in android reprezinta o fereastra vizibila dintr-o aplicatie.**
 O aplicație Android este formată din una sau mai multe activități (slab
@@ -11,7 +11,8 @@ O activitate poate invoca o altă activitate pentru a realiza diferite
 sarcini, prin intermediul unui obiect de tip **intent**.
 
 O activitate este formata din doua parti, partea de cod Java care
-defineste ce se va intampla cand utilizatorul interactioneaza cu activitatea:
+defineste ce se va intampla cand utilizatorul interactioneaza cu activitatea.
+Aceasta nu este altceva decat o clasa care mosteneste `ApplicationContext`:
 
 ```java
  public class Activity extends ApplicationContext {
