@@ -1,4 +1,3 @@
-
 ## Android Debug Bridge (ADB)
 
 Android Debug Bridge este un utilitar în linie de comandă care permite
@@ -15,6 +14,8 @@ intermediul unui program client-server ce include 3 componente:
 
 ADB este integrat în SDK-ul de Android, regăsindu-se în directorul
 `platform-tools`.
+
+> [Aici](https://developer.android.com/tools/adb#connect-to-a-device-over-wi-fi) gasiti instructiunile de conectare prin ADB la dispozitiv peste Wifi.
 
 **Comenzi ADB**
 
