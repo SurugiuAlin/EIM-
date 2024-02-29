@@ -82,5 +82,6 @@ Acum poți conecta dispozitivul și rula aplicația din Android Studio. Vom rula
 - În Android Studio, click pe **Run** în bara de unelte din partea de sus a ferestrei.Dialogul Select Deployment Target se deschide cu lista de emulatoare disponibile și dispozitive conectate.
 - Selectează dispozitivul tău și fă click pe OK. Android Studio instalează aplicația pe dispozitivul tău și o rulează.
 
+> Alternativ, se poate rula peste emulatorul AVD.
 
 > [Aici](https://developer.android.com/tools/adb#connect-to-a-device-over-wi-fi) gasiti un tutorial de cum puteti face asta peste Wifi.
