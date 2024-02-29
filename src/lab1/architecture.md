@@ -1,4 +1,4 @@
-### Arhitectura Android
+# Arhitectura Android
 
 Arhitectura sistemului de operare Android are la baza kernel-ul Linux si aduce peste el mai multe modificari:
 
