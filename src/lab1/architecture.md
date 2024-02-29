@@ -4,32 +4,28 @@ Arhitectura sistemului de operare Android are la baza kernel-ul Linux si aduce p
 
 ![](images/android_architecture.png)
 
-- **Kernelul Linux** (cu unele modificări) conține driver-ele pentru diferitele
+**Kernelul Linux** (cu unele modificări) conține driver-ele pentru diferitele
 componente hardware (ecran, cameră foto, tastatură, antenă WiFi, memorie flash,
 dispozitive audio), fiind responsabil cu gestiunea proceselor, memoriei,
 perifericelor (audio/video, GPS, WiFi), dispozitivelor de intrare/ieșire,
 rețelei și a consumului de energie; de asemenea, au fost implementate și unele
-îmbunătățiri:
-- **Binder**, sistemul de comunicație inter-proces, a fost adaptat, întrucât
+îmbunătățiri.
+
+**Binder**, sistemul de comunicație inter-proces, a fost adaptat, întrucât
 reprezintă mediul de comunicație principal dintre aplicații și sistemul de
 operare, inclusiv funcțiile (serviciile) dispozitivului mobil; expunerea sa este
 realizată prin intermediul AIDL (Android Interface Definition Language) prin
 care pot fi manipulate obiecte transformate în primitive utilizate la
-comunicația propriu-zisă dintre aplicații și sistemul de operare;
-- **Logger**, sistemul de jurnalizare, este esențial în cazul în care trebuie
+comunicația propriu-zisă dintre aplicații și sistemul de operare.
+
+**Logger**, sistemul de jurnalizare, este esențial în cazul în care trebuie
 realizată depanarea aplicațiilor, în special pentru a detecta anumite situații
 particulare (informații cu privire la rețea, senzori); acesta este capabil să
 agrege datele provenite atât de la aplicația propriu-zisă cât și de la sistemul
 de operare, datele fiind disponibile prin intermediul unor utilitare
-specializate;
-- sistemul prin intermediul căruia se previne transferul sistemului de operare într-o stare de latență (**wake locks**), în care consumul de energie este redus, întrucât se blochează execuția oricărei aplicații; utilizarea unui astfel de mecanism trebuie realizată cu precauție, întrucât poate determina epuizarea bateriei;
-- sistemul de **alarme** oferă posibilitatea ca anumite sarcini să fie planificate la anumite momente de timp, putând fi executate, chiar dacă sistemul de operare se găsește într-o stare de latență;
-- **Viking Killer** este un mecanism prin care sistemul de operare revendică
-memoria utilizată, atunci când nivelul acesteia atinge un anumit prag
-(aplicațiile Android care au fost rulate anterior sunt de regulă stocate în
-memorie pentru a se putea comuta rapid între ele, de vreme ce încărcarea în
-memorie este o operație costisitoare);
-- **YAFFS2** (Yet Another Flash File System) este un sistem de fișiere adecvat
+specializate.
+
+**YAFFS2** (Yet Another Flash File System) este un sistem de fișiere adecvat
 pentru cipuri flash bazate pe porți NAND; platforma Android este stocată pe mai
 multe partiții, ceea ce îi conferă flexibilitate la actualizări, împiedicând
 modificarea sa în timpul rulării (**/boot** - conține secvența de pornire,
@@ -38,7 +34,8 @@ modificarea sa în timpul rulării (**/boot** - conține secvența de pornire,
 operare, **/data** - include aplicațiile instalate și datele aferente
 acestora, **/cache** - utilizată pentru fișiere temporare, folosind memoria
 RAM, pentru acces rapid).
-- **Bibliotecile** (user-space) conțin codul care oferă principalele
+
+**Bibliotecile** (user-space) conțin codul care oferă principalele
 funcționalități a sistemului de operare Android, făcând legătura între kernel și
 aplicații. Sunt incluse aici motorul open-source pentru navigare WebKit,
 biblioteca FreeType pentru suportul seturilor de caractere, baza de date SQLite
@@ -50,7 +47,8 @@ biblioteci SSL pentru asigurarea securității pe Internet și Surface Manager,
 bibliotecă pentru controlul accesului la sistemul de afișare care suportă 2D și
 3D. Aceste biblioteci nu sunt expuse prin API, reprezentând detalii de
 implementare Android.
-- **Motorul Android** rulează serviciile de platformă precum și aplicațiile care
+
+**Motorul Android** rulează serviciile de platformă precum și aplicațiile care
 le utilizează, fiind reprezentat de:
 - **ART (Android Runtime)** este mașina virtuală Java care a fost implementată
 începând cu versiunea 5.0, folosind un tip de compilare AOH (Ahead of Time), în
