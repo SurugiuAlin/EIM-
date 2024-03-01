@@ -7,6 +7,9 @@
 - Să se încarce conținutul descărcat în cadrul depozitului `Laborator02` de pe contul Gitlab personal.
 Ne intereseaza doar folder-ul `labtasks`.
 
+> Daca aveti o eroare legata de `--add-exports=java.base/sun.nio.ch=ALL-UNNAMED`, va trebui sa
+stergeti toate linile cu `--add-exports` din `gradle.properties`.
+
 **2.** Să se încarce în mediul integrat de dezvoltare Android Studio
 proiectul `ActivityLifecycleMonitor`, folosind opțiunea *Open an
 Existing Android Studio Project*.
