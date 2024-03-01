@@ -12,7 +12,7 @@ In cadrul laboratoarelor vom folosi Android Studio. Android Studio este un IDE d
 
 <img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/c7c8a5cc4c9029b_1440.png" alt=""/>
 
-3. Selectați Activitate de bază (nu implicit). Faceți clic pe Next.
+3. Selectați **Empty View Activity** (nu implicit). Faceți clic pe Next.
 
 
 <img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/73e63b490a2f4ae6_1440.png" alt=""/>
