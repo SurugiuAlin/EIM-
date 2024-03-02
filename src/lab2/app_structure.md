@@ -20,7 +20,7 @@ Spre deosebire de un proces pe Linux, o aplicație Android poate conține mai mu
     timp semnificativă, astfel încât să nu poată fi plasate în cadrul
     aceluiași fir de execuție ca și interfața grafică prin care se
     asigură interacțiunea cu utilizatorul;
-4.  [intent](http:*developer.android.com/reference/android/content/Intent.html)
+4.  [intent](https://developer.android.com/reference/android/content/Intent.html)
     este mecanismul de comunicare între elementele unei aplicații
     Android (activități și servicii); prin intermediul unui sistem de
     mesagerie (asincronă), sistemul de operare Android mapează o
