@@ -12,7 +12,7 @@ restaurării stării) poate fi realizată:
       setContentView(R.layout.activity_lifecycle_monitor);
       EditText usernameEditText = (EditText)findViewById(R.id.username_edit_text);
       if ((savedInstanceState != null) && (savedInstanceState.getString(Constants.USERNAME_EDIT_TEXT) != null)) {
-        usernameEditText.setText(bundle.getString(Constants.USERNAME_EDIT_TEXT));
+        usernameEditText.setText(savedInstanceState.getString(Constants.USERNAME_EDIT_TEXT));
       }
     }
     ```
@@ -24,7 +24,7 @@ restaurării stării) poate fi realizată:
     ```java
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
-      super.onRestoreInstanceState(bundle);
+      super.onRestoreInstanceState(savedInstanceState);
       EditText usernameEditText= (EditText)findViewById(R.id.username_edit_text);
       if (savedInstanceState.getString(Constants.USERNAME_EDIT_TEXT) != null) {
           usernameEditText.setText(savedInstanceState.getString(Constants.USERNAME_EDIT_TEXT));
