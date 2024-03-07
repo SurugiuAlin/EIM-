@@ -42,7 +42,7 @@
 | 343C1     | vineri     | 16.00-18.00 | EG106    | Vlad         |
 |           | Kotlin Prj | TBD         | Teams    | Bianca/Vlad  |
 
-> Săptămâna de laborator începe vineri (12.00-14.00) și se termină miercuri (16.00-18.00). 
+> Săptămâna de laborator începe vineri (14.00) și se termină miercuri (18.00). 
 
 ## Contribuții laborator
 Oricine poate contribui pentru a îmbunătăți laboratoarele. Scheletul
