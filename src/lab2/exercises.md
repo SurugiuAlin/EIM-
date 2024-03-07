@@ -48,6 +48,26 @@ următoarelor evenimente:
       - se apasă butonul *OK* din cadrul aplicației (indiferent dacă datele de autentificare sunt corecte sau nu)
       - se apasă butonul *lista app* 
 
+
+<details>
+  <summary>genymotion, Nexus 5X API 24, butoane "hardware"</summary>
+  
+|  |  onCreate()  |  onRestart()  |  onStart()  |  onResume()  |  onPause()  |  onStop()  |  onDestroy()  | onSaveInst()  | onRestoreInst()  |
+|-|-|-|-|-|-|-|-|-|-|
+| 1) buton _Home_ |   |   |    |    |  1  |  3  |   |  2  |   |
+| 2) buton _Back_ |   |   |    |    |  1  |  2  |  3  |     |   |
+| 3) buton _OK_ din aplicație |  nici | una   | dintre   | metode  | nu   | se  | apelează  |
+| 4) buton _lista app_  |   |   |   |   |  1  |  3  |   |  2  | |  
+| 5) apel telefonic |   | | | |  1  |  3  | |  2  | |  
+| a) acceptare |   |  1  |  2  |   |    |    |   |  |  | 
+| b) respingere |   |   |   |   |   |   |   |
+| 6) rotire ecran |  5  |   |  6  |   |  1  |  3  |  4  |  2  |  7  |
+
+</details>
+
+
+
+
 **6.** Să se dezactiveze opțiunea de salvare a stării.
 
 
