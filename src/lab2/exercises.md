@@ -52,16 +52,16 @@ următoarelor evenimente:
 <details>
   <summary>genymotion, Nexus 5X API 24, butoane "hardware"</summary>
   
-|  |  onCreate()  |  onRestart()  |  onStart()  |  onResume()  |  onPause()  |  onStop()  |  onDestroy()  | onSaveInst()  | onRestoreInst()  |
+|  |  onC rea te()  |  onR est ar t()  |  onS tar t()  |  onR esu me ()  |  onP aus e()  |  onS top ()  |  onD est roy ()  | onS ave Ins t()  | onR est ore Ins t()  |
 |-|-|-|-|-|-|-|-|-|-|
-| 1) buton _Home_ |   |   |    |    |  1  |  3  |   |  2  |   |
-| 2) buton _Back_ |   |   |    |    |  1  |  2  |  3  |     |   |
-| 3) buton _OK_ din aplicație |  nici | una   | dintre   | metode  | nu   | se  | apelează  |
-| 4) buton _lista app_  |   |   |   |   |  1  |  3  |   |  2  | |  
-| 5) apel telefonic |   | | | |  1  |  3  | |  2  | |  
-| a) acceptare |   |  1  |  2  |   |    |    |   |  |  | 
-| b) respingere |   |   |   |   |   |   |   |
-| 6) rotire ecran |  5  |   |  6  |   |  1  |  3  |  4  |  2  |  7  |
+| buton _Home_ |   |   |    |    |  1  |  3  |   |  2  |   |
+| buton _Back_ |   |   |    |    |  1  |  2  |  3  |     |   |
+| buton _OK_in app |  nici | una   | din tre   | met ode  | nu   | se  | ape lea ză  |
+| buton _lista app_  |   |   |   |   |  1  |  3  |   |  2  | |  
+| apel tele fonic |   | | | |  1  |  3  | |  2  | |  
+| acce ptare |   |  1  |  2  |   |    |    |   |  |  | 
+| resp ingere |   |   |   |   |   |   |   |
+| rotire ecran |  5  |   |  6  |   |  1  |  3  |  4  |  2  |  7  |
 
 </details>
 
