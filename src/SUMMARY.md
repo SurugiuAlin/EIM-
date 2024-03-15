@@ -67,7 +67,15 @@
   - [Activitate de Laborator](lab3/exercises.md)
   - [Resurse Utile](lab3/resources.md)
 - [3. Structura unei Aplicații (II) - Intenții](lab4/lab4.md)
-  - [3. Structura unei Aplicații (II) - Intenții](lab4/exercises.md)
+  - [Intenții](lab4/intents.md)
+  - [Constructia unui Intent](lab4/building_intents.md)
+  - [Transmiterea de informații intre Intents](lab4/sending_data.md)
+  - [Broadcasts](lab4/broadcasts.md)
+  - [Transmiterea de broadcast](lab4/sending_broadcast.md)
+  - [Primirea unui broadcast](lab4/receiving_broadcast.md)
+
+
+
 - [4. Structura unei Aplicații (III) - Servicii](lab5/lab5.md)
 - [5. Comunicația prin Sockeți TCP](lab6/lab6.md)
 - [6. Invocarea de Servicii Web prin Protocolul HTTP](lab7/lab7.md)
