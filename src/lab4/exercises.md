@@ -9,71 +9,14 @@ multe informații.
 
 ![](images/09contacts_manager_large.png)
 
-**1.** În contul Github personal, să se creeze un depozit denumit
-'Laborator04'. Acesta trebuie să conțină unui fișier `README.md`, un
-fișier `.gitignore` specific unei aplicații Android și un fișier
-`LICENSE` care să descrie condițiile pentru utilizarea aplicației.
 
-![](images/01github.png)
-
-![](images/02github.png)
-
-**2.** Să se cloneze într-un director de pe discul local conținutul
-depozitului la distanță astfel creat. În urma acestei operații,
-directorul Laborator04 va trebui să se conțină fișierele `README.md`,
-`.gitignore` care indică tipurile de fișiere (extensiile) ignorate și
-`LICENSE`.
-`student@eim-lab:~$ git clone https:*www.github.com/perfectstudent/Laborator04.git
-`
-
-**3.** În directorul Laborator04 de pe discul local, să se creeze un
+**1.** Să se creeze un
 proiect Android Studio denumit *ContactsManager* (se selectează *Start a
-new Android Studio project*).
-
-![](images/03androidstudio.png)
-
-Se indică detaliile proiectului:
-
--   **Application name** - *Contacts Manager*
--   **Company domain** - *lab04.eim.systems.cs.pub.ro* (se va genera în
-    mod automat **Package name** cu valoarea
-    *ro.pub.cs.systems.eim.lab04.contactsmanager*)
--   **Project location** - locația directorului de pe discul local unde
-    a fost descărcat depozitul la distanță *Laborator04*
-
-![](images/04androidstudio.png)
-
-Se indică platforma pentru care se dezvoltă aplicația Android (se
-bifează doar *Phone and Tablet*), iar SDK-ul Android (minim) pentru care
-se garantează funcționarea este API 24 (Nougat).
-
-![](images/05androidstudio.png)
-
-Se creează o activitate care inițial nu va conține nimic (*Empty
-Activity*):
-
-![](images/06androidstudio.png)
-
-pentru care se precizează:
-
--   **Activity Name** (denumirea activității) -
-    `ContactsManagerActivity`;
--   **Layout Name** (denumirea fișierului XML din `res/layout` în care
-    va fi construită interfața grafică) -
-    `activity_contacts_manager.xml`.
-
-De asemenea:
-
--   se bifează opțiunea de a se genera în mod automat fișierul XML care
-    conține descrierea interfeței grafice (*Generate Layout File*);
--   folosirea claselor din bibliotecile de suport care asigură
-    posibilitatea de folosire a unor funcționalități din SDK-uri mai
-    recente pe dispozitive mobile cu nivele de API mai vechi (*Backwards
-    Compatibility (AppCompat)*).
+new Android Studio project -> Empty View Activity*).
 
 ![](images/07androidstudio.png)
 
-**4.** În fișierul `activity_contacts_manager` din directorul
+**2.** În fișierul `activity_contacts_manager` din directorul
 `res/layout` să se construiască interfața grafică folosind:
 
 -   editorul vizual (*Graphical Layout*)
@@ -191,8 +134,7 @@ Să se implementeaze interacțiunea cu utilizatorul a aplicației.
           android:name="android.permission.WRITE_CONTACTS" />
         ```
         `
-    -   butonul *Cancel* - termină aplicația Android: `finish();
-        `
+    -   butonul *Cancel* - termină aplicația Android: `finish();`
 -   se înregistrează o instanță a clasei ascultător ca mecanism de
     tratare a evenimentelor de tip accesare a butoanelor din cadrul
     interfeței grafice, prin apelul metodei `setOnClickListener()`.
@@ -242,8 +184,9 @@ sau `Activity.RESULT_CANCELED`).
 
 -   în fișierul `AndroidManifest.xml` se modifică filtrul de intenții
     (acțiunea și categoria), astfel încât activitatea să poată fi rulată
-    doar prin intermediul unei intenții `<manifest ...>
+    doar prin intermediul unei intenții 
     ```xml
+    <manifest ...>
       <application ...>
         <activity
           android:name=".graphicuserinterface.ContactsManagerActivity"
@@ -261,10 +204,10 @@ sau `Activity.RESULT_CANCELED`).
     este verificată intenția cu care este pornită, și în cazul în care
     aceasta nu este nulă, este preluată informația din secțiunea
     `extra`, identificată prin cheia
-    ```java
     `ro.pub.cs.systems.eim.lab04.contactsmanager.PHONE_NUMBER_KEY`,
     conținutul său fiind plasat în cadrul câmpului text corespunzător:
-    `Intent intent = getIntent();
+    ```java
+    Intent intent = getIntent();
     if (intent != null) {
       String phone = intent.getStringExtra("ro.pub.cs.systems.eim.lab04.contactsmanager.PHONE_NUMBER_KEY");
       if (phone != null) {
@@ -279,12 +222,9 @@ sau `Activity.RESULT_CANCELED`).
     -   *Save* - este lansată în execuție aplicația nativă pentru
         gestiunea agendei telefonice, folosind un cod de cerere prin
         intermediul căruia se va verifica rezultatul furnizat:
-        `startActivityForResult(intent, Constants.CONTACTS_MANAGER_REQUEST_CODE);
-        `
+        `startActivityForResult(intent, Constants.CONTACTS_MANAGER_REQUEST_CODE);`
     -   *Cancel* - se transmite înapoi rezultatul
-        `setResult(Activity.RESULT_CANCELED, new Intent());
-        `
-
+        `setResult(Activity.RESULT_CANCELED, new Intent());`
 <!-- -->
 
 -   în metoda `onActivityResult()` asociată activității aplicației
@@ -324,13 +264,4 @@ accesează meniul *Run* → *Edit Configurations...*, iar în secțiunea
 ``` shell
 student@eg106:~$ adb shell 
 vbox86p:/ # pm list packages -f
-```
-
-**7.** Să se încarce modificările realizate în cadrul depozitului
-'Laborator04' de pe contul Github personal, folosind un mesaj sugestiv.
-
-```bash
-student@eim-lab:~/Laborator04$ git add *
-student@eim-lab:~/Laborator04$ git commit -m "implemented taks for laboratory 04"
-student@eim-lab:~/Laborator04$ git push origin master
 ```

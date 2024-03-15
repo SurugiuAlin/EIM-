@@ -71,10 +71,9 @@
   - [Constructia unui Intent](lab4/building_intents.md)
   - [Transmiterea de informații intre Intents](lab4/sending_data.md)
   - [Broadcasts](lab4/broadcasts.md)
-  - [Transmiterea de broadcast](lab4/sending_broadcast.md)
-  - [Primirea unui broadcast](lab4/receiving_broadcast.md)
-
-
+  - [Transmiterea de broadcast](lab4/sneding_broadcast.md)
+  - [Primirea unui broadcast](lab4/receive_broadcast.md)
+  - [Exercitii](lab4/exercises.md)
 
 - [4. Structura unei Aplicații (III) - Servicii](lab5/lab5.md)
 - [5. Comunicația prin Sockeți TCP](lab6/lab6.md)
