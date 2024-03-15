@@ -3,7 +3,8 @@
 Se dorește implementarea unei aplicații Android, conținând o activitate
 care să ofere utilizatorilor funcționalitatea necesară pentru a stoca un
 număr de telefon în agenda de contacte, specificând pentru acesta mai
-multe informații.
+multe informații. Pe langa documentatia din laborator,
+vom folosi documentatia oficiala Android despre [Intents](https://developer.android.com/guide/components/intents-filters) si [Broadcasts](https://developer.android.com/develop/background-work/background-tasks/broadcasts).
 
 ![](images/08contacts_manager_small.png)
 
