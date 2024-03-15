@@ -263,6 +263,9 @@ accesează meniul *Run* → *Edit Configurations...*, iar în secțiunea
 -   Să se verifice în emulator/telefon pachetele instalate
 
 ``` shell
+student@eg106:~$ aapt l -a ./app/build/outputs/apk/debug/app-debug.apk | sed -n -e '/manifest/,$p'  
 student@eg106:~$ adb shell 
 vbox86p:/ # pm list packages -f
+vbox86p:/ # dumpsys package | grep  'eim'| grep Activity
+vbox86p:/ # 
 ```
