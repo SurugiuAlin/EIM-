@@ -1,1 +1,1 @@
-# Laborator 04. Structura unei Aplicații (II)
+# Laborator 03. Structura unei Aplicații (II)

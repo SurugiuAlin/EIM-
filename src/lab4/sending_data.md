@@ -79,3 +79,63 @@ protected void onCreate(Bundle state) {
   setResult(RESULT_OK, intentToParent);
   finish();
 ```
+
+## ResultsLauncher API
+`onActivityResult` e deprecated. Google recomandă folosirea  [ActivityResultsLauncherAPI](https://developer.android.com/training/basics/intents/result).
+Aceasta nouă abordare este mai sigură și mai ușor de gestionat, deoarece elimină necesitatea de a utiliza coduri de cerere hardcoded și simplifică gestionarea callback-urilor pentru rezultatele activității.
+
+**Activitatea părinte (MainActivity)**
+În activitatea părinte, înlocuiește `startActivityForResult()` și `onActivityResult()` cu utilizarea unui `ActivityResultLauncher`.
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+    // Definește un ActivityResultLauncher
+    private lateinit var startForResult: ActivityResultLauncher<Intent>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        // Inițializează launcher-ul cu un callback pentru rezultat
+        startForResult = registerForActivityResult(StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                // Procesează rezultatul aici
+                val data: Intent? = result.data
+                val someData = data?.getStringExtra("another_key")
+                // Folosește `someData` cum este necesar
+            }
+        }
+
+        val btn = findViewById<Button>(R.id.open_activity_button)
+        btn.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java).apply {
+                putExtra("some_key", "someValue")
+            }
+            // Lansează activitatea copil folosind launcher-ul
+            startForResult.launch(intent)
+        }
+    }
+}
+```
+
+**Activitatea Copil (SecondActivity)**
+```Kotlin
+class SecondActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.second_activity)
+
+        // Presupunând că vrei să returnezi rezultatul la un anumit eveniment, de exemplu, la apăsarea unui buton
+        val someButton: Button = findViewById(R.id.some_button)
+        someButton.setOnClickListener {
+            val returnIntent = Intent().apply {
+                putExtra("another_key", "anotherValue")
+            }
+            setResult(RESULT_OK, returnIntent)
+            finish()
+        }
+
+        // Dacă activitatea se încheie fără a seta explicit un rezultat, poți să nu faci nimic sau să setezi RESULT_CANCELED
+    }
+}
+```

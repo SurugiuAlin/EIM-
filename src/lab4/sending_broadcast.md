@@ -16,7 +16,7 @@ Pot fi utilizate atât acțiuni predefinite (care vor fi
 procesate atât de aplicațiile Android native cât și de eventuale
 aplicații instalate din alte surse) cât și acțiuni definite de
 utilizator, pentru care trebuie implementate aplicații dedicate,
-responsabile cu procesarea acestora.\
+responsabile cu procesarea acestora.
 
 ---
 
@@ -26,4 +26,16 @@ final public static String SOME_ACTION = "ro.pub.cs.systems.eim.lab04.SomeAction
 Intent intent = new Intent(SOME_ACTION);
 intent.putExtra("someKey", someValue);
 sendBroadcast(intent);
+```
+
+*Kotlin*
+```Kotlin
+companion object {
+    const val SOME_ACTION = "ro.pub.cs.systems.eim.lab04.SomeAction.SOME_ACTION"
+}
+
+val intent = Intent(SOME_ACTION).apply {
+    putExtra("someKey", someValue)
+}
+sendBroadcast(intent)
 ```

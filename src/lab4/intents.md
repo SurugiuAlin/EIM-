@@ -1,9 +1,9 @@
 ## Intenții
 
-Aplicatile pe android sunt izolate si comunicarea intre aplicatie
-si sistem se face prin Inter-Process Communication (IPC). In
-android, pentru a porni alte activitati sau aplicatii vom folosi
-forma de IPC numit **Intents**.
+Aplicațiile pe Android sunt izolate, și comunicația între aplicație
+și sistem se face prin Inter-Process Communication (IPC). În
+Android, pentru a porni alte activități sau aplicații vom folosi
+forma de IPC numită  **Intents**.
 
 Conceptul de intenție în Android este destul de complex (și unic),
 putând fi definit ca o acțiune având asociată o serie de informații,
