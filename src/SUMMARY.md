@@ -74,7 +74,7 @@
   - [Transmiterea de broadcast](lab4/sending_broadcast.md)
   - [Primirea unui broadcast](lab4/receive_broadcast.md)
   - [Exercitii](lab4/exercises.md)
-  - [Excercitii (Kotlin)] (lab4/exercises-kotlin.md)
+  - [Exercitii(Kotlin)](lab4/exercises-kotlin.md)
 
 - [4. Structura unei Aplicații (III) - Servicii](lab5/lab5.md)
 - [5. Comunicația prin Sockeți TCP](lab6/lab6.md)
