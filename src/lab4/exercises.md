@@ -6,19 +6,21 @@ număr de telefon în agenda de contacte, specificând pentru acesta mai
 multe informații. Pe langa documentatia din laborator,
 vom folosi documentatia oficiala Android despre [Intents](https://developer.android.com/guide/components/intents-filters) si [Broadcasts](https://developer.android.com/develop/background-work/background-tasks/broadcasts).
 
-![](images/08contacts_manager_small.png)
+<img src="images/08contacts_manager_small.png" width="25%" alt="Small Contacts Manager"/>
+<img src="images/09contacts_manager_large.png" width="25%" alt="Large Contacts Manager"/>
 
-![](images/09contacts_manager_large.png)
 
 
-**1.** Să se creeze un
-proiect Android Studio denumit *ContactsManager* (se selectează *Start a
-new Android Studio project -> Empty View Activity*).
+**1.** Să se creeze un proiect Android Studio denumit *ContactsManager* (se selectează *Start a new Android Studio project -> Empty View Activity* -> pentru proiect **XML**).
 
-![](images/07androidstudio.png)
+Pentru un proiect cu **Jetpack Compose**, se selecteaza: *Start a new Android Studio project -> Empty Activity*
+<details>
+<summary>Imagini cu pasii</summary>
 
-**2.** În fișierul `activity_contacts_manager` din directorul
-`res/layout` să se construiască interfața grafică folosind:
+![](images/2024_android_studio_new_project_step1.png)
+</details>
+
+**2.** În fișierul `activity_contacts_manager` din directorul `res/layout` să se construiască interfața grafică folosind:
 
 -   editorul vizual (*Graphical Layout*)
 -   editorul XML (*Text*)
