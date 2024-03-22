@@ -128,7 +128,7 @@ Log.d(Constants.TAG, "Thread.run() was invoked, PID: " + android.os.Process.myPi
 
 **4.** În proiectul **StartedServiceActivity**, să se pornească serviciul,
 printr-un apel al metodei
-`startService()`;
+`startService()` sau `startForegroundService` dupa versiunea `Oreo`;
 intenția care va fi transmisă ca argument metodei `startService()`
 trebuie să refere **explicit** serviciul care urmează a fi pornit, din
 motive de securitate (se folosește metoda
@@ -149,6 +149,37 @@ else {
 }
 
 ```
+
+In serviciu, vom face urmatoarea actualizare pentru ca serviciul sa anunte pornirea catre 
+activitate:
+```java
+  private static final String TAG = "ForegroundService";
+  private static final String CHANNEL_ID = "11";
+  private static final String CHANNEL_NAME = "ForegroundServiceChannel";
+  private void dummyNotification() {
+    NotificationChannel channel = null;
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      channel = new NotificationChannel(CHANNEL_ID,CHANNEL_NAME,
+        NotificationManager.IMPORTANCE_HIGH);
+    }
+    NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      manager.createNotificationChannel(channel);
+    }
+    Notification notification = null;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+      notification = new Notification.Builder(getApplicationContext(),CHANNEL_ID).build();
+    }
+    startForeground(1, notification);
+  }
+ 
+   @Override
+  public int onStartCommand(Intent intent, int flags, int startId) {
+    /* ... */
+    // Am adaugat aceasta linie
+    dummyNotification();
+    /* ... */
+  }
 
 **a)** Să se ruleze aplicațiile. Se va rula aplicația *StartedService*
 care instalează serviciul pe dispozitivul mobil. Ulterior se va rula
