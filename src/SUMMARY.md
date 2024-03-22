@@ -75,9 +75,8 @@
   - [Primirea unui broadcast](lab4/receive_broadcast.md)
   - [Exercitii](lab4/exercises.md)
   - [Exercitii(Kotlin)](lab4/exercises-kotlin.md)
-
 - [4. Servicii](lab5/lab5.md)
-  - [Ce este un serviciu?][lab5/servicies.md]
+  - [Ce este un serviciu?](lab5/servicies.md)
     - [Tipuri de Servicii](lab5/types.md)
   - [Gestiunea unui Serviciu](lab5/build_service.md)
   - [Lifecycle](lab5/lifecycle.md)
