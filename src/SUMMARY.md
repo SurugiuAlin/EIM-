@@ -18,7 +18,7 @@
 
 # Laboratoare
 ----
-- [1. Structura unei Aplicații (I) - Activități](lab2/lab2.md)
+- [1. Activități](lab2/lab2.md)
   - [Sistemul de Operare Android](lab1/android.md)
     - [Arhitectura](lab1/architecture.md)
   - [Android Studio](lab1/android_studio.md)
@@ -66,7 +66,7 @@
   - [Adaptarea interfeței grafice în funcție de orientarea ecranului](lab3/adapt_to_screen_orientation.md)
   - [Activitate de Laborator](lab3/exercises.md)
   - [Resurse Utile](lab3/resources.md)
-- [3. Structura unei Aplicații (II) - Intenții](lab4/lab4.md)
+- [3. Intenții](lab4/lab4.md)
   - [Intenții](lab4/intents.md)
   - [Constructia unui Intent](lab4/building_intents.md)
   - [Transmiterea de informații intre Intents](lab4/sending_data.md)
