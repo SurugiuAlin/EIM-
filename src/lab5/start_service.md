@@ -5,16 +5,19 @@ Aceasta primește ca parametru un obiect de tip `Intent` care poate fi
 creat:
 
 -   explicit, pe baza denumirii clasei care implementează serviciul
-    respectiv; `Intent intent = new Intent(this, SomeService.class);
+    respectiv; 
+    ```java
+    Intent intent = new Intent(this, SomeService.class);
     startService(intent);
-    `
+    ```
 -   implicit, indicând componenta care gestionează serviciul respectiv
     (se va indica atât denumirea pachetului cât și denumirea clasei ca
     argument al metodei `setComponent()` asociat intenției respective):
-    `Intent intent = new Intent();
+    ```java
+    Intent intent = new Intent();
     intent.setComponent(new ComponentName("SomePackage", "SomeService"));
     startService(intent);
-    `
+    ```
 
 Transmiterea de informații suplimentare către serviciu poate fi
 realizată prin intermediul metodelor `putExtras(Bundle)`,
