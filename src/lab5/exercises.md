@@ -180,6 +180,7 @@ activitate:
     dummyNotification();
     /* ... */
   }
+```
 
 **a)** Să se ruleze aplicațiile. Se va rula aplicația *StartedService*
 care instalează serviciul pe dispozitivul mobil. Ulterior se va rula
