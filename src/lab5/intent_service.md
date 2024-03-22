@@ -1,7 +1,7 @@
 # Utilizarea clasei IntentService
 
 Recursul la clasa
-[IntentService](http:*developer.android.com/reference/android/app/IntentService.html)
+[IntentService](http://developer.android.com/reference/android/app/IntentService.html)
 este adecvată în situația în care se dorește implementarea unor servicii
 care rulează în fundal, **pe un fir de execuție dedicat** realizând un
 set de operații la un moment dat de timp, atunci când sunt solicitate.
@@ -14,20 +14,16 @@ serviciu și transmiterea unui obiect de tip `Intent` care conține toți
 parametrii necesari pentru realizarea sarcinii respective. Toate
 operațiile solicitate sunt înregistrate într-o coadă de așteptare și
 executate succesiv, prin invocarea automată a metodei
-[onHandleIntent()](http:*developer.android.com/reference/android/app/IntentService.html#onHandleIntent(android.content.Intent)).
+[onHandleIntent()](http://developer.android.com/reference/android/app/IntentService.html#onHandleIntent(android.content.Intent)).
 După ce procesarea a fost finalizată, procesul se oprește singur (nu
 este necesar să se apeleze metodele `stopSelf()` sau `stopService()`
 explicit).
 
----
-**Note**
 
-Clasa `IntentService` oferă o implementare implicită a
+> Clasa `IntentService` oferă o implementare implicită a
 metodelor `onStartCommand()` care plasează intenția către coada de
 așteptare și invocă metoda `onHandleIntent()` precum și a metodei
 `onBind()` care întoarce valoarea `null`.\
-
----
 
 Prin urmare, o implementare presupune definirea unei clase derivată din
 `IntentService` care suprascrie metoda `onHandleIntent()`, ce primește
