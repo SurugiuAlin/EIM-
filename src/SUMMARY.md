@@ -84,7 +84,7 @@
   - [Oprirea unui Serviciu](lab5/stop_service.md)
   - [Utilizarea clasei IntentService](lab5/intent_service.md)
   - [Utilizarea clasei Service](lab5/service_class.md)
-  - [Prioritatea](lab5/service_class.md)
+  - [Prioritatea](lab5/priority.md)
   - [Activitate de Laborator](lab5/exercises.md)
 - [5. Comunicația prin Sockeți TCP](lab6/lab6.md)
 - [6. Invocarea de Servicii Web prin Protocolul HTTP](lab7/lab7.md)
