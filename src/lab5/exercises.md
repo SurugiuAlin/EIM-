@@ -8,11 +8,11 @@ directorul Laborator05 va trebui să se conțină un director `labtasks` ce
 va deține proiectele AndroidStudio, fișierul README.md și un fișier
 .gitignore care indică tipurile de fișiere (extensiile) ignorate.
 
-    student@eim:~$ git clone https:*www.github.com/eim-lab/Laborator05.git
+    student@eim:~$ git clone https://www.github.com/eim-lab/Laborator05.git
 
 
 **2.** Să se încarce în mediul integrat de dezvoltare Android Studio
-proiectele *StartedService* respectiv *StartedServiceActivity* din
+proiectele **StartedService** respectiv **StartedServiceActivity** din
 directorul `labtasks/StartedService`.
 
 -   Proiectul *StartedService* conține codul sursă pentru un serviciu de
@@ -51,12 +51,12 @@ Pentru fiecare intenție, se vor specifica:
     care primește ca argumente cheia și valoarea.
 
 Transmiterea propriu-zisă a intenției se face prin intermediul metodei
-[sendBroadcast()](http:*developer.android.com/reference/android/content/Context.html#sendBroadcast%28android.content.Intent%29).
+[sendBroadcast()](http://developer.android.com/reference/android/content/Context.html#sendBroadcast%28android.content.Intent%29).
 
 Cele trei mesaje vor fi temporizate la intervalul indicat de valoarea
 `Constants.SLEEP_TIME` (propagarea mesajelor va fi intercalată de
 apeluri
-[Thread.sleep()](https:*docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#sleep-long-).
+[Thread.sleep()](https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#sleep-long-).
 
 **a)** De ce este necesar ca serviciul să realizeze operațiile pe un fir
 de execuție dedicat?
@@ -65,9 +65,9 @@ de execuție dedicat?
 abordare? Ce avantaj și ce dezavantaj prezintă această alternativă?
 
 Se implementează o clasă derivată din
-[Thread](https:*docs.oracle.com/javase/8/docs/api/java/lang/Thread.html)
+[Thread](https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html)
 pentru care se va suprascrie metoda
-[run()](https:*docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#run--).
+[run()](https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#run--).
 Pe firul de execuție dedicat, se vor propaga intențiile cu difuzare la
 nivelul sistemului de operare Android, după care acesta își va încheia
 activitatea.
@@ -126,13 +126,13 @@ Monitorizați ciclurile din Thread.run() in logcat:
 Log.d(Constants.TAG, "Thread.run() was invoked, PID: " + android.os.Process.myPid() + " TID: " + android.os.Process.myTid());
 ```
 
-**4.** În proiectul *StartedServiceActivity*, să se pornească serviciul,
+**4.** În proiectul **StartedServiceActivity**, să se pornească serviciul,
 printr-un apel al metodei
-[startService()](http:*developer.android.com/reference/android/content/Context.html#startService%28android.content.Intent%29);
+`startService()`;
 intenția care va fi transmisă ca argument metodei `startService()`
 trebuie să refere **explicit** serviciul care urmează a fi pornit, din
 motive de securitate (se folosește metoda
-[setComponent()](http:*developer.android.com/reference/android/content/Intent.html#setComponent%28android.content.ComponentName%29),
+[setComponent()](http://developer.android.com/reference/android/content/Intent.html#setComponent%28android.content.ComponentName%29),
 care indică atât pachetul corespunzător aplicației Android care conține
 serviciul, cât și clasa corespunzătoare acestuia - calificată complet).
 
@@ -160,9 +160,9 @@ ascultător pentru intenții cu difuzare, în clasa
 `StartedServiceBroadcastReceiver` din pachetul
 `ro.pub.cs.systems.eim.lab05.startedserviceactivity.view`. Acesta
 extinde clasa
-[BroadcastReceiver](http:*developer.android.com/reference/android/content/BroadcastReceiver.html)
+[BroadcastReceiver](http://developer.android.com/reference/android/content/BroadcastReceiver.html)
 și implementează metoda
-[onReceive()](http:*developer.android.com/reference/android/content/BroadcastReceiver.html#onReceive%28android.content.Context,%20android.content.Intent%29),
+[onReceive()](http://developer.android.com/reference/android/content/BroadcastReceiver.html#onReceive%28android.content.Context,%20android.content.Intent%29),
 având ca argumente **contextul** din care a fost invocată și
 **intenția** prin intermediul căreia a fost transmis mesajul respectiv.
 Astfel, datele extrase din intenție (având cheia indicată de
@@ -173,12 +173,12 @@ din cadrul interfeței grafice.
 `StartedServiceBroadcastReceiver`, se verifică:
 
 -   acțiunea corespunzătoare intenției, folosind metoda
-    [getAction()](http:*developer.android.com/reference/android/content/Intent.html#getAction%28%29);
+    [getAction()](http://developer.android.com/reference/android/content/Intent.html#getAction%28%29);
 -   informațiile transmise conținute în câmpul `extra`, folosind
     metodele corespunzătoare tipului de date identificat pe baza
     intenției
-    ([getStringExtra()](http:*developer.android.com/reference/android/content/Intent.html#getStringExtra%28java.lang.String%29),
-    [getIntExtra()](http:*developer.android.com/reference/android/content/Intent.html#getIntExtra%28java.lang.String,%20int%29),
+    ([getStringExtra()](http://developer.android.com/reference/android/content/Intent.html#getStringExtra%28java.lang.String%29),
+    [getIntExtra()](http://developer.android.com/reference/android/content/Intent.html#getIntExtra%28java.lang.String,%20int%29),
     [getStringArrayListExtra()](http:*developer.android.com/reference/android/content/Intent.html#getStringArrayListExtra%28java.lang.String%29)).
 
 Acestea vor fi afișate în cadrul câmpului text din cadrul interfeței
@@ -234,10 +234,10 @@ startedServiceBroadcastReceiver = new StartedServiceBroadcastReceiver(messageTex
 
 
 **b)** să se creeze o instanță a unui obiect de tipul
-[IntentFilter](http:*developer.android.com/reference/android/content/IntentFilter.html),
+[IntentFilter](http://developer.android.com/reference/android/content/IntentFilter.html),
 la care să se adauge toate acțiunile corespunzătoare intențiilor cu
 difuzare propagate de serviciu; se va folosi metoda
-[addAction()](http:*developer.android.com/reference/android/content/IntentFilter.html#addAction%28java.lang.String%29);
+[addAction()](http://developer.android.com/reference/android/content/IntentFilter.html#addAction%28java.lang.String%29);
 
 
 ``` java
@@ -251,9 +251,9 @@ startedServiceIntentFilter.addAction(Constants.ACTION_STRING);
 cu difuzare, astfel încât acesta să proceseze mesajele primite de la
 serviciu doar în situația în care activitatea este vizibilă pe suprafața
 de afișare; în acest sens, vor fi utilizate metodele
-[registerReceiver()](http:*developer.android.com/reference/android/content/Context.html#registerReceiver%28android.content.BroadcastReceiver,%20android.content.IntentFilter%29),
+[registerReceiver()](http://developer.android.com/reference/android/content/Context.html#registerReceiver%28android.content.BroadcastReceiver,%20android.content.IntentFilter%29),
 respectiv
-[unregisterReceiver()](http:*developer.android.com/reference/android/content/Context.html#unregisterReceiver%28android.content.BroadcastReceiver%29),
+[unregisterReceiver()](http://developer.android.com/reference/android/content/Context.html#unregisterReceiver%28android.content.BroadcastReceiver%29),
 apelate pe metodele de callback ale activității corespunzătoare stării
 în care aceasta este vizibilă pe suprafața de afișare (`onResume()`,
 respectiv `onPause()`).
@@ -278,7 +278,7 @@ protected void onPause() {
 
 
 **d)** Să se oprească serviciul printr-un apel al metodei
-[stopService()](http:*developer.android.com/reference/android/content/Context.html#stopService%28android.content.Intent%29).
+[stopService()](http://developer.android.com/reference/android/content/Context.html#stopService%28android.content.Intent%29).
 Unde ar putea fi plasată aceasta? Care sunt avantajele și dezavantajele
 unei astfel de abordări?
 
@@ -353,7 +353,7 @@ Astfel, activitatea va fi invocată prin intermediul intenției, în
 condițiile în care aceasta este activă (se găsește în memorie, fiind
 plasată pe stiva de activități, fără a fi vizibilă). De aceea, aceasta
 va invoca metoda de callback
-[onNewIntent()](http:*developer.android.com/reference/android/app/Activity.html#onNewIntent%28android.content.Intent%29)
+[onNewIntent()](http://developer.android.com/reference/android/app/Activity.html#onNewIntent%28android.content.Intent%29)
 pe care trebuie realizată afișarea informațiilor transmise în câmpul
 `extra` al intenției.
 
