@@ -140,7 +140,14 @@ serviciul, cât și clasa corespunzătoare acestuia - calificată complet).
 ``` java
 Intent intent = new Intent();
 intent.setComponent(new ComponentName("ro.pub.cs.systems.eim.lab05.startedservice", "ro.pub.cs.systems.eim.lab05.startedservice.service.StartedService"));
-startService(intent);
+// De la oreo in sus se foloseste startForegroundService
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+    context.startForegroundService(intent);
+}
+else {
+    context.startService(intent);
+}
+
 ```
 
 **a)** Să se ruleze aplicațiile. Se va rula aplicația *StartedService*
