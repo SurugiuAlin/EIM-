@@ -6,6 +6,7 @@ la o altă aplicație. În plus, o componentă se poate lega de un service pentr
 comunicații între procese (IPC). De exemplu, un service poate gestiona tranzacții de rețea, poate reda muzică, poate efectua 
 operațiuni de fișier I/O sau poate interacționa cu un furnizor de conținut, toate din fundal.
 
+![](images/open_bluetooth_connection.png)
 
 Un serviciu nu trece prin evenimentele ce fac parte din ciclul
 de viață al unei activități. Totuși, un serviciu poate fi controlat
