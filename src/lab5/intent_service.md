@@ -1,4 +1,4 @@
-##### Utilizarea clasei IntentService
+# Utilizarea clasei IntentService
 
 Recursul la clasa
 [IntentService](http:*developer.android.com/reference/android/app/IntentService.html)
