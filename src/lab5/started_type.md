@@ -9,6 +9,14 @@ explicit**, fie din propriul său context, printr-un apel al metodei
 `stopSelf()`, fie de către o componentă (aceeași sau alta decât cea care
 l-a invocat), prin intermediul metodei `stopService()`.
 
+``` java
+@Override
+public int onStartCommand(Intent intent, int flags, int startId) {
+  processInBackground(intent, startId);
+  return startMode;
+}
+```
+
 Metoda `onStartCommand()` este apelată în mod automat în momentul în
 care serviciul este pornit prin intermediul metodei `startService()` și
 primește ca parametrii:
@@ -60,14 +68,6 @@ valoare întoarsă:
     (re)pornit apelând metoda `onStartCommand()` folosind ca parametru
     intenția originală, a cărei procesare nu a fost terminată
     corespunzător.
-
-``` java
-@Override
-public int onStartCommand(Intent intent, int flags, int startId) {
-  processInBackground(intent, startId);
-  return startMode;
-}
-```
 
 În toate aceste cazuri, oprirea serviciului trebuie realizată explicit,
 prin apelul metodelor:
