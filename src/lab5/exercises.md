@@ -142,10 +142,10 @@ Intent intent = new Intent();
 intent.setComponent(new ComponentName("ro.pub.cs.systems.eim.lab05.startedservice", "ro.pub.cs.systems.eim.lab05.startedservice.service.StartedService"));
 // De la oreo in sus se foloseste startForegroundService
 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-    context.startForegroundService(intent);
+    startForegroundService(intent);
 }
 else {
-    context.startService(intent);
+    startService(intent);
 }
 
 ```
