@@ -2,8 +2,8 @@
 
 
 **1.** Să se cloneze în directorul de pe discul local conținutul
-depozitului la distanță de la
-<https:*www.github.com/eim-lab/Laborator05>. În urma acestei operații,
+depozitului la [distanță](https://www.github.com/eim-lab/Laborator05).
+ În urma acestei operații,
 directorul Laborator05 va trebui să se conțină un director `labtasks` ce
 va deține proiectele AndroidStudio, fișierul README.md și un fișier
 .gitignore care indică tipurile de fișiere (extensiile) ignorate.
