@@ -14,7 +14,7 @@
 - it will continue to live even if no other component is bound to it
 - we just call [startService](https://developer.android.com/reference/android/content/Context.html#startService(android.content.Intent))
 
-2. [**Bound Service**] (https://developer.android.com/guide/components/bound-services)
+2. [**Bound Service**](https://developer.android.com/guide/components/bound-services)
 - bounds a component to a service. Binding creates a connection between these components and they can use it for communication.
 - a bound service that is not started will “die” when no component is bound to it
 - calling [bindService](https://developer.android.com/reference/android/content/Context.html#bindService(android.content.Intent,%20android.content.ServiceConnection,%20int))binds it but does not start it. If the service doesn't exist this call will also create it.
