@@ -48,6 +48,7 @@ va deține proiectele AndroidStudio, fișierul README.md și un fișier
 
     student@eim:~$ git clone https://www.github.com/eim-lab/Laborator05.git
 
+----
 
 **2.** Să se încarce în mediul integrat de dezvoltare Android Studio
 proiectele **StartedService** respectiv **StartedServiceActivity** din
@@ -57,35 +58,33 @@ directorul `labtasks/StartedService - Kotlin`.
     tip started care transmite mai multe valori, de diferite tipuri (șir
     de caractere, întreg, vector), temporizate la un anumit interval
     (dată de valoarea `SLEEP_TIME` din interfața `Constants`). Aceste
-    valori sunt transmise prin intermediul unor intenții cu difuzare
-    (*eng.* broadcast intents), la nivelul întregului sistem de operare
+    valori sunt transmise prin intermediul unor broadcast intents, la nivelul întregului sistem de operare
     Android.
 -   Proiectul *StartedServiceActivity* conține codul sursă pentru o
-    aplicație Android care utilizează un ascultător pentru intenții cu
-    difuzare (*eng.* BroadcastReceiver), pentru tipurile de mesaje
+    aplicație Android care utilizează un BroadcastReceiver, pentru tipurile de mesaje
     propagate la nivelul sistemului de operare de către serviciu, pe
     care le afișează în interfața grafică, prin intermediul unui câmp
     text.
 
 ![](images/startedservice.png)
 
-**3.** În proiectul *StartedService*, în clasa `StartedService` din
-pachetul `ro.pub.cs.systems.eim.lab05.startedservice.service`, să se
+----
+
+**3.** În proiectul *StartedService*, în clasa `StartedService` să se
 completeze metoda `onStartCommand()` astfel încât aceasta să pornească
-un fir de execuție în cadrul căruia să fie propagate 3 intenții cu
-difuzare la nivelul sistemului de operare Android.
+un fir de execuție în cadrul căruia să fie propagate 3 broadcast intents la nivelul sistemului de operare Android.
 
 Pentru fiecare intenție, se vor specifica:
 
 -   **acțiunea**, care va avea valorile definite în interfața
     `Constants` (`Constants.ACTION_STRING`, `Constants.ACTION_INTEGER`,
     `Constants.ACTION_ARRAY_LIST`); se va utiliza metoda
-    [setAction()](http:*developer.android.com/reference/android/content/Intent.html#setAction%28java.lang.String%29);
+    [setAction()](http:developer.android.com/reference/android/content/Intent.html#setAction%28java.lang.String%29);
 -   **informațiile transmise**, plasate în câmpul `extra` (având cheia
     `Constants.DATA` și valoarea dată de `Constants.STRING_DATA`,
     `Constants.INTEGER_DATA`, `Constants.ARRAY_LIST_DATA`); se va
     utiliza metoda
-    [putExtra()](http:*developer.android.com/reference/android/content/Intent.html#putExtra%28java.lang.String,%20android.os.Bundle%29)
+    [putExtra()](http:developer.android.com/reference/android/content/Intent.html#putExtra%28java.lang.String,%20android.os.Bundle%29)
     care primește ca argumente cheia și valoarea.
 
 Transmiterea propriu-zisă a intenției se face prin intermediul metodei
@@ -158,6 +157,8 @@ Log.d(Constants.TAG, "Thread.run() was invoked, PID: ${android.os.Process.myPid(
 
 ```
 
+-----
+
 **4.** În proiectul **StartedServiceActivity**, să se pornească serviciul,
 printr-un apel al metodei
 `startService()` sau `startForegroundService` dupa versiunea `Oreo`;
@@ -220,6 +221,8 @@ override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 care instalează serviciul pe dispozitivul mobil. Ulterior se va rula
 aplicația *StartedServiceActivity*. Verificați faptul că serviciul a
 fost pornit și oprit corespunzător prin mesajele afișate în consolă.
+
+----
 
 **5.** În proiectul *StartedServiceActivity*, să se implementeze un
 ascultător pentru intenții cu difuzare, în clasa
@@ -341,6 +344,8 @@ override fun onPause() {
 Unde ar putea fi plasată aceasta? Care sunt avantajele și dezavantajele
 unei astfel de abordări?
 
+----
+
 **7.** Rulați din nou aplicația, întrerupând temporar activitatea
 (printr-o apăsare a tastei *Home*) în timp ce sunt procesate intențiile
 cu difuzare transmise de serviciu. Ce observați la revenirea în
@@ -352,9 +357,7 @@ repornească activitatea (dacă este cazul), asigurându-se astfel faptul
 că nu se mai pierde nici o informație transmisă de serviciu dacă aceasta
 nu este vizibilă pe suprafața de afișare.
 
-\<spoiler Indicații de Rezolvare> Pentru ca ascultătorul de intenții cu
-difuzare să poată procesa mesaje chiar și în situația în care
-activitatea nu este vizibilă pe suprafața de afișare, el trebuie
+Pentru ca ascultătorul de intenții cu difuzare să poată procesa mesaje chiar și în situația în care activitatea nu este vizibilă pe suprafața de afișare, el trebuie
 declarat, împreună cu filtrul de intenții, în fișierul
 `AndroidManifest.xml`:
 
@@ -426,6 +429,8 @@ override fun onNewIntent(intent: Intent?) {
 }
 
 ```
+
+----
 
 ## Resurse
 1. [Background work in Android](https://developer.android.com/develop/background-work/background-tasks#recommended-approaches)
