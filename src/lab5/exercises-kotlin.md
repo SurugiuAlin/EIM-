@@ -221,13 +221,6 @@ care instalează serviciul pe dispozitivul mobil. Ulterior se va rula
 aplicația *StartedServiceActivity*. Verificați faptul că serviciul a
 fost pornit și oprit corespunzător prin mesajele afișate în consolă.
 
-**b)** Monitorizați în DDMS procesele asociate activității și
-serviciului. Ce se întâmplă dacă activitatea este eliminată
-(`onDestroy()`)?
-
-**c)** Explicați ce se întâmplă dacă repornim activitatea (monitorizați
-în DDMS si logcat).
-
 **5.** În proiectul *StartedServiceActivity*, să se implementeze un
 ascultător pentru intenții cu difuzare, în clasa
 `StartedServiceBroadcastReceiver` din pachetul
