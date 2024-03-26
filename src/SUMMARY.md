@@ -86,7 +86,7 @@
   - [Utilizarea clasei Service](lab5/service_class.md)
   - [Prioritatea](lab5/priority.md)
   - [Activitate de Laborator](lab5/exercises.md)
-  - [Activitate de Laborator](lab5/exercises-kotlin.md)
+  - [Activitate de Laborator (Kotlin)](lab5/exercises-kotlin.md)
 
 - [5. Comunicația prin Sockeți TCP](lab6/lab6.md)
 - [6. Invocarea de Servicii Web prin Protocolul HTTP](lab7/lab7.md)

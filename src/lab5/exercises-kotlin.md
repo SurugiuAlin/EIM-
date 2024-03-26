@@ -430,3 +430,8 @@ override fun onNewIntent(intent: Intent?) {
 }
 
 ```
+
+## Resurse
+1. [Background work in Android](https://developer.android.com/develop/background-work/background-tasks#recommended-approaches)
+2. [SMD](https://ocw.cs.pub.ro/courses/smd/laboratoare/03)
+3. [Foreground Services Tutorial](https://youtu.be/YZL-_XJSClc?si=ySa6BxpHWTFrE-sO)
