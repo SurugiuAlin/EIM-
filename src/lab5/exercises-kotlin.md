@@ -35,6 +35,9 @@ Since Android 8 (Oreo, API level 26), the system provides more limitations regar
 
 A “trick” to run a service in background and be less likely to be killed is to start the service in foreground (startForeground). Because of the notification required for it, the app is considered in foreground. The downside is that the notification needs to stay in the notification bar and can have a negative impact on the user experience.
 
+----
+
+## Exercises
 
 **1.** Să se cloneze în directorul de pe discul local conținutul
 depozitului la [distanță](https://www.github.com/eim-lab/Laborator05).
@@ -48,7 +51,7 @@ va deține proiectele AndroidStudio, fișierul README.md și un fișier
 
 **2.** Să se încarce în mediul integrat de dezvoltare Android Studio
 proiectele **StartedService** respectiv **StartedServiceActivity** din
-directorul `labtasks/StartedService`.
+directorul `labtasks/StartedService - Kotlin`.
 
 -   Proiectul *StartedService* conține codul sursă pentru un serviciu de
     tip started care transmite mai multe valori, de diferite tipuri (șir
