@@ -251,8 +251,7 @@ din cadrul interfeței grafice.
     [getStringArrayListExtra()](http:*developer.android.com/reference/android/content/Intent.html#getStringArrayListExtra%28java.lang.String%29)).
 
 Acestea vor fi afișate în cadrul câmpului text din cadrul interfeței
-grafice (`messageTextView`), transmis ca argument la instanțierea
-ascultătorului pentru intenții cu difuzare.
+grafice (`messageTextView`), transmis ca argument la instanțierea BroadcastReceiver-ului.
 
 ``` kotlin
 package ro.pub.cs.systems.eim.lab05.startedserviceclient.view
@@ -285,8 +284,7 @@ class StartedServiceBroadcastReceiver(private val messageTextView: TextView?) : 
 `ro.pub.cs.systems.eim.lab05.startedserviceactivity`), să se realizeze
 următoarele operații:
 
-**a)** să se creeze o instanță a ascultătorului pentru intenții cu
-difuzare;
+**a)** să se creeze o instanță de broadcastReceiver;
 
 
 ``` kotlin
@@ -310,10 +308,9 @@ startedServiceIntentFilter = IntentFilter().apply {
 ```
 
 
-**c)** să se atașeze, respectiv să se detașeze ascultătorul de intenții
-cu difuzare, astfel încât acesta să proceseze mesajele primite de la
-serviciu doar în situația în care activitatea este vizibilă pe suprafața
-de afișare; în acest sens, vor fi utilizate metodele
+**c)** să se atașeze, respectiv să se detașeze un BroadcastReceiver, astfel încât acesta să proceseze mesajele primite de la serviciu doar în situația în care activitatea este vizibilă pe suprafața de afișare;
+
+In acest sens, vor fi utilizate metodele
 [registerReceiver()](http://developer.android.com/reference/android/content/Context.html#registerReceiver%28android.content.BroadcastReceiver,%20android.content.IntentFilter%29),
 respectiv
 [unregisterReceiver()](http://developer.android.com/reference/android/content/Context.html#unregisterReceiver%28android.content.BroadcastReceiver%29),
@@ -321,9 +318,7 @@ apelate pe metodele de callback ale activității corespunzătoare stării
 în care aceasta este vizibilă pe suprafața de afișare (`onResume()`,
 respectiv `onPause()`).
 
-Este necesar ca activarea
-ascultătorului să se realizeze pe metoda de callback `onResume()`, iar
-dezactivarea sa să fie realizată pe metoda de callback `onPause()`.
+Este necesar ca activarea receiverului să se realizeze pe metoda de callback `onResume()`, iar dezactivarea sa să fie realizată pe metoda de callback `onPause()`.
 
 ``` kotlin
 override fun onResume() {
@@ -347,12 +342,10 @@ unei astfel de abordări?
 ----
 
 **7.** Rulați din nou aplicația, întrerupând temporar activitatea
-(printr-o apăsare a tastei *Home*) în timp ce sunt procesate intențiile
-cu difuzare transmise de serviciu. Ce observați la revenirea în
+(printr-o apăsare a tastei *Home*) în timp ce sunt procesate broadcast intents. Ce observați la revenirea în
 activitate?
 
-Modificați modul de implementare al ascultătorului de intenții cu
-difuzare astfel încât în momentul în care se primește un mesaj, să
+Modificați modul de implementare al broadcastReceiver-ului astfel încât în momentul în care se primește un mesaj, să
 repornească activitatea (dacă este cazul), asigurându-se astfel faptul
 că nu se mai pierde nici o informație transmisă de serviciu dacă aceasta
 nu este vizibilă pe suprafața de afișare.
