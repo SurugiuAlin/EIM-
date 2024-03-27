@@ -30,7 +30,11 @@ directorul `labtasks/StartedService`.
     text.
 
 ![](images/startedservice.png)
+- puteți testa recepția mesajelor de broadcast folosind comanda shell
+``` shell
+adb shell 'am broadcast -a "ro.pub.cs.systems.eim.lab05.startedservice.string" --es  "ro.pub.cs.systems.eim.lab05.startedservice.data" "******** hello world!"'
 
+```
 **3.** În proiectul *StartedService*, în clasa `StartedService` din
 pachetul `ro.pub.cs.systems.eim.lab05.startedservice.service`, să se
 completeze metoda `onStartCommand()` astfel încât aceasta să pornească
