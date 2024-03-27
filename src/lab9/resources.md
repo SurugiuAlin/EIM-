@@ -1,6 +1,10 @@
 # Resurse utile
 
-//todo add links to android documentation about bluetooth, blueetooth vs blueetooth low energy, how to improve the interface etc.
+1. [Find Bluetooth Devices](https://developer.android.com/develop/connectivity/bluetooth/find-bluetooth-devices)
+2. [BluetoothServerSocket](https://developer.android.com/reference/android/bluetooth/BluetoothServerSocket) 
+3. [BluetoothSocket](https://developer.android.com/reference/android/bluetooth/BluetoothSocket)
+4. [Bluetooth Low Energy (BLE)](https://developer.android.com/develop/connectivity/bluetooth/ble/ble-overview)
+5. [Bluetooth](https://developer.android.com/develop/connectivity/bluetooth)
 
 Full code:
 ```code
