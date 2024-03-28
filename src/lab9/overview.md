@@ -1,22 +1,24 @@
-# Aplicație de Chat folosind Bluetooth
+# Bluetooth
 
-Acest tutorial pas cu pas vă va arăta cum să creați o aplicație de chat folosind Bluetooth. Vom trece prin următoarele etape:
+Bluetooth, din perspectiva dezvoltării pe Android, reprezintă o tehnologie wireless esențială care permite dispozitivelor să comunice între ele pe distanțe scurte. Android oferă un API extins pentru [Bluetooth](https://developer.android.com/develop/connectivity/bluetooth), care permite dezvoltatorilor să realizeze diverse funcționalități, de la transferul simplu de date până la gestionarea conexiunilor complexe între dispozitive.
 
-1. [Introducere](#introducere)
-2. [Permisiuni](#permisiuni)
-3. [Activarea Bluetooth](#activarea-bluetooth)
-4. [Descoperirea dispozitivelor](#descoperirea-dispozitivelor)
-5. [Conectarea dispozitivelor](#conectarea-dispozitivelor)
-6. [Trimiterea și primirea mesajelor](#trimiterea-și-primirea-mesajelor)
-7. [Încheiere](#încheiere)
+API-ul Bluetooth în Android este împărțit în două categorii principale:
 
-## Introducere <a name="introducere"></a>
+- [**Bluetooth clasic**]((https://developer.android.com/develop/connectivity/bluetooth)) - Este folosit pentru comunicarea punct-la-punct între dispozitive, ideal pentru transferul de date la volum mare, cum ar fi fișierele audio sau datele de pe un dispozitiv periferic. Este utilizat frecvent în cazul căștilor, difuzoarelor și al altor dispozitive de periferie.
 
-În acest tutorial, vom crea o aplicație de chat care va utiliza Bluetooth pentru a comunica între dispozitive Android. Vom explora cum să obținem permisiunile necesare, să activăm și să gestionăm Bluetooth, să descoperim și să ne conectăm la alte dispozitive și să trimitem și să primim mesaje.
+- [**Bluetooth Low Energy (BLE)**](https://developer.android.com/develop/connectivity/bluetooth/ble/ble-overview) - Cunoscut și sub numele de Bluetooth 4.0+, este optimizat pentru consum redus de energie, fiind ideal pentru dispozitivele și senzorii care necesită transferuri de date mici și ocazionale. BLE este utilizat adesea în dispozitive wearable, dispozitive de urmărire a fitnessului și alte gadgeturi inteligente.
 
-## Permisiuni <a name="permisiuni"></a>
+API-ul Android pentru Bluetooth permite dezvoltatorilor să execute o serie de acțiuni, inclusiv:
 
-Pentru a utiliza funcționalitatea Bluetooth, va trebui să adăugați următoarele permisiuni în fișierul `AndroidManifest.xml`:
+- **Scanarea dispozitivelor** Bluetooth din apropiere și afișarea informațiilor despre acestea.
+- **Inițializarea conexiunilor** între dispozitive și gestionarea datelor transmise.
+- **Crearea unui server Bluetooth** pe dispozitiv, care poate accepta conexiuni de la alte dispozitive.
+- **Gestionarea dispozitivelor asociate**  și păstrarea unei liste a dispozitivelor cunoscute.
+- **Comunicarea cu profiluri Bluetooth specifice**, cum ar fi A2DP (Advanced Audio Distribution Profile) pentru transmiterea audio sau HFP (Hands-Free Profile) pentru apeluri telefonice.
+
+Pentru a utiliza Bluetooth în aplicațiile Android, dezvoltatorii trebuie să includă permisiunile necesare în fișierul manifest al aplicației și, în cazul accesului la BLE, să verifice dacă dispozitivul suportă BLE.
+
+Pentru a utiliza funcționalitatea Bluetooth, va trebui să adăugați următoarele [permisiuni](https://developer.android.com/develop/connectivity/bluetooth/bt-permissions) în fișierul `AndroidManifest.xml`:
 
 ```xml
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -30,18 +32,15 @@ Pentru a utiliza funcționalitatea Bluetooth, va trebui să adăugați următoar
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
 ```
-
-## Activarea Bluetooth <a name="activarea-bluetooth"></a>
+## [BlueetoothAdapter](https://developer.android.com/reference/android/bluetooth/BluetoothAdapter)
 Pentru a activa Bluetooth pe dispozitiv, vom folosi BluetoothAdapter. Mai întâi, obțineți o referință la adaptatorul Bluetooth, apoi verificați dacă Bluetooth este activat. Dacă nu este activat, solicitați utilizatorului să activeze Bluetooth.
 
-## Descoperirea dispozitivelor <a name="descoperirea-dispozitivelor"></a>
+## [Descoperirea dispozitivelor](https://developer.android.com/develop/connectivity/bluetooth/find-bluetooth-devices)
 Pentru a descoperi alte dispozitive Bluetooth, vom utiliza metoda startDiscovery() a BluetoothAdapter. De asemenea, vom înregistra un BroadcastReceiver pentru a primi informații despre dispozitivele descoperite.
 
-## Conectarea dispozitivelor <a name="conectarea-dispozitivelor"></a>
-După ce am descoperit alte dispozitive, vom crea o conexiune între dispozitivele noastre, folosind clasele BluetoothServerSocket și BluetoothSocket.
+## Conectarea dispozitivelor
+După ce am descoperit alte dispozitive, vom crea o conexiune între dispozitivele noastre, folosind clasele [**BluetoothServerSocket**](https://developer.android.com/reference/android/bluetooth/BluetoothServerSocket) și [**BluetoothSocket**](https://developer.android.com/reference/android/bluetooth/BluetoothSocket)
 
-## Trimiterea și primirea mesajelor <a name="trimiterea-și-primirea-mesajelor"></a>
-Odată ce conexiunea este stabilită, vom utiliza InputStream și OutputStream pentru a trimite și a primi mesaje între dispozitive.
+## Trimiterea și primirea mesajelor
+Odată ce conexiunea este stabilită, vom utiliza [InputStream](https://developer.android.com/reference/java/io/InputStream) și [OutputStream](https://developer.android.com/reference/java/io/OutputStream) pentru a trimite și a primi mesaje între dispozitive.
 
-## Încheiere <a name="încheiere"></a>
-La finalul acestui tutorial, veți avea o aplicație funcțională de chat care utilizează Bluetooth pentru a comunica între dispozitive Android.

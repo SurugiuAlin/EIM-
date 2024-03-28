@@ -1,9 +1,13 @@
+# Exercitii
+
+La finalul acestui tutorial, veți avea o aplicație funcțională de chat care utilizează Bluetooth pentru a comunica între dispozitive Android.
+
 
 ## 1. Descarcarea scheletului
 
 git clone https://github.com/nicolae1099/BluetoothChatApp-schelet.git
 
-## 4. Implementarea metodei initViews în clasa MainActivity:
+## 2. Implementarea metodei initViews în clasa MainActivity:
 <details>
     <summary> initViews() </summary>
 
@@ -21,7 +25,7 @@ private void initViews() {
 ```
 </details>
 
-## 5. Implementarea metodei initBluetooth în clasa MainActivity:
+## 3. Implementarea metodei initBluetooth în clasa MainActivity:
 <details>
     <summary> initBluetooth() </summary>
 
@@ -36,7 +40,7 @@ private void initBluetooth() {
 </details>
 
 
-## 6. Implementarea metodei onCreate în clasa MainActivity:
+## 4. Implementarea metodei onCreate în clasa MainActivity:
 Initializați componentele vizuale, Bluetooth și clasa ChatUtils în metoda onCreate() a clasei MainActivity.
 
 <details>
@@ -56,7 +60,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 </details>
 
-## 7. Implementarea metodei onResume în clasa MainActivity:
+## 5. Implementarea metodei onResume în clasa MainActivity:
 Asigurați-vă că metoda start() a clasei ChatUtils este apelată în metoda onResume() a clasei MainActivity.
 
 <details>
@@ -75,7 +79,7 @@ protected void onResume() {
 
 
 
-## 8. Crearea meniului pentru activitatea MainActivity:
+## 6. Crearea meniului pentru activitatea MainActivity:
 Trebuie dat click pe res -> New -> Android Resource Directory. Iar la Resource Type se va selecta "menu". Ulterior, se va adauga urmatorul fisier xml in cadrul acelui director.
 
 
@@ -114,7 +118,7 @@ Trebuie dat click pe res -> New -> Android Resource Directory. Iar la Resource T
 
 </details>
 
-## 9. Implementarea metodelor onCreateOptionsMenu și onOptionsItemSelected în clasa MainActivity:
+## 7. Implementarea metodelor onCreateOptionsMenu și onOptionsItemSelected în clasa MainActivity:
 Creați meniul pentru a permite activarea Bluetooth și căutarea altor dispozitive.
 
 <details>
@@ -142,7 +146,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
 
 </details>
 
-## 10. Implementarea metodei onActivityResult în clasa MainActivity:
+## 8. Implementarea metodei onActivityResult în clasa MainActivity:
 Gestionați rezultatul activității DeviceListActivity pentru a obține adresa dispozitivului selectat și conectați-vă la acesta.
 
 <details>
@@ -161,7 +165,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 ```
 </details>
 
-## 11. Implementarea metodei enableBluetooth în clasa MainActivity:
+## 9. Implementarea metodei enableBluetooth în clasa MainActivity:
 Activați Bluetooth și faceți dispozitivul vizibil pentru alte dispozitive.
 
 <details>
@@ -185,7 +189,7 @@ private void enableBluetooth() {
 ```
 </details>
 
-## 12. Implementarea metodei sendMessage în clasa MainActivity:
+## 10. Implementarea metodei sendMessage în clasa MainActivity:
 Trimiteți mesaje prin intermediul conexiunii Bluetooth către alt dispozitiv.
 
 <details>
@@ -202,7 +206,7 @@ private void sendMessage() {
 ```
 </details>
 
-## 13. Implementarea metodei checkPermissions în clasa MainActivity:
+## 11. Implementarea metodei checkPermissions în clasa MainActivity:
 <details>
     <summary> checkPermissions() </summary>
 
@@ -217,7 +221,7 @@ private void checkPermissions() {
 ```
 </details>
 
-## 14. Implementarea metodei showPermissionDialog în clasa MainActivity:
+## 12. Implementarea metodei showPermissionDialog în clasa MainActivity:
 <details>
     <summary> showPermissionDialog() </summary>
 
@@ -232,7 +236,7 @@ private void showPermissionDialog() {
 ```
 </details>
 
-## 15. Implementarea metodei onDestroy în clasa MainActivity:
+## 13. Implementarea metodei onDestroy în clasa MainActivity:
 Închideți conexiunea Bluetooth la închiderea aplicației.
 
 <details>
