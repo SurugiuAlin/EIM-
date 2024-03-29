@@ -40,31 +40,26 @@ private void initViews() {
 
 ## 3. Implementarea metodei initBluetooth în clasa MainActivity:
 
-Luam o referinta la dispozitivul Bluetooth sub forma unui `BluetoothAdapter`.
-
-<details>
-    <summary> initBluetooth() </summary>
+Vom implementa o metoda `initBluetooth` care se ocupa de initilizarea unui adaptor de bluetooth.
+In aceasta functie vom lua o referinta la dispozitivul Bluetooth sub forma unui `BluetoothAdapter`.
 
 ```java
 
 private void initBluetooth() {
     // Vom lua o referinta la adaptorul de bluetooth
-    // de pe telefon.
+    // de pe telefon. Putem vedea acest adaptor ca o interfata
+    // cu driver-ul de bluetooth.
     bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     if (bluetoothAdapter == null) {
         Toast.makeText(this, "No bluetooth found", Toast.LENGTH_SHORT).show();
     }
 }
 ```
-</details>
 
 
 ## 4. Implementarea metodei onCreate în clasa MainActivity:
 
 Initializam componentele vizuale, Bluetooth și clasa ChatUtils în metoda onCreate() a clasei MainActivity.
-
-<details>
-    <summary> onCreate() </summary>
 
 ```java
 @Override
@@ -72,13 +67,19 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+    // Apelam functile create anterior
     initViews();
     initBluetooth();
+    // Creeam o instanta a clasei ChatUtils. Clasa o vom
+    // defini mai tarziu si o vom folosi pentru a
+    // realiza comunicatia prin bluetooth pe un thread separat
+    // de cel principal. Comunicatia dintr MainActivity si
+    // ChatUtils se va face prin intermediul unei instante de
+    // Handler.
     chatUtils = new ChatUtils(MainActivity.this, handler);
 }
 ```
 
-</details>
 
 ## 5. Implementarea metodei onResume în clasa MainActivity:
 
@@ -101,6 +102,7 @@ protected void onResume() {
 
 
 ## 6. Crearea meniului pentru activitatea MainActivity:
+
 Trebuie dat click pe res -> New -> Android Resource Directory. Iar la Resource Type se va selecta "menu". Ulterior, se va adauga urmatorul fisier xml in cadrul acelui director.
 
 
@@ -140,6 +142,7 @@ Trebuie dat click pe res -> New -> Android Resource Directory. Iar la Resource T
 </details>
 
 ## 7. Implementarea metodelor onCreateOptionsMenu și onOptionsItemSelected în clasa MainActivity:
+
 Creați meniul pentru a permite activarea Bluetooth și căutarea altor dispozitive.
 
 <details>
