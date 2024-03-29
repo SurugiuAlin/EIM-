@@ -90,10 +90,11 @@
 
 - [5. Comunicare prin Bluetooth](lab9/protocol.md)
   - [Bluetooth in Android](lab9/overview.md)
-  - [MainActivity](lab9/main_activity.md)
-  - [Communication with Bluetooth](lab9/communication_rfc_bluetooth.md)
-  - [Bluetooth App UI](lab9/bluetooth_app_ui.md)
-  - [Resurse Utile](lab9/resources.md)
+  - [Activitate Laborator](lab9/activity.md)
+    - [MainActivity](lab9/main_activity.md)
+    - [Communication with Bluetooth](lab9/communication_rfc_bluetooth.md)
+    - [Bluetooth App UI](lab9/bluetooth_app_ui.md)
+    - [Resurse Utile](lab9/resources.md)
 
 - [6. Comunicația prin Sockeți TCP](lab6/lab6.md)
 - [7. Invocarea de Servicii Web prin Protocolul HTTP](lab7/lab7.md)

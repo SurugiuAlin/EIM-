@@ -1,13 +1,16 @@
-# Exercitii
-
-La finalul acestui tutorial, veți avea o aplicație funcțională de chat care utilizează Bluetooth pentru a comunica între dispozitive Android.
+# MainActivity
 
 
 ## 1. Descarcarea scheletului
 
-git clone https://github.com/nicolae1099/BluetoothChatApp-schelet.git
+Vom porni de la urmatorul schelet de cod.
+
+> git clone https://github.com/nicolae1099/BluetoothChatApp-schelet.git
 
 ## 2. Implementarea metodei initViews în clasa MainActivity:
+
+Vom defini o fuctie in care initializam componentele din interfata grafica.
+
 <details>
     <summary> initViews() </summary>
 
@@ -26,11 +29,17 @@ private void initViews() {
 </details>
 
 ## 3. Implementarea metodei initBluetooth în clasa MainActivity:
+
+Luam o referinta la dispozitivul Bluetooth sub forma unui `BluetoothAdapter`.
+
 <details>
     <summary> initBluetooth() </summary>
 
 ```java
+
 private void initBluetooth() {
+    // Vom lua o referinta la adaptorul de bluetooth
+    // de pe telefon.
     bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     if (bluetoothAdapter == null) {
         Toast.makeText(this, "No bluetooth found", Toast.LENGTH_SHORT).show();
@@ -41,7 +50,8 @@ private void initBluetooth() {
 
 
 ## 4. Implementarea metodei onCreate în clasa MainActivity:
-Initializați componentele vizuale, Bluetooth și clasa ChatUtils în metoda onCreate() a clasei MainActivity.
+
+Initializam componentele vizuale, Bluetooth și clasa ChatUtils în metoda onCreate() a clasei MainActivity.
 
 <details>
     <summary> onCreate() </summary>
@@ -61,6 +71,7 @@ protected void onCreate(Bundle savedInstanceState) {
 </details>
 
 ## 5. Implementarea metodei onResume în clasa MainActivity:
+
 Asigurați-vă că metoda start() a clasei ChatUtils este apelată în metoda onResume() a clasei MainActivity.
 
 <details>
@@ -207,6 +218,11 @@ private void sendMessage() {
 </details>
 
 ## 11. Implementarea metodei checkPermissions în clasa MainActivity:
+
+Pentru a folosi bluetooth va trebui sa avem permisiunea de
+locatie. Aceasta functie se va occupa de a face o cerere pentru
+aceasta permisiune.
+
 <details>
     <summary> checkPermissions() </summary>
 
@@ -222,6 +238,7 @@ private void checkPermissions() {
 </details>
 
 ## 12. Implementarea metodei showPermissionDialog în clasa MainActivity:
+
 <details>
     <summary> showPermissionDialog() </summary>
 
