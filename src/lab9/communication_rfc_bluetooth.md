@@ -238,7 +238,27 @@ Metoda run() așteaptă conexiuni și acceptă aceste conexiuni. În funcție de
 
 ```java
 public void run() {
-    // ...
+    
+    BluetoothSocket socket = null;
+    if (serverSocket != null) {
+        
+        try {
+            /* La stabilitrea unei conexiune, o sa avem un socket pe care vom trimite date.
+            accept returneaa un socket pe care putem scrie si citii. */
+            socket = serverSocket.accept();
+        } catch (IOException e) {
+            Log.e("Accept->Run", e.toString());
+            try {
+                serverSocket.close();
+            } catch (IOException e1) {
+                Log.e("Accept->Close", e.toString());
+            }
+        }
+    } else {
+        Log.e("Accept->Run", "Server socket is null");
+    }
+
+    // vom folosi noul socket pentru a trimite date
     if (socket != null) {
         switch (state) {
             case STATE_LISTEN:
