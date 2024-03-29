@@ -90,6 +90,7 @@
 
 - [5. Comunicare prin Bluetooth](lab9/protocol.md)
   - [Bluetooth in Android](lab9/overview.md)
+  - [Handler](lab9/handler.md)
   - [Activitate Laborator](lab9/activity.md)
     - [MainActivity](lab9/main_activity.md)
     - [Communication with Bluetooth](lab9/communication_rfc_bluetooth.md)
