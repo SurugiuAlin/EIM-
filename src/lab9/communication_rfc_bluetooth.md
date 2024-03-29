@@ -334,6 +334,7 @@ public void cancel() {
 ## ConnectedThread
 
 `ConnectedThread` gestionează comunicarea între dispozitive prin conexiunea Bluetooth stabilită.
+O conexiunea este identificata printr-un socket bluetooth.
 
 Constructorul primește un obiect `BluetoothSocket` și inițializează fluxurile de intrare și ieșire pentru comunicare.
 
@@ -344,7 +345,9 @@ Constructorul primește un obiect `BluetoothSocket` și inițializează fluxuril
 public ConnectedThread(BluetoothSocket socket) {
     this.socket = socket;
 
-    // Vom avea doua stream-uri
+    // Vom avea doua stream-uri, de in si de out de pe un socket bluetooth 
+    // (echivalentul read/write pe un socket)
+
     InputStream tmpIn = null;
     OutputStream tmpOut = null;
 
@@ -370,8 +373,8 @@ public void run() {
 
     while (true) {
         try {
-            // Trimite datele catre handler, care vor ajunge in activitatea MainActivity
             bytes = inputStream.read(buffer);
+            // Trimite datele catre handler, care vor ajunge in activitatea MainActivity
             handler.obtainMessage(MainActivity.MESSAGE_READ, bytes, -1, buffer).sendToTarget();
         } catch (IOException e) {
             connectionLost();
