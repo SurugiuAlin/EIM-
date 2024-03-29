@@ -1,5 +1,10 @@
 # MainActivity
 
+Astazi vom implementa trei clase in aplicatia noastra de chat peste Bluetooth:
+
+* MainActivity - Activitatea principala unde se va gasi interfata grafica a aplicatiei de chat
+* ChatUtils - Clasa care va gestiona conexiunile Bluetooth și comunicarea între dispozitivele conectate.
+* DeviceListActivity -  Clasă care afișează o listă de dispozitive Bluetooth disponibile și împerecheate, permițând utilizatorului să selecteze unul pentru a stabili o conexiune.
 
 ## 1. Descarcarea scheletului
 
