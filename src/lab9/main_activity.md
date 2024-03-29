@@ -14,10 +14,9 @@ Vom porni de la urmatorul schelet de cod.
 
 ## 2. Implementarea metodei initViews în clasa MainActivity:
 
-Vom defini o fuctie in care initializam componentele din interfata grafica.
-
-<details>
-    <summary> initViews() </summary>
+Vom defini o fuctie numita `initViews` in care initializam componentele din interfata grafica.
+De notat faptul a vom folosi un `ArrayAdapter` pentru a lega o sursa de date de un obiect din
+interfata grafica.
 
 ```java
 private void initViews() {
@@ -25,13 +24,19 @@ private void initViews() {
     edCreateMessage = findViewById(R.id.ed_enter_message);
     Button btnSendMessage = findViewById(R.id.btn_send_msg);
 
+    // Adaptorul funcționează ca o legatura între Componenta UI și o sursa de date. 
+    // Acesta convertește datele din sursele de date în elemente vizuale care pot fi afișate în Componenta UI.
     adapterMainChat = new ArrayAdapter<>(this, R.layout.message_layout);
+
+    // Schimbarile din adaptor se vor vedea imediat in interfata grafica. In acest
+    // exemplue, listMainChat de tip ListView va fi actualizata cand facem schimbari
+    // la adapterMainChat
     listMainChat.setAdapter(adapterMainChat);
 
+    // Butonul send va chema functia sendMessage pe care o vom defini mai tariu
     btnSendMessage.setOnClickListener(view -> sendMessage());
 }
 ```
-</details>
 
 ## 3. Implementarea metodei initBluetooth în clasa MainActivity:
 
