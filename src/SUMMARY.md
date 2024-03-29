@@ -88,7 +88,8 @@
   - [Activitate de Laborator](lab5/exercises.md)
   - [Activitate de Laborator (Kotlin)](lab5/exercises-kotlin.md)
 
-- [5. Comunicare prin Bluetooth](lab9/overview.md)
+- [5. Comunicare prin Bluetooth](lab9/protocol.md)
+  - [Bluetooth in Android](lab9/overview.md)
   - [MainActivity](lab9/main_activity.md)
   - [Communication with Bluetooth](lab9/communication_rfc_bluetooth.md)
   - [Bluetooth App UI](lab9/bluetooth_app_ui.md)
