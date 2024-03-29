@@ -1,5 +1,8 @@
-# Clasa DeviceListActivity
-DeviceListActivity este o clasă care afișează o listă de dispozitive Bluetooth disponibile și împerecheate, permițând utilizatorului să selecteze unul pentru a stabili o conexiune.
+# DeviceListActivity
+
+Vom utiliza o a doua activitate pentru a selecta un dispozitiv bluetooth la care vrem sa ne conectam.
+
+DeviceListActivity este o clasă care afișează o listă de dispozitive Bluetooth disponibile și împerecheate, permițând utilizatorului să selecteze unul pentru a stabili o conexiune. Aceasta va returna catre `MainActivity` id-ul dispozitivului selectat prin intermediul unui intent.
 
 1. Metoda `onCreate()` inițializează activitatea și layout-ul, apoi apelează metoda `init()`.
 
