@@ -218,7 +218,18 @@ private void enableBluetooth() {
         // functia `enable()` pe adaptor.
         bluetoothAdapter.enable();
     }
+    
+    // cere permisiuni pentru scan si connect
+    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+        Log.d("Bluetooth", "No permission for scanning");
+        requestPermissionLauncher.launch(BLUETOOTH_SCAN);
+    }
 
+    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+        Log.d("Bluetooth", "No permission for scanning");
+        requestPermissionLauncher.launch(BLUETOOTH_CONNECT);
+    }
+    
     if (bluetoothAdapter.getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
         // De asemenea, vom porni scanarea de dispozitive folosind o intentie
         Intent discoveryIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
