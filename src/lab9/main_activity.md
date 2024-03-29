@@ -94,6 +94,7 @@ Asigurați-vă că metoda start() a clasei ChatUtils este apelată în metoda on
 @Override
 protected void onResume() {
     super.onResume();
+    // Vom reponrni comunicatia cu chatUtils
     if (chatUtils != null && chatUtils.getState() == ChatUtils.STATE_NONE) {
         chatUtils.start();
     }
@@ -183,29 +184,29 @@ public boolean onOptionsItemSelected(MenuItem item) {
 ```
 
 ## 8. Implementarea metodei onActivityResult în clasa MainActivity:
-Gestionați rezultatul activității `DeviceListActivity` pentru a obține adresa dispozitivului selectat și conectați-vă la acesta.
 
-<details>
-    <summary> onActivityResult() </summary>
+Vom folosi o a doua activitate, `DeviceListActivity`, in care vom afisa lista cu toate dispozitivele ce au bluetooth pornit.
+Utilizatorul va selecta un dispozitiv, iar aceasta activitate va returna adresa acestui dispozitiv.
+
+Vom folosi datele carate de Intent pentru a realiza acest lucru. In acest sens vom suprascrie functia `onActivityResult`.
 
 ```java
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     int SELECT_DEVICE = 102;
     if (requestCode == SELECT_DEVICE && resultCode == RESULT_OK) {
+        // daca activitatea DeviceListActivity a returnat un rezultat
+        // acesta se va afla in deviceAddress
         String address = data.getStringExtra("deviceAddress");
         chatUtils.connect(bluetoothAdapter.getRemoteDevice(address));
     }
     super.onActivityResult(requestCode, resultCode, data);
 }
 ```
-</details>
 
 ## 9. Implementarea metodei enableBluetooth în clasa MainActivity:
 Activați Bluetooth și faceți dispozitivul vizibil pentru alte dispozitive.
 
-<details>
-    <summary> enableBluetooth() </summary>
 
 ```java
 private void enableBluetooth() {
@@ -213,23 +214,26 @@ private void enableBluetooth() {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
+        // daca avem permisiunile necesare, pentru a porni bluetooth-ul vom chema
+        // functia `enable()` pe adaptor.
         bluetoothAdapter.enable();
     }
 
     if (bluetoothAdapter.getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
+        // De asemenea, vom porni scanarea de dispozitive folosind o intentie
         Intent discoveryIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
         discoveryIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
         startActivity(discoveryIntent);
     }
 }
 ```
-</details>
+
 
 ## 10. Implementarea metodei sendMessage în clasa MainActivity:
-Trimiteți mesaje prin intermediul conexiunii Bluetooth către alt dispozitiv.
 
-<details>
-    <summary> sendMessage() </summary>
+In `MainActivity` vom defini o functie sendMessage. Aceasta va prelua
+textul din interfata grafica si il va trimite catre `chatUtils`.
+Ulterior, `chatUtils` va trimite mesajul prin intermediul conexiunii Bluetooth către alt dispozitiv.
 
 ```java
 private void sendMessage() {
@@ -240,7 +244,7 @@ private void sendMessage() {
     }
 }
 ```
-</details>
+
 
 ## 11. Implementarea metodei checkPermissions în clasa MainActivity:
 
@@ -248,8 +252,6 @@ Pentru a folosi bluetooth va trebui sa avem permisiunea de
 locatie. Aceasta functie se va occupa de a face o cerere pentru
 aceasta permisiune.
 
-<details>
-    <summary> checkPermissions() </summary>
 
 ```java
 private void checkPermissions() {
@@ -260,12 +262,11 @@ private void checkPermissions() {
     }
 }
 ```
-</details>
 
 ## 12. Implementarea metodei showPermissionDialog în clasa MainActivity:
 
-<details>
-    <summary> showPermissionDialog() </summary>
+Va trebui sa avem un cod boilerplate pentru a afisa in GUI dialogul
+de permisiune.
 
 ```java
 private void showPermissionDialog() {
@@ -276,13 +277,9 @@ private void showPermissionDialog() {
             .setNegativeButton("Deny", (dialogInterface, i) -> finish()).show();
 }
 ```
-</details>
 
 ## 13. Implementarea metodei onDestroy în clasa MainActivity:
 Închideți conexiunea Bluetooth la închiderea aplicației.
-
-<details>
-    <summary> onDestroy() </summary>
 
 ```java
 @Override
@@ -293,7 +290,6 @@ protected void onDestroy() {
     }
 }
 ```
-</details>
 
 
 
