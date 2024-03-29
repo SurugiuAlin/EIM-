@@ -220,12 +220,12 @@ private void enableBluetooth() {
     }
     
     // cere permisiuni pentru scan si connect
-    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+    if (ActivityCompat.checkSelfPermission(this, BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
         Log.d("Bluetooth", "No permission for scanning");
         requestPermissionLauncher.launch(BLUETOOTH_SCAN);
     }
 
-    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+    if (ActivityCompat.checkSelfPermission(this, BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
         Log.d("Bluetooth", "No permission for scanning");
         requestPermissionLauncher.launch(BLUETOOTH_CONNECT);
     }
