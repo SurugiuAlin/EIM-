@@ -395,7 +395,7 @@ public void run() {
         try {
             bytes = inputStream.read(buffer);
             // Trimite datele catre handler, care vor ajunge in activitatea MainActivity
-            handler.obtainMessage(MainActivity.MESSAGE_READ, bytes, -1, buffer).sendToTarget();
+            handler.obtainMessage(Constants.MESSAGE_READ, bytes, -1, buffer).sendToTarget();
         } catch (IOException e) {
             connectionLost();
         }
@@ -410,7 +410,7 @@ Metoda write() trimite datele prin fluxul de ieșire și trimite un mesaj către
 public void write(byte[] buffer) {
     try {
         outputStream.write(buffer);
-        handler.obtainMessage(MainActivity.MESSAGE_WRITE, -1, -1, buffer).sendToTarget();
+        handler.obtainMessage(Constants.MESSAGE_WRITE, -1, -1, buffer).sendToTarget();
     } catch (IOException e) {
         Log.d("Connected->Write", e.toString());
     }
