@@ -6,6 +6,12 @@ Astazi vom implementa trei clase in aplicatia noastra de chat peste Bluetooth:
 * `ChatUtils` - Clasa care va gestiona conexiunile Bluetooth și comunicarea între dispozitivele conectate.
 * `DeviceListActivity` -  Clasă care afișează o listă de dispozitive Bluetooth disponibile și împerecheate, permițând utilizatorului să selecteze unul pentru a stabili o conexiune.
 
+Aplicatia va avea urmatoarea interfata in care vom avea un meniu in partea de sus de unde
+vom putea porni bluetooth-ul si selecta un dispozitiv cu care sa comunicam. In partea de jos
+va fi un camp de text prin care vom trimite mesaje.
+
+![](images/app_interface.png)
+
 ## 1. Descarcarea scheletului
 
 Vom porni de la urmatorul schelet de cod.
@@ -97,9 +103,17 @@ protected void onResume() {
 
 ## 6. Crearea meniului pentru activitatea MainActivity:
 
-Vom crea un meni in care vom afisa lista de dispozitive detectate prin bluetooth.
-In acest sens, trebuie dat click pe `res -> New -> Android Resource Directory`. Iar la **Resource Type** se va selecta "menu". Ulterior, se va adauga urmatorul fisier xml in cadrul acelui director.
+Vom crea un meniu in care vom avea doua intrari:
+* o intrare pentru activarea bluetooth-ului
+* o intrare pentru a selecta la cine sa ne conectam din lista de dispozitive
 
+In imaginea de mai jos intrarile sunt cele doua din dreapta: iconita bluetooth activeaza
+bluetooth-ul pe device.
+
+![](images/menu.png)
+
+
+Pentru a crea un meniu trebuie dat click pe `res -> New -> Android Resource Directory`. Iar la **Resource Type** se va selecta "menu". Ulterior, se va adauga urmatorul fisier xml in cadrul acelui director.
 
 ![](images/create_menu.png)
 
