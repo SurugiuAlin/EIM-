@@ -23,6 +23,8 @@ Există două utilizări principale pentru un Handler: (1) pentru a programa mes
 
 ```java
 public ChatUtils(Context context, Handler handler) {
+    // Vom folosi handler pentru a realiza transmisia de date intre thread-uri
+    // si MainActivity
     this.handler = handler;
     this.context = context;
     state = STATE_NONE;
@@ -31,7 +33,7 @@ public ChatUtils(Context context, Handler handler) {
 ```
 
 ## Gestionarea stării
-Metodele getState() și setState() permit obținerea și modificarea stării conexiunii si trimiterea unui mesaj handle-urului cu noua stare.
+Metodele `getState()` și `setState()` permit obținerea și modificarea stării conexiunii si trimiterea unui mesaj handle-urului cu noua stare.
 
 
 ```java
@@ -41,19 +43,21 @@ public int getState() {
 
 public synchronized void setState(int state) {
     this.state = state;
-    // Trimitem un mesaj catre MainActivity
+    // Trimitem un mesaj catre MainActivity cu starea in care o conexiune se afla
     handler.obtainMessage(MainActivity.MESSAGE_STATE_CHANGED, state, -1).sendToTarget();
 }
 ```
 
 ## Gestionarea conexiunilor
-Metodele start(), stop(), connect(), și write() permit inițierea, oprirea, conectarea și trimiterea de mesaje între dispozitive.
+Metodele `start()`, `stop()`, `connect()`, și `write()` permit inițierea, oprirea, conectarea și trimiterea de mesaje între dispozitive
+bluetooth.
 
 
 ### Start()
 Această metodă anulează thread-urile connectThread și connectedThread, creează și pornește un nou thread acceptThread, și setează starea conexiunii la STATE_LISTEN.
 
 ```java
+// synchronized pentru a evita probleme de concurency
 public synchronized void start() {
     cancelConnectThread();
     createAndStartAcceptThread();
