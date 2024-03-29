@@ -3,8 +3,14 @@
 Vom construi o clasa `ChatUtils` care va gestiona conexiunile Bluetooth și comunicarea între dispozitivele conectate.
 Aceasta clasa va folosi un `Handler` pentru a comunica cu activitatea ce o foloseste. Comunicarea cu dispozitivul
 bluetooth se va face pe un thread separat, numit `ConnectThread`. Acceptarea de conexiuni bluetooth se va face
-pe un thread `AcceptThread`.
+pe un thread `AcceptThread`. 
 
+In comunicarea cu activitatea principala, vom trimite inlusiv starea in care ne aflam. Avem mai multe stari in care
+`ChatUtils` poate sa fie:
+- STATE_NONE
+- STATE_LISTEN
+- STATE_CONNECTED
+- STATE_CONNECTING
 
 ## Constructor
 Constructorul inițializează handler, context, state și bluetoothAdapter.
@@ -63,9 +69,11 @@ Această metodă anulează toate thread-urile și setează starea conexiunii la 
 
 ```java
 public synchronized void stop() {
+    // Opreste thread-urile de comunicare cu bluetooth
     cancelConnectThread();
     cancelAcceptThread();
     cancelConnectedThread();
+    // Seteaza starea pe NONE
     setState(STATE_NONE);
 }
 ```
@@ -95,6 +103,7 @@ public void write(byte[] buffer) {
         }
         connThread = connectedThread;
     }
+    // Trimite mesajul care se afla in buffer
     connThread.write(buffer);
 }
 ```
@@ -141,10 +150,8 @@ sense, vom folosi metodele createAndStartAcceptThread(), createAndStartConnectTh
     }
 ```
 
-Alte metode auxiliare:
-
-<details>
-<summary> connectionLost(), connectionFailed() </summary>
+Alte metode auxiliare care se ocupa de tratarea cazurilor in care
+conexiunea este pierduta.
 
 ```java
     private void connectionLost() {
@@ -197,15 +204,13 @@ Alte metode auxiliare:
         setState(STATE_CONNECTED);
     }
 ```
-</details>
 
 
 ## AcceptThread 
 AcceptThread așteaptă și acceptă conexiuni de la alte dispozitive Bluetooth.
+`AcceptThread` este un simplu Thread: `private class AcceptThread extends Thread`
+si il vom defini in `ChatUtils`.
 Constructorul creează un BluetoothServerSocket pentru a asculta conexiunile Bluetooth.
-
-<details>
-    <summary> Constructor, run(), cancel() </summary>
 
 ```java
 public AcceptThread() {
@@ -263,14 +268,11 @@ public void cancel() {
 }
 ```
 
-</details>
-
 ## Clasa ConnectThread
 `ConnectThread` încearcă să stabilească o conexiune cu un dispozitiv Bluetooth specificat.
+`ConnectThread` este un simplu Thread: `private class ConnectThread extends Thread`
+si il vom defini in `ChatUtils`.
 Constructorul creează un `BluetoothSocket` pentru a se conecta la un dispozitiv Bluetooth specificat.
-
-<details>
-    <summary> Constructor, run(), cancel() </summary>
 
 ```java
 public ConnectThread(BluetoothDevice device) {
@@ -288,6 +290,7 @@ public ConnectThread(BluetoothDevice device) {
     socket = tmp;
 }
 ```
+
 ### Metoda run()
 Metoda `run()` încearcă să stabilească o conexiune cu dispozitivul Bluetooth și, dacă reușește, apelează metoda `connected().`
 
@@ -323,16 +326,12 @@ public void cancel() {
 }
 ```
 
-</details>
 
 ## ConnectedThread
 
 `ConnectedThread` gestionează comunicarea între dispozitive prin conexiunea Bluetooth stabilită.
 
 Constructorul primește un obiect `BluetoothSocket` și inițializează fluxurile de intrare și ieșire pentru comunicare.
-
-<details>
-    <summary> Constructor, run(), write(), cancel() </summary>
 
 ```java
 public ConnectedThread(BluetoothSocket socket) {
@@ -398,10 +397,6 @@ public void cancel() {
     }
 }
 ```
-
-</details>
-
-
 
 
 
