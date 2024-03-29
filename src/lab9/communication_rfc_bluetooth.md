@@ -334,9 +334,13 @@ public void cancel() {
 Constructorul primește un obiect `BluetoothSocket` și inițializează fluxurile de intrare și ieșire pentru comunicare.
 
 ```java
+
+// BluetoothSocket este analul de comuniatie stabilit cu un alt
+// device bluetooth.
 public ConnectedThread(BluetoothSocket socket) {
     this.socket = socket;
 
+    // Vom avea doua stream-uri
     InputStream tmpIn = null;
     OutputStream tmpOut = null;
 
@@ -362,6 +366,7 @@ public void run() {
 
     while (true) {
         try {
+            // Trimite datele catre handler, care vor ajunge in activitatea MainActivity
             bytes = inputStream.read(buffer);
             handler.obtainMessage(MainActivity.MESSAGE_READ, bytes, -1, buffer).sendToTarget();
         } catch (IOException e) {
