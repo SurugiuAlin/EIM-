@@ -44,7 +44,6 @@ Vom implementa o metoda `initBluetooth` care se ocupa de initilizarea unui adapt
 In aceasta functie vom lua o referinta la dispozitivul Bluetooth sub forma unui `BluetoothAdapter`.
 
 ```java
-
 private void initBluetooth() {
     // Vom lua o referinta la adaptorul de bluetooth
     // de pe telefon. Putem vedea acest adaptor ca o interfata
@@ -85,9 +84,6 @@ protected void onCreate(Bundle savedInstanceState) {
 
 Asigurați-vă că metoda start() a clasei ChatUtils este apelată în metoda onResume() a clasei MainActivity.
 
-<details>
-    <summary> onResume() </summary>
-
 ```java
 @Override
 protected void onResume() {
@@ -97,13 +93,12 @@ protected void onResume() {
     }
 }
 ```
-</details>
-
 
 
 ## 6. Crearea meniului pentru activitatea MainActivity:
 
-Trebuie dat click pe res -> New -> Android Resource Directory. Iar la Resource Type se va selecta "menu". Ulterior, se va adauga urmatorul fisier xml in cadrul acelui director.
+Vom crea un meni in care vom afisa lista de dispozitive detectate prin bluetooth.
+In acest sens, trebuie dat click pe `res -> New -> Android Resource Directory`. Iar la **Resource Type** se va selecta "menu". Ulterior, se va adauga urmatorul fisier xml in cadrul acelui director.
 
 
 ![](images/create_menu.png)
@@ -143,10 +138,11 @@ Trebuie dat click pe res -> New -> Android Resource Directory. Iar la Resource T
 
 ## 7. Implementarea metodelor onCreateOptionsMenu și onOptionsItemSelected în clasa MainActivity:
 
-Creați meniul pentru a permite activarea Bluetooth și căutarea altor dispozitive.
+Meniul in android are doua functii atasate ce pot fi suprascris in `MainActivity`:
+* onCreateOptionsMenu() - functia ce afiseaza meniul in interfata
+* onOptionsItemSelected() - functia chemata atunci cand un obiect din meniu este selectat
 
-<details>
-    <summary> onCreateOptionsMenu() și onOptionsItemSelected() </summary>
+Creați meniul pentru a permite activarea Bluetooth și căutarea altor dispozitive.
 
 ```java
 @Override
@@ -157,9 +153,13 @@ public boolean onCreateOptionsMenu(Menu menu) {
 
 @Override
 public boolean onOptionsItemSelected(MenuItem item) {
+    // Daca este selectata optiunea enablebluetooth, atunci
+    // vom porni bluetooth-ul
     if (item.getItemId() == R.id.menu_enable_bluetooth) {
         enableBluetooth();
         return true;
+    // daca este selectata optiunea de cautare de dispozitive
+    // atunci va trebui sa cerem permisiuni de la utilizator
     } else if (item.getItemId() == R.id.menu_search_devices) {
         checkPermissions();
         return true;
@@ -168,10 +168,8 @@ public boolean onOptionsItemSelected(MenuItem item) {
 }
 ```
 
-</details>
-
 ## 8. Implementarea metodei onActivityResult în clasa MainActivity:
-Gestionați rezultatul activității DeviceListActivity pentru a obține adresa dispozitivului selectat și conectați-vă la acesta.
+Gestionați rezultatul activității `DeviceListActivity` pentru a obține adresa dispozitivului selectat și conectați-vă la acesta.
 
 <details>
     <summary> onActivityResult() </summary>
