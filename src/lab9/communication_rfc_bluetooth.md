@@ -1,6 +1,9 @@
 # Clasa ChatUtils
 
 Vom construi o clasa `ChatUtils` care va gestiona conexiunile Bluetooth și comunicarea între dispozitivele conectate.
+Aceasta clasa va folosi un `Handler` pentru a comunica cu activitatea ce o foloseste. Comunicarea cu dispozitivul
+bluetooth se va face pe un thread separat, numit `ConnectThread`. Acceptarea de conexiuni bluetooth se va face
+pe un thread `AcceptThread`.
 
 
 ## Constructor
