@@ -1,12 +1,16 @@
 # Clasa ChatUtils
-Clasa ChatUtils gestionează conexiunile Bluetooth și comunicarea între dispozitivele conectate.
+
+Vom construi o clasa `ChatUtils` care va gestiona conexiunile Bluetooth și comunicarea între dispozitivele conectate.
 
 
 ## Constructor
 Constructorul inițializează handler, context, state și bluetoothAdapter.
-Cand se va importa `Handler`-ul, se va alege cel din `android.os`.
-<details>
-<summary>Constructorul</summary>
+Cand se va importa `Handler`-ul, se va alege cel din `android.os`. Consultati documentatia despre clasa [Handler](https://developer.android.com/reference/android/os/Handler).
+
+Un `Handler` îți permite să trimiți și să procesezi obiecte Message și Runnable asociate cu coada de mesaje a unui fir de execuție. Fiecare instanță Handler este asociată cu un singur fir de execuție și coada de mesaje a acestui fir. Când creezi un nou Handler, acesta este legat de un Looper. Va livra mesaje și runnables la coada de mesaje a acelui Looper și le va executa pe firul de execuție al acelui Looper.
+
+Există două utilizări principale pentru un Handler: (1) pentru a programa mesaje și runnables să fie executate la un moment dat în viitor; și (2) pentru a pune în coadă o acțiune care să fie efectuată pe un fir de execuție diferit de al tău.
+
 
 ```java
 public ChatUtils(Context context, Handler handler) {
@@ -16,13 +20,10 @@ public ChatUtils(Context context, Handler handler) {
     bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 }
 ```
-</details>
 
 ## Gestionarea stării
 Metodele getState() și setState() permit obținerea și modificarea stării conexiunii si trimiterea unui mesaj handle-urului cu noua stare.
 
-<details>
-<summary>Metode pentru gestionarea stării</summary>
 
 ```java
 public int getState() {
@@ -31,24 +32,25 @@ public int getState() {
 
 public synchronized void setState(int state) {
     this.state = state;
+    // Trimitem un mesaj catre MainActivity
     handler.obtainMessage(MainActivity.MESSAGE_STATE_CHANGED, state, -1).sendToTarget();
 }
 ```
-</details>
 
 ## Gestionarea conexiunilor
 Metodele start(), stop(), connect(), și write() permit inițierea, oprirea, conectarea și trimiterea de mesaje între dispozitive.
 
-<details>
-<summary>Metode pentru gestionarea conexiunilor</summary>
 
 ### Start()
 Această metodă anulează thread-urile connectThread și connectedThread, creează și pornește un nou thread acceptThread, și setează starea conexiunii la STATE_LISTEN.
+
 ```java
 public synchronized void start() {
     cancelConnectThread();
     createAndStartAcceptThread();
     cancelConnectedThread();
+    // Informeaza main activity ca suntem in state Listen.
+    // Din mainactivity vom afisa un mesaj corespunzators
     setState(STATE_LISTEN);
 }
 ```
@@ -93,15 +95,18 @@ public void write(byte[] buffer) {
     connThread.write(buffer);
 }
 ```
-</details>
 
 ## Metode Auxiliare
-Metodele createAndStartAcceptThread(), createAndStartConnectThread(device), cancelAcceptThread(), cancelConnectThread() și cancelConnectedThread() sunt utilizate pentru a crea, porni și opri firele de execuție.
-<details>
-<summary>Metode auxiliare</summary>
+
+Pentru fiecare conexiune bluetooth la un dispozitiv vom
+avea un thread in care vom face comunicarea. In acest
+sense, vom folosi metodele createAndStartAcceptThread(), createAndStartConnectThread(device), cancelAcceptThread(), cancelConnectThread() și cancelConnectedThread() sunt utilizate pentru a crea, porni și opri firele de execuție.
+
 
 ```java
     private void createAndStartAcceptThread() {
+        // AcceptThread este o clasa ce implementeaza
+        // clasa de baza Thread. O vom gasi definita mai jos.
         acceptThread = new AcceptThread();
         acceptThread.start();
     }
@@ -132,7 +137,6 @@ Metodele createAndStartAcceptThread(), createAndStartConnectThread(device), canc
         }
     }
 ```
-</details>
 
 Alte metode auxiliare:
 
