@@ -10,3 +10,8 @@ Full code:
 ```code
 git clone https://github.com/nicolae1099/BluetoothChatApp.git
 ```
+
+Kotlin version code with good architectural practices:
+```code
+git clone https://github.com/philipplackner/BluetoothChat/tree/Part3-DataTransfer
+```
