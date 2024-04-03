@@ -6,10 +6,6 @@
 4. [Bluetooth Low Energy (BLE)](https://developer.android.com/develop/connectivity/bluetooth/ble/ble-overview)
 5. [Bluetooth](https://developer.android.com/develop/connectivity/bluetooth)
 
-Full code:
-```code
-git clone https://github.com/nicolae1099/BluetoothChatApp.git
-```
 
 Kotlin version code with good architectural practices:
 ```code

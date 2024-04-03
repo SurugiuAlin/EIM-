@@ -16,7 +16,7 @@ va fi un camp de text prin care vom trimite mesaje.
 
 Vom porni de la urmatorul schelet de cod.
 
-> git clone https://github.com/nicolae1099/BluetoothChatApp-schelet.git
+> git clone https://github.com/eim-lab/Laborator-bt.git
 
 ## 2. Implementarea metodei initViews în clasa MainActivity:
 
