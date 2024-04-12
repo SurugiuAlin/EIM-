@@ -113,62 +113,6 @@ interfeței `usb0` (Linux), respectiv Ethernet (Windows).
 
 ### Dispozitiv Virtual (Emulator)
 
-#### Genymotion
-
-Fiecărui dispozitiv virtual Genymotion îi este alocată în mod automat o
-adresă IP de către serverul DHCP configurat pe mașina virtuală
-VirtualBox în cadrul căruia rulează. Pentru legătura virtualbox-emulator
-este utilizat spațiul de adrese `192.168.56.1/24`:
-
--   mașina fizică (default gateway) are adresa `192.168.56.1`;
--   pentru dispozitivele virtuale sunt alocate adrese în intervalul
-    `192.168.56.101` .. `192.168.56.254`.
-
-Pentru legătura wifi a emulatorului utilizat spațiul de adrese
-`172.16.4.0/22`:
-
--   de fapt emulatorul este legat în bridge cu celelalte desktopuri din
-    EG106
--   conectarea între masina de dezvoltare și emulator se poate face și
-    în această subrețea (similară cu cazul real în care mașina de
-    dezvoltare și telefonul se află în aceeași rețea locală WiFi)
-
-Configurarea spațiului de adrese care este folosit poate fi configurat
-prin intermediul VirtualBox, accesând *File* → *Preferences* → *Network*
-→ *Host Only Networks*
-
-![](images/virtualbox01.png)
-
-![](images/virtualbox02.png)
-
-Adresa IP care a fost atașată fiecărui dispozitiv virtual Genymotion
-poate fi verificată:
-
--   folosind comanda `adb devices`;
-    `student@eim-lab:/opt/android-sdk-linux/platform-tools$ ./adb devices
-    List of devices attached
-    192.168.56.101:5555     device
-    `
--   prin intermediul plugin-ului Genymotion pentru mediile integrate de
-    dezvoltare.
-
-![](images/genymotion_ip_addresses.png)
-
-Conectivitatea dintre mașina de dezvoltare și dispozitivul virtual poate
-fi verificată folosind comanda `ping`.
-`student@eim-lab:~$ ping 192.168.56.101
-Pinging 192.168.56.101 with 32 bytes of data:
-Reply from 192.168.56.101: bytes=32 time<1ms TTL=64
-Reply from 192.168.56.101: bytes=32 time<1ms TTL=64
-Reply from 192.168.56.101: bytes=32 time<1ms TTL=64
-Reply from 192.168.56.101: bytes=32 time<1ms TTL=64
-
-Ping statistics for 192.168.56.101:
-    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
-Approximate round trip times in milli-seconds:
-    Minimum = 0ms, Maximum = 0ms, Average = 0ms
-`
-
 #### Android Virtual Device
 
 Fiecare instanță a unui dispozitiv virtual Android oferă o pereche de
@@ -192,14 +136,15 @@ numerotarea porturilor începe de la 5554 (portul de consolă) / 5555
 <img src="/laboratoare/laborator06/android_virtual_device_port.png" class="align-center" width="600" alt="android_virtual_device_port.png" />
 
 -   prin rularea comenzii `adb devices`
-    `student@eim-lab:/opt/android-sdk-linux/platform-tools$ ./adb devices
+    ```bash
+    student@eim-lab:/opt/android-sdk-linux/platform-tools$ ./adb devices
     List of devices attached
     emulator-5554   device
-    `
+    ```
 
 Conectarea la consola dispozitivului virtual Android se face prin
-comanda: `student@eim-lab:~$ telnet localhost 55nr
-` specificându-se portul pe care rulează emulatorul.
+comanda: `student@eim-lab:~$ telnet localhost 55nr`
+ specificându-se portul pe care rulează emulatorul.
 
 ---
 **Note**
@@ -208,7 +153,7 @@ comanda: `student@eim-lab:~$ telnet localhost 55nr
 virtual respectiv, folosind o cheie care a fost instalată odată cu
 acesta, a cărei locație este indicată. În acest sens, se folosește
 comanda `auth`, urmată de cheia dispozitivului virtual. Cheia se află în
-\~/.emulator_console_auth_token \
+~/.emulator_console_auth_token
 
 ---
 
@@ -295,13 +240,14 @@ Comunicația între mai multe dispozitive poate fi realizată:
 
 De regulă, o aplicație Android nu are acces la
 comunicația prin rețea decât prin intermediul unei permisiuni speciale:
-`<manifest ...>
+```xml
+<manifest ...>
   <!-- other application properties or components -->
   <uses-permission
     android:name="android.permission.INTERNET" />
   <!-- other application properties or components --> 
 </manifest>
-` \
+```
 
 ---
 
@@ -309,8 +255,7 @@ comunicația prin rețea decât prin intermediul unei permisiuni speciale:
 
 Folosirea unui socket TCP presupune comunicația între două entități:
 
-1.  un client care se conectează la o anumită adresă, pe un anumit port,
-    pe care le cunoaște în prealabil;
+1.  un client care se conectează la o anumită adresă, pe un anumit port, pe care le cunoaște în prealabil;
 2.  un server care așteaptă să fie invocat, la o adresă și la un port.
 
 În Android (ca și în cazul platformei Java), clasa de bază pentru
@@ -367,8 +312,6 @@ obiect de tip `Socket`, pot fi generate următoarele excepții:
         depășită:
     -   s-a produs o întrerupere sau altă problemă neașteptată.
 
-\
-
 ---
 
 **2.** crearea unui flux de ieșire pentru a trimite date prin
@@ -390,15 +333,15 @@ atunci când se întâlnește caracterul `\n` (newline).\
 ---
 
 Metodele implementate de clasa
-[PrintWriter](http:*developer.android.com/reference/java/io/PrintWriter.html)
+[PrintWriter](http://developer.android.com/reference/java/io/PrintWriter.html)
 sunt similare cu cele oferite de `PrintStream` (clasa folosită de
 metodele din `System.out`), diferența fiind faptul că pot fi create mai
 multe instanțe pentru seturi de caractere Unicode diferite:
 
--   [print()](https:*developer.android.com/reference/java/io/PrintWriter.html#print(java.lang.Object));
--   [println()](https:*developer.android.com/reference/java/io/PrintWriter.html#println(java.lang.Object));
--   [printf()](https:*developer.android.com/reference/java/io/PrintWriter.html#printf(java.lang.String,%20java.lang.Object...));
--   [write()](https:*developer.android.com/reference/java/io/PrintWriter.html#write(char[])).
+-   [print()](https://developer.android.com/reference/java/io/PrintWriter.html#print(java.lang.Object));
+-   [println()](https://developer.android.com/reference/java/io/PrintWriter.html#println(java.lang.Object));
+-   [printf()](https://developer.android.com/reference/java/io/PrintWriter.html#printf(java.lang.String,%20java.lang.Object...));
+-   [write()](https://developer.android.com/reference/java/io/PrintWriter.html#write(char[])).
 
 Trimiterea efectivă a datelor este realizată atunci când se apelează
 metoda
@@ -426,15 +369,9 @@ sunt:
 -   [readLine()](https:*developer.android.com/reference/java/io/BufferedReader.html#readLine()) -
     pentru a primi o linie.
 
----
-**Note**
 
-Metoda `readLine()` este blocantă, așteptând un mesaj
-terminat prin `\n` (newline). În situația în care conexiunea este
-terminată, se transmite `EOF`, iar metoda întoarce valoarea
-`null`.\
 
----
+> Metoda `readLine()` este blocantă, așteptând un mesaj terminat prin `\n` (newline). În situația în care conexiunea este terminată, se transmite `EOF`, iar metoda întoarce valoarea `null`.
 
 ---
 **Note**
@@ -442,7 +379,7 @@ terminată, se transmite `EOF`, iar metoda întoarce valoarea
 Pot fi utilizate obiecte de tipul `ObjectOutputStream` și
 `ObjectInputStream` pentru transmiterea de obiecte Java, atunci când
 entitățile care comunică rulează în contextul unei mașini virtuale de
-acest tip (JVM).\
+acest tip (JVM).
 
 ---
 
@@ -481,14 +418,6 @@ socket.close();
 În momentul în care se apelează metoda `close()`, sunt transmise și
 datele care erau stocate în zonele de memorie tampon.
 
----
-**Note**
-
-Metoda `close()` eliberează și resursele folosite de fluxul
-de intrare și fluxul de ieșire asociate, care sunt de asemenea
-închise.\
-
----
 
 ### Utilizarea unui Fir de Execuție Dedicat pentru Comunicația prin Rețea
 
@@ -516,10 +445,10 @@ care este gestionată interfața grafică poate fi obținut în mai multe
 moduri:
 
 1.  folosind metoda
-    [runOnUiThread(Runnable)](http:*developer.android.com/reference/android/app/Activity.html#runOnUiThread%28java.lang.Runnable%29),
+    [runOnUiThread(Runnable)](http://developer.android.com/reference/android/app/Activity.html#runOnUiThread%28java.lang.Runnable%29),
     disponibilă în clasa `Activity`;
 2.  folosind una din metodele
-    [post(Runnable)](http:*developer.android.com/reference/android/view/View.html#post%28java.lang.Runnable%29)
+    [post(Runnable)](http://developer.android.com/reference/android/view/View.html#post%28java.lang.Runnable%29)
     sau [postDelayed(Runnable,
     long)](http:*developer.android.com/reference/android/view/View.html#postDelayed%28java.lang.Runnable,%20long%29)
     disponibile:
@@ -538,7 +467,7 @@ moduri:
     și `onPostExecute()`.
 
 ``` java
-* VARIANTA 1
+// VARIANTA 1
    doInBackground{ /*** Net thread ***/
       socket();
       ... 
@@ -550,7 +479,7 @@ moduri:
       daytimeProtocolTextView.setText(result);
     }
   
-* VARIANTA 2 
+// VARIANTA 2 
    doInBackground{ /*** Net thread ***/
       socket..
       publishProgress(line); 
@@ -695,20 +624,12 @@ care poate primi ca parametri:
     dispozitivului pe care a fost rulată, putând fi obținută prin metoda
     `getInetAddress()`.
 
----
-**Note**
+> Se recomandă să se utilizeze un port cu o valoare în afara celor rezervate (0 - 1023). Totuși, folosirea acestor porturi este posibilă în cazul dispozitivele mobile pentru care există drepturi de root, după ce se acordă drepturi privilegiate aplicației Android.
 
-Se recomandă să se utilizeze un port cu o valoare în afara
-celor rezervate (0 - 1023). Totuși, folosirea acestor porturi este
-posibilă în cazul dispozitivele mobile pentru care există drepturi de
-root, după ce se acordă drepturi privilegiate aplicației
-Android.\
-
----
 
 Pentru ca un client să se poată conecta la server, pe obiectul
 `ServerSocket` trebuie să se apeleze metoda
-[accept()](http:*developer.android.com/reference/java/net/ServerSocket.html#accept%28%29),
+[accept()](http://developer.android.com/reference/java/net/ServerSocket.html#accept%28%29),
 care se blochează ascultând invocările care ar putea fi realizate. În
 momentul în care este detectată o solicitare, metoda o tratează,
 returnând un obiect de tip `Socket` prin care este realizată comunicarea
@@ -773,11 +694,8 @@ necesar.
 asigura execuția ciclului pe care erau tratate solicitările de conexiune
 provenite de la clienți.
 
-\<note>Repornirea serverului, astfel încât să accepte din nou invocări
-de la clienți, presupune crearea unui nou fir de execuție (cel vechi nu
-poate fi refolosit).\
+> Repornirea serverului, astfel încât să accepte din nou invocări de la clienți, presupune crearea unui nou fir de execuție (cel vechi nu poate fi refolosit).
 
----
 
 ``` java
 import java.io.IOException;
@@ -893,7 +811,8 @@ public class SingleThreadedActivity extends Activity {
 Prin intermediul utilitarului `nc` (apelat cu adresa Internet și portul
 serverului) se poate interoga mesajul care a fost transmis. De asemenea,
 comanda `time` măsoară timpul în care a fost executată operația
-respectivă. ---
+respectivă.
+ ---
 **Note**
 
 Atenție, trebuie folosită versiunea
