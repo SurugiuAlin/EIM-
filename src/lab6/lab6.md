@@ -941,28 +941,11 @@ private class ServerThread extends Thread {
 
 ## Activitate de Laborator
 
-**1.** În contul Github personal, să se creeze un depozit denumit
-'Laborator06'. Inițial, acesta trebuie să fie gol (nu trebuie să bifați
-nici adăugarea unui fișier `README.md`, nici a fișierului `.gitignore`
-sau a a fișierului `LICENSE`).
-
-**2.** Să se cloneze în directorul de pe discul local conținutul
+**1.** Să se cloneze în directorul de pe discul local conținutul
 depozitului la distanță de la
-[](https:*www.github.com/eim-lab/Laborator06).
+[aceasta adresa](https://www.github.com/eim-lab/Laborator06).
 
-În urma acestei operații, directorul Laborator06 va trebui să se conțină
-directoarele `labtasks`, `samples` și `solutions`.
-
-    student@eim:~$ git clone https:www.github.com/eim-lab/Laborator06.git
-
-**3.** Să se încarce conținutul descărcat în cadrul depozitului
-'Laborator06' de pe contul Github personal.
-`student@eim:~$ cd Laborator06
-student@eim:~/Laborator06$ git remote add Laborator06_perfectstudent https:*github.com/perfectstudent/Laborator06
-student@eim:~/Laborator06$ git push Laborator06_perfectstudent master
-`
-
-**4.** Să se importe în mediul integrat de dezvoltare Android Studio
+**2.** Să se importe în mediul integrat de dezvoltare Android Studio
 proiectul `FTPServerWelcomeMessage` din directorul `labtasks`.
 
 Se cere să se implementeze o aplicație Android care citește mesajul de
@@ -1014,7 +997,7 @@ de execuție ce gestionează comunicația cu serverul FTP sunt:
 Să se verifice mesajul afișat în momentul în care se realizează o
 conexiune la serverul [](intranet.ngcaerospace.com/).
 
-**5.** Să se importe în mediul integrat de dezvoltare Android Studio
+**3.** Să se importe în mediul integrat de dezvoltare Android Studio
 proiectul `SingleThreadedServer` din directorul `labtasks`.
 
 Acesta reprezintă o aplicație Android care implementează un server ce
@@ -1039,14 +1022,16 @@ Citirea mesajelor se face cu `nc` care primește ca parametrii adresa
 Internet și portul serverului de pe dispozitivul Android. Prin
 utilitarul `time` se verifică durata operației respective.
 
-    student@eim-lab:~$ nc 172.16.7.89 2000
-    Hello, EIM Student!
-    student@eim-lab:~$ time nc 172.16.7.89 2000
-    Hello, EIM Student!
+```shell
+student@eim-lab:~$ nc 172.16.7.89 2000
+Hello, EIM Student!
+student@eim-lab:~$ time nc 172.16.7.89 2000
+Hello, EIM Student!
 
-    real    0m0.009s
-    user    0m0.000s
-    sys     0m0.000s
+real    0m0.009s
+user    0m0.000s
+sys     0m0.000s
+```
 
 ### Windows
 
@@ -1067,13 +1052,14 @@ selectându-se produsul *Telnet Client*.
 
 ![](images/telnet05_windows81.png)
 
-    C:\Users\Student> telnet 192.168.56.101 2000
-    Start Server
+```shell
+C:\Users\Student> telnet 192.168.56.101 2000
+Start Server
 
-    Connection to host lost.
-    C:\Users\Student> telnet 192.168.56.101 2000
-    Connecting To 192.168.56.101...Could not open connection to the host, on port 2000: Connect failed
-
+Connection to host lost.
+C:\Users\Student> telnet 192.168.56.101 2000
+Connecting To 192.168.56.101...Could not open connection to the host, on port 2000: Connect failed
+```
 ## 
 
 **a)** Să se trimită aplicația Android în fundal prin apăsarea tastei
@@ -1093,12 +1079,14 @@ Astfel, în momentul în care se dorește să se repornească aplicația
 Android, se va genera o excepție, întrucât portul pe care se dorește să
 asculte serverul invocările de la clienți este deja ocupat.
 
+```java
     04-06 00:00:00.000: E/Single Threaded Server(934): An exception has occurred: bind failed: EADDRINUSE (Address already in use)
     04-06 00:00:00.000: W/System.err(934): java.net.BindException: bind failed: EADDRINUSE (Address already in use)
     04-06 00:00:00.000: W/System.err(934):     at libcore.io.IoBridge.bind(IoBridge.java:89)
     04-06 00:00:00.000: W/System.err(934):     at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:150)
     04-06 00:00:00.000: W/System.err(934):     at java.net.ServerSocket.<init>(ServerSocket.java:100)
     04-06 00:00:00.000: W/System.err(934):     at java.net.ServerSocket.<init>(ServerSocket.java:69)
+```
 
 O soluție ar putea fi eliberarea resurselor pe metoda `onDestroy()`.
 
@@ -1139,7 +1127,7 @@ try {
 client și server pe un fir de execuție separat, astfel încât pe server,
 gestiunea solicitărilor provenite de la clienți să nu fie afectată.
 
-**6.** Să se importe în mediul integrat de dezvoltare Android Studio
+**4.** Să se importe în mediul integrat de dezvoltare Android Studio
 proiectul `ClientServerCommunication` din directorul `labtasks`.
 
 Acesta reprezintă o aplicație Android având două fragmente, implementând
@@ -1193,14 +1181,6 @@ atât un server cât și un client:
     `onPublishProgress()`;
 6.  se închide socketul.
 
----
-**Note**
-
-Accesul la controalele grafice trebuie să fie realizat
-numai din contextul firului de execuție asociat interfeței cu
-utilizatorul.\
-
----
 
 **c)** Să se pornească serverul (se introduce textul *Start Server*). În
 client, să se verifice valoarea furnizată în cazul în care se introduc
@@ -1216,143 +1196,10 @@ pe mașina fizică.
 
     student@eim:~$ ps a | while read x; do echo "$x" | nc -l 2000; done
 
----
-**Note**
-
-Pe mașinile Debian, comanda `nc` se rulează cu opțiunea
-suplimentară `-p` pentru a se indica portul pe care se dorește ca acesta
-să accepte invocările.\
-
----
+> Pe mașinile Debian, comanda `nc` se rulează cu opțiunea suplimentară `-p` pentru a se indica portul pe care se dorește ca acesta să accepte invocările.
 
 Să se folosească clientul pentru a citi, linie cu linie, valorile
 furnizate de script-ul anterior. Va trebui precizată adresa mașinii
 fizice (în funcție de configurația folosită) și portul 2000
 
 ![](images/05client_server_communication.png)
-
-### Homework (due next week)
-
-**7.** Să se importe în mediul integrat de dezvoltare Android Studio
-proiectul `PheasantGame` din directorul `labtasks`.
-
-Acesta reprezintă o aplicație Android care implementează jocul Fazan în
-limba engleză, atât partea de server, cât și partea de client.
-
-Vor fi folosite următoarele **reguli de joc**:
-
-1.  clientul trimite un cuvânt serverului;
-2.  serverul verifică dacă nu s-a solicitat terminarea jocului, situație
-    în care continuă analiza termenului respectiv;
-3.  dacă s-a primit un cuvânt care are prefixul așteptat, termenul
-    existând în limba engleză, se caută un alt cuvânt care începe cu
-    ultimele 2 litere ale termenului:
-    1.  dacă există un astfel de cuvânt, acesta fiind transmis înapoi
-        clientului;
-    2.  altfel, se semnalează faptul că jocul s-a terminat;
-4.  altfel, se trimite înapoi cuvântul primit pentru a semnala faptul că
-    există o problemă.
-
-![](images/06pheasant_game.png)
-
-Astfel, serverul va avea următoarea funcționare:
-
-1.  dacă se primește *End Game* (stocat în `Constants.END_GAME`), pentru
-    a se indica faptul că nu se mai dorește continuarea jocului sau
-    clientul a fost închis (nu găsește nici un cuvânt cu prefixul
-    solicitat), serverul își termină execuția;
-2.  altfel, serverul verifică dacă termenul care a fost primit
-    reprezintă un cuvânt valid în limba engleză (accesând în acest sens
-    pagina Internet
-    [](http:*www.wordhippo.com/what-is/words-starting-with/)) - se
-    folosește metoda `Utilities.wordValidation()`;
-    1.  dacă termenul este valid:
-        1.  verifică dacă termenul începe cu prefixul solicitat
-            (ultimele 2 litere ale cuvântului pe care l-a trimis
-            anterior) - în acest sens, trebuie reținut cel mai recent
-            cuvânt transmis / prefixul așteptat;
-            1.  în caz afirmativ:
-                1.  identifică prefixul cuvântului pe care trebuie să îl
-                    formeze (ultimele 2 litere ale cuvântului primit);
-                2.  realizează o interogare la nivelul paginii Internet
-                    [](http:*www.wordhippo.com/what-is/words-starting-with/)
-                    pentru a obține lista cuvintelor care respectă
-                    constrângerea respectivă - se folosește metoda
-                    `Utilities.getWordListStartingWith()` care
-                    furnizează un obiect `List<String>`;
-                    1.  dacă lista conține unul sau mai multe cuvinte,
-                        face o alegere întâmplătoare și se transmite
-                        clientului;
-                    2.  dacă lista nu conține nici un cuvânt, transmite
-                        clientului șirul de caractere *End Game* (stocat
-                        în `Constants.END_GAME`), pentru a indica faptul
-                        că a fost închis (nu găsește nici un cuvânt cu
-                        prefixul solicitat);
-            2.  în caz negativ, transmite înapoi cuvântul pe care l-a
-                primit;
-    2.  dacă termenul nu este valid, trimite înapoi cuvântul pe care l-a
-        primit.
-
----
-**Note**
-
-Este posibil ca un cuvânt care există în limba engleză
-să nu fie marcat ca valid, datorită faptului că se inspectează numai
-prima pagină dintre cele care conțin lista de cuvinte precedate de un
-anumit prefix.\
-
----
-
-Similar, clientul va avea următoarea funcționare:
-
-1.  dacă termenul din câmpul text `wordEditText` are mai mult de două
-    caractere, este trimis clientului;
-2.  se primește o valoare de la server:
-    1.  dacă se primește *End Game*, se invalidează controalele grafice,
-        astfel încât jocul să nu poată fi continuat;
-    2.  dacă s-a primit alt cuvânt decât cel trimis anterior, se
-        determină prefixul cu care trebuie format termenul și se
-        afișează în câmpul text `wordEditText`;
-    3.  dacă s-a primit același cuvânt cu cel trimis anterior, înseamnă
-        că termenul nu a fost corect, astfel încât trebuie format un
-        cuvânt cu același prefix ca anterior, acesta fiind afișat în
-        câmpul text `wordEdiTtext`;
-3.  altfel, se afișează un mesaj de eroare.
-
-Informațiile cu privire la șirurile de caractere care au fost trimise,
-respectiv primite, vor fi jurnalizate în câmpurile text
-`serverHistoryTextView` și `clientHistoryTextView`.
-
-**8.** Să se încarce modificările realizate în cadrul depozitului
-'Laborator06' de pe contul Github personal, folosind un mesaj sugestiv.
-`student@eim:~/Laborator06$ git add *
-student@eim:~/Laborator06$ git commit -m "implemented taks for laboratory 06"
-student@eim:~/Laborator06$ git push Laborator02_perfectstudent master
-`
-
-## Resurse Utile
-
-[Connecting to the
-Network](http:*developer.android.com/training/basics/network-ops/connecting.html)  
-[Managing Network
-Usage](http:*developer.android.com/training/basics/network-ops/managing.html)  
-[Wei Meng LEE, Beginning Android 4 Application Development, Wiley,
-2012](http:*eu.wiley.com/WileyCDA/WileyTitle/productCd-1118199545.html) -
-capitolul 10, *Networking*, subcapitolul *How to connect to a Socket
-server*  
-[Reto MEIER, Professional Android for Application Development, John
-Wiley & Sons,
-2012](http:*www.amazon.com/Professional-Android-4-Application-Development/dp/1118102274) -
-capitolul 16 (*Bluetooth, NFC, Networks and Wi-Fi*), subcapitolele
-*Managing Network and Internet Connectivity*, *Transferring Data using
-Wi-Fi Direct*  
-[Android Programming Tutorials - Core
-Servlets](http:*www.coreservlets.com/android-tutorial/) - secțiunea
-*Networking I: General Techniques*  
-[Dezvoltarea Aplicațiilor pentru
-Android](http:*android.rosedu.org/wiki/laborator-07-servicii-de-retea#socketi) -
-partea a II-a, Sockeți  
-[Processes and
-Threads](http:*developer.android.com/guide/components/processes-and-threads.html)  
-[ServerSocket](http:*developer.android.com/reference/java/net/ServerSocket.html)  
-[Socket](http:*developer.android.com/reference/java/net/Socket.html)
