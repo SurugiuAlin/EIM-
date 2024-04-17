@@ -1194,7 +1194,7 @@ momentul curent, textul putând fi obținut, linie cu linie, prin
 intermediul unei conexiuni pe portul 2000, serverul fiind astfel simulat
 pe mașina fizică.
 
-    student@eim:~$ ps a | while read x; do echo "$x" | nc -l 2000; done
+    student@eim:~$ ps a | while read x; do echo "$x" | nc -N -l 2000; done
 
 > Pe mașinile Debian, comanda `nc` se rulează cu opțiunea suplimentară `-p` pentru a se indica portul pe care se dorește ca acesta să accepte invocările.
 
