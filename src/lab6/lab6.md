@@ -963,7 +963,7 @@ de caractere `220`, fie cu un șir de caractere precedat de ''220 ''
 (valori stocate în `Constants.FTP_MULTILINE_END_CODE1`, respectiv
 `Constants.FTP_MULTILINE_END_CODE2`).
 
-<img src="/eim/laboratoare/ex5_ftp_image.png" class="align-center" width="400" alt="ex5_ftp_image.png" />
+<img src="/laboratoare/laborator06/ex5_ftp_image.png" class="align-center" width="400" alt="ex5_ftp_image.png" />
 
 Operațiile care trebuie realizate pe metoda `doInBackground()` a firului
 de execuție ce gestionează comunicația cu serverul FTP sunt:
