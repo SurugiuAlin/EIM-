@@ -10,18 +10,18 @@ Ne intereseaza doar folder-ul `labtasks`.
 proiectul `CalculatorWebService` din directorul `labtasks`.
 
 **2a.** Din browser, vom verifica în browser funcționarea serverului
-[serverului](http://wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/)
+[serverului](http://jepi.cs.pub.ro/expr/)
 pentru GET și POST
 
 **2b.** Să se verifice la linia de comandă functionarea severului
 ```console
-curl  -X  POST  --data 'operation=times&t1=9&t2=2' https://wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/expr_post.php
+curl  -X  POST  --data 'operation=times&t1=9&t2=2' http://jepi.cs.pub.ro/expr/expr_post.php
 
-curl  "https://wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/expr_get.php?operation=times&t1=9&t2=2"
+curl  "http://jepi.cs.pub.ro/expr/expr_get.php?operation=times&t1=9&t2=2"
 ```
 
 **2c.** Studiați implementarea serverului în php
-https://wi-fi.cs.pub.ro/~dniculescu/didactic/eim/expr/
+http://jepi.cs.pub.ro/expr/
 
 **3.** Pe baza functionalitatii serverului, se cere să se implementeze in Android un calculator, care suportă
 operațiile de adunare/scădere/înmulțire/împărțire a două numere reale, pe baza
@@ -84,7 +84,7 @@ proiectul `XkcdCartoonDisplayer` din directorul `labtasks`.
 
 Se cere să se implementeze o aplicație Android care afișează, într-un
 control grafic de tip `ImageView`, cea mai recentă caricatură de pe
-pagina Internet [xkcd](http:*www.xkcd.com). De asemenea, va putea fi
+pagina Internet [xkcd](http://www.xkcd.com). De asemenea, va putea fi
 vizualizat titlul acestei caricaturi, adresa Internet la care aceasta
 poate fi accesată precum și butoane de legătură către caricatura
 precedentă, respectiv caricatura următoare (în situația în care aceasta
@@ -154,7 +154,7 @@ Pentru realizarea aplicației, vor trebui urmați următorii pași:
 proiectul `GoogleSearcher` din directorul `labtasks`.
 
 Se cere să se implementeze o aplicație Android care să realizeze o
-căutare folosind motorul [Google](http://www.google.com), rezultatul
+căutare folosind motorul [Brave](http://search.brave.com), rezultatul
 fiind expus printr-un control grafic de tip
 [WebView](http://developer.android.com/reference/android/webkit/WebView.html).
 
@@ -167,7 +167,7 @@ acestea vor fi legate prin intermediul caracterului `+`.
 Adresa Internet care conține rezultatele căutării după anumite cuvinte
 cheie este formată din:
 
--   URL-ul de bază: <http:*www.google.com/>
+-   URL-ul de bază: <http://search.brave.com/>
 -   lista cuvintelor cheie după care se realizează căutarea:
     search?q=cuvant_cheie<sub>1</sub>+cuvant_cheie<sub>2</sub>+...+cuvant_cheie<sub>n</sub>
 
@@ -175,7 +175,7 @@ cheie este formată din:
 
 În situația în care se dorește să se caute după șirul de caractere
 `"android developers"`, adresa Internet la care se găsesc rezultatele
-căutării este: <http:*www.google.ro/search?q=android+developers>.
+căutării este: <http://search.brave.com/search?q=android+developers>.
 
 Încărcarea conținutului unei pagini Internet în cadrul controlului
 grafic de tip `WebView` se face prin intermediul metodei
@@ -191,7 +191,7 @@ care primește ca parametrii:
     se specifică valoarea `null`, valoarea sa va fi `about:blank`).
 
 ``` java
-googleResultsWebView.loadDataWithBaseURL("http://www.google.com", content, "text/html", "UTF-8", null);
+googleResultsWebView.loadDataWithBaseURL("http://search.brave.com", content, "text/html", "UTF-8", null);
 ```
 
 **6.** (opțional) Să se importe în mediul integrat de dezvoltare Android
@@ -201,7 +201,7 @@ Se cere să se implementeze o aplicație Android care să afișeze
 informații cu privire la obiectivele turistice dintr-un areal geografic
 (desemnat prin coordonatele nord, sud, est, vest) pe baza rezultatelor
 furnizate de serviciul web [Geonames
-Paces](http:*api.geonames.org/citiesJSON).
+Paces](http://api.geonames.org/citiesJSON).
 
 Detaliile care se doresc a fi vizualizate pentru fiecare obiectiv
 turistic în parte sunt:
