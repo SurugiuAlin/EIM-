@@ -226,11 +226,11 @@ precum și cu privire la numele de utilizator:
     semn;
 -   `username` - denumirea utilizatorului care deține drepturi de acces
     asupra acestui serviciu web (în cazul de față, `eim-2017`).
--   exemplu local "http://api.geonames.org/citiesJSON?username=eim2017&south=45&north=44&east=27&west=26"
+-   exemplu [local](http://api.geonames.org/citiesJSON?username=eim2017&south=45&north=44&east=27&west=26)
 
 **Exemplu**. O adresă Internet de la care pot fi accesate rezultate în
 format JSON este:
-[](http:*api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&username=pdsd).
+[](http:*api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&username=eim2017).
 
 Rezultatele sunt furnizate în următorul format:
 
