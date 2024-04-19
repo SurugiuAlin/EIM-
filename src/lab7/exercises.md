@@ -225,7 +225,8 @@ precum și cu privire la numele de utilizator:
     corespunzătoare punctelor cardinale, exprimate ca numere reale, cu
     semn;
 -   `username` - denumirea utilizatorului care deține drepturi de acces
-    asupra acestui serviciu web (în cazul de față, `pdsd`).
+    asupra acestui serviciu web (în cazul de față, `eim-2017`).
+-   exemplu local "http://api.geonames.org/citiesJSON?username=eim2017&south=45&north=44&east=27&west=26"
 
 **Exemplu**. O adresă Internet de la care pot fi accesate rezultate în
 format JSON este:
