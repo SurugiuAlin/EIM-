@@ -138,11 +138,9 @@ surveni în cadrul acestora.
 
 ### Android NSD (opțional)
 
-\<spoiler>
-
 Configurarea Android NSD presupune obținerea unei referințe către un
 obiect de tipul
-[NsdManager](http:*developer.android.com/reference/android/net/nsd/NsdManager.html),
+[NsdManager](http://developer.android.com/reference/android/net/nsd/NsdManager.html),
 care oferă funcționalități referitoare la gestiunea serviciilor
 existente doar în cadrul rețelei locale.
 
@@ -216,8 +214,6 @@ oferite aplicației sunt cele legate de accesul la rețeaua locală:
 
 </manifest>
 ```
-
-\</spoiler>
 
 ### JmDNS
 
@@ -1404,14 +1400,15 @@ depozitului la distanță de la
 În urma acestei operații, directorul Laborator08 va trebui să se conțină
 directoarele `labtasks` și `solutions`.
 
-    student@eg106:~$ git clone https:*www.github.com/eim-lab/Laborator08.git
+    student@eg106:~$ git clone https://www.github.com/eim-lab/Laborator08.git
 
 **3.** Să se încarce conținutul descărcat în cadrul depozitului
 'Laborator08' de pe contul Github personal.
-`student@eg106:~$ cd Laborator08
+```shell
+student@eg106:~$ cd Laborator08
 student@eg106:~/Laborator08$ git remote add Laborator08_perfectstudent https:*github.com/perfectstudent/Laborator08
 student@eg106:~/Laborator08$ git push Laborator08_perfectstudent master
-`
+```
 
 **4.** Să se importe în mediul integrat de dezvoltare Android Studio
 proiectul `ChatServiceJmDNS` din directorul `labtasks`.
@@ -1664,25 +1661,8 @@ mai sus
 
 **10.** Să se încarce modificările realizate în cadrul depozitului
 'Laborator08' de pe contul Github personal, folosind un mesaj sugestiv.
-`student@eg106:~/Laborator08$ git add *
+```shell
+student@eg106:~/Laborator08$ git add *
 student@eg106:~/Laborator08$ git commit -m "implemented tasks for laboratory 08"
 student@eg106:~/Laborator08$ git push Laborator08_perfectstudent master
-`
-
-## Resurse Utile
-
-[Multicast DNS](http:*www.multicastdns.org/)  
-[Service Name and Transport Protocol Port Number
-Registry](http:*www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml)  
-[Android Tutorial on Connecting Devices
-Wirelessly](http:*developer.android.com/training/connect-devices-wirelessly/index.html)  
-[JmDNS - Project Official Page](http:*jmdns.sourceforge.net/)  
-[JmDNS - API
-Documentation](http:*jmdns.sourceforge.net/apidocs/index.html)  
-[JmDNS - Library Download](http:*sourceforge.net/projects/jmdns/)  
-[Tutorial on Using JmDNS on
-Android](http:*home.heeere.com/tech-androidjmdns.html)  
-[How to discover device (or service) on
-Android?](https:*developer.appcelerator.com/question/130715/how-to-discovery-deviceor-service-on-andorid)  
-[Service discovery using JmDNS in Eclipse: Wifi State Machine
-errors](http:*stackoverflow.com/questions/10289100/service-discovery-using-jmdns-in-eclipse-wifistatemachine-errors)
+```
