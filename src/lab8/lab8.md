@@ -22,13 +22,12 @@ Serviciile din rețea pot fi implementate folosind două variante:
     locală, fără a realiza nici un fel de configurări legate de
     infrastructura de comunicație.
 
-\<note>Atât Android NSD cât și JmDNS folosesc [multi-cast
-DNS](http:*www.multicastdns.org/) (utilizarea de operații DNS în rețele
+> Atât Android NSD cât și JmDNS folosesc [multi-cast
+DNS](http://www.multicastdns.org/) (utilizarea de operații DNS în rețele
 de dimensiuni mici, în care nu există un server propriu-zis pentru un
 astfel de serviciu) pentru accesul la servicii în rețeaua
-locală.\
+locală.
 
----
 
 Operațiile utilizate în implementarea serviciilor de rețea sunt:
 
