@@ -420,8 +420,6 @@ aplicației vizează:
 
 ### Android NSD (opțional)
 
-\<spoiler>
-
 Pentru **înregistrarea unui serviciu**, se apelează metoda
 [registerService(NsdServiceInfo, int,
 NsdManager.RegistrationListener)](http:*developer.android.com/reference/android/net/nsd/NsdManager.html#registerService%28android.net.nsd.NsdServiceInfo,%20int,%20android.net.nsd.NsdManager.RegistrationListener%29)
@@ -556,8 +554,6 @@ NsdManager.RegistrationListener registrationListener = new RegistrationListener(
 };
 ```
 
-\</spoiler>
-
 ### JmDNS
 
 Pentru **înregistrarea unui serviciu**, se apelează metoda
@@ -643,7 +639,6 @@ aplicația Android.
 
 ### Android NSD (opțional)
 
-\<spoiler>
 
 \*\*Pornirea \*\* operației de descoperire a serviciilor disponibile se
 face prin intermediul metodei [discoverServices(String, int,
@@ -775,8 +770,6 @@ DiscoveryListener discoveryListener = new DiscoveryListener() {
   }
 };
 ```
-
-\</spoiler>
 
 ### JmDNS
 
@@ -926,7 +919,6 @@ denumirea, se poate determina, prin intermediul multi-cast DNS, adresa
 
 ### Android NSD (opțional)
 
-\<spoiler>
 
 În cadrul metodei `onServiceFound()` din ascultătorul de tip
 `DiscoveryListener`, în situația în care denumirea serviciului
@@ -1010,8 +1002,6 @@ ResolveListener resolveListener = new ResolveListener() {
   }
 };   
 ```
-
-\</spoiler>
 
 ### JmDNS
 
@@ -1351,6 +1341,8 @@ sunt:
 
 1.  înregistrarea / deînregistrarea unui serviciu de mesagerie
     instantanee, pe un anumit port pe care îl specifică;
+
+    Important note: trebuie folosit un port mai mare de 1024 ca sa nu fie privilegiat.
 2.  pornirea / oprirea operației de descoperire a serviciilor în rețeaua
     locală;
 3.  conectarea / deconectarea la un serviciu descoperit sau la un
