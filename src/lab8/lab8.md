@@ -1631,11 +1631,11 @@ Pe fiecare iterație, se vor realiza următoarele operații:
 
 <!-- -->
 
-       - Pe linux, cu comanda ''avahi-browse -ac'', identificați serviciile și stațiile disponibile în rețeaua locală
-       - Pe Android, folosind utilitarul ''ZeroconfBrowser'', identificați serviciile și stațiile disponibile în rețeaua locală
-       - Folosind ''avahi-browse -rk _chatservice._tcp'', asigurați-vă că nu există instanțe ale serviciului pe vreuna dintre mașini
+  - Pe linux, cu comanda `avahi-browse -ac`, identificați serviciile și stațiile disponibile în rețeaua locală
+  - Pe Android, folosind utilitarul `ZeroconfBrowser`, identificați serviciile și stațiile disponibile în rețeaua locală. Alternativă din playstore: [ServiceBrowser](https://play.google.com/store/apps/details?id=com.druk.servicebrowser) by Andriy Druk.
+  - Folosind `avahi-browse -rk _chatservice._tcp`, asigurați-vă că nu există instanțe ale serviciului pe vreuna dintre mașini
     - pregătiți recoltarea pachetelor folosind comanda <code shell>tcpdump -ni any 'udp port 5353' -w ./dnssd.pcap </code> 
-    - activați serviciul pe unul dintre telefoane, comanda avahi-browse de mai sus identifică apariția numelor și perechii IP/port. 
+  - activați serviciul pe unul dintre telefoane, comanda avahi-browse de mai sus identifică apariția numelor și perechii IP/port. 
     - ce fel de mesaj este folosit pentru publicarea serviciului? 
     - observați folosirea înregistrărilor de tip PTR, SRV
     - dacă ați pornit mai multe emulatoare/telefoane, observați cumularera răspunsurilor anterioare în fiecare răspuns  
@@ -1644,12 +1644,10 @@ Pe fiecare iterație, se vor realiza următoarele operații:
 **9.** Folosind instrucțiunile din secțiunea **Zeroconf sub Linux** de
 mai sus
 
-      - pe PC-ul local publicați un serviciu pe portul 5003
-      - rulați serviciul folosind ''while true; do nc -v -l -p 5003; done''
-      - verificați interoperabilitatea cu clienții implementați pe Android
-      - puteți folosi clienți Linux cu comanda ''nc <adresă> <port>'' pentru a conversa cu un server descoperit la 
-
-`adresa:port` (pe Android sau Linux).
+  - pe PC-ul local publicați un serviciu pe portul 5003
+      - rulați serviciul folosind `while true; do nc -v -l -p 5003; done`
+  - verificați interoperabilitatea cu clienții implementați pe Android
+      - puteți folosi clienți Linux cu comanda `nc <adresă> <port>` pentru a conversa cu un server descoperit la `adresa:port` (pe Android sau Linux).
 
 **10.** Să se încarce modificările realizate în cadrul depozitului
 'Laborator08' de pe contul Github personal, folosind un mesaj sugestiv.
