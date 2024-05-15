@@ -276,6 +276,7 @@ către biblioteca *Google Play Services*, astfel descărcată.
     bifează opțiunea *Copy projects into workspace*)  
       
     ![](images/configurare14.png)
+- API key 2024 AIzaSyDTihXRHSZDmzDF5hP7VkmPXOzejoil8nU 
 
 </details>
 
