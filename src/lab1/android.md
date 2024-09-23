@@ -6,6 +6,11 @@ gestiunea componentelor hardware, a proceselor și a memoriei) și biblioteci Ja
 interfețelor cu utilizatorul). Modificarile aduse Linux sunt multe, printre care drivere noi
 , optimizari pentru a reduce consumul de energie, schimbari de arhitectura etc.
 
+<figure class="video_container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kkX8_nbBqBQ?si=mgtQlUJRz13ZdRN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</figure>
+
+
 Este un produs open-source (putând fi dezvoltat
 de producătorii de dispozitive mobile cu extensii proprietare pentru a-și
 particulariza platforma), dezvoltat în prezent de Google.
