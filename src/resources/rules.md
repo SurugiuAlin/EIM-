@@ -1,9 +1,9 @@
 # Regulament
 -------------
 
-Disciplina Elemente de Informatică Mobilă este inclusă în planul de învățământ al specializării C1: Arhitectura Sistemelor de Calcul, fiind destinată studenților anului IV din cadrul Facultății de Automatică și Calculatoare a Universității "Politehnica" București, programul de studii Calculatoare. 
+Disciplina Elemente de Informatică Mobilă este inclusă în planul de învățământ al specializării C2: Sisteme Incorporate, fiind destinată studenților anului IV din cadrul Facultății de Automatică și Calculatoare a Universității "Politehnica" București, programul de studii Calculatoare. 
 
-Sunt prevăzute, săptămânal, 2 ore de curs, desfășurate în sala EC105 și 2 ore de laborator, desfășurate în sala EG106 (laboratorul Ixia). În urma promovării acestei discipline vor fi obținute 5 puncte de credit transferabile (ECTS).
+Sunt prevăzute, săptămânal, 3 ore de curs, desfășurate în sala XX??? și 2 ore de laborator, desfășurate în sala XX???. În urma promovării acestei discipline vor fi obținute 5 puncte de credit transferabile (ECTS).
 
 ## Notare
 ---------
@@ -15,44 +15,41 @@ Nota la disciplina Elemente de Informatică Mobilă este formată din:
 
 ```
 Final 	ACTIVITATE PE PARCURS
-30% 	Test curs 	Colocvii 	Bonus lab 	Bonus curs
-            20% 	  50% 	       10% 	        10% 
+        Test curs 	Colocvii Lab	Bonus lab 	Bonus curs
+ 30%    20%         40% 	 10%    10% 	    10% 
 ```
 
 Pentru promovarea disciplinei, este necesar să se întrunească, **în ordine**, următoarele condiții:
   * maximum 3 absențe la laborator 
   * obținerea unui punctaj de minim, oricare dintre: 
-	1. fie 25p din cele 60p pentru colocvii + bonus lab (50p + 10p)
-	2. fie 40p din cele 80p pentru punctajul de colocvii + bonus lab + partial (50p + 20p + 10p)
+	1. fie 25p din cele 60p pentru colocvii + lab + bonus lab (50p + 10p)
+	2. fie 40p din cele 80p pentru punctajul de colocvii + lab + bonus lab + partial (40p + 10p + 20p + 10p)
   * obținerea unui punctaj general (≥ 50%)
  
 
 ### Test final
 
-Testul final este scris și se desfașoară în sesiunea de vară. El poate
-fi susținut de studenții cu o activitate corespunzătoare pe parcursul
-semestrului (unul dintre minime obținute pe parcurs). Este permis accesul cu cu
-notițe scrise de mână pe o singură foaie A4 (doar față). Nu este
-permis accesul cu dispozitive electronice de comunicare.
+Testul final este scris și se desfașoară în sesiunea de iarnă. El poate
+fi susținut de studenții cu unul dintre minime obținute pe parcurs).  Nu este
+permis accesul cu dispozitive electronice de comunicare sau cu materiale scrise (closed book).
 
 ### Test parțial
 
 La mijlocul semestrului va fi programat un test din materialul predat
-în prealabil. Este permis accesul cu cu notițe scrise de mână pe o
-singură foaie A4 (doar față). Nu este permis accesul cu dispozitive
-electronice de comunicare.
+în prealabil. Nu este
+permis accesul cu dispozitive electronice de comunicare sau cu materiale scrise (closed book).
 
 ### Colocvii
 
 In săptămânile ~6 și 14, în cadrul orelor de laborator, se vor desfășura două colocvii la care prezența este obligatorie. Colocviul este un test practic, desfășurat pe parcursul unui interval de timp limitat, în care se solicită rezolvarea unui set de sarcini punctate independent. Pe tot parcursul colocviului, este permisă consultarea documentației, inclusiv în format electronic. Este strict interzisă folosirea oricăror mijloace de comunicație pentru a colabora cu colegii sau cu alte persoane.
 
-Punctajul total maxim pentru cele două colocvii este de 50p, acesta
-este distribuit 20p primului colocviu, 30p celui de-al doilea.
+Punctajul total maxim pentru cele două colocvii este de 40p, acesta
+este distribuit 20p primului colocviu, 40p celui de-al doilea.
 Nu este posibilă refacerea colocviilor în sesiunile de restanțe. 
 
 ### Bonus laborator
-Prezența și activitatea la laborator nu fac parte din notă, aceasta considerând doar cele 2 colocvii. 
-Pe parcursul celor 2 ore de laborator veți avea însă acces (doar din EG106) la un chestionar de 3 întrebări / 3 minute care verifică parcurgerea materialului pregătitor acelei săptămâni (întrebările au un singur răspuns corect). Pentru a avea acces la chestionare, trebuie să folosiți conturile de [Moodle](https://acs.curs.pub.ro/) pe site-ul [wi-fi.cs.pub.ro/eim](http://wi-fi.cs.pub.ro/eim)
+Activitatea la laborator se punctează cu 10p. 
+Pe parcursul celor 2 ore de laborator veți avea acces (doar din XXX???) la un chestionar de 3 întrebări / 3 minute care verifică parcurgerea materialului pregătitor acelei săptămâni (întrebările au un singur răspuns corect). Pentru a avea acces la chestionare, trebuie să folosiți conturile de [Moodle](https://acs.curs.pub.ro/) pe site-ul [wi-fi.cs.pub.ro/eim](http://wi-fi.cs.pub.ro/eim)
 
 Scorul obținut la aceste chestionare va adăuga încă 10p (1 punct la nota finală).
 
@@ -68,7 +65,7 @@ Exemenele din sesiunea de restanță se desfășoară **oral**, și sunt pentru 
 ## Organizare
 -------------
 
-  * Laboratorul se desfășoară pe semigrupe, are alocate 2 ore săptămânal și se desfășoară în sala EG106 (laboratorul Ixia). 
+  * Laboratorul se desfășoară pe semigrupe, are alocate 2 ore săptămânal și se desfășoară în sala EG106. 
   
   * Laboratoarele sunt obligatorii (cf. Regulamentului UPB), dar un maximum de 3 absențe sunt acceptabile. 
 
