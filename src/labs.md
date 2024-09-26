@@ -2,7 +2,7 @@
 
 ## Anunțuri
 
-* 26.02.2024 bine ați venit în semestrul 2, anul universitar 2023 - 2024
+* 26.09.2025 bine ați venit în semestrul 1, anul universitar 2024 - 2025
 
 ## Resurse
 ---
@@ -23,8 +23,8 @@
 
 | **Seria**      | **Zi** | **Ora**     | **Sala** | **Instructor** |
 |----------------|--------|-------------|----------|----------------|
-| C1 + opționali | marți  | 16.00-18.00 | EC105    | Dragoș         |
-
+| C2 + opționali | marți ambele | 10.00-12.00 | EG301    | Dragoș         |
+| C2 + opționali | joi impare  | 10.00-12.00 | PR002    | Dragoș         |
 
 ### Laborator
 

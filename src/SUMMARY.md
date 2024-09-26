@@ -18,10 +18,20 @@
 
 # Laboratoare
 ----
-- [1. Activități](lab2/lab2.md)
+- [1. Intro Android & Kotlin](lab1/lab1.md)
   - [Sistemul de Operare Android](lab1/android.md)
     - [Arhitectura](lab1/architecture.md)
   - [Android Studio](lab1/android_studio.md)
+  - [Environment](lab1/environment.md)
+  - [Functionalities](lab1/functionalities.md)
+  - [Git](lab1/git.md)
+  - [Iphone](lab1/iphone.md)
+  - [Versions](lab1/versions.md)
+  - [Community](lab1/community.md)
+  - [Activități](lab1/activity.md)
+
+  
+- [2. Activități](lab2/lab2.md)
   - [Structura unei Aplicații](lab2/app_structure.md)
   - [Activitatea](lab2/activity.md)
   - [Ciclul de Viață al unei Activități](lab2/activity_lifecycle.md)
@@ -32,7 +42,7 @@
   - [ADB](lab2/adb.md)
   - [Activitate de Laborator](lab2/exercises.md)
 
-- [2. Proiectarea Interfețelor Grafice](lab3/lab3.md)
+- [3. Proiectarea Interfețelor Grafice](lab3/lab3.md)
   - [Clase Android utilizate pentru definirea unei interfețe grafice](lab3/gui_classes.md)
   - [Mecanisme pentru construirea unei interfețe grafice](lab3/gui_ways.md)
     - [Construirea unei interfețe grafice în XML](lab3/gui_built_in_xml.md)
@@ -66,7 +76,7 @@
   - [Adaptarea interfeței grafice în funcție de orientarea ecranului](lab3/adapt_to_screen_orientation.md)
   - [Activitate de Laborator](lab3/exercises.md)
   - [Resurse Utile](lab3/resources.md)
-- [3. Intenții](lab4/lab4.md)
+- [4. Intenții](lab4/lab4.md)
   - [Intenții](lab4/intents.md)
   - [Constructia unui Intent](lab4/building_intents.md)
   - [Transmiterea de informații intre Intents](lab4/sending_data.md)
@@ -75,7 +85,7 @@
   - [Primirea unui broadcast](lab4/receive_broadcast.md)
   - [Exercitii](lab4/exercises.md)
   - [Exercitii(Kotlin)](lab4/exercises-kotlin.md)
-- [4. Servicii](lab5/servicies.md)
+- [5. Servicii](lab5/servicies.md)
   - [Tipuri de Servicii](lab5/types.md)
   - [Gestiunea unui Serviciu](lab5/build_service.md)
   - [Lifecycle](lab5/lifecycle.md)
@@ -88,7 +98,7 @@
   - [Activitate de Laborator](lab5/exercises.md)
   - [Activitate de Laborator (Kotlin)](lab5/exercises-kotlin.md)
 
-- [5. Comunicare prin Bluetooth](lab9/protocol.md)
+- [6. Comunicare prin Bluetooth](lab9/protocol.md)
   - [Bluetooth in Android](lab9/overview.md)
   - [Handler](lab9/handler.md)
   - [Activitate Laborator](lab9/activity.md)
@@ -97,8 +107,8 @@
     - [Bluetooth App UI](lab9/bluetooth_app_ui.md)
     - [Resurse Utile](lab9/resources.md)
 
-- [6. Comunicația prin Sockeți TCP](lab6/lab6.md)
-- [7. Invocarea de Servicii Web prin Protocolul HTTP](lab7/lab7.md)
+- [7. Comunicația prin Sockeți TCP](lab6/lab6.md)
+- [8. Invocarea de Servicii Web prin Protocolul HTTP](lab7/lab7.md)
   - [Protocolul HTTP](lab7/http.md)
   - [API interactiune HTTP](lab7/http_api.md)
     - [HttpURLConnection](lab7/httpurlconnection.md)
@@ -106,9 +116,9 @@
   - [Prelucrarea DOM (Document Object Model)](lab7/dom.md)
   - [Parsare JSON](lab7/json.md)
   - [Exercitii](lab7/exercises.md)
-- [8. Descoperirea Serviciilor de Rețea](lab8/lab8.md)
+- [9. Descoperirea Serviciilor de Rețea](lab8/lab8.md)
 
-- [9. Utilizarea Serviciilor de Localizare](lab10/lab10.md)
+- [10. Utilizarea Serviciilor de Localizare](lab10/lab10.md)
   - [Exercitii](lab10/exercises.md)
 
 # Informaţii Administrative
