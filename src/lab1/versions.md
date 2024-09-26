@@ -66,8 +66,8 @@ recomandată în dezvoltarea aplicațiilor Android.
     <td>
       Upside Down Cake
       <sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>
-    </td>
-    {% include progress-cell.html rowspan=2 percentage=30.9 %}
+    </td> 
+    <td> 30.9 %</td>
     <td rowspan="2">2023</td>
   </tr>
   <tr class="table-notes">
@@ -87,7 +87,7 @@ recomandată în dezvoltarea aplicațiilor Android.
       Tiramisu
       <sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>
     </td>
-    {% include progress-cell.html rowspan=2 percentage=51.5 %}
+    <td> 51.5 % </td>
     <td rowspan="3">2022</td>
   </tr>
   <tr class="table-notes">
@@ -110,7 +110,8 @@ recomandată în dezvoltarea aplicațiilor Android.
       Snow Cone
       <sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>
     </td>
-    {% include progress-cell.html rowspan=2 percentage=66.5 %}
+    <td> 66.5 %</td>
+    
   </tr>
   <tr>
     <td>Level 31 <span class="subversion">Android 12</span></td>
@@ -127,7 +128,7 @@ recomandată în dezvoltarea aplicațiilor Android.
       Red Velvet Cake
       <sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>
     </td>
-    {% include progress-cell.html rowspan=1 percentage=79.8 %}
+    <td> 79.8 %</td>  
     <td>2020</td>
   </tr>
   <tr>
@@ -140,7 +141,7 @@ recomandată în dezvoltarea aplicațiilor Android.
       Quince Tart
       <sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>
     </td>
-    {% include progress-cell.html rowspan=1 percentage=87.1 %}
+    <td> 87.1 %</td>    
     <td>2019</td>
   </tr>
   <tr>
@@ -150,7 +151,7 @@ recomandată în dezvoltarea aplicațiilor Android.
     <td>Level 28</td>
     <td><code>P</code></td>
     <td>Pie</td>
-    {% include progress-cell.html rowspan=1 percentage=91.7 %}
+    <td> 91.7 %</td>
     <td>2018</td>
   </tr>
   <tr>
@@ -159,14 +160,14 @@ recomandată în dezvoltarea aplicațiilor Android.
     </td>
     <td>Level 27 <span class="subversion">Android 8.1</span></td>
     <td><code>O_MR1</code></td>
-    <td rowspan="2">Oreo</td>
-    {% include progress-cell.html rowspan=1 percentage=93.0 %}
+    <td rowspan="2">Oreo</td> 
+    <td> 93.0 %</td>
     <td rowspan="2">2017</td>
   </tr>
   <tr>
     <td>Level 26 <span class="subversion">Android 8.0</span></td>
     <td><code>O</code></td>
-    {% include progress-cell.html rowspan=1 percentage=95.7 %}
+    <td> 95.7 %</td>
   </tr>
   <tr>
     <td rowspan="2">
@@ -175,13 +176,13 @@ recomandată în dezvoltarea aplicațiilor Android.
     <td>Level 25 <span class="subversion">Android 7.1</span></td>
     <td><code>N_MR1</code></td>
     <td rowspan="2">Nougat</td>
-    {% include progress-cell.html rowspan=1 percentage=96.0 %}
+    <td> 96.0 %</td>
     <td rowspan="2">2016</td>
   </tr>
   <tr>
     <td>Level 24 <span class="subversion">Android 7.0</span></td>
     <td><code>N</code></td>
-    {% include progress-cell.html rowspan=1 percentage=97.2 %}
+    <td> 97.2 %</td>
   </tr>
   <tr>
     <td>
@@ -190,7 +191,7 @@ recomandată în dezvoltarea aplicațiilor Android.
     <td>Level 23</td>
     <td><code>M</code></td>
     <td>Marshmallow</td>
-    {% include progress-cell.html rowspan=1 percentage=98.6 %}
+    <td> 98.6 %</td>
     <td rowspan="2">2015</td>
   </tr>
   <tr>
@@ -200,12 +201,12 @@ recomandată în dezvoltarea aplicațiilor Android.
     <td>Level 22 <span class="subversion">Android 5.1</span></td>
     <td><code>LOLLIPOP_MR1</code></td>
     <td rowspan="2">Lollipop</td>
-    {% include progress-cell.html rowspan=1 percentage=99.1 %}
+    <td> 99.1 %</td>
   </tr>
   <tr>
     <td>Level 21 <span class="subversion">Android 5.0</span></td>
     <td><code>LOLLIPOP</code>, <code>L</code></td>
-    {% include progress-cell.html rowspan=2 percentage=99.6 %}
+    <td> 99.6 %</td>
     <td rowspan="3">2014</td>
   </tr>
   <tr class="table-notes"><td colspan="3">
@@ -223,7 +224,7 @@ recomandată în dezvoltarea aplicațiilor Android.
     </td>
     <td><code>KITKAT_WATCH</code></td>
     <td rowspan="2">KitKat</td>
-    {% include progress-cell.html rowspan=3 percentage=99.7 %}
+    <td> 99.7 %</td>
   </tr>
   <tr>
     <td>
@@ -243,18 +244,18 @@ recomandată în dezvoltarea aplicațiilor Android.
     <td>Level 18 <span class="subversion">Android 4.3</span></td>
     <td><code>JELLY_BEAN_MR2</code></td>
     <td rowspan="3">Jelly Bean</td>
-    {% include progress-cell.html rowspan=1 percentage=99.8 %}
+    <td> 99.8 %</td>
   </tr>
   <tr>
     <td>Level 17 <span class="subversion">Android 4.2</span></td>
     <td><code>JELLY_BEAN_MR1</code></td>
-    {% include progress-cell.html rowspan=1 percentage=99.8 %}
+    <td> 99.8 %</td>
     <td rowspan="3">2012</td>
   </tr>
   <tr>
     <td>Level 16 <span class="subversion">Android 4.1</span></td>
     <td><code>JELLY_BEAN</code></td>
-    {% include progress-cell.html rowspan=2 percentage=99.8 %}
+    <td> 99.8 %</td>
   </tr>
   <tr class="table-notes"><td colspan="3">
     <ul>
@@ -265,7 +266,7 @@ recomandată în dezvoltarea aplicațiilor Android.
     <td>Level 15 <span class="subversion">Android 4.0.3 – 4.0.4</span></td>
     <td><code>ICE_CREAM_SANDWICH_MR1</code></td>
     <td rowspan="2">Ice Cream Sandwich</td>
-    {% include progress-cell.html rowspan=3 percentage=99.8 %}
+    <td> 99.8 %</td>
     <td rowspan="7">2011</td>
   </tr>
   <tr>
