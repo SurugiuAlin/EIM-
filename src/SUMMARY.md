@@ -21,13 +21,13 @@
 - [1. Intro Android & Kotlin](lab1/lab1.md)
   - [Sistemul de Operare Android](lab1/android.md)
     - [Arhitectura](lab1/architecture.md)
-  - [Android Studio](lab1/android_studio.md)
+    - [Functionalities](lab1/functionalities.md)
+    - [Iphone](lab1/iphone.md)
+    - [Versions](lab1/versions.md)
+    - [Community](lab1/community.md)
   - [Environment](lab1/environment.md)
-  - [Functionalities](lab1/functionalities.md)
+  - [Android Studio](lab1/android_studio.md)
   - [Git](lab1/git.md)
-  - [Iphone](lab1/iphone.md)
-  - [Versions](lab1/versions.md)
-  - [Community](lab1/community.md)
   - [Activități](lab1/activity.md)
 
   
