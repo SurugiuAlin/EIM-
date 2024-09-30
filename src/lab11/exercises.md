@@ -23,30 +23,30 @@ cheia publică în fișierul `AndroidManifest.xml`.
 ---
 
 Mai multe detalii pot fi obținute în secțiunea
-[Configurare](/eim/laboratoare/laborator10#configurare).
+[Configurare](/eim/laboratoare/laborator11#configurare).
 
 **2.** În contul Github personal, să se creeze un depozit denumit
-'Laborator10'. Inițial, acesta trebuie să fie gol (nu trebuie să bifați
+'Laborator11'. Inițial, acesta trebuie să fie gol (nu trebuie să bifați
 nici adăugarea unui fișier `README.md`, nici a fișierului `.gitignore`
 sau a a fișierului `LICENSE`).
 
 **3.** Să se cloneze în directorul de pe discul local conținutul
 depozitului la distanță de la
-[](https:*www.github.com/eim-lab/Laborator10).
+[](https:*www.github.com/eim-lab/Laborator11).
 
-În urma acestei operații, directorul Laborator10 va trebui să se conțină
+În urma acestei operații, directorul Laborator11 va trebui să se conțină
 directoarele `labtasks` și `solutions`.
 
 ``` bash
-    student@eg-106:~$ git clone https:*github.com/eim-lab/Laborator10.git
+    student@eg-106:~$ git clone https:*github.com/eim-lab/Laborator11.git
 ```
 
 **4.** Să se încarce conținutul descărcat în cadrul depozitului
-`Laborator10` de pe contul Github personal.
+`Laborator11` de pe contul Github personal.
 ```bash
-student@eg-106:~$ cd Laborator10
-student@eg-106:~/Laborator10$ git remote add Laborator10_perfectstudent https://github.com/perfectstudent/Laborator10
-student@eg-106:~/Laborator10$ git push Laborator10_perfectstudent master
+student@eg-106:~$ cd Laborator11
+student@eg-106:~/Laborator11$ git remote add Laborator11_perfectstudent https://github.com/perfectstudent/Laborator11
+student@eg-106:~/Laborator11$ git push Laborator11_perfectstudent master
 ```
 
 **5.** Să se configureaze mașina pe care va rula aplicația:
@@ -231,13 +231,13 @@ Notificările vor fi generate:
 
 1.  când utilizatorul intră în zona de restricție geografică  
       
-    <img src="/eim/laboratoare/laborator10/google_maps_geofencing_02.png" width="300" alt="google_maps_geofencing_02.png" />
+    <img src="/eim/laboratoare/laborator11/google_maps_geofencing_02.png" width="300" alt="google_maps_geofencing_02.png" />
 
-    <img src="/eim/laboratoare/laborator10/google_maps_geofencing_03.png" width="300" alt="google_maps_geofencing_03.png" />
+    <img src="/eim/laboratoare/laborator11/google_maps_geofencing_03.png" width="300" alt="google_maps_geofencing_03.png" />
 2.  când utilizatorul iese din zona de restricție geografică  
       
-    <img src="/eim/laboratoare/laborator10/google_maps_geofencing_04.png" width="300" alt="google_maps_geofencing_04.png" />
-    <img src="/eim/laboratoare/laborator10/google_maps_geofencing_05.png" width="300" alt="google_maps_geofencing_05.png" />
+    <img src="/eim/laboratoare/laborator11/google_maps_geofencing_04.png" width="300" alt="google_maps_geofencing_04.png" />
+    <img src="/eim/laboratoare/laborator11/google_maps_geofencing_05.png" width="300" alt="google_maps_geofencing_05.png" />
 
 Detaliile cu privire la evenimentul produs vor putea fi vizualizate în
 cadrul unei activități dedicate.
@@ -273,9 +273,9 @@ metoda `onHandleIntent()`.
     parametru al metodei `sendNotification()`).
 
 **10.** Să se încarce modificările realizate în cadrul depozitului
-'Laborator10' de pe contul Github personal, folosind un mesaj sugestiv.
+'Laborator11' de pe contul Github personal, folosind un mesaj sugestiv.
 ```bash
-student@eg-106:~/Laborator10$ git add *
-student@eg-106:~/Laborator10$ git commit -m "implemented taks for laboratory 10"
-student@eg-106:~/Laborator10$ git push Laborator10_perfectstudent master
+student@eg-106:~/Laborator11$ git add *
+student@eg-106:~/Laborator11$ git commit -m "implemented taks for laboratory 10"
+student@eg-106:~/Laborator11$ git push Laborator11_perfectstudent master
 ```

@@ -1387,7 +1387,7 @@ sau a a fișierului `LICENSE`).
 
 **2.** Să se cloneze în directorul de pe discul local conținutul
 depozitului la distanță de la
-[](https:*www.github.com/eim-lab/Laborator08).
+[](https:*www.github.com/eim-lab/Laborator09).
 
 În urma acestei operații, directorul Laborator08 va trebui să se conțină
 directoarele `labtasks` și `solutions`.

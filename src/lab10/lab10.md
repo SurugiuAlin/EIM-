@@ -1116,7 +1116,7 @@ sau a a fișierului `LICENSE`).
 
 **2.** Să se cloneze în directorul de pe discul local conținutul
 depozitului la distanță de la
-[](https:*github.com/eim-lab/Laborator09).
+[](https:*github.com/eim-lab/Laborator10).
 
 În urma acestei operații, directorul Laborator09 va trebui să se conțină
 directorul `labtasks`.
