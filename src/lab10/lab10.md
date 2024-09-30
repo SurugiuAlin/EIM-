@@ -1,1767 +1,1554 @@
-# Laborator 10. Utilizarea Serviciilor de Localizare
+# Laborator 10. Gestiunea Apelurilor Multimedia folosind SIP & VoIP
 
-Datele cu privire la localizare îmbunătățesc experiența utilizatorului,
-întrucât unele informații furnizate de aplicații pot fi contextualizate
-în funcție de regiunea în care acesta se găsește în mod curent. O astfel
-de oportunitate poate fi exploatată cu atât mai mult în cadrul
-dispozitivelor mobile, care dispun de componente specializate pentru
-determinarea automată a poziției geografice curente (senzor pentru GPS,
-folosirea informațiilor furnizate de celula de telefonie mobilă).
+## SIP (Session Initiation Protocol)
 
-În cadrul SDK-ului Android, sunt implementate API-uri pentru proiectarea
-și dezvoltarea unor aplicații care pun la dispoziția utilizatorilor
-informații cu privire la **locația în care se află**, disponibile prin
-intermediul unor metode, fără a fi necesară interacțiunea propriu-zisă
-cu componentele responsabile cu determinarea acestor date. Totodată,
-există posibilitatea de a identifica **punctele de interes** care se
-găsesc în proximitatea utilizatorului, la un moment dat.
+SIP (Session Initiation Protocol) este un protocol de nivel aplicație,
+definit de [RFC 3261](https:*www.ietf.org/rfc/rfc3261.txt), folosit
+împreună cu alte protocoale pentru a gestiona sesiunile de comunicație
+multimedia la nivelul Internetului. Este frecvent folosit în cadrul
+tehnologiei VoIP, una dintre cele mai ieftine, portabile, flexibile și
+facile soluții pentru transmiterea de conținut audio și video prin
+intermediul rețelei de calculatoare. Singura cerință impusă pentru
+folosirea tehnologiei VoIP este existența unei legături la Internet.
 
-Există și alte [API-uri](https:*blog.rapidapi.com/top-map-apis/) pentru
-localizare, geoconding, hărți, indicații de navigație, fiecare cu
-avantajele și dezavantajele asociate. În acest laborator se vor folosi
-serviciile Google, care sunt cotate printre cele mai rapide, diverse,
-dar și scumpe pentru volum mare de apeluri.
+Prin intermediul SIP sunt gestionate **sesiuni** care reprezintă o
+legătură punct la punct, un canal de comunicație între două entități.
+Este inspirat de HTTP și SMTP, de la care a preluat arhitectura
+client-server, respectiv schemele de codificare ale mesajelor, împărțite
+în antet și corp. SIP folosește SDP (Session Decription Protocol) pentru
+a califica o sesiune (unicast sau multicast) și RTP (Real Time Transport
+Protocol) pentru a transmite conținutul multimedia prin intermediul
+Internetului.
 
-Astfel, funcționalitățile oferite pentru dezvoltatori sunt:
+În cadrul infrastructurii de comunicație, fiecare element este
+identificat prin intermediul unui URI (Uniform Resource Identifier),
+având un rol determinat:
 
-1.  **furnizarea de servicii integrate pentru localizare**, având
-    următoarele caracteristici: nivelul de detaliu este determinat în
-    funcție de specificațiile utilizatorului (precizie înaltă sau consum
-    scăzut de energie), disponibilitate imediată a celei mai recente
-    locații disponibile, optimizarea nivelului de utilizare al bateriei,
-    luându-se în considerare solicitările existente raportat la senzorii
-    care pot fi utilizați, flexibilitatea în gama de servicii oferite
-    (utilizarea în interfața grafică a aplicației, cu un nivel de
-    detaliu ridicat sau folosirea de către servicii, cu un nivel de
-    detaliu scăzut);
-2.  **oferirea unei liste cu punctele de interes din proximitate**,
-    raportat la un anumit domeniu (locații turistice, tipuri de
-    organizații), acestea putând fi marcate cu ajutorul unor controale
-    grafice dedicate; pentru fiecare punct de interes pot fi obținute
-    informații suplimentare (descrieri, conținut multimedia), acestea
-    putând fi furnizate și de utilizator, fiind stocate ulterior într-o
-    bază de date Google; se poate determina astfel și locația curentă
-    împreună cu alte repere din zonă; denumirile specifice ale locurilor
-    respective precum și adresele corespunzătoare pot fi completate
-    facil prin indicarea unor sugestii ce conțin variantele disponibile;
-3.  transmiterea de notificări legate de **restricția zonală** (*eng.*
-    geofencing), prin indicarea unor coordonate aflate în proximitate
-    anumitor locații: pot fi gestionate mai multe arealuri geografice de
-    acet tip concomitent, fără a avea un impact semnificativ asupra
-    consumului de energie (actualizările cu privire la locația curentă
-    sunt realizate în funcție de distanța față de zona marcată precum și
-    de tipul de activitate - staționar sau în mișcare: mers, alergat, în
-    vehicul, cu bicicleta); sunt oferite informații atât cu privire la
-    intrarea în arealul geografic cât și cu privire la ieșirea din
-    acesta;
-4.  determinarea **activității pe care utilizatorul o desfășoară în mod
-    curent** (staționar sau în mișcare: mers, alergat, în vehicul, cu
-    bicicleta), fără un consum de baterie important (folosind senzori de
-    putere mică); o astfel de funcționalitate este foarte utilă în
-    contextul integrării cu aplicațiile care necesită actualizări cu
-    privire la locația curentă, frecvența cu care sunt solicitate acest
-    set de date fiind determinată de tipul de activitate aflat în
-    desfășurare.
+-   **agent utilizator** (*eng.* user agent) reprezintă o entitate care
+    comunică (telefon mobil, tabletă, calculator): aceasta poate porni
+    sau opri o sesiune și de asemenea poate opera modificări asupra ei;
+    poate fi de mai multe tipuri:
+    -   UAC (User Agent Client) - entitatea care trimite cererea și
+        primește răspunsul;
+    -   UAS (User Agent Service) - entutatea care primește cererea și
+        trimite răspunsul;
+-   **agent intermediar** (*eng.* proxy server) reprezintă un element
+    din cadrul rețelei de calculatoare care retransmite mesajul între
+    agenți; acesta poate înțelege conținutul mesajului, pe baza căruia
+    decide pe ce rută să îl ghideze; numărul de astfel de elemente între
+    doi agenți utilizatori este de maximum 70; poate fi de mai multe
+    tipuri:
+    -   cu stare (*eng.* stateful) - reține informații despre mesajele
+        pe care le-a prelucrat și le poate folosi (în situația în care
+        nu se primește nici un răspuns sau în situația în care mesajul
+        ajunge încă o dată sub aceeași formă);
+    -   fără stare (*eng.* stateless) - nu reține informații despre
+        mesajele pe care le-a prelucrat;
+-   **serverul de înregistrare** (*eng.* registrar server) reține
+    URI-uri despre entități pe care le stochează într-o bază de date și
+    pe care le partajează cu alte servere de înregistrare din cadrul
+    aceluiași domeniu; prin intermediul său, agenții utilizatori se
+    autentifică în cadrul rețelei de calculatoare;
+-   **serverul de redirectare** (*eng.* redirect server) verifică baza
+    de date cu locații, transmițând un răspuns către agentul utilizator;
+-   **serverul de localizare** (*eng.* location server) oferă informații
+    cu privire la plasarea posibilă a agentului utilizator către
+    serverele intermediare sau serverele de redirectare (doar acestea îl
+    pot accesa)
 
----
-**Note**
+Un **flux operațional** standard al unei sesiuni SIP implică următoarele
+operații:
 
-Este recomandat ca informațiile legate de localizarea
-dispozitivului mobil să se realizeze folosind API-ul pus la dispoziție
-de Google Play Services, în detrimentul mecanismelor precedente pentru
-localizare (disponibile în pachetul `android.location`).
+1.  tranzacția 1:
+    1.  un agent utilizator (sursă) trimite o cerere de tip `INVITE`
+        către un agent intermediar în scopul de a contacta un alt agent
+        utilizator (destinație);
+    2.  agentul intermediar
+        1.  trimite înapoi (imediat) un răspuns de tip `100 Trying`
+            către agentul utilizator sursă (pentru ca acesta să nu mai
+            transmită nimic);
+        2.  caută agentul utilizator destinație folosind un server de
+            localizare și îi trimite (mai departe) cererea de tip
+            `INVITE`;
+    3.  agentul utilizator destinație transmite, prin intermediul
+        agentului intermediar, un răspuns de tipul `180 Ringing`, către
+        agentul utilizator sursă;
+2.  tranzacția 2: în momentul în care agentul utilizator destinație este
+    contactat, acesta transmite, tot prin intermediul agentului
+    intermediar, un răspuns de tipul `200 OK`, către agentul utilizator
+    sursă și, din acest moment, **conexiunea este realizată**,
+    transmițându-se pachete RTP în ambele sensuri;
+3.  tranzacția 3: orice participant poate transmite un mesaj de tipul
+    `BYE` pentru a termina legătura, fiind necesar ca acesta să fie
+    confirmat prin `200 OK` de către cealaltă parte.
 
----
+<img src="/eim/laboratoare/laborator09/flux_operational.png" class="align-center" alt="flux_operational.png" />
+
+Se observă faptul că o sesiune de comunicare este împărțită în mai multe
+**tranzacții** care împreună alcătuiesc un **dialog**.
+
+**Mesajele** în protocolul SIP sunt de două tipuri:
+
+-   **cereri** au forma `<METODĂ> <URI>` unde metodele pot fi:
+    -   de bază
+        -   `INVITE` reprezintă o cerere pentru deschiderea unei sesiuni
+            cu un agent utilizator, putând conține informații de tip
+            multimedia în corpul său; aceasta este considerată că a fost
+            îndeplinită cu succes dacă s-a primit un cod de răspuns de
+            tipul `2xx` sau s-a transmis un `ACK`; un dialog stabilit
+            între doi agenți utilizatori continuă până în momentul în
+            care se transmite un mesaj de tipul `BYE`;
+        -   `BYE` este metoda folosită pentru a închide o sesiune cu un
+            agent utilizator, putând fi trimisă de oricare dintre
+            entitățile din canalul de comunicație, fără a trece prin
+            serverul de înregistrare;
+        -   `REGISTER` indică o cerere de înregistrare a unui agent
+            utilizator către un server de înregistrare; un astfel de
+            mesaj este transmis mai departe până ajunge la o entitate
+            care deține autoritatea de a realiza această operație; o
+            înregistrare poate fi realizată de un agent utilizator în
+            numele altui agent utilizator (*eng.* third party
+            registration);
+        -   `CANCEL` este operația folosită pentru a închide o sesiune
+            care nu a fost încă deschisă, putând fi transmisă fie de
+            către un agent utilizator fie de către un agent intermediar;
+        -   `ACK` este folosit pentru a confirma o cerere de tip
+            `INVITE`;
+        -   `OPTIONS` este utilizat pentru a interoga un agent
+            utilizator sau un server intermediar despre capabilitățile
+            sale și pentru a determina disponibilitatea sa, rezultatul
+            fiind o listă a funcționalităților entității respective;
+    -   extensii: `SUBSCRIBE`, `NOTIFY`, `REFER`, `INFO`, `UPDATE`,
+        `PRACK`, `MESSAGE`;
+-   **răspunsuri** reprezintă un mesaj generat de un agent utilizator de
+    tip server sau de un server SIP în replică la o cerere provenită de
+    la un agent utilizator de tip client; acesta poate reprezenta
+    inclusiv o confirmare formală pentru a preveni retransmisiile;
+    există mai multe tipuri de coduri de răspuns:
+
+| CLASA | TIP        | DESCRIERE        | ACȚIUNE                                                                                                                                                       |
+|-------|------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1xx   | Provizoriu | Informație       | Se precizează starea unui apel înainte ca un rezultat să fie disponibil.                                                                                      |
+| 2xx   | Definitiv  | Succes           | Cererea a fost procesată cu succes. Pentru cereri de tip `INVITE` se întoarce `ACK`. Pentru alte tipuri cereri, se oprește retransmiterea acestora.           |
+| 3xx   | :::        | Redirectare      | Se indică faptul că au fost furnizate mai multe locații posibile astfel încât ar trebui interogat un alt server pentru a se putea obține informația necesară. |
+| 4xx   | :::        | Eroare la Client | Cererea nu a fost procesată cu succes datorită unei erori la client, fiind necesar ca aceasta să fie reformulată.                                             |
+| 5xx   | :::        | Eroare la Server | Cererea nu a fost procesată cu succes datorită unei erori la server, putând fi retransmisă către o altă entitate.                                             |
+| 6xx   | :::        | Eroare Globală   | Cererea a eșuat și nu există nici o șansă de a fi procesată corect pe o altă entitate, nici măcar dacă este reformulată.                                      |
+
+Exemple:
+
+-   `100 Trying`, `180 Ringing`, `181 Call is Being Forwarded`,
+    `182 Call Queue`, `183 Session Progress`;
+-   `200 OK`, `202 Accepted`;
+-   `300 Multiple Choices`, `301 Moved Permanently`,
+    `302 Moved Temporarily`, `305 Use Proxy`, `380 Alternative Service`;
+-   `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`,
+    `404 Not Found`, `405 Method Not Allowed`, `406 Not Acceptable`,
+    `407 Proxy Authentication Required`, `408 Request Timeout`,
+    `422 Session Timer Interval Too Small`, `423 Interval Too Brief`,
+    `480 Temporarily Unavailable`,
+    `481 Dialog/Transaction Does Not Exist`, `483 Too Many Hops`,
+    `486 Busy Here`, `487 Request Terminated`;
+-   `500 Server Internal Error`, `501 Not Implemented`,
+    `502 Bad Gateway`, `503 Service Unavailable`, `504 Gateway Timeout`,
+    `505 Version Not Supported`, `513 Message Too Large`,
+    `580 Preconditions Failure`;
+-   `600 Busy Everywhere`, `603 Decline`, `604 Does Not Exist Anywhere`,
+    `606 Not Acceptable`.
 
 ## Configurare
 
-**1.** În cadrul [Consolei Google
-API](https:*console.developers.google.com), se activează API-ul *Google
-Maps Android API*, generându-se totodată și o cheie Android prin care
-aplicația care rulează pe dispozitivul mobil va putea să acceseze o
-astfel de funcționalitate.
+---
+**Note**
+
+În cadrul acestui laborator este necesar un dispozitiv
+mobil fizic sau un emulator cu acces la microfonul sistemului de
+operare. De asemenea, pe dispozitivul mobil trebuie să fie instalat
+Google Play Services întrucât este necesară descărcarea și instalarea
+unei aplicații Android
+([CSipSimple](https:*github.com/eim-lab/util/blob/master/apk/CSipSimple_v1.02.03.com.apk),
+sau Linphone din Playstore) pentru realizarea de apeluri telefonice
+folosind SIP & VoIP.\
+
+---
+
+Se va utiliza, la alegere, un furnizor (gratuit) de servicii SIP,
+accesibil ulterior înregistrării (creării unui cont):
+
+-   recomandare 1: [Linphone](https:*www.linphone.org/freesip/)
+-   recomandare 2: [PBXES](https:*www1.pbxes.com/index.php)
+-   sunt mulți alți provideri de SIP care oferă diverse servicii contra
+    cost: numere de telefon stabile în diverse țări, SMS, cutii poștale
+    vocale, rutarea apelurilor de la și căre PSTN prin SIP, etc
+-   În această secțiune vă veti crea un cont, si veti obtine credențiale
+    de acest tip:
+
+| Phone Configuration                | SIP account              |
+|------------------------------------|--------------------------|
+| Address of Record:                 | eim-lab@sip.linphone.org |
+| SIP Password:                      | YoUrPaSs                 |
+| Username:                          | eim-lab                  |
+| Domain/<Proxy:%7Csip.linphone.org> |                          |
+
+### OnSIP
+
+Serviciul [OnSIP](https:*www.onsip.com/getonsip) nu mai este ușor de
+folosit pentru conturi free din 2021 m(
+
+### Utilizare pe Dispozitivul Mobil
+
+#### Adrese SIP pentru Testare
+
+Un contact de tip SIP poate fi realizat folosind aplicația nativă
+*Contacts*, folosind, în mod obișnuit, opțiunea *Create a New Contact*.
+
+<center>
+
+|                                                                                                                       |                                                                                                                                       |
+|-----------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| ![](images/testcall01new.png" class="align-center" width="300" alt="testcall01new.png" /> | <img src="/eim/laboratoare/laborator09/testcall01android5new.png) |
+| Android OS \< 5                                                                                                       | Android OS \>= 5                                                                                                                      |
+
+|                                                                                                                       |                                                                                                                                       |
+|-----------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| ![](images/testcall02new.png" class="align-center" width="300" alt="testcall02new.png" /> | <img src="/eim/laboratoare/laborator09/testcall02android5new.png) |
+| Android OS \< 5                                                                                                       | Android OS \>= 5                                                                                                                      |
+
+</center>
+
+Adresa SIP la care se plasează apelul telefonic VoIP va fi plasată în
+secțiunea *Internet call* sau *SIP* - în funcție de versiunea sistemului
+de operare Android - (dacă nu este vizibilă, se poate specifica un alt
+timp de câmp specific contactului prin opțiunea *Add another field*).
+
+<center>
+
+|                                                                                                                       |                                                                                                                                       |
+|-----------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| ![](images/testcall03new.png" class="align-center" width="300" alt="testcall03new.png" /> | <img src="/eim/laboratoare/laborator09/testcall03android5new.png) |
+| Android OS \< 5                                                                                                       | Android OS \>= 5                                                                                                                      |
+
+</center>
+
+Pot fi folosite următoarele adrese de test:
+
+-   `thetestcall@getonsip.com`;
+-   `904@mouselike.org`;
+-   `301@ideasip.com`;
+-   [altele](http:*www.voip-info.org/wiki/view/Phone+Numbers).
+
+În agenda telefonică, contactul respectiv va fi identificat printr-o
+pictogramă specifică (indicând faptul că acesta este de tip SIP), fiind
+apelat în mod implicit folosind protocolul respectiv.
+
+<center>
+
+|                                                                                                                       |                                                                                                                                       |
+|-----------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| ![](images/testcall04new.png" class="align-center" width="300" alt="testcall04new.png" /> | <img src="/eim/laboratoare/laborator09/testcall04android5new.png) |
+| Android OS \< 5                                                                                                       | Android OS \>= 5                                                                                                                      |
+
+</center>
+
+#### Implementarea Nativă din Sistemul de Operare Android
+
+Începând cu versiunea 2.3 (Gingerbread, API level 9), în kernelul
+Android a fost implementat protocolul SIP, acesta putând fi accesat în
+aplicația *Phone*, secțiunea *Settings* → *Internet Calling* →
+*Accounts* (sau *Settings* → *Calls* → *Calling Accounts* → *SIP
+Accounts*) și **utilizat exclusiv pentru apeluri de voce**. Totuși, nu
+sunt încă implementate toate funcționalitățile specifice (apeluri video,
+mesagerie instantanee).
+
+Se accesează aplicația *Phone* și din meniul acesteia intrarea
+*Settings*.
+
+<center>
+
+|                                                                                                                               |                                                                                                                                               |
+|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| ![](images/androidstack01new.png" class="align-center" width="300" alt="androidstack01new.png" /> | <img src="/eim/laboratoare/laborator09/androidstack01android5new.png) |
+| Android OS \< 5                                                                                                               | Android OS \>= 5                                                                                                                              |
+
+</center>
+
+În sistemele de operare Android cu versiuni mai mici decât 5, se
+accesează *Call settings* → *Internet call settings* → *Accounts*:
+
+![](images/androidstack02new.png)
+
+În sistemele de operare Android cu versiuni mai mari sau egale cu 5, se
+parcurg următoarele ecrane *Calls* → *Calling Accounts* → *SIP
+Accounts*:
+
+![](images/androidstack02android5new.png)
+
+![](images/androidstack03android5new.png)
+
+![](images/androidstack04android5new.png)
 
 ---
 **Note**
 
-Trebuie să fiți autentificați folosind numele de
-utilizator și parola contului Google, altfel va trebui să vă creați un
-astfel de cont.
-
- În situația în care nu a fost creat un proiect Google
-API în prealabil, trebuie realizat acest lucru, prin selectarea opțiunii
-*Select a project*.
-
-![](images/createproject01new.png)
-
-Se va afișa o fereastră din care poate fi selectat proiectul dorit
-(împărțite în categoriile *Recent*, respectiv *All*). În situația în
-care nu există nici un proiect, acesta poate fi creat, prin accesarea
-pictogramei corespunzătoare semnului *+*.
-
-![](images/createproject02new.png)
-
-Pentru fiecare proiect trebuie să se precizeze următorii parametri:
-
--   denumirea;
--   identificatorul pentru proiect (este generat în mod automat, însă
-    poate fi configurat suplimentar de către utilizator).
-
-![](images/createproject03new.png)
-
-În situația în care există un singur proiect, acesta va fi selectat în
-mod implicit ca proiect curent.
-
-![](images/createproject04new.png)
-
+Pentru a se putea recepționa apeluri VoIP, este necesar
+să se selecteze opțiunea *Receive incoming calls*. O astfel de abordare
+poate conduce însă la un consum de energie mult mai rapid și la
+epuizarea bateriei.\
 
 ---
 
--   În secțiunea *Library* → *Google APIs*, în categoria *Google Maps
-    APIs*, se accesează opțiunea *Google Maps Android API*, activându-se
-    acest serviciu (prin accesarea butonului *Enable*).
+Definirea unui cont de tip SIP se realizează prin accesarea opțiunii
+*Add Account*:
 
-![](images/configurare01new.png)
+<center>
 
-![](images/configurare02new.png)
+|                                                                                                                               |                                                                                                                                               |
+|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| ![](images/androidstack03new.png" class="align-center" width="300" alt="androidstack03new.png" /> | <img src="/eim/laboratoare/laborator09/androidstack04android5new.png) |
+| Android OS \< 5                                                                                                               | Android OS \>= 5                                                                                                                              |
 
-Acest API nu va putea fi însă utilizat în situația în care nu sunt
-create credențialele (o cheie pentru API), necesare pentru a putea
-accesa orice serviciu Google.
+</center>
 
--   Credențialele pot fi obținute:
-    -    prin accesarea butonului *Google Maps Android API* → *Create
-        credentials*, care implică următoarele etape:  
-        ![](images/configurare03new.png)  
-        **1.** indicarea tipului de API folosit (în cazul de față
-        *Google Maps Android API*)  
-        ![](images/configurare04new.png)
-        **2.** generarea (automată) propriu-zisă a cheii, urmată de
-        apăsarea butonului `Done`;  
-        ![](images/configurare05new.png)
-        În secțiunea *Credentials* va putea fi vizualizată cheia creată,
-        împreună cu denumirea sa. Pentru cheile care nu sunt
-        restricționate, va fi vizibil semnul :!: care indică faptul că
-        aceasta poate fi utilizată din orice context, ceea ce poate
-        implica o breșă de securitate  
-        ![](images/configurare06new.png)
-        Prin accesarea cheii respective, aceasta poate fi restricționată
-        în sensul în care se precizează **contextul în care este
-        folosită cheia** (în cazul de față, aplicații Android - *Android
-        apps*), **denumirea pachetului corespunzător aplicației Android
-        din care cheia respectivă poate fi folosită** precum și
-        **certificatul digital SHA-1 corespunzător mașinii de pe care
-        este instalată aplicația Android pe dispozitivul mobil**.  
-        Se va indica și comanda care va trebui rulată pentru generarea
-        certificatului digital respectiv; folosind utilitarul Java
-        `keytool`, se generează semnătura digitală a mașinii de pe care
-        se va dezvolta aplicația Android (pentru a putea utiliza acest
-        utilitar, calea căte Java trebuie să se găsească în variabila de
-        mediu `$PATH`, respectiv `%PATH`).  
-        Linux
+Informațiile care trebuie specificate sunt:
 
-        ```shell
-        student@eg-106:~$ export PATH=$PATH:/usr/local/java/jdk1.8.0_131/bin
-        student@eg-106:~$ keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
-        ```
+-   numele de utilizator;
+-   parola;
+-   adresa serverului care oferă serviciile SIP;
+-   contul folosit pentru autentificare;
+-   adresa proxy pentru accesări din afara domeniului;
+-   portul pe care se realizează comunicația;
+-   protocolul folosit pentru transport (TCP / UDP);
+-   transmiterea de mesaje de tip keep-alive.
 
-        Windows
-        ```shell
-        C:\Users\Student> set PATH=%PATH%;C:\Program Files\Java\jdk_1.8.0_131\bin
-        C:\Users\Student> keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
-        ```
+<center>
 
-        Vor fi furnizate mai multe tipuri de amprente digitale, pentru
-        cheia publică de tip Android fiind necesară cea de tip SHA-1
+|                                                                                                                               |                                                                                                                                               |
+|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| ![](images/androidstack04new.png" class="align-center" width="300" alt="androidstack04new.png" /> | <img src="/eim/laboratoare/laborator09/androidstack06android5new.png) |
+| Android OS \< 5                                                                                                               | Android OS \>= 5                                                                                                                              |
 
-        ```
-        Alias name: androiddebugkey
-        Creation date: Mar 5, 2015
-        Entry type: PrivateKeyEntry
-        Certificate chain length: 1
-        Certificate[1]:
-        Owner: CN=Android Debug, O=Android, C=US
-        Issuer: CN=Android Debug, O=Android, C=US
-        Serial number: 4a38a96a
-        Valid from: Thu Mar 05 13:17:44 EET 2015 until: Sat Feb 25 13:17:44 EET 2045
-        Certificate fingerprints:
-                 MD5:  FC:1F:95:45:78:ED:50:C6:EE:8E:02:0A:3D:A5:80:D3
-                 SHA1: C7:02:98:BB:AD:1C:6E:D1:3A:35:50:8B:88:78:B6:D3:B7:9F:66:C0
-                 SHA256: B3:D9:98:33:92:71:2D:CE:65:19:89:73:2A:64:3C:97:B9:37:A1:93:8C:
-        50:4F:E1:13:C4:21:C7:08:94:AC:A5
-                 Signature algorithm name: SHA256withRSA
-                 Version: 3
+</center>
 
-        Extensions:
+În situația în care contul SIP a fost creat, acesta va fi vizualizat în
+secțiunea *SIP Accounts* împreună cu starea sa (*Receiving calls*, *Not
+receiving calls*).
 
-        #1: ObjectId: 2.5.29.14 Criticality=false
-        SubjectKeyIdentifier [
-        KeyIdentifier [
-        0000: 99 78 63 24 A0 64 DF A8   67 45 8E 82 C6 8E 53 D1  .xc$.d..gE....S.
-        0010: B8 C1 89 75                                        ...u
-        ]
-        ]
-        ```
+<center>
 
-    -   Se accesează butonul *Add package name and fingerprint* pentru a
-        se specifica denumirea pachetului corespunzător aplicației
-        Android care va accesa API-ul respectiv și certificatul SHA-1  
+|                                                                                                                               |                                                                                                                                               |
+|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| ![](images/androidstack05new.png" class="align-center" width="300" alt="androidstack05new.png" /> | <img src="/eim/laboratoare/laborator09/androidstack07android5new.png) |
+| Android OS \< 5                                                                                                               | Android OS \>= 5                                                                                                                              |
 
-        ![](images/configurare07new.png)
+</center>
 
-        În secțiunea *Credentials* pot fi vizualizate cheile pentru API
-        generate anterior  
+Începând cu versiunea 5 a sistemului de operare Android, în secțiunea
+*Calling accounts* există posibilitatea de a preciza ce cont este
+folosit în mod implicit pentru realizarea de apeluri telefonice. Se
+recomandă selectarea opțiunii *Ask first* astfel încât pentru fiecare
+contact să se poată preciza mecanismul utilizat pentru plasarea sa.
 
-        ![](images/configurare08new.png)
+![](images/androidstack08android5new.png)
 
-    -   în secțiunea *Credentials*, prin accesarea opțiunii *Create
-        credentials* din care este selectat tipul de cheie necesar (în
-        cazul de față *API key*); dacă nu se cunoaște tipul de cheie
-        necesar, se poate selecta valoarea *Help me choose*  
-        ![](images/configurare09new.png)
-        cheia respectivă va fi generată în mod automat, existând
-        posibilitatea ca aceasta să fie restricționată, pentru a nu fi
-        accesată din orice context  
-        ![](images/configurare10new.png)
+Prin accesarea unui contact de tip SIP din agenda telefonică, se va
+utiliza contul specific pentru realizarea apelului telefonic.
 
-**2.** Pe dispozitivul mobil (fizic sau virtual) pe care se va rula
-aplicația care accesează serviciul de localizare, trebuie să se găsească
-cea mai recentă versiune de *Google Play Services*, asociindu-se
-totodată contul de utilizator Google pentru care s-a generat cheia
-publică.
+<center>
 
-**3.** Se instalează SDK-ul *Google Play Services*, necesar accesării
-serviciului de localizare prin intermediul unei aplicații Android.
+|                                                                                                                               |                                                                                                                                               |
+|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| ![](images/androidstack06new.png" class="align-center" width="300" alt="androidstack06new.png" /> | <img src="/eim/laboratoare/laborator09/androidstack09android5new.png) |
+| Android OS \< 5                                                                                                               | Android OS \>= 5                                                                                                                              |
 
--   Linux
-    ```sh
-    student@eg-106:~$ cd /opt/android-sdk-linux/tools
-    student@eg-106:/opt/android-sdk-linux/tools$ sudo ./android
-    ```
--   Windows - se deschide un terminal cu drepturi de administrator
-    ```
-    C:\Users\Student> cd "..\..\Program Files (x86)\Android\android-sdk\tools"
-    C:\Program Files (x86)\Android\android-sdk\tools>android.bat
-    ```
+</center>
 
-![](images/configurare11new.png)
+#### Aplicația CSIPSimple
 
-Astfel, se instalează următoarele pachete:
+În cazul în care în aplicația *Phone*, opțiunea *Internet Calling* /
+*SIP Accounts* nu este disponibilă, poate fi utilizată aplicația
+CSipSimple din ~~Play
+Store~~[github/eim-lab](https:*github.com/eim-lab/util/blob/master/apk/CSipSimple_v1.02.03.com.apk).
+Ulterior descărcării, utilizatorului îi sunt solicitate acordarea de
+permisiuni pentru ca această aplicație să poată fi instalată.
 
--   din secțiunea *Android 4.1.2 (API 16)*, pachetul *Google APIs*;
--   din secțiunea *Extras*, pachetul *Google Play Services*.
+![](images/csipsimple01new.png)
 
-Posibilitatea de instalare a acestor pachete există și din mediul
-integrat de dezvoltare Android Studio, prin accesarea opțiunii *Tools* →
-*Android* → *SDK Manager*, secțiunea *SDK Tools*.
+![](images/csipsimple02new.png)
 
-![](images/configurare12newandroidstudio.png)
+![](images/csipsimple03new.png)
 
+![](images/csipsimple04new.png)
 
-<details>
-<summary>Hidden</summary>
-Biblioteca pentru accesarea funcționalității oferite de
-serviciul de localizare se găsește la
-`<android-sdk>/extras/google/google_play_services/libproject/google-play-services_lib`.
+Aplicația CSipSimple pune la dispoziția utilizatorilor mai multe
+șabloane pentru definirea unui cont SIP. Se recomandă să se utilizeze
+șabloanele corespunzătoare furnizorului de servicii SIP dorit, iar în
+situația în care acesta nu este disponibil, se poate folosi opțiunea
+*Generic* care permite configurarea tuturor parametrilor:
 
-În mediul integrat de dezvoltare Eclipse, se realizează o referință
-către biblioteca *Google Play Services*, astfel descărcată.
+![](images/csipsimple05new.png)
 
--   se accesează *File* → *Import* → *Android* → *Existing Android Code
-    Into Workspace*  
-      
-    ![](images/configurare13.png)
--   se indică locația unde se găsește instalată biblioteca *Google Play
-    Services*, creându-se o copie a acestuia în spațiul de lucru (se
-    bifează opțiunea *Copy projects into workspace*)  
-      
-    ![](images/configurare14.png)
-- API key 2024 AIzaSyDTihXRHSZDmzDF5hP7VkmPXOzejoil8nU 
+![](images/csipsimple06new.png)
 
-</details>
+![](images/csipsimple07new.png)
 
-**4.** În mediul integrat de dezvoltare Android Studio, se creează un
-proiect corespunzător unei aplicații Android, având următoarele
-proprietăți:
+Pentru **contul de tip `OnSIP`** se precizează următorii parametri:
 
--   denumirea pachetului care identifică aplicația Android în mod unic
-    trebuie să fie aceeași cu cea precizată în momentul în care a fost
-    generată cheia publică;
-
-<!-- -->
-
--   în fișierul `build.gradle` să se specifice dependința către
-    biblioteca Google Play Services
-    (`com.google.android.gms:play-services`), în secțiunea
-    `dependencies`:
-    ```
-    dependencies {
-      ...
-      compile 'com.google.android.gms:play-services:10.2.4'
-    }
-    ```
-
--   în fișierul `AndroidManifest.xml`
-    -   se indică permisiunile necesare: 
-        ```xml
-        <uses-permission
-          android:name="android.permission.ACCESS_COARSE_LOCATION" />
-        <uses-permission
-          android:name="android.permission.ACCESS_FINE_LOCATION" />    
-        <uses-permission
-          android:name="android.permission.ACCESS_NETWORK_STATE" />
-        <uses-permission
-          android:name="android.permission.INTERNET" />
-        <uses-permission
-          android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-        <uses-permission
-          android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        ```
-        -   `android.permission.ACCESS_COARSE_LOCATION` - obține locația
-            utilizatorului folosind informațiile preluate prin rețele
-            fără fir și datele corespunzătoare celulei în care se
-            găsește dispozitivul mobil;
-        -   `android.permission.ACCESS_FINE_LOCATION` - procură locația
-            utilizatorului prin intermediul coordonatelor obținute de la
-            sistemul de poziționare (GPS - *eng.* Global Positioning
-            System);
-        -   `android.permission.ACCESS_NETWORK_STATE` - verifică starea
-            conectivității în rețea, astfel încât să se determine dacă
-            este posibil ca datele să fie descărcate sau nu;
-        -   `android.permission.INTERNET` - determină starea
-            conectivității la Internet;
-        -   `com.google.android.providers.gsf.permission.READ_GSERVICES` -
-            preia informațiile puse la dispoziție prin intermediul
-            Google Play Services;
-        -   `android.permission.WRITE_EXTERNAL_STORAGE` - utilizează un
-            spațiu de stocare pentru informațiile legate de hărți;
-    -   pentru redarea hărților, precum și pentru operațiile de tip
-        zoom, este necesară folosirea bibliotecii OpenGL 
-        ```xml
-          <uses-feature
-          android:glEsVersion="0x00020000"
-          android:required="true" /> 
-        ```
-    -   în secțiunea `<application> ... </application>` se indică:
-        -   cheia publică utilizată pentru accesarea funcționalității
-            legată de serviciile de localizare 
-            ```xml
-              <metadata
-              android:name="com.google.android.maps.v2.API_KEY"
-              android:value="AIzaSyARiJhQ-Lj6HnzQwq7MqAvjWQtNkjVcprs" />
-            ```
-        -   versiunea folosită pentru biblioteca Google Play Services
-            (preluată din cadrul proiectului referit) 
-            ```xml
-              <metadata
-              android:name="com.google.android.gms.version"
-              android:value="@integer/google_play_services_version" />
-            ```
-    -   pentru a se asigura faptul că funcționalitatea nu va putea fi
-        accesată decât prin intermediul aplicației Android, se va defini
-        o permisiune, definindu-se o protecție la nivel de
-        semnătură:
-        ```xml
-        <permission
-          android:name="ro.pub.cs.systems.eim.lab10.googlemaps.permission.MAPS_RECEIVE"
-          android:protectionLevel="signature" />
-        <uses-permission
-          android:name="ro.pub.cs.systems.eim.lab10.googlemaps.permission.MAPS_RECEIVE" />
-        ```
-
-<!-- -->
-
--   se precizează regulile pentru obfuscatorul Proguard (în fișierul
-    `proguard-rules.pro` din directorul *app*), astfel încât acesta să
-    nu elimine clasele necesare:  
-    ```java
-    -keep class * extends java.util.ListResourceBundle {
-      protected Object[][] getContents();
-    }
-    -keep public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
-      public static final *** NULL;
-    }
-    -keepnames @com.google.android.gms.common.annotation.KeepName class *
-    -keepclassmembernames class * {
-      @com.google.android.gms.common.annotation.KeepName *;
-    }
-    -keepnames class * implements android.os.Parcelable {
-      public static final ** CREATOR;
-    }
-    ```
-
-### Dispozitiv Fizic
-
-Pentru accesarea funcționalităților legate de locație pe dispozitivul
-fizic este necesar să se activeze opțiunea *Location* din secțiunea de
-configurări (*Settings* → *Personal*).
-
-![](images/physical_device_01.png)
-
-Valoarea configurației *Location* trebuie să aibă valoarea *On*, pentru
-ca serviciile de localizare să poată fi utilizate. De asemenea, sunt
-indicate aplicațiile Android care au folosit serviciile de localizare.
-
-![](images/physical_device_02.png)
-
-Se poate controla acuratețea informațiilor furnizate, raportat la
-consumul de energie, prin intermediul opțiunilor disponibile în
-secțiunea *Location Mode* din secțiunea de configurări (*Settings* →
-*Personal* → *Location* → *Mode*).
-
--   *High accuracy* - locația este determinată folosind toate resursele
-    disponibile (sistemul global de poziționare GPS, rețelele mobile și
-    fără fir);
--   *Battery saving* - locația este determinată folosind doar
-    informațiile furnizate de rețelele mobile și fără fir;
--   *Device only* - locația este determinată folosind doar informațiile
-    furnizate de sistemul global de poziționare GPS.
-
-![](images/physical_device_03.png)
+-   denumirea contului: `OnSIP`
+-   numele de utilizator: `informaticamobila2017`
+-   identificatorul folosit pentru autentificare, de regulă același cu
+    denumirea domeniului: `upb`;
+-   parola (din secțiunea *View Profile*, nu cea folosită la definirea
+    contului);
+-   domeniul: `upb.onsip.com`
 
 ---
 **Note**
 
-Se recomandă ca determinarea locației să se realizeze
-folosind toate resursele disponibile la un moment dat de timp pentru o
-precizie cât mai mare (cu un consum de energie corespunzător).\
+În situația în care se folosește emulatorul Genymotion,
+pentru a se evita transcrierea parolelor foarte lungi, se poate realiza
+operația de tip Copy-Paste din mașina fizică în mașina virtuală folosind
+operația de tip apăsare cu o durată de timp mai mare (*eng.* long
+press).\
 
 ---
 
-### Dispozitiv Virtual
+![](images/csipsimple08new.png)
 
-#### Genymotion
+Contactele de tip SIP sunt vizibile în meniul aplicației CSipSimple
+astfel încât să poată fi plasate apeluri de tip SIP / VoIP:
 
-Pentru accesarea funcționalităților legate de locație pe dispozitivul
-virtual Genymotion este necesar să se activeze serviciul GPS, accesibil
-din meniul lateral sau folosind combinația de taste Ctrl + 2 (se
-selectează valoarea *On*).
+![](images/csipsimple10new.png)
 
-![](images/genymotion_gps_01.png)
+Și pentru **contul de tip PBXes** există un șablon predefinit:
 
-Alte informații care pot fi configurate sunt:
+![](images/csipsimple11new.png)
 
--   latitudinea - exprimată în grade;
--   longitudinea - exprimată în grade;
--   altitudinea - exprimată în metri;
--   acuratețea (nivelul de precizie) - exprimat în număr de metri cu
-    care să se aproximeze locația exactă;
--   direcția - exprimată în grade.
+Trebuie să fie specificați următorii parametrii:
 
-![](images/genymotion_gps_02.png)
+-   denumirea contului: `Pbxes.org`
+-   numele de utilizator (**se utilizează extensia**):
+    `informatmob2017-100`
+-   parola (**se utilizează extensia**);
 
-De asemenea, este implementată și funcționalitatea prin intermediul
-căreia poate fi vizualizată poziția precizată în cadrul unei hărți
-Google.
+![](images/csipsimple12new.png)
 
-![](images/genymotion_gps_03.png)
+În secțiunea *Accounts*, contul SIP poate fi în orice moment activat sau
+dezactivat. Starea acestuia este vizibilă sub denumirea sa, culoarea
+folosită fiind sugestivă pentru rezultatul operației de înregistrare:
 
-#### AVD
+-   verde: operația a fost realizată cu succes;
+-   roșu: s-a produs o eroare; eroarea de tipul *Registration timeout*
+    denotă faptul că în NAT/SIP nu se translatează corect adresele
+    interne
+    -   rețeaua Digi.Mobil/4G funcționează corespunzător;
+    -   în facultate, rețelele wireless `ACS-UPB-OPEN`, `eduroam`,
+        `Java-ED117` nu creează probleme; în schimb, rețeaua `change`
+        blochează anumite porturi ceea ce împiedică comunicația cu
+        serverul SIP.
 
-Pentru accesarea funcționalităților legate de locație pe dispozitivul
-virtual AVD este necesar ca în secțiunea de configurări corespunzătoare
-(*Settings* → *Location access*) să se specifice următorii parametri:
+![](images/csipsimple13new.png)
 
--   *Access to my location*: *On* - permite aplicațiilor Android să
-    acceseze locația curentă, pe baza informațiilor furnizate din
-    sursele disponibile;
--   *GPS Sattelites*: activat - se utilizează sistemul de poziționare
-    globală GPS pentru determinarea locației curente;
--   *Wi-Fi & mobile network location*: activat - se utilizează o
-    estimare pentru locația curentă pe baza serviciilor oferite de
-    Google; totodată, vor fi transmise informații anonime în acest sens.
+## Android NGN Stack
 
-![](images/avd_configuration.png)
+[Stiva
+SIP](http:*developer.android.com/guide/topics/connectivity/sip.html)
+face parte din SDK-ul Android începând cu versiunea 2.3 (Gingerbread,
+API level 9), însă nu dispune încă de toate funcționalitățile (mesagerie
+instantanee, apeluri video). Totuși, poate fi utilizat pentru apeluri
+audio, funcționalitatea fiind disponibilă în *Phone* → *Settings* →
+*Internet Calling* (începând cu versiunea 5 a sistemului de operare
+Android, *SIP Accounts*).
 
-Controlul poziției curente poate fi realizat prin intermediul
-perspectivei *Android Debug Monitor* din Android Studio, unde, în
-secțiunea *Emulator Control* → *Location Control* se stabilesc valorile
-pentru latitudine și longitudine (în panoul *Manual*, în format decimal
-sau sexagesimal), după care se apasă butonul *Send*. Informații cu
-privire la locațiile disponibile pot fi precizate și sub forma unor
-fișiere gpx sau kml, care pot fi încărcate.
+Se preferă însă utilizarea API-ului NGN (New Generation Networking),
+care implementează o stivă SIP completă, dispunând și de documentarea
+metodelor care pot fi utilizate:
+<https:*imsdroid.googlecode.com/svn-history/r381/branches/2.0/android-ngn-stack-00.pdf>.
 
-![](images/avd_emulator_control_new.png)
+Pentru integrarea acestei funcționalități în cadrul unui proiect Android
+Studio, este necesat ca inițial să se cloneze depozitul `imsdroid`
+corespunzător [contului Github al organizației Doubango
+Telecom](https:*github.com/DoubangoTelecom/imsdroid).
 
-## Gestiunea unei Hărți Google
+    student@eim-lab:~$ git clone https:*github.com/DoubangoTelecom/imsdroid.git
 
-Harta Google este implementată în SDK-ul Android:
+Din cadrul acestui depozit la distanță, nu se va reține decât proiectul
+`android-ngn-stack`, din care vor fi eliminate fișierele corepunzătoare
+depozitului GitHub.
 
--   prin intermediul unei componente grafice de tipul
-    [MapView](https:*developer.android.com/reference/com/google/android/gms/maps/MapView.html),
-    în acest caz fiind necesar ca metodele care controlează ciclul de
-    viață al aplicației Android să propage evenimentele corespunzătoare
-    și către acest element;
--   în cadrul unui fragment, de tipul
-    [MapFragment](http:*developer.android.com/reference/com/google/android/gms/maps/MapFragment.html),
-    acesta tratând și evenimentele corespunzătoare ciclului de viață al
-    aplicației Android.
+Pentru a integra această funcționalitate în cadrul aplicației Android,
+proiectul trebuie să fie referit în fișierul `build.gradle`, după ce
+este adus în structura de directoare sub formă de modul, astfel încât
+acesta să fie compilat în momentul în care se construiește fișierul
+.apk:
 
----
-**Note**
+<img src="/eim/laboratoare/laborator07/02volleyandroidstudio.png" class="align-center" alt="02volleyandroidstudio.png" />
 
-Obiectele `MapView` și`MapFragment` sunt disponibile începând
-cu nivelul de API 12, asigurarea compatibilității cu versiunile
-anterioare fiind realizată prin intermediul bibliotecilor de
-suport.
-
----
-
-Astfel, integrarea unei hărți Google se poate implementa prin
-specificarea resursei aferente în fișierul XML care descrie interfața
-grafică.
-
-``` xml
-<fragment
-  android:id="@+id/google_map"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  class="com.google.android.gms.maps.MapFragment" />
-```
-
-Pe baza controalelor grafice `MapView` sau `MapFragment`, se poate
-obține o instanță a unui obiect
-[GoogleMap](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html),
-prin intermediul căruia sunt invocate toate funcționalitățile pentru
-operații legate de localizarea pe hartă.
-
-De regulă, inițializarea este realizată pe una dintre metodele
-`onStart()` sau `onResume()`, după ce în prealabil au fost încărcate
-toate controalele grafice pentru interacțiunea cu utilizatorul.
-
----
-**Note**
-
-Se recomandă să se folosească metoda asincronă
-[getMapAsync(OnMapReadyCallback)](http:*developer.android.com/reference/com/google/android/gms/maps/MapFragment.html#getMapAsync%28com.google.android.gms.maps.OnMapReadyCallback%29)
-care garantează faptul că obiectul furnizat este nenul. Metoda
-`onMapReady()` a clasei ascultător nu va fi apelată în situația în care
-serviciul Google Play Services nu este disponibil pe dispozitivul mobil
-sau obiectul este distrus imediat după ce a fost creat.\
-
-Orice operație care implică un obiect de tipul
-`GoogleMap` trebuie realizată pe firul de execuție al interfeței grafice
-(principal), în caz contrar generându-se o excepție.\
-
----
-
-``` java
-GoogleMap googleMap = null;
-
-* ...
-
-if (googleMap == null) {
-  ((MapFragment)getFragmentManager().findFragmentById(R.id.google_map)).getMapAsync(new OnMapReadyCallback() {
-    @Override
-    public void onMapReady(GoogleMap readyGoogleMap) {
-      googleMap = readyGoogleMap;
-    }
-  });
+``` build.gradle
+dependencies {
+  ...
+  compile project(':android-ngn-stack')
 }
 ```
 
-Funcționalitățile pe care le pune la dispoziție un obiect de tipul
-`GoogleMap` sunt:
+Cu toate acestea, proiectul `android-ngn-stack` nu poate fi folosit ca
+atare, fiind necesar să îi fie aduse o serie de modificări pentru a
+putea fi utilizat:
 
-**1.** gestiunea reperelor de pe harta Google, prin intermediul
-elementelor
-[MarkerOptions](http:*developer.android.com/reference/com/google/android/gms/maps/model/MarkerOptions.html),
-pentru care se pot preciza următoarele informații:
+**1.** În fișierul `build.gradle` corespunzător proiectului
+`android-ngn-stack` trebuie să se utilizeze aceeași versiune pentru
+SDK-ul de Android și pentru utilitarele de construire a aplicației,
+astfel încât să nu fie necesar să fie descărcate mai multe versiuni pe
+aceeași mașină. Mai mult, dacă se folosește o versiune de SDK mai mare
+sau egală cu 23, este necesar să se specifice explicit folosirea
+bibliotecii Apache HTTP Components, întrucât începând de la acest nivel,
+suportul pentru ea a fost întrerupt.
 
--   coordonatele GPS, sub forma unui obiect
-    [LatLng](http:*developer.android.com/reference/com/google/android/gms/maps/model/LatLng.html)
-    (care încapsulează informații precum latitudinea și longitudinea, de
-    tip `double`), prin metoda
-    [position(LatLng)](http:*developer.android.com/reference/com/google/android/gms/maps/model/MarkerOptions.html#position%28com.google.android.gms.maps.model.LatLng%29)
-    ```java
-    marker.position(new LatLng(
-      Double.parseDouble(latitudeContent), 
-      Double.parseDouble(longitudeContent)
-      )
-    );
-    `
--   titlul, prin metoda
-    [title(String)](http:*developer.android.com/reference/com/google/android/gms/maps/model/MarkerOptions.html#title%28java.lang.String%29);
-    `marker.title(nameContent);
-    `
--   pictograma, prin metoda
-    [icon(BitmapDescriptor)](http:*developer.android.com/reference/com/google/android/gms/maps/model/MarkerOptions.html#icon%28com.google.android.gms.maps.model.BitmapDescriptor%29),
-    putând fi obținută prin intermediul clasei
-    [BitmapDescriptorFactory](https:*developer.android.com/reference/com/google/android/gms/maps/model/BitmapDescriptorFactory.html):
-    -   în formatul standard, disponibil în mai multe culori (metoda
-        [defaultMarker(float)](https:*developer.android.com/reference/com/google/android/gms/maps/model/BitmapDescriptorFactory.html#defaultMarker%28float%29));
-        `marker.icon(BitmapDescriptorFactory.defaultMarker(Utilities.getDefaultMarker(markerTypeSpinner.getSelectedItemPosition())));
-        `
-    -   într-un format definit de utilizator, în funcție de resursele
-        disponibile în cadrul aplicației Android:
-        -   [fromAsset(String)](https:*developer.android.com/reference/com/google/android/gms/maps/model/BitmapDescriptorFactory.html#fromAsset%28java.lang.String%29) -
-            în directorul `assets`, ce conține resurse externe;
-        -   [fromBitmap(Bitmap)](https:*developer.android.com/reference/com/google/android/gms/maps/model/BitmapDescriptorFactory.html#fromBitmap%28android.graphics.Bitmap%29) -
-            dintr-o imagine;
-        -   [fromFile(String)](https:*developer.android.com/reference/com/google/android/gms/maps/model/BitmapDescriptorFactory.html#fromFile%28java.lang.String%29) -
-            dintr-un fișier aflat la o cale relativă;
-        -   [fromPath(String)](https:*developer.android.com/reference/com/google/android/gms/maps/model/BitmapDescriptorFactory.html#fromPath%28java.lang.String%29) -
-            dintr-un fișier aflat la o cale absolută;
-        -   [fromResource(int)](https:*developer.android.com/reference/com/google/android/gms/maps/model/BitmapDescriptorFactory.html#fromResource%28int%29) -
-            în directorul `drawable`, ce conține resurse care pot fi
-            desenate.
--   descrierea, prin metoda
-    [snippet(String)](http:*developer.android.com/reference/com/google/android/gms/maps/model/MarkerOptions.html#snippet%28java.lang.String%29);
-    `marker.snippet(descriptionContent);
-    `
--   vizibilitatea, prin metoda
-    [visible(boolean)](http:*developer.android.com/reference/com/google/android/gms/maps/model/MarkerOptions.html#visible%28boolean%29).
-    `marker.visible(true);
-    `
-
-Un astfel de obiect este atașat unei hărți Google prin intermediul
-metodei
-[addMarker(MarkerOptions)](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#addMarker%28com.google.android.gms.maps.model.MarkerOptions%29).
-`googleMap.addMarker(marker);
-`
-
-Alte elemente grafice care pot fi vizualizate sunt:
-
--   [CircleOptions](https:*developer.android.com/reference/com/google/android/gms/maps/model/CircleOptions.html) -
-    formă geometrică de tip cerc;
--   [GroundOverlayOptions](https:*developer.android.com/reference/com/google/android/gms/maps/model/GroundOverlayOptions.html) -
-    suprapunerea unei alte imagini;
--   [PolygonOptions](https:*developer.android.com/reference/com/google/android/gms/maps/model/PolygonOptions.html) -
-    formă geometrică de tip poligon;
--   [PolylineOptions](https:*developer.android.com/reference/com/google/android/gms/maps/model/PolylineOptions.html) -
-    formă geometrică de tip polinie;
--   [TileOverlay](https:*developer.android.com/reference/com/google/android/gms/maps/model/TileOverlayOptions.html) -
-    suprapunerea unei alte imagini, pentru o anumită porțiune.
-
-Toate aceste controale pot fi înlăturate în momentul în care este
-folosită metoda
-[clear()](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#clear%28%29).
-
-**2.** poziționarea la anumite coordonate GPS (latitudine, longitudine)
-este realizată prin actualizarea locației la care se găsește camera prin
-care este vizualizată harta Google, funcționalitate implementată de
-clasa
-[CameraUpdate](https:*developer.android.com/reference/com/google/android/gms/maps/CameraUpdate.html);
-un astfel de obiect este obținut de regulă prin metoda statică
-[newCameraPosition(CameraPosition)](https:*developer.android.com/reference/com/google/android/gms/maps/CameraUpdateFactory.html#newCameraPosition%28com.google.android.gms.maps.model.CameraPosition%29)
-din clasa fabrică `CameraUpdateFactory`, prin care pot fi controlate și
-alte proprietăți (nivelul de detaliere, vizualizarea unui anumit areal
-geografic); metoda
-[animateCamera(CameraUpdate)](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#animateCamera%28com.google.android.gms.maps.CameraUpdate%29)
-realizează transferul dintre coordonatele vechi și coordonatele noi prin
-intermediul unei animații.
-
-``` java
-CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude))
-  .build();
-googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition)); 
-```
-
-Metoda `animateCamera()` este supraîncărcată, astfel încât să se poată
-preciza:
-
--   durata propriu-zisă a animației (exprimată în milisecunde);
--   un obiect ascultător (de tipul
-    [GoogleMap.CancelableCallback](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.CancelableCallback.html))
-    care indică momentul în care animația a fost terminată
-    (`onFinish()`) sau a fost întreruptă (`onCancel()`).
-
-În situația în care este în desfășurare o animație, aceasta poate fi
-oprită printr-un apel al metodei
-[stopAnimation()](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#stopAnimation%28%29).
-
-**3.** marcarea locației curente este realizată prin intermediul metodei
-[setMyLocationEnabled(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#setMyLocationEnabled%28boolean%29);
-de asemenea, este disponibil un control prin intermediul căruia
-utilizatorul poate activa sau dezactiva această funcționalitate;
-
-**4.** vizualizarea unor informații suplimentare:
-
--   [setBuildingsEnabled(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#setBuildingsEnabled%28boolean%29) -
-    vizualizarea exterioarelor de clădiri în format 3D;
--   [setContentDescription(String)](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#setContentDescription%28java.lang.String%29) -
-    descriere;
--   [setIndoorEnabled(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#setIndoorEnabled%28boolean%29) -
-    vizualizarea configurațiilor interioarelor de clădiri;
--   [setTrafficEnabled(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#setTrafficEnabled%28boolean%29) -
-    traficul la momentul de timp curent;
-
-Tipurile de hărți Google implementate sunt:
-
--   `GoogleMap.MAP_TYPE_NORMAL` - harta politică;
--   `GoogleMap.MAP_TYPE_TERRAIN` - harta fizică (nu include și drumuri);
--   `GoogleMap.MAP_TYPE_SATELLITE` - vedere din satelit;
--   `GoogleMap.MAP_TYPE_HYBRID` - combinație hibridă.
-
-Specificarea unui tip de hartă se realizează prin intermediul metodei
-[setMapType()](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#setMapType%28int%29).
-
-Gestiunea unei hărți Google sub formă de imagine este realizată prin
-intermediul metodei
-[snapshot(GoogleMap.SnapshotReadyCallback](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#snapshot%28com.google.android.gms.maps.GoogleMap.SnapshotReadyCallback%29),
-al cărui obiect ascultător furnizează resursa grafică (în format
-`Bitmap`) în momentul în care este disponibilă (se apelează automat
-metoda `onSnapshotReady(Bitmap)`.
-
-Funcționalitatea pe care o oferă harta Google utilizatorului poate fi
-controlată și prin intermediul obiectului asociat de tip
-[UiSettings](https:*developer.android.com/reference/com/google/android/gms/maps/UiSettings.html),
-obținut prin apelul metodei
-[getUiSettings()](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.html#getUiSettings%28%29):
-
--   [setAllGesturesEnables(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/UiSettings.html#setAllGesturesEnabled%28boolean%29) -
-    permite sau nu toate tipurile de operații care pot fi realizate prin
-    intermediul hărții Google;
--   [setCompassEnabled(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/UiSettings.html#setCompassEnabled%28boolean%29) -
-    activează sau dezactivează busola;
--   [setIndoorLevelPickerEnabled(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/UiSettings.html#setIndoorLevelPickerEnabled%28boolean%29) -
-    stabilește permisiunile de selectare a unui nivel în cazul unor
-    hărți de interior;
--   [setMapToolbarEnabled(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/UiSettings.html#setMapToolbarEnabled%28boolean%29) -
-    indică configurările de vizualizare pentru bara de unelte;
--   [setMyLocationButtonEnabled(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/UiSettings.html#setMyLocationButtonEnabled%28boolean%29) -
-    referă vizualizarea controlului grafic pentru centrarea hărții
-    Google în funcție de locația curentă;
--   [setRotateGesturesEnabled(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/UiSettings.html#setRotateGesturesEnabled%28boolean%29) -
-    precizează dreptul de utilizare al gesturilor legate de rotirea
-    camerei pentru perspectiva de vizualizare;
--   [setScrollGesturesEnabled(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/UiSettings.html#setScrollGesturesEnabled%28boolean%29) -
-    determină posibilitatea de folosire a gesturilor pentru derulare,
-    folosind un deget;
--   [setTiltGesturesEnabled(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/UiSettings.html#setTiltGesturesEnabled%28boolean%29) -
-    instaurează politica referitoare la gesturile de derulare, folosind
-    două degete;
--   [setZoomControlsEnabled(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/UiSettings.html#setZoomControlsEnabled%28boolean%29) -
-    desemnează vizualizarea sau nu a unor controale grafice pentru
-    gradul de detaliere a hărții Google;
--   [setZoomGesturesEnabled(boolean)](https:*developer.android.com/reference/com/google/android/gms/maps/UiSettings.html#setZoomGesturesEnabled%28boolean%29) -
-    controlează utilizarea gesturilor pentru vizualizarea hărții Google
-    folosind un anumit grad de detaliere.
-
-Pentru interacțiunea cu utilizatorul au fost definite mai multe clase
-ascultător, ale căror metode semnalează declanșarea unor evenimente
-specifice:
-
--   [GoogleMap.OnCameraChangeListener](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.OnCameraChangeListener.html) -
-    modificarea poziției camerei prin care este vizualizată harta
-    Google;
--   [GoogleMap.OnIndoorStateChangeListener](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.OnIndoorStateChangeListener.html) -
-    schimbarea stării legate de vizualizarea la nivel de interior al
-    clădirii (clădirea curentă, etajul la care se găsește utilizatorul);
--   [GoogleMap.OnInfoWindowClickListener](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.OnInfoWindowClickListener.html) -
-    evenimente legate de fereastra ce conține informații suplimentare cu
-    privire la o locație;
--   [GoogleMap.OnMapClickListener](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.OnMapClickListener.html) -
-    acțiune de tipul apăsare scurtă a unei poziții de pe harta Google;
--   [GoogleMap.OnMapLoadedCallback](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.OnMapLoadedCallback.html) -
-    marcarea momentului în care sunt vizibile toate componentele
-    necesare la un moment dat;
--   [GoogleMap.OnMapLongClickListener](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.OnMapLongClickListener.html) -
-    acțiune de tipul apăsare lungă a unei poziții de pe harta Google;
--   [GoogleMap.OnMarkerClickListener](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.OnMarkerClickListener.html) -
-    descrie interacțiunea de tip apăsare a unui reper de pe harta
-    Google;
--   [GoogleMap.OnMarkerDragListener](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.OnMarkerDragListener.html) -
-    descrie interacțiunea de tip mutare a unui reper de pe harta Google;
--   [GoogleMap.OnMyLocationButtonClickListener](https:*developer.android.com/reference/com/google/android/gms/maps/GoogleMap.OnMyLocationButtonClickListener.html) -
-    accesarea butonului pentru centrarea hărții în funcție de locația
-    curentă.
-
-## Gestiunea Locației Curente printr-un Client Google API
-
-API-ul Android pune la dispoziția utilizatorilor un [furnizor integrat
-de servicii de
-localizare](http:*developer.android.com/reference/com/google/android/gms/location/FusedLocationProviderApi.html),
-prin care aceștia pot specifica anumiți parametrii de configurare, cum
-ar fi nivelul de precizie și gradul de utilizare al bateriei.
-
-Funcționalitatea legată de gestiunea locației curente (ca de altfel
-toate funcționalitățile legate de biblioteca Google Play Services) este
-disponibilă prin intermediul unui obiect de tip
-[GoogleApiClient](http:*developer.android.com/reference/com/google/android/gms/common/api/GoogleApiClient.html),
-a cărui instanță este obținută de regulă pe metoda `onCreate()` a
-aplicației Android, eliberarea resurselor corespunzătoare acesteia fiind
-făcută pe metoda `onDestroy()`.
-
-![](images/clientul_google_api.png)
-
-``` java
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-  super.onCreate(savedInstanceState);
-
-  * ...
-
-  googleApiClient = new GoogleApiClient.Builder(this)
-    .addConnectionCallbacks(this)
-    .addOnConnectionFailedListener(this)
-    .addApi(LocationServices.API)
-    .build();
-}
-
-@Override
-protected void onDestroy() {
-
-  * ...
-
-  googleApiClient = null;
-  super.onDestroy();
+``` build.gradle
+android {
+  compileSdkVersion 25
+  buildToolsVersion "25.0.2"
+  ...
+  useLibrary 'org.apache.http.legacy'
 }
 ```
 
-Pentru clientul Google API, s-a indicat funcționalitatea pentru care va
-fi accesat (`LocationServices.API`) prin intermediul metodei `addApi()`,
-precum și clasele ascultător pentru evenimentele care pot fi generate
-legat de acesta (metodele corespunzătoare fiind asincrone):
-
--   [GoogleApiClient.ConnectionCallbacks](http:*developer.android.com/reference/com/google/android/gms/common/api/GoogleApiClient.ConnectionCallbacks.html)
-    gestionează operațiile de tip conectare / deconectare la serviciu,
-    metodele implementate fiind:
-    -   `onConnected(Bundle)` - apelată în momentul în care clientul
-        Google API s-a conectat cu succes la funcționalitatea dorită;
-    -   `onConnectionSuspended(int)` - apelată în momentul în care
-        clientul Google API este deconectat (temporar) de la
-        funcționalitatea solicitată, indicându-se și motivul care a
-        generat un astfel de comportament:
-        -   `CAUSE_NETWORK_LOST` - deconectare de la Internet;
-        -   `CAUSE_SERVICE_DISCONNECTED` - oprirea serviciului
-            corespunzător.
--   [GoogleApiClient.OnConnectionFailedListener](http:*developer.android.com/reference/com/google/android/gms/common/api/GoogleApiClient.OnConnectionFailedListener.html)
-    controlează situațiile în care nu este posibilă realizarea unei
-    legături, metoda aferentă, `onConnectionFailed(ConnectionResult)`,
-    specificând rezultatul ce conține codul de eroare.
-
----
-**Note**
-
-Este recomandat ca metodele ascultător care controlează
-starea conexiunii clientului Google API la serviciul de localizare să
-fie implementate în aceeași clasă cu activitatea principală, aceasta
-implementând interfețele necesare.\
-
----
-
-Operațiile de conectare / deconectare a clientului Google API la
-serviciu trebuie realizate în contextul metodelor care controlează
-ciclul de viață al aplicației Android, astfel:
-
--   metoda `connect()` se apelează în cadrul metodei `onStart()`;
--   metoda `disconnect()` se apelează în cadrul metodei `onStop()`.
-
-``` java
-@Override
-protected void onStart() {
-  super.onStart();
-  googleApiClient.connect();
-  
-  * ...
-
-}
-
-@Override
-protected void onStop() {
-
-  * ...
-
-  if (googleApiClient != null && googleApiClient.isConnected()) {
-    googleApiClient.disconnect();
-  }
-  super.onStop();
-}
-```
-
-Momentul în care sunt disponibile informațiile cu privire la **cea mai
-recentă locație a dispozitivului mobil** este determinat de conectarea
-cu succes a clientului Google API, motiv pentru care se obișnuiește ca
-aceste date să fie interogate pe metoda `onConnected(Bundle)` a
-intefeței `GoogleApiClient.ConnectionCallbacks`, apelată în mod automat
-la producerea evenimentului respectiv. În acest sens, se apelează metoda
-[getLastLocation(GoogleApiClient)](http:*developer.android.com/reference/com/google/android/gms/location/FusedLocationProviderApi.html#getLastLocation%28com.google.android.gms.common.api.GoogleApiClient%29)
-din clasa
-[FusedLocationProviderApi](http:*developer.android.com/reference/com/google/android/gms/location/FusedLocationProviderApi.html).
-
-\<note>Se furnizează o locație al cărui grad de precizie este determinat
-în funcție de permisiunile pe care le deține aplicația Android.\
-
----
-
-``` java
-@Override
-public void onConnected(Bundle connectionHint) {
-  Log.i(Constants.TAG, "onConnected() callback method has been invoked");
-  lastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
-  
-  * ...
-
-}
-```
-
-Informațiile referitoare la locația curentă sunt descrise sub forma unui
-obiect
-[Location](http:*developer.android.com/reference/android/location/Location.html),
-care conține mai multe informații, precum:
-
--   acuratețea (exprimată în metri);
--   altitudinea (exprimată în metri, având drept referință elipsoidul
-    WGS 84);
--   palierul (exprimat în grade);
--   latitudine și longitudine (exprimată în grade);
--   furnizor;
--   viteză (exprimată în m/s);
--   momentul de timp (exprimat în milisecunde, raportat la 1 ianuarie
-    1970).
-
-De asemenea, pentru acest tip de obiect pot fi asociate informații
-suplimentare, sub forma unui `Bundle`, în câmpul `extras`.
-
-Totodată, pot fi obținute **actualizări periodice** cu privire la
-locația curentă, pe baza furnizorilor disponibili (transfer de date în
-rețeaua GSM / fără fir, sistemul global de poziționare GPS)
-funcționalitate utilă în momentul în care se dorește să se identifice
-activitatea pe care o desfășoară utilizatorul pentru a contextualiza
-conținutul oferit în funcție de aceasta.
-
-Acuratețea datelor generate poate fi controlată și prin intermediul
-configurațiilor conținute în solicitarea corespunzătoare, exprimată prin
-intermediul unui obiect de tip
-[LocationRequest](http:*developer.android.com/reference/com/google/android/gms/location/LocationRequest.html):
-
--   [setExpiration(long)](http:*developer.android.com/reference/com/google/android/gms/location/LocationRequest.html#setExpirationDuration%28long%29) -
-    durata solicitării (exprimată în milisecunde), după care nu mai sunt
-    furnizate actualizări cu privire la locația curentă (momentul de
-    timp la care sunt raportate este cel în care este apelată metoda, nu
-    cel în care este realizată solicitarea propriu-zisă);
--   [setExpirationTime(long)](http:*developer.android.com/reference/com/google/android/gms/location/LocationRequest.html#setExpirationTime%28long%29) -
-    momentul de timp după care nu mai sunt furnizate actualizări cu
-    privire la locația curentă, exprimat în milisecunde raportat la
-    perioada în care dispozitivul mobil a fost pornit;
--   [setInterval(long)](http:*developer.android.com/reference/com/google/android/gms/location/LocationRequest.html#setInterval%28long%29) -
-    indică intervalul de timp (exprimat în milisecunde) la care se
-    dorește să se primească actualizările cu privire la locația curentă;
-    acesta poate fi însă:
-    -   mai mic, dacă dispozitivul mobil are probleme legate de
-        conectivitate;
-    -   mai mare, dacă există alte aplicații care au stabilit alte rate
-        de transfer.
--   [setFastestInterval(long)](http:*developer.android.com/reference/com/google/android/gms/location/LocationRequest.html#setFastestInterval%28long%29) -
-    precizează intervalul la care aplicația Android poate să gestioneze
-    actualizările cu privire la locația curentă, în situația în care
-    există și alte aplicații care au specificat alte rate de transfer,
-    pentru a preîntâmpina situații cum ar fi imposibilitatea de
-    actualizare corespunzătoare a interfeței grafice sau lipsa de spațiu
-    de stocare disponibil pentru informațiile respective;
-
----
-**Note**
-
-Frecvența cu care sunt transmise actualizările periodice cu
-privire la modificarea locației curentă este dată de cea mai rapidă rată
-de transfer specificată de toate aplicațiile care accesează o astfel de
-funcționalitate.\
-
----
-
----
-**Note**
-
-În situația în care aplicația Android realizează procesări
-complexe, care implică o perioadă de timp considerabilă, este recomandat
-ca valoarea transmisă metodei `setFastestInterval()` să fie
-corespunzătoare, astfel încât să nu fie furnizate valori care nu pot fi
-utilizate.\
-
----
-
--   [setMaxWaitTime(long)](http:*developer.android.com/reference/com/google/android/gms/location/LocationRequest.html#setMaxWaitTime%28long%29) -
-    specifică perioada de așteptare maximă pentru transmiterea
-    actualizărilor periodice referitoare la locația curentă; astfel, mai
-    multe informații de acest tip pot fi livrate împreună, cu frecvența
-    indicată de acest interval, optimizând consumul de baterie
-    (actualizările periodice sunt primite la intervale de maxWaitTime,
-    numărul de seturi de date fiind maxWaitTime / interval);
--   [setNumUpdates(int)](http:*developer.android.com/reference/com/google/android/gms/location/LocationRequest.html#setNumUpdates%28int%29) -
-    determină numărul de actualizări necesare, în caz contrar fiind
-    furnizate valori de acest tip continuu, între apelurile metodelor
-    `requestLocationUpdates()` și `removeLocationUpdates()`;
--   [setPriority()](http:*developer.android.com/reference/com/google/android/gms/location/LocationRequest.html#setPriority%28int%29) -
-    stabilește prioritatea solicitării, oferind informații cu privire la
-    furnizorul de servicii care va fi utilizat:
-    -   `PRIORITY_BALANCED_POWER_ACCURACY` - gradul de acuratețe este
-        relativ (aproximativ 100 de metri), consumul de energie fiind
-        moderat;
-    -   `PRIORITY_HIGH_ACCURACY` - gradul de acuratețe este ridicat
-        (aproximativ 10 metri), pe baza informațiilor provenite de la
-        sistemul global de poziționare (GPS), cu un consum mare de
-        energie;
-    -   `PRIORITY_LOW_POWER` - gradul de acuratețe este scăzut
-        (aproximativ 10 kilometri), sursele folosite fiind rețeaua
-        mobilă / fără fir, cu un consum mic de energie;
-    -   `PRIORITY_NO_POWER` - utilizat atunci când se dorește
-        transmiterea de actualizări periodice cu privire la locația
-        curentă, fără un impact semnificativ asupra consumului de
-        energie (de regulă, astfel de informații sunt preluate de la
-        alte aplicații);
--   [setSmallestDisplacement(int)](http:*developer.android.com/reference/com/google/android/gms/location/LocationRequest.html#setSmallestDisplacement%28float%29) -
-    indică distanța minimă dintre locații pentru care se primește
-    actualizare periodică (implicit, are valoarea 0).
-
-De regulă, instanțierea unui obiect de tip `LocationRequest` precum și
-precizarea parametrilor ce caracterizează solicitările cu privire la
-actualizările periodice sunt realizate o singură dată, în momentul în
-care aplicația Android este pornită (pe metoda `onCreate()`), urmând ca
-eliberarea resurselor să fie realizată atunci când aplicația Android
-este oprită (pe metoda `onDestroy()`).
-
-``` java
-locationRequest = new LocationRequest();
-locationRequest.setInterval(Constants.LOCATION_REQUEST_INTERVAL);
-locationRequest.setFastestInterval(Constants.LOCATION_REQUEST_FASTEST_INTERVAL);
-locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-```
-
-O aplicație Android primește actualizări periodice cu privire la locația
-curentă între momentele de timp la care specifică explicit acest lucru,
-prin apelul metodelor corespunzătoare:
-
--   [requestLocationUpdates(GoogleApiClient, LocationRequest,
-    LocationListener)](http:*developer.android.com/reference/com/google/android/gms/location/FusedLocationProviderApi.html#requestLocationUpdates%28com.google.android.gms.common.api.GoogleApiClient,%20com.google.android.gms.location.LocationRequest,%20com.google.android.gms.location.LocationListener%29) -
-    pornește transmitersa actualizărilor periodice;
--   [removeLocationUpdates(GoogleApiClient,
-    LocationListener)](http:*developer.android.com/reference/com/google/android/gms/location/FusedLocationProviderApi.html#removeLocationUpdates%28com.google.android.gms.common.api.GoogleApiClient,%20com.google.android.gms.location.LocationListener%29) -
-    oprește transmiterea actualizărilor periodice.
-
-Întrucât aceste metode primesc un parametru de tip `GoogleApiClient`,
-este necesar ca acesta să fie nenul și să fie conectat. Din acest motiv,
-o practică curentă vizează realizarea suplimentară a acestor verificări
-anterior invocării lor propriu-zise.
-
-``` java
-protected void startLocationUpdates() {
-  LocationServices.FusedLocationApi.requestLocationUpdates(
-    googleApiClient,
-    locationRequest,
-    this
-  );
-  locationUpdatesStatus = true;
-  googleMap.setMyLocationEnabled(true);
-  if (lastLocation != null) {
-    navigateToLocation(lastLocation);
-  }
-  
-  * ...
-  
-}
-    
-protected void stopLocationUpdates() {
-  LocationServices.FusedLocationApi.removeLocationUpdates(
-    googleApiClient,
-    this
-  );
-  locationUpdatesStatus = false;
-  googleMap.setMyLocationEnabled(false);
-
-  * ...
-
-}
-```
-
-Pentru ca impactul asupra consumului de energie să fie optim, se
-recomandă ca pe metodele care controlează ciclul de viață al unei
-aplicații Android să se gestioneze corespunzător starea transmiterii de
-actualizări periodice, în intervalele de timp în care aceasta nu este
-activă / vizibilă.
-
-``` java
-@Override
-protected void onStart() {
-  super.onStart();
-
-  * ...
-  
-  if (googleApiClient != null && googleApiClient.isConnected() && locationUpdatesStatus) {
-    startLocationUpdates();
-  }
-}
-    
-@Override
-protected void onStop() {
-  stopLocationUpdates();
-        
-  * ...
-  
-  super.onStop();
-}
-```
-
-Metodele care gestionează starea transmiterii de actualizări periodice
-cu privire la locația curentă primesc ca parametru și un obiect
-ascultător de tip
-[LocationListener](http:*developer.android.com/reference/com/google/android/gms/location/LocationListener.html)
-care notifică utilizatorul în momentul în care sunt disponibile
-informațiile propriu-zise: metoda `onLocationChanged(Location)`, apelată
-în mod automat, oferă informații cu privire la poziția din momentul de
-timp respectiv.
-
-``` java
-@Override
-public void onLocationChanged(Location location) {
-  lastLocation = location;
-  navigateToLocation(lastLocation);
-}
-```
-
-Aplicația Android trebuie să aibă un comportament consistent în situația
-în care se produc modificări de configurație, astfel încât diferiții
-parametrii trebuie salvați și încărcați pe metodele corespunzătoare
-(`onSaveInstanceState(Bundle)`, respectiv
-`onRestoreInstanceState(Bundle)`):
-
-``` java
-@Override
-public void onSaveInstanceState(Bundle savedInstanceState) {
-  saveValues(savedInstanceState);
-  super.onSaveInstanceState(savedInstanceState);
-}
-    
-protected void saveValues(Bundle state) {
-  state.putBoolean(Constants.LOCATION_UPDATES_STATUS, locationUpdatesStatus);
-  state.putParcelable(Constants.LAST_LOCATION, lastLocation);
-}
-    
-@Override
-public void onRestoreInstanceState(Bundle savedInstanceState) {
-  super.onRestoreInstanceState(savedInstanceState);
-  restoreValues(savedInstanceState);
-}
-    
-protected void restoreValues(Bundle state) {
-  if (state.keySet().contains(Constants.LAST_LOCATION)) {
-    lastLocation = state.getParcelable(Constants.LAST_LOCATION);
-  }
-  if (state.keySet().contains(Constants.LOCATION_UPDATES_STATUS)) {
-    locationUpdatesStatus = state.getBoolean(Constants.LOCATION_UPDATES_STATUS);
-  }
-}
-```
-
-Informațiile de interes sunt starea referitoare la transmiterea
-actualizărilor periodice, respectiv la cea mai recentă locație.
-
-## Codificare Geografică Inversă (Geocoding), opțional
-
-Acest exercițiu este opțional, cere activarea facturării (Billing) în
-contul google pentru care activati Geocoding API. \<spoiler> În Android,
-clasa
-[Geocoder](http:*developer.android.com/reference/android/location/Geocoder.html)
-permite realizarea de conversii dintre coordonate GPS (latitudine /
-longitudine) și adresa poștală, operație denumită codificare geografică
-inversă.
-
-Metodele `getFromLocation()` / `getFromLocationName()`, disponibile în
-mai multe forme, furnizează o listă de obiecte de tip
-[Address](http:*developer.android.com/reference/android/location/Address.html),
-care încapsulează, pe lângă datele propriu-zise, dispuse sub formă de
-rânduri distincte și alte informații precum latitudine, longitudine,
-localitate, cod poștal, telefon, URL, împrejurimi:
-
--   [getFromLocation(double, double,
-    int)](http:*developer.android.com/reference/android/location/Geocoder.html#getFromLocation%28double,%20double,%20int%29) -
-    primește ca parametrii coordonatele GPS (latitudinea /
-    longitudinea);
--   [getFromLocationName(String, int, double, double, double,
-    double)](http:*developer.android.com/reference/android/location/Geocoder.html#getFromLocationName%28java.lang.String,%20int,%20double,%20double,%20double,%20double%29) -
-    primește ca parametrii o descriere a locației precum și o zonă
-    geografică descrisă prin coordonatele GPS (latitudine / longitudine)
-    ale punctelor stânga sus - dreapta jos;
--   [getFromLocationName(String,
-    int)](http:*developer.android.com/reference/android/location/Geocoder.html#getFromLocationName%28java.lang.String,%20int%29) -
-    primește ca parametru o descriere a locației.
-
----
-**Note**
-
-Toate aceste metode primesc un parametru care indică numărul
-de rezultate care se doresc a fi furnizate. De regulă, acesta are
-valoarea 1.\
-
----
-
-Metodele care realizează codificarea geografică inversă sunt sincrone,
-iar procesările pe care le realizează pot să dureze un interval de timp
-considerabil. Din acest motiv, este recomandat ca invocarea acestora să
-nu se facă pe firul de execuție al interfeței grafice (principal)
-întrucât poate afecta experiența utilizatorului, ci pe un fir de
-execuție care rulează în fundal, de tip
-[IntentService](http:*developer.android.com/reference/android/app/IntentService.html)
-(utilizarea clasei `AsyncTask` nu este indicată în această situație
-întrucât comportamentul său în cazul producerii unor întreruperi nu
-corespunde funcționalității dorite). Un astfel de obiect pornește în
-momentul în care este necesar să se realizeze o operație (fiind invocat
-prin intermediul unei intenții, la care pot fi atașate informații
-suplimentare), realizată pe un fir de execuție dedicat, fiind oprit în
-momentul în care nu mai este necesar să realizeze alte procesări.
-
-Acest serviciu asociat unei intenții trebuie să fie specificat în
-fișierul `AndroidManifest.xml`, în secțiunea
-`<application> ... </application>`:
+**2.** În fișierul `AndroidManifest.xml` corespunzător proiectului
+`android-ngn-stack` trebuie să se elimine proprietatea `android:icon`
+din elementul `<application>` de vreme ce și proiectul principal deține
+o astfel de proprietate, generându-se astfel un conflict în momentul în
+care se construiește aplicația:
 
 ``` xml
 <manifest ...>
-  <!-- other elements -->
-  <application ...>
-    <!-- other elements -->
-    <service
-      android:name=".service.GetLocationAddressIntentService"
-      android:exported="false"/>
-   </application>
+  <application
+    android:name="NgnApplication"
+    android:label="@string/app_name">
+    <string name="doubango_revision">1309</string>
+    <service android:name="NgnNativeService"/>
+  </application>
+  <!-- ... -->
 </manifest>
 ```
 
-Nu este necesar să se specifice și un filtru de intenții, de vreme ce
-serviciul va fi lansat în execuție explicit, prin transmiterea în cadrul
-intenției corespunzătoare a denumirii clasei care îl implementează.
-
-Obiectele care vor fi transmise serviciului prin intermediul intenției
-sunt:
-
--   un obiect de tip
-    [ResultReceiver](http:*developer.android.com/reference/android/os/ResultReceiver.html),
-    prin intermediul căruia este furnizat rezultatul, atunci când acesta
-    este disponibil;
-    `private class AddressResultReceiver extends ResultReceiver {
-      public AddressResultReceiver(Handler handler) {
-        super(handler);
-      }
-
-      @Override
-      protected void onReceiveResult(int resultCode, Bundle bundle) {
-        String address = bundle.getString(Constants.RESULT);
-        addressTextView.setText(address);
-
-        switch(resultCode) {
-          case Constants.RESULT_SUCCESS:
-            Toast.makeText(GoogleMapsActivity.this, "An address was found", Toast.LENGTH_SHORT).show();
-        break;
-          case Constants.RESULT_FAILURE:
-            Toast.makeText(GoogleMapsActivity.this, "An address was not found", Toast.LENGTH_SHORT).show();
-        break;                  
-        }
-
-        getAddressLocationStatus = false;
-        getLocationAddressButton.setEnabled(true);
-      }
-    }
-    ` Se observă că atunci când rezultatul este disponibil, se apelează
-    în mod automat metoda `onReceiveResult()` care primește ca
-    parametrii un cod de rezultat numeric (succes sau eșec, definit de
-    utilizator) și un obiect de tip `Bundle` în care sunt plasate
-    informații suplimentare (adresa propriu-zisă sau mesajul de eroare -
-    în funcție de rezultat -, vizualizată într-un control grafic).
--   locația care se dorește a fi rezolvată (obiect de tip `Location`,
-    incluzând informații de tip latitudine și longitudine).
-
-Mecanismul prin care se pornește un serviciu prin intermediul unei
-intenții este similar cu cel prin care se pornește o activitate prin
-intermediul unei intenții:
-
-1.  se instanțiază un obiect de tip `Intent` specificând clasa
-    corespunzătoare serviciului care se dorește a fi lansat în execuție;
-2.  se plasează informațiile în obiectul `Bundle` disponibil în
-    secțiunea `extra`.
+**3.** În clasa `NgnEngine.java` poate fi necesar să se modifice
+biblioteca partajată încărcată în momentul în care se detectează că
+dispozitivul mobil deține [un procesor cu capabilități SIMD (ARM v7 /
+ARM v8)](https:*developer.android.com/ndk/guides/cpu-arm-neon.html).
+Acest lucru este în special valabil pentru emulatoare, care publică
+anumite capabilități pe care nu le implementează însă propriu-zis.
+Într-o astfel de situație, este necesar să se încarce biblioteca
+partajată `tinyWrap.so` în loc de `tinyWRAP_neon.so`.
 
 ``` java
-Intent intent = new Intent(this, GetLocationAddressIntentService.class);
-intent.putExtra(Constants.RESULT_RECEIVER, addressResultReceiver);
-intent.putExtra(Constants.LOCATION, lastLocation);
-startService(intent);
-```
-
-Procesarea pe care o realizează serviciul lansat în execuție prin
-intermediul unei intenții este plasată în cadrul metodei
-`onHandleIntent(Intent)`, apelată în mod automat.
-
-``` java
-@Override
-protected void onHandleIntent(Intent intent) {
-  String errorMessage = null;
-        
-  resultReceiver = intent.getParcelableExtra(Constants.RESULT_RECEIVER);
-  if (resultReceiver == null) {
-    errorMessage = "No result receiver was provided to handle the information";
-    Log.e(Constants.TAG, "An exception has occurred: " + errorMessage);
-    return;
-  }
-        
-  Location location = intent.getParcelableExtra(Constants.LOCATION);
-  if (location == null) {
-    errorMessage = "No location data was provided";
-    Log.e(Constants.TAG, "An exception has occurred: " + errorMessage);
-    handleResult(Constants.RESULT_FAILURE, errorMessage);
-    return;
-  }
-        
-  Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-        
-  List<Address> addressList = null;
-        
-  try {
-    addressList = geocoder.getFromLocation(
-      location.getLatitude(),
-      location.getLongitude(),
-      Constants.NUMBER_OF_ADDRESSES);
-  } catch (IOException ioException) {
-    errorMessage = "The background geocoding service is not available";
-    Log.e(Constants.TAG, "An exception has occurred: " + ioException.getMessage());
-  } catch (IllegalArgumentException illegalArgumentException) {
-    errorMessage = "The latitude / longitude values that were provided are invalid " + location.getLatitude() + " / " + location.getLongitude();
-    Log.e(Constants.TAG, "An exception has occurred: " + illegalArgumentException.getMessage());
-  }
-
-  if (errorMessage != null && !errorMessage.isEmpty()) {
-    handleResult(Constants.RESULT_FAILURE, errorMessage);
-    return;
-  }
-
-  if (addressList == null || addressList.isEmpty()) {
-    errorMessage = "The geocoder could not find an address for the given latitude / longitude";
-    Log.e(Constants.TAG, "An exception has occurred: " + errorMessage);
-    handleResult(Constants.RESULT_FAILURE, errorMessage);
-    return;
-  }
-        
-  StringBuffer result = new StringBuffer();
-        
-  for (Address address: addressList) {
-    for (int k = 0; k < address.getMaxAddressLineIndex(); k++) {
-      result.append(address.getAddressLine(k) + System.getProperty("line.separator"));
+private static void initialize2() {
+  * ...
+  
+  * lines 104-116
+  boolean haveLibUtils = new File(String.format("%s/%s", NgnEngine.LIBS_FOLDER, "libutils_armv5te.so")).exists();
+  if (haveLibUtils) { * only "armeabi-v7a" comes with "libutils.so"
+    System.loadLibrary("utils_armv5te");
+    Log.d(TAG,"CPU_Feature="+AndroidUtils.getCpuFeatures());
+    if(NgnApplication.isCpuNeon()){
+      Log.d(TAG,"isCpuNeon()=YES");
+      System.loadLibrary("tinyWRAP");
     }
-    result.append(System.getProperty("line.separator"));
+    else{
+      Log.d(TAG,"isCpuNeon()=NO");
+      System.loadLibrary("tinyWRAP");
+    }
   }
-  handleResult(Constants.RESULT_SUCCESS, result.toString());
+  
+  * ...
+
 }
 ```
 
-Operațiile realizate de serviciu, pe firul de execuție separat, sunt:
+Inițial, este necesar să se obțină o referință către obiectul de tip
+`NgnEngine`. Acest lucru poate fi realizat prin intermediul metodei
+statice `getInstance()` (așa cum era de așteptat, `NgnEngine` este
+singleton). De regulă, o astfel de operație este realizată pe metoda
+`onCreate()` a activității principale a aplicației Android.
 
-1.  preluarea informațiilor necesare (obiect de tip `ResultReceiver`,
-    locația care se dorește a fi rezolvată) printr-un obiect `Bundle`,
-    din cadrul secțiunii `extra` a intenției prin care a fost invocat;
-    în situația în care acestea nu pot fi obținute, se generează un
-    mesaj de eroare;
-2.  instanțierea unui obiect de tip `Geocoder`, folosind contextul
-    (serviciul) și un obiect
-    [Locale](http:*developer.android.com/reference/java/util/Locale.html),
-    care conține informații cu privire la modul de prezentare a unor
-    informații în funcție de zona geografică;
-3.  invocarea metodelor `getFromLocation()` / `getFromLocationName()`
-    (furnizând informațiile necesare ca parametri) și gestionând
-    corespunzător tipurile de eroare ce pot fi generate:
-    1.  serviciul Geocoding nu este disponibil (se aruncă o excepție de
-        tip `IOException`);
-    2.  informațiile cu privire la coordonatele GPS (latitudine /
-        longitudine) nu sunt corecte (se aruncă o excepție de tipul
-        `IllegalArgumentException`);
-4.  se semnalează situația în care nu a putut fi identificată nici o
-    adresă poștală asociată datelor specificate;
-5.  pentru fiecare adresă poștală furnizată, se concatenează rândurile
-    distincte:
-    1.  numărul de rânduri conținute este întors de metoda
-        [getMaxAddressLineIndex()](http:*developer.android.com/reference/android/location/Address.html#getMaxAddressLineIndex%28%29);
-    2.  un rând de la o anumită poziție este dat de metoda
-        [getAddressLine(int)](http:*developer.android.com/reference/android/location/Address.html#getAddressLine%28int%29);
-6.  se transmite codul de rezultat (numeric - succes sau eșec) precum și
-    rezultatul propriu-zis (adresa sau mesajul de eroare) către obiectul
-    de tip `ResultReceiver`, prin intermediul metodei [send(int,
-    Bundle)](http:*developer.android.com/reference/android/os/ResultReceiver.html#send%28int,%20android.os.Bundle%29)
-    care face ca la nivelul acestui obiect să se apeleze în mod automat
-    metoda `onReceiveResult()`; informațiile vor fi plasate în cadrul
-    unui obiect `Bundle`, ca pereche (cheie, valoare):
-    `private void handleResult(int resultCode, String message) {
-      Bundle bundle = new Bundle();
-      bundle.putString(Constants.RESULT, message);
-      resultReceiver.send(resultCode, bundle);
+``` java
+ngnEngine = NgnEngine.getInstance();
+if (ngnEngine == null) {
+  Log.i(Constants.TAG, "Failed to obtain the NGN engine!");
+}
+```
+
+Motorul NGN trebuie configurat, prin specificarea unor parametri,
+reținuți sub forma unor perechi de tipul (cheie, valoare).
+
+Pentru ca serviciul SIP să poată fi accesat, trebuie specificate:
+
+-   `NgnConfigurationEntry.IDENTITY_IMPI`: identificatorul
+    utilizatorului folosit pentru autorizare (`upb`);
+-   `NgnConfigurationEntry.IDENTITY_IMPU`: adresa SIP (sub forma
+    `sip:<username>@<domain>`) - `informaticamobila2017@upb.onsip.com`;
+-   `NgnConfigurationEntry.IDENTITY_PASSWORD`: parola
+-   `NgnConfigurationEntry.NETWORK_PCSCF_HOST`: adresa proxy-ului la
+    care se realizează conexiunea (`sip.onsip.com`);
+-   `NETWORK_PCSCF_PORT`: portul pe care se face acest lucru (5060)
+-   `NETWORK_REALM`: rețeaua din care face parte (`upb.onsip.com`).
+
+Pot fi indicate și utilizarea rețelei 3G (implicit, dezactivată) precum
+și timpul de așteptare în cazul operației de înregistrare.
+
+``` java
+public void configureStack() {
+  NgnEngine ngnEngine = NgnEngine.getInstance();
+  INgnConfigurationService ngnConfigurationService = ngnEngine.getConfigurationService();
+  ngnConfigurationService.putString(NgnConfigurationEntry.IDENTITY_IMPI, Constants.IDENTITY_IMPI);
+  ngnConfigurationService.putString(NgnConfigurationEntry.IDENTITY_IMPU, String.format("sip:%s@%s", Constants.USERNAME, Constants.DOMAIN));
+  ngnConfigurationService.putString(NgnConfigurationEntry.IDENTITY_PASSWORD, Constants.IDENTITY_PASSWORD);
+  ngnConfigurationService.putString(NgnConfigurationEntry.NETWORK_PCSCF_HOST, Constants.NETWORK_PCSCF_HOST);
+  ngnConfigurationService.putInt(NgnConfigurationEntry.NETWORK_PCSCF_PORT, Constants.NETWORK_PCSCF_PORT);
+  ngnConfigurationService.putString(NgnConfigurationEntry.NETWORK_REALM, Constants.NETWORK_REALM);
+
+  ngnConfigurationService.putBoolean(NgnConfigurationEntry.NETWORK_USE_3G, true);
+  ngnConfigurationService.putInt(NgnConfigurationEntry.NETWORK_REGISTRATION_TIMEOUT, Constants.NETWORK_REGISTRATION_TIMEOUT);
+
+  ngnConfigurationService.commit();
+}
+```
+
+Ulterior, motorul NGN trebuie să fie pornit.
+
+``` java
+public boolean startNgnEngine() {
+  if (!ngnEngine.isStarted()) {
+    if (!ngnEngine.start()) {
+      Log.e(Constants.TAG, "Failed to start the NGN engine!");
+      return false;
     }
-    `
+  }
+  return true;
+}
+```
+
+Pe baza acestui obiect, se poate obține un serviciu SIP de tipul
+`INgnSipService` care pune la dispoziție metodele pentru obținerea de
+sesiuni pe baza operațiilor de înregistrare / deînregistrare.
+
+``` java
+ngnSipService = ngnEngine.getSipService();
+```
+
+Operația de înregistrare presupune transmiterea unui context (al
+aplicației Android) care este asociat serviciului SIP.
+
+``` java
+public void registerSipService() {
+  if (!ngnSipService.isRegistered()) {
+    ngnSipService.register(this);
+  }
+}
+```
+
+Pentru operația (simetrică) de deînregistrare, furnizarea unui astfel de
+argument nu mai este necesară. Utilizatorul este cel care ar trebui să
+dețină controlul asupra acestui tip de operații, prin intermediul unor
+elemente din cadrul interfeței grafice.
+
+``` java
+public void unregisterSipService() {
+  if (ngnSipService.isRegistered()) {
+    ngnSipService.unRegister();
+  }
+}
+```
+
+Motorul NGN trebuie să fie oprit atunci când aplicația Android este
+terminată. De regulă, o astfel de operație este realizată pe metoda
+`onDestroy()` a activității principale.
+
+``` java
+public boolean stopNgnEngine() {
+  if (ngnEngine.isStarted()) {
+    if (!ngnEngine.stop()) {
+      Log.e(Constants.TAG, "Failed to stop the NGN engine!");
+      return false;
+    }
+  }
+  return true;
+}
+```
+
+---
+**Note**
+
+Este mai puțin frecvent ca operațiile de înregistrare /
+deînregistrare să se realizeze pe metodele `onStart()` respectiv
+`onStop()` deoarece execuția acestora poate fi destul de îndelungată
+având un impact negativ asupra responsivității sistemului de
+operare.\
+
+---
+
+În cazul **operațiilor de înregistrare / deînregistrare**, se poate
+defini un **ascultător pentru mesaje cu difuzare**, care gestionează
+acțiunile de tipul `NgnRegistrationEventArgs.ACTION_REGISTRATION_EVENT`.
+
+Evenimentele ce pot fi tratate de un astfel de obiect sunt legate de:
+
+-   rezultatul operației de înregistrare:
+    -   `REGISTRATION_NOK`
+    -   `REGISTRATION_OK`
+    -   `REGISTRATION_INPROGRESS`
+-   rezultatul operației de deînregistrare:
+    -   `UNREGISTRATION_NOK`
+    -   `UNREGISTRATION_OK`
+    -   `UNREGISTRATION_INPROGRESS`
+
+Operațiile de înregistrare (activare) respectiv deînregistrare
+(dezactivare) a acestui ascultător pentru mesaje cu difuzare se face pe
+metodele `onCreate()` respectiv `onDestroy()` ale activității.
+
+``` java
+public void enableRegistrationBroadcastReceiver() {
+  registrationBroadcastReceiver = new RegistrationBroadcastReceiver(registrationStatusTextView);
+  registrationIntentFilter = new IntentFilter();
+  registrationIntentFilter.addAction(NgnRegistrationEventArgs.ACTION_REGISTRATION_EVENT);
+  registerReceiver(registrationBroadcastReceiver, registrationIntentFilter);
+}
+```
+
+``` java
+public void disableRegistrationStateBroadcastReceiver() {
+  if (registrationBroadcastReceiver != null) {
+    unregisterReceiver(registrationBroadcastReceiver);
+    registrationBroadcastReceiver = null;
+  }
+}
+```
+
+Implementarea ascultătorului pentru intenții cu difuzare având asociată
+acțiunea `NgnRegistrationEventArgs.ACTION_REGISTRATION_EVENT` presupune
+realizarea următoarelor operații:
+
+-   verificarea acțiunii corespunzătoare intenției, aceasta trebuie să
+    fie de tipul `NgnRegistrationEventArgs.ACTION_REGISTRATION_EVENT`;
+-   se obțin argumentele asociate intenției cu difuzare; acestea au
+    tipul `NgnRegistrationEventArgs` și pot fi obținute din câmpul
+    `extra` al intenției, fiind regăsite sub cheia
+    `NgnEventArgs.EXTRA_EMBEDDED`:
+    -   se verifică tipul argumentului care reprezintă de fapt răspunsul
+        care a fost obținut pentru operația de înregistrare /
+        deînregistrare - în acest sens se folosește metoda
+        `getEventType()` a obiectului de tip `NgnRegistrationEventArgs`;
+    -   de regulă, tratarea fiecărui caz în parte nu presupune decât
+        jurnalizarea sa și actualizarea corespunzătoare a controalelor
+        din cadrul interfeței grafice.
+
+``` java
+public class RegistrationBroadcastReceiver extends BroadcastReceiver {
+
+  @Override
+  public void onReceive(Context context, Intent intent) {
+    String action = intent.getAction();
+
+    if (NgnRegistrationEventArgs.ACTION_REGISTRATION_EVENT.equals(action)) {
+
+      NgnRegistrationEventArgs arguments = intent.getParcelableExtra(NgnEventArgs.EXTRA_EMBEDDED);
+
+      if (arguments == null) {
+        Log.d(Constants.TAG, "Invalid event arguments");
+        return;
+      }
+
+      switch (arguments.getEventType()) {
+        case REGISTRATION_NOK:
+          Toast.makeText(context, "Failed to register", Toast.LENGTH_SHORT).show();
+          Log.d(Constants.TAG, "Failed to register");
+          break;
+        case REGISTRATION_OK:
+          Log.d(Constants.TAG, "You are now registered");
+          break;
+        case REGISTRATION_INPROGRESS:
+          Log.d(Constants.TAG, "Trying to register...");
+          break;
+        case UNREGISTRATION_NOK:
+          Toast.makeText(context, "Failed to unregister", Toast.LENGTH_SHORT).show();
+          Log.d(Constants.TAG, "Failed to unregister");
+          break;
+        case UNREGISTRATION_OK:
+          Log.d(Constants.TAG, "You are now unregistered");
+          break;
+        case UNREGISTRATION_INPROGRESS:
+          Log.d(Constants.TAG, "Trying to unregister...");
+          break;
+      }
+    }
+  }
+}
+```
+
+Se pot deschide sesiuni audio-video (`NgnAVSession`) respectiv pentru
+mesagerie instantanee (`NgnMessagingSession`).
+
+Obiectul de tip `NgnAVSession` este partajat la nivelul întregii
+aplicații întrucât furnizează aproximativ toate metodele pentru
+gestiunea apelurilor telefonice, indiferent de entitățile implicate.
+
+``` java
+NgnAVSession ngnAVSession = NgnAVSession.createOutgoingSession(
+  NgnEngine.getInstance().getSipService().getSipStack(),
+  NgnMediaType.AudioVideo
+);
+```
+
+Obiectul de tip `NgnMessagingSession` va fi creat pentru fiecare
+operație în parte ce implică comunicația dintre două entități, fiind
+necesar ca aceasta să fie eliberată după ce operația respectivă a fost
+procesată.
+
+``` java
+NgnMessagingSession instantMessagingSession = NgnMessagingSession.createOutgoingSession(
+  NgnEngine.getInstance().getSipService().getSipStack(),
+  remotePartyUri
+);
+```
+
+``` java
+NgnMessagingSession.releaseSession(instantMessagingSession);
+```
+
+Pentru gestiunea **apelurilor telefonice** se folosesc metodele
+`makeCall()`, respectiv `hangUpCall()`, puse la dispoziție de obiectul
+`INgnAVSession`.
+
+-   metoda `makeCall()` primește ca argument un șir de caractere
+    formatat, reprezentând un URI valid, acesta fiind furnizat prin
+    intermediul metodei statice `NgnUriUtils.makeValidSipUri()`; de
+    regulă, se respectă formatul `protocol:utilizator@domeniu`, în cazul
+    de față protocolul fiind `sip`; metoda furnizează un rezultat de tip
+    adevărat / fals;
+-   metoda `hangUpCall()` nu primește nici un argument și furnizează un
+    rezultat de tip adevărat / fals.
+
+``` java
+String validUri = NgnUriUtils.makeValidSipUri(SIPAddressEditText.getText().toString());
+* ...
+if (ngnAVSession != null && ngnAVSession.makeCall(validUri)) {
+  Log.d(Constants.TAG, "Call succeeded");
+} else {
+  Log.d(Constants.TAG, "Call failed");
+}
+```
+
+``` java
+if (ngnAVSession != null) {
+  ngnAVSession.hangUpCall();
+  Log.d(Constants.TAG, "Hang up");
+}
+```
+
+De asemenea, interfața `INgnAVSession` pune la dispoziție și metodele:
+
+-   `acceptCall()`, prin intermediul căreia poate fi acceptat un apel
+    audio-video, de îndată ce este detectată o comunicație de acest tip;
+-   `getRemotePartyUri()`, prin intermediul căreia poate fi obținută
+    adresa SIP (URI-ul) entității cu care se comunică la un moment dat.
+
+În același scop, se poate defini un ascultător pentru mesaje cu
+difuzare, care gestionează acțiunile de tipul
+`NgnInviteEventArgs.ACTION_INVITE_EVENT`. Evenimentele ce pot fi tratate
+de un astfel de obiect sunt:
+
+-   `INCOMING`
+-   `INCALL`
+-   `TERMINATED` / `TERMINATING`
+-   `NONE`
+
+Operațiile de înregistrare (activare) respectiv deînregistrare
+(dezactivare) a acestui ascultător pentru mesaje cu difuzare se face pe
+metodele `onCreate()` respectiv `onDestroy()` ale activității.
+
+``` java
+public void enableVoiceCallBroadcastReceiver() {
+  voiceCallBroadcastReceiver = new VoiceCallBroadcastReceiver(SIPAddressEditText, callStatusTextView);
+  voiceCallIntentFilter = new IntentFilter();
+  voiceCallIntentFilter.addAction(NgnInviteEventArgs.ACTION_INVITE_EVENT);
+  registerReceiver(voiceCallBroadcastReceiver, voiceCallIntentFilter);
+}
+```
+
+``` java
+public void disableVoiceCallBroadcastReceiver() {
+  if (voiceCallBroadcastReceiver != null) {
+    unregisterReceiver(voiceCallBroadcastReceiver);
+    voiceCallBroadcastReceiver = null;
+  }
+}
+```
+
+Implementarea ascultătorului pentru intenții cu difuzare având asociată
+acțiunea `NgnInviteEventArgs.ACTION_INVITE_EVENT` presupune realizarea
+următoarelor operații:
+
+-   verificarea acțiunii corespunzătoare intenției, aceasta trebuie să
+    fie de tipul `NgnInviteEventArgs.ACTION_INVITE_EVENT`;
+-   se obțin argumentele asociate intenției cu difuzare; acestea au
+    tipul `NgnInviteEventArgs` și pot fi obținute din câmpul `extra` al
+    intenției, fiind regăsite sub cheia `NgnEventArgs.EXTRA_EMBEDDED`:
+    -   se obține sesiunea curentă pentru comunicații audio-video,
+        folosind metoda statică `getSession()` a clasei `NgnAVSession`,
+        ce primește ca argument identificatorul (obținut ca rezultat al
+        metodei getSessionId() al obiectului de tip
+        `NgnInviteEventArgs`);
+    -   metoda `getState()` a obiectului de tip `NgnAVSession`
+        furnizează un obiect de tipul `NgnInviteSession.InviteState` ce
+        reprezintă de fapt chiar rezultatul operației de comunicație
+        prin intermediul apelurilor audio-video;
+    -   pe starea `INCOMING` trebuie să se accepte apelul telefonic,
+        prin intermediul metodei `acceptCall()` a obiectului
+        `NgnAVSession`;
+    -   pornirea tonului de apel se face doar pe starea `INCOMING`
+        `ngnEngine.getSoundService().startRingTone();
+        `
+    -   oprirea tonului de apel se face pe stările `INCALL`,
+        `TERMINATED`, `TERMINATING`
+        `ngnEngine.getSoundService().stopRingTone();
+        `
+
+``` java
+public class VoiceCallBroadcastReceiver extends BroadcastReceiver {
+  @Override
+  public void onReceive(Context context, Intent intent) {
+    String action = intent.getAction();
+
+    if (NgnInviteEventArgs.ACTION_INVITE_EVENT.equals(action)) {
+      NgnInviteEventArgs arguments = intent.getParcelableExtra(NgnEventArgs.EXTRA_EMBEDDED);
+      if (arguments == null) {
+        Log.e(Constants.TAG, "Invalid event arguments");
+        return;
+      }
+
+      final NgnAVSession ngnAVSession = NgnAVSession.getSession(arguments.getSessionId());
+      if (ngnAVSession == null) {
+        Log.e(Constants.TAG, "NgnAVSession could not be fetched for this session");
+        return;
+      }
+
+      NgnInviteSession.InviteState inviteState = ngnAVSession.getState();
+      NgnEngine ngnEngine = NgnEngine.getInstance();
+
+      switch(inviteState) {
+        case NONE:
+        default:
+          Log.i(Constants.TAG, "Call state: " + inviteState);
+          break;
+        case INCOMING:
+          Log.i(Constants.TAG, "Incoming call");
+          ngnEngine.getSoundService().startRingTone();
+          Handler handler = new Handler();
+          handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+              ngnAVSession.acceptCall();
+            }
+          }, Constants.ACCEPT_CALL_DELAY_TIME);
+          break;
+        case INCALL:
+          Log.i(Constants.TAG, "Call started");
+          Toast.makeText(context, "Call connected", Toast.LENGTH_SHORT).show();
+          ngnEngine.getSoundService().stopRingTone();
+          break;
+        case TERMINATED:
+        case TERMINATING:
+          Log.i(Constants.TAG, "Call ended");
+          Toast.makeText(context, "Call disconnected", Toast.LENGTH_SHORT).show();
+          ngnEngine.getSoundService().stopRingTone();
+          ngnEngine.getSoundService().stopRingBackTone();
+          break;
+      }
+    }
+  }
+}
+```
+
+Pentru gestiunea **mesajelor ce se doresc a fi transmise instantaneu**
+se folosește metoda `sendTextMessage()`, care primește ca argument șirul
+de caractere care trebuie comunicat. Aceasta furnizează un rezultat de
+tip adevărat / fals după cum operația a reușit respectiv a eșuat.
+
+``` java
+NgnMessagingSession instantMessagingSession = NgnMessagingSession.createOutgoingSession(
+  VoiceCallActivity.getInstance().getNgnSipService().getSipStack(),
+  remotePartyUri
+);
+
+if (!instantMessagingSession.sendTextMessage(messageEditText.getText().toString())) {
+  Log.e(Constants.TAG, "Failed to send message");
+} else {
+  String conversation = conversationTextView.getText().toString();
+  conversationTextView.setText(conversation + "Me: " + messageEditText.getText().toString() + "\n");
+  messageEditText.setText("");
+   Log.d(Constants.TAG, "Succeeded to send message");
+}
+NgnMessagingSession.releaseSession(instantMessagingSession);
+```
+
+---
+**Note**
+
+Așa cum se poate observa, în situația mesageriei instantanee,
+este necesar să se creeze câte o sesiune pentru fiecare mesaj gestionat,
+întrucât acesta reprezintă de fapt o legătură punct la punct între (cel
+puțin) două sau mai multe entități.\
+
+---
+
+În același scop, se poate defini un ascultător pentru mesaje cu
+difuzare, care gestionează acțiunile de tipul
+`NgnMessagingEventArgs.ACTION_MESSAGING_EVENT`. Evenimentele ce pot fi
+tratate de un astfel de obiect sunt:
+
+-   `INCOMING`
+-   `OUTGOING`
+-   `SUCCESS`
+-   `FAILURE`
+
+Operațiile de înregistrare (activare) respectiv deînregistrare
+(dezactivare) a acestui ascultător pentru mesaje cu difuzare se face pe
+metodele `onCreate()` respectiv `onDestroy()` ale activității.
+
+``` java
+public void enableInstantMessagingBroadcastReceiver() {
+  instantMessagingBroadcastReceiver = new InstantMessagingBroadcastReceiver(conversationTextView);
+  instantMessagingIntentFilter = new IntentFilter();
+  instantMessagingIntentFilter.addAction(NgnMessagingEventArgs.ACTION_MESSAGING_EVENT);
+  registerReceiver(instantMessagingBroadcastReceiver, instantMessagingIntentFilter);
+}
+```
+
+``` java
+public void disableInstantMessagingBroadcastReceiver() {
+  if (instantMessagingBroadcastReceiver != null) {
+    unregisterReceiver(instantMessagingBroadcastReceiver);
+    instantMessagingBroadcastReceiver = null;
+  }
+}
+```
+
+Implementarea ascultătorului pentru intenții cu difuzare având asociată
+acțiunea `NgnMessagingEventArgs.ACTION_MESSAGING_EVENT` presupune
+realizarea următoarelor operații:
+
+-   verificarea acțiunii corespunzătoare intenției, aceasta trebuie să
+    fie de tipul `NgnMessagingEventArgs.ACTION_MESSAGING_EVENT`;
+-   se obțin argumentele asociate intenției cu difuzare; acestea au
+    tipul `NgnMessagingEventArgs` și pot fi obținute din câmpul `extra`
+    al intenției, fiind regăsite sub cheia
+    `NgnEventArgs.EXTRA_EMBEDDED`; acesta pune la dispoziție următoarele
+    metode:
+    -   `getEventType()` furnizează tipul de eveniment corespunzător
+        rezultatului operației legată de mesajul transmis instaneu;
+    -   `getContentType()` reprezintă tipul mesajului; de regulă se
+        procesează mesaje având tipul `NgnContentType.T140COMMAND`;
+        pentru verificarea tipului de mesaj se utilizează metoda statică
+        `equals()` a clasei `NgnStringUtils`;
+    -   `getPayload()` întoarce mesajul propriu zis, ca tablou de octeți
+        neinterpretați, reconstituirea acestuia realizându-se folosind o
+        anumită schemă de codificare (cel mai frecvent, `UTF-8`).
+
+``` java
+public class InstantMessagingBroadcastReceiver extends BroadcastReceiver {
+
+  @Override
+  public void onReceive(Context context, Intent intent) {
+    String action = intent.getAction();
+    if (NgnMessagingEventArgs.ACTION_MESSAGING_EVENT.equals(action)) {
+      NgnMessagingEventArgs arguments = intent.getParcelableExtra(NgnEventArgs.EXTRA_EMBEDDED);
+      if (arguments == null) {
+        Log.e(Constants.TAG, "Invalid messaging event arguments");
+        return;
+      }
+
+      switch (arguments.getEventType()) {
+        case INCOMING:
+          if (!NgnStringUtils.equals(arguments.getContentType(), NgnContentType.T140COMMAND, true)) {
+            byte[] contentBytes = arguments.getPayload();
+            if (contentBytes != null && contentBytes.length > 0) {
+              try {
+                String content = new String(contentBytes, "UTF-8");
+              } catch (UnsupportedEncodingException unsupportedEncodingException) {
+                Log.e(Constants.TAG, unsupportedEncodingException.toString());
+                if (Constants.DEBUG) {
+                  unsupportedEncodingException.printStackTrace();
+                }
+              }
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    }
+  }
+}
+```
+
+## Activitate de Laborator
+
+Se dorește implementarea unei aplicații Android care folosește stiva
+Android NGN pentru a realiza apeluri de voce precum și comunicație prin
+mesagerie instantanee folosind SIP.
+
+<center>
+
+<img src="/eim/laboratoare/laborator09/activitate_de_laborator01.png" width="300" alt="activitate_de_laborator01.png" />
+<img src="/eim/laboratoare/laborator09/activitate_de_laborator02.png" width="300" alt="activitate_de_laborator02.png" />
+
+</center>
+
+Proiectul conține două activități:
+
+-   `VoiceCallActivity`, folosit pentru operații de tip înregistrare /
+    deînregistrare, apeluri de voce și transmiterea de coduri DTMF;
+-   `InstantMessagingActivity`, utilizat pentru transferul de mesaje
+    instantanee.
+
+**1.** În contul Github personal, să se creeze un depozit denumit
+'Laborator09'. Inițial, acesta trebuie să fie gol (nu trebuie să bifați
+nici adăugarea unui fișier `README.md`, nici a fișierului `.gitignore`
+sau a a fișierului `LICENSE`).
+
+**2.** Să se cloneze în directorul de pe discul local conținutul
+depozitului la distanță de la
+[](https:*github.com/eim-lab/Laborator09).
+
+În urma acestei operații, directorul Laborator09 va trebui să se conțină
+directorul `labtasks`.
+
+    student@eim-lab:~$ git clone https:*github.com/eim-lab/Laborator09.git
+
+**3.** Să se încarce conținutul descărcat în cadrul depozitului
+'Laborator09' de pe contul Github personal.
+`student@eim-lab:~$ cd Laborator09
+student@eim-lab:~/Laborator09$ git remote add Laborator09_perfectstudent https:*github.com/perfectstudent/Laborator09
+student@eim-lab:~/Laborator09$ git push Laborator09_perfectstudent master
+`
+
+**4.** Să se importe în mediul integrat de dezvoltare Android Studio
+proiectul `NgnSip`.
+
+În interfața `Constants.java`, să se actualizeaze informațiile specifice
+contului SIP.
+
+\<spoiler Indicații de Rezolvare> Este necesar să se precizeze:
+
+-   numele de utilizator: atributul `USERNAME`;
+-   identificatorul utilizatorului: atributul `IDENTITY_IMPI`;
+-   parola: atributul `IDENTITY_PASSWORD`;
+-   domeniul: atributul `DOMAIN`;
+-   rețeaua din care face parte entitatea: `NETWORK_REALM`.
+
+Aceste informații pot fi preluate de la furnizorul de servicii SIP
+[](http:*admin.onsip.com), secțiunea *Users*, pentru fiecare utilizator
+în parte, în caseta *Phone Configuration*.
+
+``` java
+public interface Constants {
+  final public static String USERNAME = "...";
+  final public static String IDENTITY_IMPI = "...";
+  final public static String IDENTITY_PASSWORD = "...";
+  final public static String DOMAIN = "...";
+  final public static String NETWORK_REALM = "...";
+  * ...
+}
+```
 
 \</spoiler>
 
-## Implementarea Zonelor de Restricție Geografică (Geofencing)
+**5**. În activitatea `VoiceCallActivity`, să se implementeze
+ascultători pentru butoanele *Register* și *Unregister*:
 
-În Android, în contextul transmiterii de actualizări periodice cu
-privire la locația curentă, există posibilitatea ca un utilizator să fie
-notificat cu privire la acțiunile legate de o anumită zonă de restricție
-geografică, definită ca arie circulară, caracterizată printr-un centru,
-dat de coordonate GPS (latitudine / longitudine) și de o rază.
+-   *Register*
+    1.  va configura motorul NGN, ai cărui parametri sunt plasați sub
+        forma unor valori asociate unor chei (metoda
+        `configureStack()`);
+    2.  va porni motorul NGN (metoda `startNgnEngine()`) și va
+        înregistra activitatea principală la serviciul SIP (metoda
+        `registerSipService()`)
+-   *Unregister* va deînregistra serviciul SIP (metoda
+    `unregisterSipService()`).
 
-Este impusă restricția de a gestiona simultan maxim 100 de zone de
-restricție geografică active la un moment dat (fiecare restricție
-geografică are o perioadă de valabilitate).
+În ambele cazuri, în situația în care se produce o eroare, aceasta va fi
+jurnalizată folosind Logcat.
 
-Evenimentele generate în legătură cu o zonă de restricție geografică
-sunt legate de intrare, respectiv de ieșirea utilizatorului din acest
-spațiu, însă notificările pot fi temporizate o anumită perioadă. Acestea
-trebuie procesate pe un fir de execuție dedicat, a cărui execuție
-trebuie să fie limitată la procesările legate de un anumit tip de
-eceniment. În acest sens, va fi utilizat un obiect de tip
-`IntentService`, instanțiat în momentul în care aplicația Android este
-creată (pe metoda `onCreate()`), resursele aferente fiind eliberate în
-momentul în care aplicația Android este distrusă (pe metoda
-`onDestroy()`). Acesta va fi reutilizat atât pentru operația de tip
-adăugare cât și pentru operația de tip ștergere a unei zone de
-restricție geografică.
+\<spoiler Indicații de Rezolvare>
 
 ``` java
-Intent intent = new Intent(this, GeofenceTrackerIntentService.class);
-geofenceTrackerPendingIntent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-```
-
-Disponibilitatea unui serviciu care să realizeze procesări legate de
-zonele de restricție geografică trebuie menționată în cadrul fișierului
-`AndroidManifest.xml`:
-
-``` xml
-<manifest ...>
-  <!-- other elements -->
-  <application ...>
-    <!-- other elements -->
-    <service
-      android:name=".service.GeofenceTrackerIntentService"
-      android:exported="false"/>
-   </application>
-</manifest>
-```
-
-Metoda `onHandleIntent(Intent)` a serviciului lansat în execuție prin
-intermediul unei intenții va procesa evenimentul legat de zona de
-restricție geografică
-([GeofencingEvent](https:*developer.android.com/reference/com/google/android/gms/location/GeofencingEvent.html))
-care îi este transmis:
-
-1.  se verifică situația în care evenimentul legat de zona de restricție
-    geografică conține o eroare (informație furnizată de metoda
-    [hasError()](https:*developer.android.com/reference/com/google/android/gms/location/GeofencingEvent.html#hasError%28%29)),
-    aceasta fiind procesată în mod corespunzător (codul de eroare este
-    furnizat de metoda
-    [getErrorCode()](https:*developer.android.com/reference/com/google/android/gms/location/GeofencingEvent.html#getErrorCode%28%29):
-    1.  `GeofenceStatusCodes.GEOFENCE_NOT_AVAILABLE` - serviciul de
-        restricționare geografică nu este disponibil;
-    2.  `GEOFENCE_TOO_MANY_GEOFENCES` - au fost definite mai multe zone
-        de restricție geografică (restricționate la maxim 100);
-    3.  `GEOFENCE_TOO_MANY_PENDING_INTENTS` - există mai multe servicii
-        care procesează evenimente legate de restricționarea geografică;
-    4.  alt tip de eroare.
-2.  este obținut tipul de tranziție, prin intermediul metodei
-    [getGeofenceTransition()](https:*developer.android.com/reference/com/google/android/gms/location/GeofencingEvent.html#getGeofenceTransition%28%29)
-    1.  `Geofence.GEOFENCE_TRANSITION_ENTER` - utilizatorul a intrat în
-        zona de restricție geografică;
-    2.  `Geofence.GEOFENCE_TRANSITION_EXIT` - utilizatorul a ieșit din
-        zona de restricție geografică.
-3.  se obține lista cu zonele de restricție geografică care au
-    determinat declanșarea evenimentelor respective, prin apelarea
-    metodei
-    [getTriggeringGeofences()](https:*developer.android.com/reference/com/google/android/gms/location/GeofencingEvent.html#getTriggeringGeofences%28%29);
-    pentru fiecare obiect `Geofence` implicat, se obține identificatorul
-    (generat de regulă aleator), concatenându-se la mesajul ce conține
-    detaliile tranziției;
-4.  este creată o notificare, la accesarea căreia se va lansa o
-    activitate Android în care va putea fi vizualizat mesajul cu
-    detaliile tranziției.
-
-``` java
-@Override
-protected void onHandleIntent(Intent intent) {
-  GeofencingEvent geofencingEvent = GeofencingEvent.fromIntent(intent);
-  if (geofencingEvent.hasError()) {
-    String errorMessage = null;
-    switch(geofencingEvent.getErrorCode()) {
-      case GeofenceStatusCodes.GEOFENCE_NOT_AVAILABLE:
-        errorMessage = Constants.GEOFENCE_NOT_AVAILABLE_ERROR;
-        break;
-      case GeofenceStatusCodes.GEOFENCE_TOO_MANY_GEOFENCES:
-    errorMessage = Constants.GEOFENCE_TOO_MANY_GEOFENCES_ERROR;
-        break;
-      case GeofenceStatusCodes.GEOFENCE_TOO_MANY_PENDING_INTENTS:
-    errorMessage = Constants.GEOFENCE_TOO_MANY_PENDING_INTENTS_ERROR;
-        break;
-      default:
-    errorMessage = Constants.GEOFENCE_UNKNOWN_ERROR;
-        break;
+private class RegisterButtonClickListener implements View.OnClickListener {
+  @Override
+  public void onClick(View view) {
+    configureStack();
+    if (!startNgnEngine()) {
+      return;
     }
-    Log.e(Constants.TAG, "An exception has occurred: " + errorMessage);
-    return;
-  }
-  int geofenceTransition = geofencingEvent.getGeofenceTransition();
-  if (geofenceTransition == Geofence.GEOFENCE_TRANSITION_ENTER ||
-    geofenceTransition == Geofence.GEOFENCE_TRANSITION_EXIT) {
-    List<Geofence> triggeringGeofences = geofencingEvent.getTriggeringGeofences();
-    StringBuffer transitionStringDetails = null;
-    switch(geofenceTransition) {
-      case Geofence.GEOFENCE_TRANSITION_ENTER:
-        transitionStringDetails = new StringBuffer(Constants.GEOFENCE_TRANSITION_ENTER);
-    break;
-      case Geofence.GEOFENCE_TRANSITION_EXIT:
-    transitionStringDetails = new StringBuffer(Constants.GEOFENCE_TRANSITION_EXIT);
-    break;
-      default:
-        transitionStringDetails = new StringBuffer(Constants.GEOFENCE_TRANSITION_UNKNOWN);
-    break;
-    }
-    transitionStringDetails.append(": ");
-    for (Geofence geofence: triggeringGeofences) {
-      transitionStringDetails.append(geofence.getRequestId() + ", ");
-    }
-    String transitionString = transitionStringDetails.toString();
-    if (transitionString.endsWith(", ")) {
-      transitionString = transitionString.substring(0, transitionString.length() - 2);
-    }
-    sendNotification(transitionString);
-    Log.i(Constants.TAG, "The geofence tansaction has been processed: " + transitionString);
-  } else {
-    Log.e(Constants.TAG, "An exception has occurred: " + Constants.GEOFENCE_TRANSITION_UNKNOWN + " " + geofenceTransition);
+    registerSipService();
   }
 }
 ```
 
-Transmiterea propriu-zisă a notificării implică invocarea unei
-activități prin intermediul unui obiect de tip `PendingIntent`. Aceasta
-este atașată unei ierarhii, fiind transmisă prin plasarea sa pe stiva de
-activități.
-
-``` xml
-<manifest ...>
-  <!-- other elements -->
-  <application ...>
-    <!-- other elements -->
-    <activity
-      android:name=".graphicuserinterface.GoogleMapsGeofenceEventActivity"
-      android:parentActivityName=".graphicuserinterface.GoogleMapsActivity">
-      <metadata
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".graphicuserinterface.GoogleMapsActivity"/>
-    </activity>
-  </application>
-</manifest>
-```
-
 ``` java
-private void sendNotification(String notificationDetails) {
-  Intent notificationIntent = new Intent(getApplicationContext(), GoogleMapsGeofenceEventActivity.class);
-  notificationIntent.putExtra(Constants.NOTIFICATION_DETAILS, notificationDetails);
-        
-  TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-  stackBuilder.addParentStack(GoogleMapsGeofenceEventActivity.class);
-  stackBuilder.addNextIntent(notificationIntent);
-
-  PendingIntent notificationPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-
-  NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-  builder.setSmallIcon(R.drawable.ic_launcher)
-    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher))
-    .setColor(Color.RED)
-    .setContentTitle(Constants.GEOFENCE_TRANSITION_EVENT)
-    .setContentText(notificationDetails)
-    .setContentIntent(notificationPendingIntent);
-  builder.setAutoCancel(true);
-
-  NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-  notificationManager.notify(0, builder.build());
+private class UnregisterButtonClickListener implements View.OnClickListener {
+  @Override
+  public void onClick(View view) {
+    unregisterSipService();
+  }
 }
 ```
 
-Operațiile care pot fi realizate legate de o zonă de restricție
-geografică sunt:
+\</spoiler>
 
-**1.** adăugarea unei zone de restricție geografică.
+**6.** Să se activeze / dezactiveze ascultătorul pentru mesaje cu
+difuzare `RegistrationBroadcastReceiver`, folosind filtrul
+`NgnRegistrationEventArgs.ACTION_REGISTRATION_EVENT`. Acesta prelucrează
+mesajele legate de operațiile de înregistrare / deînregistrare, pe care
+le jurnalizează în Logcat, utilizatorul putând să le vizualizeze și în
+interfața grafică prin intermediul unor ferestre de tip `Toast` precum
+și într-un câmp text care conține starea curentă (*Registered*,
+*Registration in progress*, *Unregistration in progress*,
+*Unregistered*, *Failed to register*, *Failed to unregster*).
 
-O zonă de restricție geografică este construit prin intermediul unei
-clase
-[Geofence.Builder](https:*developer.android.com/reference/com/google/android/gms/location/Geofence.Builder.html),
-în care se specifică parametrii acesteia:
-
--   [setCircularRegion(double, double,
-    float)](https:*developer.android.com/reference/com/google/android/gms/location/Geofence.Builder.html#setCircularRegion%28double,%20double,%20float%29) -
-    se indică coordonatele zonei de restricție geografice:
-    -   centru - latitudine + longitudine;
-    -   raza;
--   [setExpirationDuration(long)](https:*developer.android.com/reference/com/google/android/gms/location/Geofence.Builder.html#setExpirationDuration%28long%29) -
-    se precizează durata de timp (exprimată în milisecunde) după care
-    zona de restricția geografică nu va mai fi activă;
--   [setLoiteringDelay(int)](https:*developer.android.com/reference/com/google/android/gms/location/Geofence.Builder.html#setLoiteringDelay%28int%29) -
-    se exprimă o durată de timp (exprimată în milisecunde) în care este
-    temporizată transmiterea de notificări, în situația în care se
-    produc evenimente legate de zona de restricție geografică, cu durata
-    mai mică decât cea indicată;
--   [setNotificationResponsiveness(int)](https:*developer.android.com/reference/com/google/android/gms/location/Geofence.Builder.html#setNotificationResponsiveness%28int%29) -
-    se stabilește durata de timp (exprimată în milisecunde) după care va
-    fi transmisă notificarea;
--   [setRequestId(String)](https:*developer.android.com/reference/com/google/android/gms/location/Geofence.Builder.html#setRequestId%28java.lang.String%29) -
-    se asociază un identificator unic, prin care zona de restricție
-    geografică va putea fi referită în cadrul aplicației Android;
--   [setTransitionTypes(int)](https:*developer.android.com/reference/com/google/android/gms/location/Geofence.Builder.html#setTransitionTypes%28int%29) -
-    se asociază tipurile de tranziții pentru care se vor transmite
-    notificări (de regulă, `Geofence.GEOFENCE_TRANSITION_ENTER` și
-    `Geofence.GEOFENCE_TRANSITION_EXIT`).
-
-O solicitare legată de o zonă de restricție geografică, conținută de un
-obiect
-[GeofencingRequest](http:*developer.android.com/reference/com/google/android/gms/location/GeofencingRequest.html),
-este construită prin apelul metodelor `addGeofence(Geofence)` /
-`addGeofences(List<Geofence>)`, respectiv `build()` din cadrul clasei
-ajutătoare
-[GeofencingRequest.Builder](http:*developer.android.com/reference/com/google/android/gms/location/GeofencingRequest.Builder.html).
-
-Operația de adăugare este realizată prin apelul metodei
-[addGeofences(GoogleApiClient, GeofencingRequest,
-PendingIntent)](http:*developer.android.com/reference/com/google/android/gms/location/GeofencingApi.html#addGeofences%28com.google.android.gms.common.api.GoogleApiClient,%20com.google.android.gms.location.GeofencingRequest,%20android.app.PendingIntent%29)
-din clasa
-[GeofencingApi](http:*developer.android.com/reference/com/google/android/gms/location/GeofencingApi.html).
-Rezultatul acestei operații este furnizat prin intermediul unei clase
-ascultător
-[ResultCallback\<T>](http:*developer.android.com/reference/com/google/android/gms/common/api/ResultCallback.html),
-pentru care se implementează metoda `onResult(T)`. Aceasta trebuie
-precizată explicit prin metoda
-[setREsultCallback(ResultCallback\<T>)](http:*developer.android.com/reference/com/google/android/gms/common/api/PendingResult.html#setResultCallback%28com.google.android.gms.common.api.ResultCallback%3CR%3E%29),
-aplicabilă obiectului de tip
-[PendingResult](http:*developer.android.com/reference/com/google/android/gms/common/api/PendingResult.html),
-construit anterior.
+\<spoiler Indicații de Rezolvare> Operațiile de activare / dezactivare
+vor fi realizate pe metodele `onCreate()` respectiv `onDestroy()`.
 
 ``` java
-private void addGeofence(String latitude, String longitude, String radius) {
-  if (googleApiClient == null || !googleApiClient.isConnected()) {
-    Toast.makeText(
-      GoogleMapsActivity.this,
-      "Google API Client is null or not connected!",
-      Toast.LENGTH_SHORT
-    ).show();
-    return;
-  }
-  if (latitude == null || latitude.isEmpty() ||
-    longitude == null || longitude.isEmpty() ||
-    radius == null || radius.isEmpty()) {
-    Toast.makeText(
-      GoogleMapsActivity.this,
-      "All fields (gps coordinates, radius) should be filled!",
-      Toast.LENGTH_SHORT
-    ).show();
-    return;
-  }
-  geofenceList.add(new Geofence.Builder()
-    .setRequestId(Utilities.generateGeofenceIdentifier(Constants.GEOFENCE_IDENTIFIER_LENGTH))
-    .setCircularRegion(
-      Double.parseDouble(latitude),
-      Double.parseDouble(longitude),
-      Float.parseFloat(radius)
-    )
-    .setExpirationDuration(Constants.GEOFENCE_EXPIRATION_IN_MILLISECONDS)
-    .setTransitionTypes(
-      Geofence.GEOFENCE_TRANSITION_ENTER |
-      Geofence.GEOFENCE_TRANSITION_EXIT
-    )
-    .build());
-  GeofencingRequest.Builder builder = new GeofencingRequest.Builder();
-  builder.setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER);
-  builder.addGeofences(geofenceList);
-  GeofencingRequest geofencingRequest = builder.build();
-  LocationServices.GeofencingApi.addGeofences(
-    googleApiClient,
-    geofencingRequest,
-    geofenceTrackerPendingIntent
-  ).setResultCallback(GoogleMapsActivity.this);
+public void enableRegistrationBroadcastReceiver() {
+  registrationBroadcastReceiver = new RegistrationBroadcastReceiver(registrationStatusTextView);
+  registrationIntentFilter = new IntentFilter();
+  registrationIntentFilter.addAction(NgnRegistrationEventArgs.ACTION_REGISTRATION_EVENT);
+  registerReceiver(registrationBroadcastReceiver, registrationIntentFilter);
 }
 ```
 
-**2.** ștergerea unei zone de restricție geografică:
-
-Operația de ștergere este realizată prin apelul metodei
-[removeGeofences(GoogleApiClient,
-PendingIntent)](https:*developer.android.com/reference/com/google/android/gms/location/GeofencingApi.html#removeGeofences%28com.google.android.gms.common.api.GoogleApiClient,%20android.app.PendingIntent%29)
-din clasa
-[GeofencingApi](http:*developer.android.com/reference/com/google/android/gms/location/GeofencingApi.html),
-aceasta referindu-se la toate zonele de restricție geografică.
-Rezultatul acestei operații este furnizat prin intermediul unei clase
-ascultător
-[ResultCallback\<T>](http:*developer.android.com/reference/com/google/android/gms/common/api/ResultCallback.html),
-pentru care se implementează metoda `onResult(T)`. Aceasta trebuie
-precizată explicit prin metoda
-[setREsultCallback(ResultCallback\<T>)](http:*developer.android.com/reference/com/google/android/gms/common/api/PendingResult.html#setResultCallback%28com.google.android.gms.common.api.ResultCallback%3CR%3E%29),
-aplicabilă obiectului de tip
-[PendingResult](http:*developer.android.com/reference/com/google/android/gms/common/api/PendingResult.html),
-construit anterior.
-
 ``` java
-private void removeGeofence() {
-  if (googleApiClient == null || !googleApiClient.isConnected()) {
-    Toast.makeText(
-      GoogleMapsActivity.this,
-      "Google API Client is null or not connected!",
-      Toast.LENGTH_SHORT
-    ).show();
-    return;
+public void disableRegistrationBroadcastReceiver() {
+  if (registrationBroadcastReceiver != null) {
+    unregisterReceiver(registrationBroadcastReceiver);
+    registrationBroadcastReceiver = null;
   }
-  latitudeEditText.setText(new String());
-  longitudeEditText.setText(new String());
-  radiusEditText.setText(new String());
-  geofenceList.clear();
-  LocationServices.GeofencingApi.removeGeofences(
-    googleApiClient,
-    geofenceTrackerPendingIntent
-  ).setResultCallback(GoogleMapsActivity.this);
 }
 ```
 
-Se poate observa faptul că ambele operații au nevoie de un client Google
-API nenul și care să fie conectat, motiv pentru care anterior sunt
-realizate verificările de rigoare, cu semnalarea eventualelor erori.
+\</spoiler>
 
-Zonele de restricție geografică sunt menținute în cadrul unei liste,
-actualizată corespunzător pentru fiecare dintre operațiile de adăugare /
-ștergere.
+**7.** În aplicația Android, există un câmp text editabil în care se va
+preciza adresa SIP destinație, precum și două butoane care pornesc /
+opresc apelul.
 
-Metoda `onResult(Status)`, care furnizează rezultatul operațiilor de
-adăugare / ștergere a unei zone de restricție geografică, conține
-informații suplimentare cu privire la situația curentă:
-
-1.  `isSuccess()` - operația a fost realizată cu success sau cu eșec;
-2.  `getStatusCode()` - codul de stare, în situația în care s-a produs o
-    eroare.
+Să se creeaze o sesiune către adresa SIP destinație:
 
 ``` java
-@Override
-public void onResult(Status status) {
-  if (status.isSuccess()) {
-    geofenceStatus = !geofenceStatus;
-  } else {
-    String errorMessage = null;
-    switch(status.getStatusCode()) {
-      case GeofenceStatusCodes.GEOFENCE_NOT_AVAILABLE:
-        errorMessage = Constants.GEOFENCE_NOT_AVAILABLE_ERROR;
-        break;
-      case GeofenceStatusCodes.GEOFENCE_TOO_MANY_GEOFENCES:
-        errorMessage = Constants.GEOFENCE_TOO_MANY_GEOFENCES_ERROR;
-        break;
-      case GeofenceStatusCodes.GEOFENCE_TOO_MANY_PENDING_INTENTS:
-        errorMessage = Constants.GEOFENCE_TOO_MANY_PENDING_INTENTS_ERROR;
-        break;
-      default:
-    errorMessage = Constants.GEOFENCE_UNKNOWN_ERROR;
-        break;
+NgnAVSession.createOutgoingSession(
+  NgnEngine.getInstance().getSipService().getSipStack(),
+  NgnMediaType.Audio
+);
+```
+
+Pe baza acestei sesiuni, să se pornească apelul cu `makeCall()`, și să
+se oprească cu `hangUpCall()`.
+
+Să se implementeze metodele specifice, asociate claselor ascultător
+pentru operația de apăsare a butoanelor *Make Call*, respectiv *Hang up
+Call*.
+
+\<spoiler Indicații de Rezolvare>
+
+``` java
+private class MakeCallButtonListener implements View.OnClickListener {
+  @Override
+  public void onClick(View view) {
+    String validUri = NgnUriUtils.makeValidSipUri(SIPAddressEditText.getText().toString());
+    if (validUri == null) {
+      Log.e(Constants.TAG, "Invalid SIP address");
+      return;
     }
-    Log.e(Constants.TAG, "An exception has occurred while turning the geofencing on/off: " + status.getStatusCode() + " " + errorMessage);
+    if (!ngnEngine.isStarted() || !ngnSipService.isRegistered()) {
+      Log.e(Constants.TAG, "NGN Engine is not started or NGN Sip Service is not registered!");
+      return;
+    }
+    ngnAVSession = NgnAVSession.createOutgoingSession(
+      NgnEngine.getInstance().getSipService().getSipStack(),
+      NgnMediaType.Audio
+    );
+    if (ngnAVSession.makeCall(validUri)) {
+      callStatusTextView.setText(getResources().getString(R.string.calling));
+      Log.d(Constants.TAG, "Call succeeded");
+    } else {
+      Log.d(Constants.TAG, "Call failed");
+    }
   }
 }
 ```
 
-În situația în care aplicația este întreruptă, informațiile legate de
-zonele geografice trebuie gestionate corespunzător, fiind recomandat ca
-persistența să fie realizată prin intermediul unui obiect de tip
-`SharedPreferences`.
+``` java
+private class HangupCallButtonListener implements View.OnClickListener {
+  @Override
+  public void onClick(View view) {
+    if (ngnAVSession != null) {
+      ngnAVSession.hangUpCall();
+      Log.d(Constants.TAG, "Hang Up");
+    }
+  }
+}
+```
 
-1.  atunci când aplicația Android nu mai este vizibilă, se salvează
-    datele și sunt șterse toate zonele de restricție geografică, astfel
-    încât să nu mai fie transmise notificări;
-2.  atunci când aplicația Android este vizibilă, se încarcă datele și
-    sunt adăugate toate zonele de restricție geografică, în cazul în
-    care acestea au fost definite anterior.
+\</spoiler>
 
+---
+**Note**
 
+Sesiunea trebuie menținută ca membru al activității, deoarece
+este necesară și pentru alte operații.\
 
+---
+
+**8.** Să se activeze / dezactiveze ascultătorul pentru mesaje cu
+difuzare `CallStateBroadcastReceiver`, folosind filtrul
+`NgnInviteEventArgs.ACTION_INVITE_EVENT`.
+
+Acesta prelucrează mesajele legate de operațiile legate de apelurile de
+voce, pe care le jurnalizează în Logcat, utilizatorul putând să le
+vizualizeze și în interfața grafică prin intermediul unor ferestre de
+tip `Toast` precum și într-un câmp text care conține starea curentă
+(*Incoming call*, *Call started*, *Call ended*, *Call state*).
+
+\<spoiler Indicații de Rezolvare> Operațiile de activare / dezactivare
+vor fi realizate pe metodele `onCreate()` respectiv `onDestroy()`.
+
+``` java
+public void enableCallStateBroadcastReceiver() {
+  callStateBroadcastReceiver = new CallStateBroadcastReceiver(SIPAddressEditText, callStatusTextView);
+  callIntentFilter = new IntentFilter();
+  callIntentFilter.addAction(NgnInviteEventArgs.ACTION_INVITE_EVENT);
+  registerReceiver(callStateBroadcastReceiver, callIntentFilter);       
+}
+```
+
+``` java
+public void disableCallStateBroadcastReceiver() {
+  if (callStateBroadcastReceiver != null) {
+    unregisterReceiver(callStateBroadcastReceiver);
+    callStateBroadcastReceiver = null;
+  }
+}
+```
+
+\</spoiler>
+
+**9.** Să se testeze un apel de voce către o adresă SIP de test
+(`thetestcall@getonsip.com`).
+
+Să se analizeze conversația SIP la nivel pachet:
+
+    student@eim-lab:/opt/android-sdk-linux/platform-tools$ ./adb -s 192.168.56.101:5555 shell
+
+În consola sistemului de operare Android, se folosește utilitarul
+`tcpdump` pentru monitorizarea traficului de pachete.
+
+Binarele pentru acest utilitar, precompilate pentru sisteme de operare
+Android, folosind arhitecturi ARM, pot fi descărcate de pe [Android TCP
+Dump](http:*www.androidtcpdump.com).
+
+În situația în care este necesar ca acest utilitar să fie instalat pe
+alte arhitecturi (de exemplu, Genymotion folosește `x86`), binarul
+acestuia poate fi obținut folosind utilitarul
+[build-android-tcpdump](https:*github.com/imrivera/build-android-tcpdump)
+care însă are nevoie de NDK precum și de alte programe (`flex`,
+`bison`).
+
+Transferul binarului `tcpdump` de pe mașina fizică pe dispozitivul mobil
+(rootat) sau pe emulator se face astfel:
+
+    student@eim-lab:/android/sdk/platform-tools$ ./adb -s 192.168.65.101:5555 push tcpdump /data/bin
+
+---
+**Note**
+
+ Utilitarul `tcpdump` se instalează în `/data/bin`, apoi se
+conferă drepturi de execuție pentru binar:
+
+    root@android:/data/bin# chmod 777 tcpdump
+
+\
+
+---
+
+Monitorizarea propriu-zisă a pachetelor UDP pe interfața de rețea `eth1`
+poate fi realizată prin intermediul următoarei comenzi:
+
+    root@android:/# ./tcpdump -s0 -ni eth1 -w /sdcard/DCIM/sip.pcap 'udp'
+
+Se pornește apelul audio și după ce se termină mesajul, se oprește.
+
+Programul `tcpdump` este terminat prin Ctrl-C.
+
+Se obține dump-ul și se analizează folosind `wireshark`.
+
+    student@eim-lab:/opt/android-sdk-linux/platform-tools$ ./adb -s 192.168.56.101:5555 pull /sdcard/DCIM/sip.pcap
+    student@eim-lab:/opt/android-sdk-linux/platform-tools$ wireshark sip.pcap
+
+-   Să se identifice operația `REGISTER`. Ce port se utilizează? Care
+    este adresa serverului?
+
+![](images/wireshark01.png)
+
+-   Să se găsească, în răspunsul de confirmare, adresele NAT prin care
+    trece conversația, odată ce a fost acceptată cererea.
+
+![](images/wireshark02.png)
+
+-   Să se identifice operația `INVITE`. Apar retransmisii?
+
+![](images/wireshark03.png)
+
+-   Ce fel de codificare este utilizată pentru semnalul audio?
+
+![](images/wireshark04.png)
+
+-   Ce parametri are fluxul de voce (protocol, dimensiune pachet, rata
+    pachetelor)?
+
+<img src="/eim/laboratoare/laborator09/wireshark05.png" class="align-center" alt="wireshark05.png" />
+
+-   Ce adrese sunt folosite pentru traficul de voce și cum au fost
+    negociate?
+
+![](images/wireshark06.png)
+
+---
+**Note**
+
+Pornirea monitorizării (pornirea utilitarului `tcpdump`)
+trebuie realizată anterior operației de înregistrare. Similar, oprirea
+monitorizării trebuie realizată ulterior operației de deînregistrare. În
+acest fel, pot fi surprinse toate operațiile.\
+
+---
+
+**10.** (opțional) Pentru a trimite coduri numerice DTMF (Dual Tone
+Multi Frequency) se creează un buton și un câmp text editabil asociat.
+Transmiterea unui astfel de caracter se realizează prin intermediul
+metodei `sendDTMF()` a obiectului sesiune `NgnAVSession` cu valorile
+întregi 0-9, sau 10 pentru \* și 11 pentru #. Folosind o adresa de test
+(`thetestcall@getonsip.com` sau `904@mouselike.org`) să se testeze
+codurile și navigarea prin meniuri.
+
+Să se implementeze metoda asociată clasei ascultător corespunzătoare
+operației de apăsare a butonului respectiv.
+
+\<spoiler Indicații de Rezolvare>
+
+``` java
+private class DTMFButtonClickListener implements View.OnClickListener {
+  @Override
+  public void onClick(View view) {
+    if (ngnAVSession != null) {
+      int character = dtmfEditText.getText().toString().charAt(0);
+      switch(character) {
+        case '*':
+          character = 10;
+          break;
+    case '#':
+      character = 11;
+          break;
+        default:
+      if (character >= '0' && character <= '9') {
+            character -= '0';
+          }
+      }
+      if (!ngnAVSession.sendDTMF(character)) {
+    Log.e(Constants.TAG, "Failed to send DTMF " + character);
+      } else {
+    Log.d(Constants.TAG, "Succeeded to send DTMF " + character);
+      }
+    }           
+  }
+}
+```
+
+\</spoiler>
+
+**11.** Activitatea `InstantMessagingActivity` poate fi lansată din
+activitatea principală, doar ulterior operației de înregistrare. Aceasta
+primește ca argument, în intenția cu care este lansată în execuție,
+adresa SIP cu care se va desfașura sesiunea de mesagerie instantanee.
+Funcționalitatea este împărțită între activitate și ascultătorul pentru
+mesaje cu difuzare `MessageBroadcastReceiver` care trebuie să gestioneze
+evenimentele de tipul `NgnMessagingEventArgs.ACTION_MESSAGING_EVENT`.
+
+\<spoiler Indicații de Rezolvare> În activitate, se creează o sesiune
+pentru fiecare mesaj, folosind
+
+``` java
+NgnMessagingSession instantMessagingSession = NgnMessagingSession.createOutgoingSession(
+  ngnSipService.getSipStack(),
+  remotePartyUri
+);
+```
+
+Textul preluat din activitate este apoi transmis cu metoda
+`sendTextMessage()`. Nu uitați să eliberați resursele folosite de
+sesiune atunci când toate informațiile pe care aceasta le deține au fost
+preluate.
+
+``` java
+if(!instantMessagingSession.sendTextMessage(messageEditText.getText().toString())) {
+  Log.e(Constants.TAG, "Failed to send message");
+} else {
+  String conversation = conversationTextView.getText().toString();
+  conversationTextView.setText(conversation + "Me: " + messageEditText.getText().toString() + "\n");
+  messageEditText.setText("");
+  Log.d(Constants.TAG, "Succeeded to send message"); 
+}
+NgnMessagingSession.releaseSession(instantMessagingSession);
+```
+
+În ascultătorul de mesaje cu difuzare, se tratează doar acțiunea
+`NgnMessagingEventArgs.ACTION_MESSAGING_EVENT`, tipul evenimentului
+`INCOMING`, pentru a extrage octeții mesajului folosind metoda
+`getPayload()`. Aceștia se convertesc la șir de caractere și se afișează
+în fereastra care conține conversația.
+
+``` java
+if(!NgnStringUtils.equals(arguments.getContentType(), NgnContentType.T140COMMAND, true)) {
+  byte[] contentBytes = arguments.getPayload();
+  if(contentBytes != null && contentBytes.length > 0) {
+    try {
+      String content = new String(contentBytes, "UTF-8");
+      String conversation = conversationTextView.getText().toString();
+      conversationTextView.setText(conversation + "Others: " + content + "\n");
+    } catch (UnsupportedEncodingException unsupportedEncodingException) {
+      Log.i(Constants.TAG, unsupportedEncodingException.toString());
+      if (Constants.DEBUG) {
+    unsupportedEncodingException.printStackTrace();
+      }
+    }
+  }
+}
+```
+
+\</spoiler>
+
+**12.** Să se încarce modificările realizate în cadrul depozitului
+'Laborator09' de pe contul Github personal, folosind un mesaj sugestiv.
+`student@eim-lab:~/Laborator09$ git add *
+student@eim-lab:~/Laborator09$ git commit -m "implemented taks for laboratory 08"
+student@eim-lab:~/Laborator09$ git push Laborator09_perfectstudent master
+`
+
+## Resurse Utile
+
+[Introduction to SIP - A Beginners' Tutorial as part of Internet
+Multimedia](http:*www.siptutorial.net/index.html)  
+[How VoIP Works?](http:*computer.howstuffworks.com/ip-telephony.htm)  
+[Session Initiation Protocol (Tutorial's
+Point)](http:*www.tutorialspoint.com/session_initiation_protocol/session_initiation_protocol_introduction.htm)  
+[Session Initiation Protocol -
+Wikipedia](https:*en.wikipedia.org/wiki/Session_Initiation_Protocol)  
+[CSipSimple](https:*play.google.com/store/apps/details?id=com.csipsimple&hl=en)  
+[WebRTC](https:*webrtc.org/)

@@ -98,28 +98,45 @@
   - [Activitate de Laborator](lab5/exercises.md)
   - [Activitate de Laborator (Kotlin)](lab5/exercises-kotlin.md)
 
-- [6. Comunicare prin Bluetooth](lab9/protocol.md)
-  - [Bluetooth in Android](lab9/overview.md)
-  - [Handler](lab9/handler.md)
-  - [Activitate Laborator](lab9/activity.md)
-    - [MainActivity](lab9/main_activity.md)
-    - [Communication with Bluetooth](lab9/communication_rfc_bluetooth.md)
-    - [Bluetooth App UI](lab9/bluetooth_app_ui.md)
-    - [Resurse Utile](lab9/resources.md)
+---
+- C O L O C V I U   1
+---
+- [6. Comunicația prin Sockeți TCP](lab6/lab6.md)
 
-- [7. Comunicația prin Sockeți TCP](lab6/lab6.md)
-- [8. Invocarea de Servicii Web prin Protocolul HTTP](lab7/lab7.md)
-  - [Protocolul HTTP](lab7/http.md)
-  - [API interactiune HTTP](lab7/http_api.md)
-    - [HttpURLConnection](lab7/httpurlconnection.md)
-    - [Biblioteca Apache HTTP Components](lab7/apache_http.md)
-  - [Prelucrarea DOM (Document Object Model)](lab7/dom.md)
-  - [Parsare JSON](lab7/json.md)
-  - [Exercitii](lab7/exercises.md)
-- [9. Descoperirea Serviciilor de Rețea](lab8/lab8.md)
 
-- [10. Utilizarea Serviciilor de Localizare](lab10/lab10.md)
-  - [Exercitii](lab10/exercises.md)
+- [7. Comunicare prin Bluetooth](lab7/protocol.md)
+  - [Bluetooth in Android](lab7/overview.md)
+  - [Handler](lab7/handler.md)
+  - [Activitate Laborator](lab7/activity.md)
+    - [MainActivity](lab7/main_activity.md)
+    - [Communication with Bluetooth](lab7/communication_rfc_bluetooth.md)
+    - [Bluetooth App UI](lab7/bluetooth_app_ui.md)
+    - [Resurse Utile](lab7/resources.md)
+
+
+- [8. Invocarea de Servicii Web prin Protocolul HTTP](lab8/lab8.md)
+  - [Protocolul HTTP](lab8/http.md)
+  - [API interactiune HTTP](lab8/http_api.md)
+    - [HttpURLConnection](lab8/httpurlconnection.md)
+    - [Biblioteca Apache HTTP Components](lab8/apache_http.md)
+  - [Prelucrarea DOM (Document Object Model)](lab8/dom.md)
+  - [Parsare JSON](lab8/json.md)
+  - [Exercitii](lab8/exercises.md)
+
+
+- [9. Descoperirea Serviciilor de Rețea](lab9/lab9.md)
+
+- [10. Voip](lab10/lab10.md)
+
+- [11. Utilizarea Serviciilor de Localizare](lab11/lab11.md)
+  - [Exercitii](lab11/exercises.md)
+
+---
+- C O L O C V I U   2
+---
+
+
+
 
 # Informaţii Administrative
 - [Regulament](resources/rules.md)
