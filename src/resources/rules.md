@@ -15,22 +15,22 @@ Nota la disciplina Elemente de Informatică Mobilă este formată din:
 
 ```
 Final 	ACTIVITATE PE PARCURS
-        Test curs 	Colocvii Lab	Bonus lab 	Bonus curs
- 30%    20%         40% 	 10%    10% 	    10% 
+        Test curs 	Colocvii 	Bonus lab 	Bonus curs
+ 30%    20%         50% 	    10% 	    10% 
 ```
 
 Pentru promovarea disciplinei, este necesar să se întrunească, **în ordine**, următoarele condiții:
-  * maximum 3 absențe la laborator 
-  * obținerea unui punctaj de minim, oricare dintre: 
-	1. fie 25p din cele 60p pentru colocvii + lab + bonus lab (50p + 10p)
-	2. fie 40p din cele 80p pentru punctajul de colocvii + lab + bonus lab + partial (40p + 10p + 20p + 10p)
-  * obținerea unui punctaj general (≥ 50%)
+  1.  maximum 3 absențe la laborator 
+  2. obținerea unui punctaj de minim, oricare dintre: 
+	  - 2a. fie 25p din cele 60p pentru colocvii + bonus lab (50p + 10p)
+	  - 2b. fie 40p din cele 80p pentru punctajul de colocvii + bonus lab + partial (50p + 10p + 20p)
+  3. obținerea unui punctaj general (≥ 50%)
  
 
 ### Test final
 
 Testul final este scris și se desfașoară în sesiunea de iarnă. El poate
-fi susținut de studenții cu unul dintre minime obținute pe parcurs).  Nu este
+fi susținut de studenții cu unul dintre minime obținute pe parcurs.  Nu este
 permis accesul cu dispozitive electronice de comunicare sau cu materiale scrise (closed book).
 
 ### Test parțial
@@ -41,14 +41,13 @@ permis accesul cu dispozitive electronice de comunicare sau cu materiale scrise 
 
 ### Colocvii
 
-In săptămânile ~6 și 14, în cadrul orelor de laborator, se vor desfășura două colocvii la care prezența este obligatorie. Colocviul este un test practic, desfășurat pe parcursul unui interval de timp limitat, în care se solicită rezolvarea unui set de sarcini punctate independent. Pe tot parcursul colocviului, este permisă consultarea documentației, inclusiv în format electronic. Este strict interzisă folosirea oricăror mijloace de comunicație pentru a colabora cu colegii sau cu alte persoane.
+In săptămânile ~7 și 14, în cadrul orelor de laborator, se vor desfășura două colocvii la care prezența este obligatorie. Colocviul este un test practic, desfășurat pe parcursul unui interval de timp limitat, în care se solicită rezolvarea unui set de sarcini punctate independent. Pe tot parcursul colocviului, este permisă consultarea documentației, inclusiv în format electronic. Este strict interzisă folosirea oricăror mijloace de comunicație pentru a colabora cu colegii sau cu alte persoane.
 
-Punctajul total maxim pentru cele două colocvii este de 40p, acesta
-este distribuit 20p primului colocviu, 40p celui de-al doilea.
+Punctajul total maxim pentru cele două colocvii este de 50p, acesta
+este distribuit 20p primului colocviu, 30p celui de-al doilea.
 Nu este posibilă refacerea colocviilor în sesiunile de restanțe. 
 
-### Bonus laborator
-Activitatea la laborator se punctează cu 10p. 
+### Bonus laborator 
 Pe parcursul celor 2 ore de laborator veți avea acces (doar din XXX???) la un chestionar de 3 întrebări / 3 minute care verifică parcurgerea materialului pregătitor acelei săptămâni (întrebările au un singur răspuns corect). Pentru a avea acces la chestionare, trebuie să folosiți conturile de [Moodle](https://acs.curs.pub.ro/) pe site-ul [wi-fi.cs.pub.ro/eim](http://wi-fi.cs.pub.ro/eim)
 
 Scorul obținut la aceste chestionare va adăuga încă 10p (1 punct la nota finală).
@@ -65,7 +64,7 @@ Exemenele din sesiunea de restanță se desfășoară **oral**, și sunt pentru 
 ## Organizare
 -------------
 
-  * Laboratorul se desfășoară pe semigrupe, are alocate 2 ore săptămânal și se desfășoară în sala EG106. 
+  * Laboratorul se desfășoară pe semigrupe, are alocate 2 ore săptămânal și se desfășoară în sala EG206/EG103c. 
   
   * Laboratoarele sunt obligatorii (cf. Regulamentului UPB), dar un maximum de 3 absențe sunt acceptabile. 
 
