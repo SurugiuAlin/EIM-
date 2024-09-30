@@ -31,15 +31,15 @@
 
 | **Grupa** | **Zi**     | **Ora**     | **Sala** | **Asistent** |
 |-----------|------------|-------------|----------|--------------|
-| 341C2     | luni       | 08.00-10.00 | EG206    | Alex         |
-| 341C2     | marți      | 08.00-10.00 | EG206    | Ana          |
-| 342C2     | marți      | 18.00-20.00 | EG206    | Cristian     |
-| 342C2     | miercuri   | 08.00-10.00 | EG206    | Iulia        |
-| 343C2     | miercuri   | 08.00-10.00 | EG103b   | Ana          |
+| 341C2     | luni       | 08.00-10.00 | EG103b   | Alex         |
+| 341C2     | marți      | 08.00-10.00 | EG103b   | Ana          |
+| 342C2     | marți      | 18.00-20.00 | EG103b   | Cristian     |
+| 342C2     | miercuri   | 08.00-10.00 | EG105    | Iulia        |
+| 343C2     | miercuri   | 08.00-10.00 | EG206    | Ana          |
 | OPT       | miercuri   | 12.00-14.00 | EG206    | Nic          |
 | OPT       | miercuri   | 14.00-16.00 | EG206    | Nic          |
-| OPT       | joi        | 14.00-16.00 | EG206    | Vlad         |
-| 343C2     | joi        | 16.00-18.00 | EG206    | Vlad         |
+| OPT       | joi        | 14.00-16.00 | EG103b   | Vlad         |
+| 343C2     | joi        | 16.00-18.00 | EG103b   | Vlad         |
 |           | Kotlin Prj | TBD         | Teams    | Bianca/Vlad/Nic/Dragoș  |
 
 > Săptămâna de laborator începe joi (14.00) și se termină miercuri (16.00). 
