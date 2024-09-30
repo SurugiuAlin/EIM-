@@ -99,7 +99,7 @@
   - [Activitate de Laborator (Kotlin)](lab5/exercises-kotlin.md)
 
 ----
-- C O L O C V I U   1
+- [C O L O C V I U   1]()
 ----
 - [6. Comunicația prin Sockeți TCP](lab6/lab6.md)
 
@@ -132,7 +132,7 @@
   - [Exercitii](lab11/exercises.md)
 
 ----
-- C O L O C V I U   2
+- [C O L O C V I U   2]()
 ----
 
 
