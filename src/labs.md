@@ -24,23 +24,23 @@
 | **Seria**      | **Zi** | **Ora**     | **Sala** | **Instructor** |
 |----------------|--------|-------------|----------|----------------|
 | C2 + opționali | marți ambele | 10.00-12.00 | EG301    | Dragoș         |
-| C2 + opționali | joi impare  | 10.00-12.00 | PR002    | Dragoș         |
+| C2 + opționali | joi pare  | 12.00-14.00 | PR002    | Dragoș         |
 
 ### Laborator
 
 
 | **Grupa** | **Zi**     | **Ora**     | **Sala** | **Asistent** |
 |-----------|------------|-------------|----------|--------------|
-| 341C1     | marti      | 12.00-14.00 | EG106    | Nic          |
-| 341C1     | marti      | 14.00-16.00 | EG106    | Nic          |
-| 342C1     | miercuri   | 08.00-10.00 | EG106    | Alex         |
-| 342C1     | miercuri   | 10.00-12.00 | EG106    | Dragos       |
-| OPT       | miercuri   | 12.00-14.00 | EG106    | Dragos       |
-| OPT       | miercuri   | 14.00-16.00 | EG106    | Dragos       |
-| OPT       | miercuri   | 16.00-18.00 | EG106    | Dragos       |
-| 343C1     | vineri     | 14.00-16.00 | EG106    | Vlad         |
-| 343C1     | vineri     | 16.00-18.00 | EG106    | Vlad         |
-|           | Kotlin Prj | TBD         | Teams    | Bianca/Vlad  |
+| 341C2     | luni       | 08.00-10.00 | EG206    | Alex         |
+| 341C2     | marți      | 08.00-10.00 | EG206    | Ana          |
+| 342C2     | marți      | 18.00-20.00 | EG206    | Cristian     |
+| 342C2     | miercuri   | 08.00-10.00 | EG206    | Iulia        |
+| 343C2     | miercuri   | 08.00-10.00 | EG103b   | Ana          |
+| OPT       | miercuri   | 12.00-14.00 | EG206    | Vlad         |
+| OPT       | miercuri   | 14.00-16.00 | EG206    | Vlad         |
+| OPT       | joi        | 14.00-16.00 | EG206    | Nic          |
+| 343C2     | joi        | 16.00-18.00 | EG206    | Nic          |
+|           | Kotlin Prj | TBD         | Teams    | Bianca/Vlad/Nic/Dragoș  |
 
 > Săptămâna de laborator începe vineri (14.00) și se termină miercuri (18.00). 
 
