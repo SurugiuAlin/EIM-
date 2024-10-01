@@ -122,3 +122,17 @@ public class LifecycleMonitorActivity extends Activity {
   
 }
 ```
+
+``` kotlin
+kotlin
+#public override fun onCreate(savedInstanceState: Bundle?) {
+#        super.onCreate(savedInstanceState)
+#        ...
+#}        
+
+#public override fun onRestart() {
+#        super.onRestart()
+#        ...
+#}
+
+```
