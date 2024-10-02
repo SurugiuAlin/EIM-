@@ -1,6 +1,10 @@
 # Arhitectura Android
 
-Arhitectura sistemului de operare Android are la baza kernel-ul Linux si aduce peste el mai multe modificari:
+Arhitectura sistemului de operare Android are la baza kernel-ul Linux si aduce
+peste el mai multe modificari pentru a functiona pe un mediu constrans in
+primul rand de power consumption. Pe parcursul laboratoarelor vom vedea ce
+decizii de design au fost luate in dezvoltarea acestui OS si cum au fost
+acestea influentate de catre hardware.
 
 ![](images/android_architecture.png)
 
@@ -11,9 +15,9 @@ perifericelor (audio/video, GPS, WiFi), dispozitivelor de intrare/ieșire,
 rețelei și a consumului de energie; de asemenea, au fost implementate și unele
 îmbunătățiri.
 
-**Binder**, sistemul de comunicație inter-proces, a fost adaptat, întrucât
+**Binder**, sistemul de comunicație inter-proces (IPC), a fost adaptat, întrucât
 reprezintă mediul de comunicație principal dintre aplicații și sistemul de
-operare, inclusiv funcțiile (serviciile) dispozitivului mobil; expunerea sa este
+operare (**nu avem system calls din aplicatii**, inclusiv funcțiile (serviciile) dispozitivului mobil; expunerea sa este
 realizată prin intermediul AIDL (Android Interface Definition Language) prin
 care pot fi manipulate obiecte transformate în primitive utilizate la
 comunicația propriu-zisă dintre aplicații și sistemul de operare.
