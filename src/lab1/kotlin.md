@@ -131,3 +131,7 @@ public static void main(String[] args) throws InterruptedException {
 ```
 
 > Comutarea între corutine este mai rapidă decât comutarea între thread-uri, deoarece nu implică o comutare de context la nivel de sistem de operare.
+
+Mai multe exemple de rulat în playground în ghidul 
+["Learn Kotlin by Example"](https://play.kotlinlang.org/byExample/overview)
+
