@@ -25,8 +25,6 @@ DiceWithButtonAndImage(modifier = Modifier)
 
 **3.** Vom înlănțui o metodă `fillMaxSize()` pe obiectul `Modifier` astfel încât layout-ul să umple întregul ecran.
 
-Această metodă specifică că componentele ar trebui să umple spațiul disponibil. Mai devreme în acest codelab, am văzut o captură de ecran a UI-ului final al aplicației Dice Roller. O caracteristică notabilă este că zarurile și butonul sunt centrate pe ecran. Metoda `wrapContentSize()` specifică că spațiul disponibil ar trebui să fie cel puțin la fel de mare ca componentele din interior. Cu toate acestea, deoarece se utilizează metoda `fillMaxSize()`, dacă componentele din interiorul layout-ului sunt mai mici decât spațiul disponibil, un obiect `Alignment` poate fi transmis metodei `wrapContentSize()` care specifică modul în care componentele ar trebui aliniate în spațiul disponibil.
-
 ```kotlin
 /* MainActivity.kt */
 
@@ -35,11 +33,20 @@ DiceWithButtonAndImage(modifier = Modifier
 )
 ```
 
-**4.** Vom înlănțui metoda `wrapContentSize()` pe obiectul `Modifier` și apoi vom transmite `Alignment.Center` ca argument pentru a centra componentele. `Alignment.Center` specifică că o componentă se centrează atât vertical, cât și orizontal.
 
-`MainActivity.kt`
+**4.** Centrarea obiectelor de pe ecran. Vom înlănțui metoda `wrapContentSize()` pe obiectul `Modifier` și apoi vom transmite `Alignment.Center` ca argument pentru a centra componentele. `Alignment.Center` specifică că o componentă se centrează atât vertical, cât și orizontal.
+
+Metoda `wrapContentSize()` specifică că spațiul disponibil ar trebui să fie cel
+puțin la fel de mare ca componentele din interior. Cu toate acestea, deoarece
+se utilizează metoda `fillMaxSize()`, dacă componentele din interiorul
+layout-ului sunt mai mici decât spațiul disponibil, un obiect `Alignment` poate
+fi transmis metodei `wrapContentSize()` care specifică modul în care
+componentele ar trebui aliniate în spațiul disponibil.
+
 
 ```kotlin
+/* MainActivity.kt */
+
 DiceWithButtonAndImage(modifier = Modifier
     .fillMaxSize()
     .wrapContentSize(Alignment.Center)
