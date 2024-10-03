@@ -12,11 +12,9 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
 }
 ```
 
-Codul de mai sus ar putea fi confuz, așa că îl vom descompune. Funcția permite transmiterea unui parametru `modifier`. Valoarea implicită a parametrului `modifier` este un obiect `Modifier`, de aici partea `= Modifier` din semnătura metodei. Valoarea implicită a unui parametru permite oricui apelează această metodă în viitor să decidă dacă să transmită o valoare pentru parametru. Dacă transmit propriul obiect `Modifier`, pot personaliza comportamentul și decorarea UI-ului. Dacă aleg să nu transmită un obiect `Modifier`, acesta va presupune valoarea implicită, care este obiectul `Modifier` simplu. Această practică poate fi aplicată oricărui parametru. Pentru mai multe informații despre argumentele implicite, consultați Argumente implicite.
+Funcția permite transmiterea unui parametru `modifier`. Valoarea implicită a parametrului `modifier` este un obiect `Modifier`, de aici partea `= Modifier` din semnătura metodei. Valoarea implicită a unui parametru permite oricui apelează această metodă în viitor să decidă dacă să transmită o valoare pentru parametru. Dacă transmit propriul obiect `Modifier`, pot personaliza comportamentul și decorarea UI-ului. Dacă aleg să nu transmită un obiect `Modifier`, acesta va presupune valoarea implicită, care este obiectul `Modifier` simplu. Această practică poate fi aplicată oricărui parametru. Pentru mai multe informații despre argumentele implicite, consultați Argumente implicite.
 
 **2.** Acum că funcția compozabilă `DiceWithButtonAndImage()` are un parametru modifier, vom transmite un modifier atunci când este apelată. Deoarece semnătura metodei pentru funcția `DiceWithButtonAndImage()` s-a schimbat, ar trebui transmis un obiect `Modifier` cu decorațiile dorite atunci când este apelată. Clasa `Modifier` este responsabilă pentru decorarea sau adăugarea de comportament unui compozabil în funcția `DiceRollerApp()`. În acest caz, există câteva decorații importante de adăugat la obiectul `Modifier` care este transmis funcției `DiceWithButtonAndImage()`.
-
-Ne-am putea întreba de ce ar trebui să ne deranjăm să transmitem un argument `Modifier` când există unul implicit. Motivul este că funcțiile compozabile pot suferi *recompoziție*, ceea ce înseamnă în esență că blocul de cod din metoda `@Composable` se execută din nou. Dacă un obiect `Modifier` este creat într-un bloc de cod, ar putea fi potențial recreat, ceea ce nu este eficient. Recompoziția este acoperită mai târziu în acest codelab.
 
 
 ```kotlin

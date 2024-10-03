@@ -39,7 +39,7 @@ O lambda este o funcție literală, care este o funcție ca oricare alta, dar î
 **4.** O aruncare de zaruri este aleatorie. Pentru a reflecta acest lucru în cod, trebuie să folosim sintaxa corectă pentru a genera un număr aleatoriu. În Kotlin, putem utiliza metoda `random()` pe un interval de numere. În corpul lambda al `onClick`, setăm variabila `result` la un interval între 1 și 6 și apoi apelăm metoda `random()` pe acel interval. Ne amintim că, în Kotlin, intervalele sunt desemnate prin două puncte între primul număr din interval și ultimul număr din interval.
 
 
-Acum butonul poate fi atins, dar o atingere a butonului nu va cauza încă nicio schimbare vizuală deoarece trebuie să construim acea funcționalitate.
+Acum putem interactiona cu butonul, dar mai avem de implementat functionalitatea din spatele lui.
 
 ### Adăugăm o condiție la aplicația de aruncare a zarurilor
 

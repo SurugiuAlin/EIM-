@@ -3,7 +3,6 @@
 Restructurarea codului din template-ul de **Empty Activity**. Cum am observat deja, codul din template ne afiseaza mesajul Hello World.
 Vom modifica o parte din codul generat pentru a se asemăna mai mult cu tema unei aplicații de aruncare a zarului. Vom realiza urmatoarele modificari:
 
-
 * Eliminăm funcția `GreetingPreview()`.
 * Definim o funcție `DiceWithButtonAndImage()` cu adnotarea `@Composable`. Această funcție compozabilă reprezintă componentele UI ale layout-ului și conține, de asemenea, logica pentru click-ul butonului și afișarea imaginii.
 * Eliminăm funcția `Greeting(name: String, modifier: Modifier = Modifier)`.
@@ -44,7 +43,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 
-În funcția `DiceRollerApp()`, apelează funcția `DiceWithButtonAndImage()`.
+În funcția `DiceRollerApp()`, apelam `DiceWithButtonAndImage()`, functie in care vom defini interfata grafica.
 
 ```kotlin
 /* MainActivity.kt */
