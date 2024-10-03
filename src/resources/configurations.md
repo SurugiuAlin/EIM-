@@ -1,17 +1,17 @@
 
-> comanda adb se regăsește acolo unde ați instalat SDK-ul, de exemplu la /opt/```Android/SDK/platform-tools/adb``` 
+> comanda adb se regăsește acolo unde ați instalat SDK-ul, de exemplu la: ```/opt/Android/SDK/platform-tools/adb``` 
 
 ### USB setup 
 - Dacă laptopul Linux nu vede telefonul la comanda ```adb devices```
 
-https://lynxbee.com/solved-no-permissions-user-in-plugdev-group-are-your-udev-rules-wrong/
+- [udev rules](https://lynxbee.com/solved-no-permissions-user-in-plugdev-group-are-your-udev-rules-wrong/)
 
 ### adb over wifi 
 
 
 #### using CLI 
 
-https://help.famoco.com/developers/dev-env/adb-over-wifi/
+- [adb over wifi](https://help.famoco.com/developers/dev-env/adb-over-wifi/)
 
 - Connect the device and the computer to the same Wi-Fi network
 - Plug the device to the computer with a USB cable to configure the connection
