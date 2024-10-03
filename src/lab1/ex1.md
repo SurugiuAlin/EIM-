@@ -36,6 +36,8 @@ Deoarece am eliminat funcția `Greeting()`, apelul către `Greeting("Android")` 
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
+        // Aici o sa punem numele temei, implicit este creata o tema cu numele proiectului
+        // O gasiti si in uithemes/Theme.kt
         DiceRollerTheme {
             DiceRollerApp()
         }
