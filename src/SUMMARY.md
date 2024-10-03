@@ -156,5 +156,6 @@
 
 - [Colocviu 1](resources/practical1.md)
 - [Colocviu 2](resources/practical2.md)
+- [Configurări](resources/configurations.md)
 - [Documentație Examen](resources/exam.md)
 
