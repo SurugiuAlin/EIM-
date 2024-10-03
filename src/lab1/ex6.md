@@ -93,4 +93,4 @@ Image(
 )
 ```
 
-**6.** Rulăm aplicația noastră.
+**6.** Rulăm aplicația noastră. Solutia acestui exercitiu o gasiti [aici](https://github.com/google-developer-training/basic-android-kotlin-compose-training-dice-roller/blob/main/app/src/main/java/com/example/diceroller/MainActivity.kt)

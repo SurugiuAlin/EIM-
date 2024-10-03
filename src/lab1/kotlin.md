@@ -17,12 +17,16 @@ cu Java și rulează pe Java Virtual Machine (JVM). Acesta vine cu o serie de
 **Declaratia de functii.**
 
 ```kotlin
+/* Kotlin */
+
 fun calculateSum(numbers: List<Int>): Int {
     return numbers.sum()
 }
 ```
 
 ```java
+
+/* Java */
 public int calculateSum(List<Integer> numbers) {
     int sum = 0;
     for (int number : numbers) {
@@ -35,10 +39,14 @@ public int calculateSum(List<Integer> numbers) {
 **Data classes.**
 
 ```kotlin
+/* Kotlin */
+
 data class Person(val name: String, val age: Int)
 ```
 
 ```java
+/* Java */
+
 class Person {
     private final String name;
     private final int age;
@@ -55,11 +63,14 @@ class Person {
 **Stilul functional ca first class citizen.**
 
 ```kotlin
+/* Kotlin */
+
 val numbers = listOf(1, 2, 3, 4, 5)
 val evenNumbers = numbers.filter { it % 2 == 0 } // Output: [2, 4]
 ```
 
 ```java
+/* Java */
 List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
 List<Integer> evenNumbers = numbers.stream()
                                    .filter(n -> n % 2 == 0)
@@ -69,11 +80,14 @@ List<Integer> evenNumbers = numbers.stream()
 **Null Safety.**
 
 ```kotlin
+/* Kotlin */
+
 var name: String = "John" // Non-nullable string
 // name = null // Compilation error: Null cannot be a value of a non-null type String
 ```
 
 ```java
+/* Java */
 String name = "John";
 // name = null; // Valid in Java
 ```
@@ -82,6 +96,8 @@ String name = "John";
 **Smart casting.**
 
 ```kotlin
+/* Kotlin */
+
 fun printStringLength(text: Any) {
     if (text is String) {
         println("The length of the string is: ${text.length}") // No need for explicit casting
@@ -92,6 +108,8 @@ printStringLength("Hello, Kotlin!") // Output: "The length of the string is: 14"
 ```
 
 ```java
+/* Java */
+
 void printStringLength(Object text) {
     if (text instanceof String) {
         String str = (String) text; // Explicit casting required
@@ -104,6 +122,8 @@ printStringLength("Hello, Java!"); // Output: "The length of the string is: 12"
 
 **Corutine in limbaj.**
 ```kotlin
+/* Kotlin */
+
 fun main() = runBlocking {
     launch {
         delay(1000L)
@@ -115,6 +135,8 @@ fun main() = runBlocking {
 ```
 
 ```java
+/* Java */
+
 public static void main(String[] args) throws InterruptedException {
     Thread thread = new Thread(() -> {
         try {
