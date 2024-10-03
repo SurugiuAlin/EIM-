@@ -25,6 +25,7 @@
     - [Versions](lab1/versions.md)
     - [Community](lab1/community.md)
   - [Android Studio](lab1/install_android_studio.md)
+    - [Crearea unei aplicații în Android Studio](lab1/android_studio.md)
   - [Prima Aplicatie](lab1/first_app.md)
     - [Rularea pe Telefon](lab1/run_mobile.md)
     - [Modificarea Textului](lab1/changing_the_text.md)
@@ -39,7 +40,6 @@
 
   
 - [2. Activități](lab2/lab2.md)
-  - [Android Studio](lab1/android_studio.md)
   - [Structura unei Aplicații](lab2/app_structure.md)
   - [Activitatea](lab2/activity.md)
   - [Ciclul de Viață al unei Activități](lab2/activity_lifecycle.md)
