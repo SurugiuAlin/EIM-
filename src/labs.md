@@ -39,7 +39,7 @@
 | 341C2     | miercuri   | 14.00-16.00 | EG206    | Nic          |
 | 343C2     | miercuri   | 16.00-18.00 | EG103b   | Alex         |
 | 342C2     | joi        | 14.00-16.00 | EG103b   | Vlad         |
-| 343C2     | joi        | 16.00-18.00 | EG103b   | Vlad         |
+| 343C2     | joi        | 16.00-18.00 | EG103b   | Vlad/Corina  |
 |           | Kotlin Prj | TBD         | Teams    | Bianca/Vlad/Nic/Dragoș  |
 
 > Săptămâna de laborator începe joi (14.00) și se termină miercuri (16.00). 
