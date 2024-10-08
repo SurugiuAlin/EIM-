@@ -22,8 +22,6 @@
   - [Sistemul de Operare Android](lab1/android.md)
     - [Arhitectura](lab1/architecture.md)
     - [Decizii de Design](lab1/design_choices.md)
-    - [Versions](lab1/versions.md)
-    - [Community](lab1/community.md)
   - [Android Studio](lab1/install_android_studio.md)
   - [Prima Aplicatie](lab1/first_app.md)
     - [Rularea pe Telefon](lab1/run_mobile.md)
