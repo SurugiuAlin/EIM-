@@ -69,7 +69,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 În prezent, funcția `Greeting()` primește un nume și afișează "Hello" pentru acea persoană.
 
-1. Actualizeazăm funcția `Greeting()` pentru a ne prezenta:
+1. Actualizăm funcția `Greeting()` pentru a ne prezenta:
 
 ```kotlin
 @Composable
