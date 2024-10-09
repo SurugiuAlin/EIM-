@@ -19,21 +19,24 @@ ADB este integrat în SDK-ul de Android, regăsindu-se în directorul
 
 **Comenzi ADB**
 
--   pentru a folosi ADB shell, device-ul Android trebuie să fie root-at
-    (imaginile genymotion sunt deja).
 -   comenzile ADB pot fi rulate din linia de comandă sau din script,
     având următorul
-    format:`student@eim-lab:/opt/android-sdk-linux/platform-tools$ adb [-d|-e|-s <serialNumber>] <command>
-    `
+    format:
+    ```bash
+    student@eim-lab:/opt/android-sdk-linux/platform-tools$ adb [-d|-e|-s <serialNumber>] <command>
+    ```
 -   înainte de a utiliza comenzi `adb` este important să fie cunoscut
     identificatorul dispozitivului care este conectat la serverul adb,
     acesta putând fi identificat prin comanda
-    `adb devices`:`student@eim-lab:/opt/android-sdk-linux/platform-tools$ adb devices
+    `adb devices`:
+    ```bash
+    student@eim-lab:/opt/android-sdk-linux/platform-tools$ adb devices
+
     List of devices attached 
     emulator-5556           device
     192.168.56.101:5555 device
     0123456789ABCDEF    device
-    `
+    ```
 -   conexiunea la emulator se realizează folosind comanda
     `adb -s <serialNumber> shell`
 

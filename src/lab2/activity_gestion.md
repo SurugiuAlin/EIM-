@@ -1,4 +1,3 @@
-
 #### Gestiunea Stării unei Activități
 
 Unele dintre metodele care gestionează ciclul de viață al unei

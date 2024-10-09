@@ -7,9 +7,6 @@
 - Să se încarce conținutul descărcat în cadrul depozitului `Laborator02` de pe contul Gitlab personal.
 Ne intereseaza doar folder-ul `labtasks`.
 
-> Daca aveti o eroare legata de `--add-exports=java.base/sun.nio.ch=ALL-UNNAMED`, va trebui sa
-stergeti toate linile cu `--add-exports` din `gradle.properties`.
-
 **2.** Să se încarce în mediul integrat de dezvoltare Android Studio
 proiectul `ActivityLifecycleMonitor`, folosind opțiunea *Open an
 Existing Android Studio Project*.
@@ -49,33 +46,10 @@ următoarelor evenimente:
       - se apasă butonul *lista app* 
 
 
-<details>
-  <summary>genymotion, Nexus 5X API 24, butoane "hardware"</summary>
-  
-|  |  onC rea te()  |  onR est ar t()  |  onS tar t()  |  onR esu me ()  |  onP aus e()  |  onS top ()  |  onD est roy ()  | onS ave Ins t()  | onR est ore Ins t()  |
-|-|-|-|-|-|-|-|-|-|-|
-| buton _Home_ |   |   |    |    |  1  |  3  |   |  2  |   |
-| buton _Back_ |   |   |    |    |  1  |  2  |  3  |     |   |
-| buton _OK_in app |  nici | una   | din tre   | met ode  | nu   | se  | ape lea ză  |
-| buton _lista app_  |   |   |   |   |  1  |  3  |   |  2  | |  
-| apel tele fonic |   | | | |  1  |  3  | |  2  | |  
-| acce ptare |   |  1  |  2  |   |    |    |   |  |  | 
-| resp ingere |   |   |   |   |   |   |   |
-| rotire ecran |  5  |   |  6  |   |  1  |  3  |  4  |  2  |  7  |
-
-</details>
-
-
-
-
-**6.** Să se dezactiveze opțiunea de salvare a stării.
-
-
-> În fișierul `activity_lifecycle_monitor.xml`, pentru fiecare
+**6.** Să se dezactiveze opțiunea de salvare a stării.  În fișierul `activity_lifecycle_monitor.xml`, pentru fiecare
 dintre elementele grafice pentru care se dorește să se dezactiveze
 opțiunea de salvare a stării, se va completa proprietatea
 `android:saveEnabled="false"`.
-
 
 Să se observe care este comportamentul în privința informațiilor
 reținute în elementele grafice de tip `EditText`, respectiv `CheckBox`,
@@ -86,10 +60,8 @@ dispozitivului mobil.
 
 **7.** Să se implementeze metoda `onSaveInstanceState()`, astfel încât,
 **în condițiile în care este bifat elementul grafic de tip `CheckBox`**,
-să se salveze informațiile din interfața cu utilizatorul.
-
-> Să se observe comportamentul aplicației în condițiile producerii
-evenimentului de rotire de ecran.
+să se salveze informațiile din interfața cu utilizatorul. **Să se observe comportamentul aplicației în condițiile producerii
+evenimentului de rotire de ecran.**
 
 **8.** Să se implementeze metoda `onRestoreInstanceState()` astfel
 încât să se restaureze starea elementelor grafice. Să se observe
@@ -99,11 +71,9 @@ Să se transfere comportamentul de restaurare a stării pe metoda
 `onCreate()` și să se identifice diferențele de implementare
 ([Hint](https://developer.android.com/guide/components/activities/activity-lifecycle.html#saras)).
 
-**9.** Să se încarce modificările realizate în cadrul laboratorului pe Gitlab folosint nume sugestive pentru commits.
-
 **10.** 
-Utilitarul adb (Android Debug Bridge) se află în locația unde ați instalat SDK-ul pentru studio, de exemplu '/opt/android-sdk/platform-tools/'
-Să se utilizeze comanda ```adb``` pentru a rula comenzi pe telefon:
+Utilitarul adb (Android Debug Bridge) se află în locația unde ați instalat SDK-ul pentru studio, de exemplu `/opt/android-sdk/platform-tools/`.
+Să se utilizeze comanda ```adb``` pentru a copia un fisier pe telefon si de pe telefon:
  - ```adb devices``` - vizualizează dispozitivele disponibile (telefoane sau emulatoare)
  - ```adb -s DEVICE shell ls -l /sdcard/``` - dacă e unul singur, nu mai e nevoie de -s 
  - ```adb pull /sdcard/Download .``` - pentru a descărca fișiere/directoare din device în mașina de dezvoltare
@@ -136,6 +106,4 @@ adb -s IP:5555 disconnect  IP:5555
 adb -s IP:5555 usb # seems not necessary
 ```
 
-
-
-
+**9.** Să se încarce modificările realizate în cadrul laboratorului pe Gitlab folosint nume sugestive pentru commits.

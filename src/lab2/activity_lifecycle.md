@@ -44,6 +44,7 @@ asigurarea persistenței informațiilor și a consistenței aplicației
 Android în situația producerii de diferite evenimente:
 
 <div class="tabbed-blocks">
+
   <pre><code class="language-java">
 public class LifecycleMonitorActivity extends Activity {
 

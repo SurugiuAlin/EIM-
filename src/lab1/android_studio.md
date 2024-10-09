@@ -1,10 +1,9 @@
 # Crearea unei aplicații de tip View Android în Android Studio 
 
-In cadrul laboratoarelor vom folosi Android Studio. Android Studio este un IDE de Java/Kotlin bazat pe IntelliJ special modificat pentru dezvoltarea aplicatilor Android. [Aici](https://developer.android.com/studio/install) gasiti instructiunile de instalare si un link de download. 
-
-
-> In timpul instalarii Android Studio, vom instala si Software Development Kit-ul (SDK) de Android. Va trebui sa spelectati optiunea de a instala Android SDK din timpul instalarii.
-
+Data trecuta am creat o aplicatie Android ce a folosit **Compose** ca framework
+pentru UI. De acum vom folosi Views ca framework. Spre deosebire de Compose,
+unde interfata grafica era definita direct din codul Kotlin, in Views,
+interfata grafica este descrisa intr-un fisier XML.
 
 #### Crearea unui proiect nou
 1. Deschideți Android Studio.
@@ -28,7 +27,7 @@ După acești pași, Android Studio va face urmatoarele lucruri:
 
 <img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/ecabcf48b6f7b9a1_1440.png" alt=""/>
 
-Pe baza selectării de către tine a **Basic Activity** pentru proiectul tău, Android Studio a configurat un număr de fișiere pentru tine. Poți privi ierarhia fișierelor pentru aplicația ta în multiple moduri, unul dintre acestea este în **Project view**. Project view îți arată fișierele și folderele structurate într-un mod convenabil pentru lucrul cu un proiect Android. (Aceasta nu corespunde întotdeauna cu ierarhia fișierelor! Pentru a vedea ierarhia fișierelor, alege Project files view făcând click pe (3).)
+Poți privi ierarhia fișierelor pentru aplicația ta în multiple moduri, unul dintre acestea este în **Project view**. Project view îți arată fișierele și folderele structurate într-un mod convenabil pentru lucrul cu un proiect Android. (Aceasta nu corespunde întotdeauna cu ierarhia fișierelor! Pentru a vedea ierarhia fișierelor, alege Project files view făcând click pe (3).)
 
 1. Dublu-click pe folderul **app (1)** pentru a extinde ierarhia fișierelor app. (Vezi (1) în captura de ecran.)
 2. Dacă faci click pe **Project (2)**, poți ascunde sau afișa **Project view**. S-ar putea să fie necesar să selectezi **View > Tool Windows** pentru a vedea această opțiune.

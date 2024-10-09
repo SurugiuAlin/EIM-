@@ -7,7 +7,10 @@ fi plasate datele din cadrul activității care se doresc a fi salvate,
 acestea putând fi identificate prin intermediul unei chei (de tip
 `String`).
 
-``` java
+
+<div class="tabbed-blocks">
+
+  <pre><code class="language-java">
 @Override
 protected void onSaveInstanceState(Bundle savedInstanceState) {
   /* Trebuie sa apelam metoda din clasa de baza întrucât API-ul Android
@@ -24,7 +27,28 @@ protected void onSaveInstanceState(Bundle savedInstanceState) {
   EditText usernameEditText = (EditText)findViewById(R.id.username_edit_text);
   savedInstanceState.putString("SOME_STRING_USED_AS_KEY", usernameEditText.getText().toString());
 }
-```
+
+</code></pre>
+<pre><code class="language-kotlin">
+override fun onSaveInstanceState(savedInstanceState: Bundle) {
+    /* Trebuie sa apelam metoda din clasa de baza întrucât API-ul Android
+    furnizează o implementare implicită pentru salvarea stării unei
+    activități, parcurgând ierarhia de componente grafice (obiecte de tip
+    `View`) care au asociat un identificator (`android:id`), folosit drept
+    cheie în obiectul `Bundle`. Astfel, de regulă, pentru elementele
+    interfeței grafice, nu este necesar să se mențină starea, acest lucru
+    fiind realizat în mod automat, cu respectarea condiției menționate. 
+    super.onSaveInstanceState(savedInstanceState); */
+
+    super.onSaveInstanceState(savedInstanceState)
+
+    /* Determian o referinta pentru obiectul de tip EditText din interfata grafica
+       cu ID-ul username_edit_text */
+    val usernameEditText = findViewById<EditText>(R.id.username_edit_text)
+    savedInstanceState.putString("SOME_STRING_USED_AS_KEY", usernameEditText.text.toString())
+}
+
+</code></pre>
 
 ![](images/gestiune_stare_activitati.png)
 

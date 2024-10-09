@@ -8,69 +8,111 @@ Regulile pentru construiea aplicației Android sunt precizate în fișiere
 `build.gradle`, care se definesc pentru fiecare **modul** și **proiect**
 constituent.
 
-Un fișier de configurare Gradle pentru o aplicație Android conține de
-regulă două secțiuni:
-
--   `android` - conține proprietățile aplicației Android
-    -   `compileSdkVersion` - reprezintă versiunea de SDK care va fi
-        utilizată pentru compilarea proiectului Android
-    -   `defaultConfig` - conține diferite configurări
-        -   `applicationId` - pachetul care identifică **în mod unic**
-            aplicația Android
-        -   `midSdkVersion` - platforma minimă pe care se garantează că
-            aplicația Android va rula; astfel, se vor folosi numai
-            funcționalități definite la acest nivel sau funcționalități
-            definite în API-uri superioare, dar care sunt disponibile la
-            nivelul bibliotecilor de suport;
-        -   `targetSdkVersion` - platforma maximă la care se garantează
-            că aplicația Android va rula (de regulă, este versiunea cea
-            mai recentă și este aceeași versiune folosită pentru
-            compilarea codului sursă);
-        -   `versionCode` - versiunea curentă a aplicației (număr
-            întreg)
-        -   `versionName` - versiunea curentă a aplicației, afișată
-            către utilizator (format lizibil, de tip șir de caractere)
-        -   `testInstrumentationRunner` - biblioteca folosită pentru
-            testele aplicației Android
--   `dependencies` - reprezintă bibliotecile de care depinde aplicația
-    Android pentru a putea fi compilată / rulată, precum și reguli de
-    compilare
-    -   `compile` - se precizează care fișiere sunt luate în considerare
-        pentru classpath
-        -   directiva `include` se folosește pentru a indica tipuri de
-            fișiere care conțin diverse biblioteci);
-        -   directiva `fileTree` este utilizată pentru a indica o
-            structura de directoare
-    -   `testCompile` și `androidTestCompile` - indică pachete care
-        conțin biblioteci pentru teste unitare.
-
-```
-apply plugin: 'com.android.application'
-
-android {
-    compileSdkVersion 33
-    defaultConfig {
-        applicationId "ro.pub.systems.eim.lab02.activitylifecyclemonitor"
-        minSdkVersion 24
-        targetSdkVersion 33
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+#### Project build.gradle
+```json
+// În blocul buildscript, definiți setările necesare pentru a construi proiectul.
+buildscript {
+    // În blocul repositories, adăugați numele depozitelor unde Gradle 
+    // ar trebui să caute plugin-urile pe care le folosiți.
+    repositories {
+        google()
+        mavenCentral()
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+    // Blocul dependencies conține dependențele necesare pentru plugin-uri
+    // în acest caz, plugin-urile Gradle și Kotlin. Nu puneți dependențele modulului
+    // în acest bloc.
+    dependencies {
+        classpath "com.android.tools.build:gradle:8.2.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.20"
     }
 }
+// Structura blocului allprojects este similară cu cea a blocului buildscript,
+// dar aici definiți depozitele pentru toate modulele voastre, nu pentru Gradle
+// însuși. De obicei, nu definiți secțiunea dependencies pentru allprojects.
+// Dependențele pentru fiecare modul sunt diferite și ar trebui să se afle în
+// build.gradle la nivel de modul.
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+// Un task reprezintă o parte a muncii în procesul de construire. 
+// Acesta curăță fișierele de build când este executat. 
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+}
+```
 
+#### Project build.gradle
+
+```json
+// Specifică o listă de plugin-uri necesare pentru a construi modulul. Plugin-ul
+// com.android.application este necesar pentru a configura setările specifice
+// Android ale procesului de build. Aici puteți folosi și com.android.library dacă
+// creați un modul de bibliotecă. Plugin-ul kotlin-android vă permite să folosiți
+// limbajul Kotlin în modulul vostru.
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+}
+
+// În blocul android, plasați toate opțiunile specifice platformei pentru modul.
+android {
+
+    // Definirea unui namespace este necesară pentru lucruri precum accesul la
+    // resurse. Aceasta se afla înainte în fișierul AndroidManifest.xml sub
+    // proprietatea package, dar acum a fost mutată.
+    namespace "com.kodeco.socializify"
+
+    // Opțiunea compileSdk indică nivelul API cu care va fi compilată aplicația
+    // voastră. Cu alte cuvinte, nu puteți folosi funcții dintr-un API mai înalt decât
+    // această valoare. Aici, ați setat valoarea pentru a utiliza API-urile din
+    // Android Tiramisu (Android 13). 
+    compileSdk 34
+ 
+    // Blocul defaultConfig conține opțiuni care vor fi aplicate implicit
+    // tuturor versiunilor de build (de exemplu, debug, release, etc) ale aplicației
+    defaultConfig {
+        // applicationId este identificatorul aplicației voastre. Acesta ar trebui să fie
+        // unic pentru a putea publica sau actualiza cu succes aplicația pe Google Play
+        // Store. Dacă îl lăsați nedefinit, sistemul de build va folosi namespace ca
+        // applicationId.
+        applicationId "com.kodeco.socializify"
+
+        // Pentru a seta cel mai scăzut nivel API suportat, folosiți minSdkVersion.
+        // Aplicația voastră nu va fi disponibilă în Play Store pentru dispozitivele care
+        // rulează pe niveluri API mai scăzute.
+        minSdkVersion 23
+
+        // Parametrul targetSdkVersion definește nivelul maxim API pe care aplicația
+        // voastră a fost testată. Cu alte cuvinte, sunteți siguri că aplicația voastră
+        // funcționează corect pe dispozitivele cu această versiune SDK și nu necesită
+        // niciun comportament de compatibilitate înapoi. Cea mai bună abordare este să
+        // testați temeinic o aplicație folosind cel mai recent API, păstrând valoarea
+        // targetSdkVersion egală cu compileSdk.
+        targetSdkVersion 34
+
+        // versionCode este o valoare numerică pentru versiunea aplicației.
+        versionCode 1
+        // versionName este un șir de caractere ușor de înțeles pentru utilizatori, reprezentând versiunea aplicației.
+        versionName "1.0"
+    }
+    // Blocul buildFeatures vă permite să activați anumite funcționalități, cum
+    // ar fi View binding sau Compose. 
+    buildFeatures {
+        viewBinding true
+    }
+    // Gradle 8.2 suportă implicit JVM 17, deci forțați proiectul să folosească
+    // Java 17 prin intermediul suportului pentru Java toolchain oferit de Gradle.
+    kotlin {
+        jvmToolchain(17)
+    }
+}
+// Blocul dependencies conține toate dependențele necesare pentru acest modul.
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation fileTree(include: ["*.jar"], dir: "libs")
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.google.android.material:material:1.9.0"
 }
 ```
