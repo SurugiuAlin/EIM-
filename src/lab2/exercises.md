@@ -100,3 +100,14 @@ Să se transfere comportamentul de restaurare a stării pe metoda
 ([Hint](https://developer.android.com/guide/components/activities/activity-lifecycle.html#saras)).
 
 **9.** Să se încarce modificările realizate în cadrul laboratorului pe Gitlab folosint nume sugestive pentru commits.
+
+
+**10.** 
+Utilitarul adb (Android Debug Bridge) se află în locația unde ați instalat SDK-ul pentru studio, de exemplu '/opt/android-sdk/platform-tools/'
+Să se utilizeze comanda ```adb``` pentru a rula comenzi pe telefon:
+ - ```adb devices``` - vizualizează dispozitivele disponibile (telefoane sau emulatoare)
+ - ```adb -s DEVICE shell ls -l /sdcard/``` - dacă e unul singur, nu mai e nevoie de -s 
+ - ```adb pull /sdcard/Download .``` - pentru a descărca fișiere/directoare din device în mașina de dezvoltare
+ - ```adb push fișier.local /sdcard/Download/``` - încărcare
+ - ```adb shell``` obținerea unui prompt în device 
+ 
