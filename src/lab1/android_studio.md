@@ -13,7 +13,7 @@ interfata grafica este descrisa intr-un fisier XML.
 
 4. Denumiți-vă aplicația cu un nume precum My First app
 
-5. Asigurați-vă că Languages este setată la Java sau Android.
+5. Asigurați-vă că Languages este setată la Java/Kotlin.
 
 6. Apasati Finish
 
@@ -39,7 +39,7 @@ Poți privi ierarhia fișierelor pentru aplicația ta în multiple moduri, unul 
 
 Acest folder conține `AndroidManifest.xml`. Acest fișier descrie toate componentele aplicației tale Android și este citit de sistemul de rulare Android atunci când aplicația ta este executată. 2. Extinde folderul **java**. Toate fișierele tale în limbaj Java sunt organizate aici. Folderul java conține trei subfoldere:
 
-**com.example.myfirstapp**: Acest folder conține fișierele sursă Java pentru aplicația ta.
+**com.example.myfirstapp**: Acest folder conține fișierele sursă Java/Kotlin pentru aplicația ta.
 
 **com.example.myfirstapp (androidTest)**: Acest folder este locul unde ai pune testele instrumentate, care sunt testele care rulează pe un dispozitiv Android. Începe cu un fișier de test schelet.
 
