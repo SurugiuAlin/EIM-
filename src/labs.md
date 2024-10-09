@@ -2,7 +2,7 @@
 
 ## Anunțuri
 
-* 26.09.2025 bine ați venit în semestrul 1, anul universitar 2024 - 2025
+* 26.09.2024 bine ați venit în semestrul 1, anul universitar 2024 - 2025
 
 ## Resurse
 ---
