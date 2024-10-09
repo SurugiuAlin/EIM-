@@ -25,6 +25,7 @@ tab_names.set("language-md", "Markdown");
 tab_names.set("language-text", "Text");
 tab_names.set("language-diff", "Diff");
 tab_names.set("language-java", "Java");
+tab_names.set("language-kotlin", "Kotlin");
 tab_names.set("language-go", "Go");
 
 // The tab name to use when none of the above names apply.

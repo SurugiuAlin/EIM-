@@ -43,8 +43,8 @@ pentru a realiza diferite operații necesare pentru gestiunea memoriei,
 asigurarea persistenței informațiilor și a consistenței aplicației
 Android în situația producerii de diferite evenimente:
 
-
-``` java
+<div class="tabbed-blocks">
+  <pre><code class="language-java">
 public class LifecycleMonitorActivity extends Activity {
 
   /* Apelată în momentul în care activitatea este
@@ -121,18 +121,18 @@ public class LifecycleMonitorActivity extends Activity {
   }
   
 }
-```
+</code></pre>
+<pre><code class="language-kotlin">
 
-``` kotlin
-kotlin
-#public override fun onCreate(savedInstanceState: Bundle?) {
-#        super.onCreate(savedInstanceState)
-#        ...
-#}        
+public override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        ...
+}        
 
-#public override fun onRestart() {
-#        super.onRestart()
-#        ...
-#}
+public override fun onRestart() {
+        super.onRestart()
+        ...
+}
 
-```
+</code></pre>
+</div>
