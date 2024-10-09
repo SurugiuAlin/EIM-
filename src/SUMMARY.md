@@ -43,6 +43,7 @@
     - [Broadcast Receiver](lab2/broadcast.md)
     - [Content Provider](lab2/content_provider.md)
   - [Procese](lab2/processes.md)
+    - [Procese Zygote](lab2/zygote.md)
   - [Crearea unei aplicații în Android Studio](lab1/android_studio.md)
   - [Activitatea](lab2/activity.md)
     - [Ciclul de Viață al unei Activități](lab2/activity_lifecycle.md)
