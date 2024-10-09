@@ -1,11 +1,11 @@
 # Gradle
 
-Sistemul de build Android compilează resursele aplicației și codul sursă și le împachetează în Android Application Package (APK) APK sau Android App Bundles (AAB) pe care le poți testa, desfășura, semna și distribui.
+Sistemul de build compilează resursele aplicației și codul sursă și le împachetează în **Android Application Package (APK)** (formatul de distribuire al aplicatilor Android) sau Android App Bundles (AAB) pe care le poți testa, desfășura, semna și distribui. Pentru a realiza acest lucru, in ecosistemul Android se folosește Gradle.
 
-Android Studio folosește **Gradle**, un toolkit avansat de build, pentru a automatiza și gestiona procesul de build, permițându-ți în același timp să definești configurații de build flexibile și personalizate. Fiecare configurație de build poate defini propriul set de cod și resurse, în timp ce reutilizează părțile comune tuturor versiunilor aplicației tale. 
+Gradle este un sistem open-source de automatizare a build-urilor. Acesta are avantajul unui DSL bazat pe Groovy sau Kotlin și beneficiile Ant și Maven. Cu Gradle, poți manipula cu ușurință procesul de build și logica acestuia pentru a crea mai multe versiuni ale aplicației tale. Este mult mai ușor de utilizat și mult mai concis și flexibil în comparație cu Ant sau Maven folosite individual.
 
 Regulile pentru construiea aplicației Android sunt precizate în fișiere
-`build.gradle`, care se definesc pentru fiecare modul și proiect
+`build.gradle`, care se definesc pentru fiecare **modul** și **proiect**
 constituent.
 
 Un fișier de configurare Gradle pentru o aplicație Android conține de
