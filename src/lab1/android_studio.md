@@ -1,4 +1,4 @@
-# Crearea unei aplicații Android în Android Studio 
+# Crearea unei aplicații de tip View Android în Android Studio 
 
 In cadrul laboratoarelor vom folosi Android Studio. Android Studio este un IDE de Java/Kotlin bazat pe IntelliJ special modificat pentru dezvoltarea aplicatilor Android. [Aici](https://developer.android.com/studio/install) gasiti instructiunile de instalare si un link de download. 
 
@@ -10,19 +10,11 @@ In cadrul laboratoarelor vom folosi Android Studio. Android Studio este un IDE d
 1. Deschideți Android Studio.
 2. În dialogul Welcome to Android Studio, faceți clic pe **Start a new Android Studio project**.
 
-<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/c7c8a5cc4c9029b_1440.png" alt=""/>
-
 3. Selectați **Empty View Activity** (nu implicit). Faceți clic pe Next.
-
-
-<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/73e63b490a2f4ae6_1440.png" alt=""/>
 
 4. Denumiți-vă aplicația cu un nume precum My First app
 
-
-<img src="https://developer.android.com/static/codelabs/build-your-first-android-app/img/3ffb3ca42472b4f6_1440.png" alt=""/>
-
-5. Asigurați-vă că Languages este setată la Java.
+5. Asigurați-vă că Languages este setată la Java sau Android.
 
 6. Apasati Finish
 
