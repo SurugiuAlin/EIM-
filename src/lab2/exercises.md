@@ -1,7 +1,7 @@
 # Activitate de Laborator
 
-**1.** În contul de Gitlab de la facultate, să se creeze un depozit denumit
-'Laborator02' in care vom pune aplicatia la care vom lucra astazi.
+**1.** În contul de Gitlab de la facultate, să se creeze un repo denumit
+`Laborator02` in care vom pune aplicatia la care vom lucra astazi.
 
 - Să se cloneze [scheletul laboratorului](https://github.com/eim-lab/Laborator02).
 - Să se încarce conținutul descărcat în cadrul depozitului `Laborator02` de pe contul Gitlab personal.
