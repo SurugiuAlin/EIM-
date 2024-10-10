@@ -71,7 +71,7 @@ Să se transfere comportamentul de restaurare a stării pe metoda
 `onCreate()` și să se identifice diferențele de implementare
 ([Hint](https://developer.android.com/guide/components/activities/activity-lifecycle.html#saras)).
 
-**10.** 
+**9.** 
 Utilitarul adb (Android Debug Bridge) se află în locația unde ați instalat SDK-ul pentru studio, de exemplu `/opt/android-sdk/platform-tools/`.
 Să se utilizeze comanda ```adb``` pentru a copia un fisier pe telefon si de pe telefon:
  - ```adb devices``` - vizualizează dispozitivele disponibile (telefoane sau emulatoare)
@@ -80,7 +80,7 @@ Să se utilizeze comanda ```adb``` pentru a copia un fisier pe telefon si de pe 
  - ```adb push fișier.local /sdcard/Download/``` - încărcare
  - ```adb shell``` obținerea unui prompt în device 
 
- **11.**
+ **10.**
  Conectare [adb over wifi](https://developer.android.com/tools/adb#connect-to-a-device-over-wi-fi) dacă suntem cu telefonul și mașina de dezvoltare în acelși subnet
 
    #### A.  Android >= 11
@@ -106,4 +106,4 @@ adb -s IP:5555 disconnect  IP:5555
 adb -s IP:5555 usb # seems not necessary
 ```
 
-**9.** Să se încarce modificările realizate în cadrul laboratorului pe Gitlab folosint nume sugestive pentru commits.
+**11.** Să se încarce modificările realizate în cadrul laboratorului pe Gitlab folosint nume sugestive pentru commits.
