@@ -80,7 +80,9 @@ ascultător pentru tratarea evenimentelor de tip apăsare de buton.
     folosind o versiune mai mare decât Marshmelow (6.0), este necesar să
     fie solicitată permisiunea de efectuare a apelului telefonic la
     momentul rulării:
-    ```java
+<div class="tabbed-blocks">
+
+  <pre><code class="language-java">
     if (ContextCompat.checkSelfPermission(PhoneDialerActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
       ActivityCompat.requestPermissions(
         PhoneDialerActivity.this,
@@ -91,7 +93,27 @@ ascultător pentru tratarea evenimentelor de tip apăsare de buton.
       intent.setData(Uri.parse("tel:" + phoneNumberEditText.getText().toString()));
       startActivity(intent);
     }
-    ```
+</code></pre>
+<pre><code class="language-kotlin">
+
+    if (ContextCompat.checkSelfPermission(
+            this@PhoneDialerActivity,
+            Manifest.permission.CALL_PHONE
+        ) != PackageManager.PERMISSION_GRANTED
+    ) {
+        ActivityCompat.requestPermissions(
+            this@PhoneDialerActivity,
+            arrayOf(Manifest.permission.CALL_PHONE),
+            Constants.PERMISSION_REQUEST_CALL_PHONE
+        )
+    } else {
+        val intent = Intent(Intent.ACTION_CALL)
+        intent.setData(Uri.parse("tel:" + phoneNumberEditText!!.text.toString()))
+        startActivity(intent)
+    }
+
+</code></pre>
+</div>
 
 Se va defini o clasă internă cu nume, ce implementează
 interfața `View.OnClickListener` (implementează metoda
