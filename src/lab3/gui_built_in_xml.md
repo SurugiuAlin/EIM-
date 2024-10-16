@@ -64,7 +64,10 @@ Pentru a atasa o interfata grafica descris in XML la o activitate, se va folosi
 încărcarea interfeței grafice în cadrul metodei `onCreate(Bundle
 savedInstanceState)`. 
 
-``` java
+<div class="tabbed-blocks">
+
+  <pre><code class="language-java">
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -73,7 +76,25 @@ public class MainActivity extends AppCompatActivity {
         // Aici atasam interfata grafica descrisa in fisierul
         // activty_layout_sample.xml din res/layouts la activitate
         setContentView(R.layout.activity_layout_sample);
-```
+        // ...
+    }
+}
+
+</code></pre>
+<pre><code class="language-kotlin">
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // Aici atasam interfata grafica descrisa in fisierul
+        // activty_layout_sample.xml din res/layouts la activitate
+        setContentView(R.layout.activity_main)
+        // ...
+    }
+}
+
+</code></pre>
+</div>
 
 După încărcarea propriu-zisă a elementelor din cadrul interfeței grafice
 vor putea fi obținute referințe către ele prin intermediul metodei
@@ -90,12 +111,21 @@ Acum, vom putea chema mai multe functii, in functie de tipul de obiect UI. Pe
 TextView vom putea chema set text, in schimb pentru butoane vom putea seta un
 handler care sa fie apelat la apasarea acestuia.
 
-```java
+<div class="tabbed-blocks">
+
+  <pre><code class="language-java">
+
 // Luam referinta la text field-ul cu 'Hello World'
 TextView greetingTextView = (TextView)findViewById(R.id.my_hello_world_text_id);
 // Il schimbam in Bye world.
 greetingTextView.setText('Bye World')
-```
 
+</code></pre>
+<pre><code class="language-kotlin">
 
+val greetingTextView: TextView = findViewById(R.id.my_hello_world_text_id)
+// Il schimbam in Bye world.
+greetingTextView.text = "Bye World"
 
+</code></pre>
+</div>

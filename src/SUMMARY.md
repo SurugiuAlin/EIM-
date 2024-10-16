@@ -54,7 +54,7 @@
   - [ADB](lab2/adb.md)
   - [Activitate de Laborator](lab2/exercises.md)
 
-- [3. Proiectarea Interfețelor Grafice](lab3/lab3.md)
+- [3. GUI si Senzori](lab3/lab3.md)
   - [Frameworks UI](lab3/gui_ways.md)
     - [Design de UI in XML](lab3/gui_built_in_xml.md)
     - [Componentele UI](lab3/gui_classes.md)

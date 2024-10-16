@@ -46,7 +46,10 @@ eveniment:
         există mai multe controale pentru care tratarea evenimentului se
         realizează în mod diferit.
 
-```java
+<div class="tabbed-blocks">
+
+  <pre><code class="language-java">
+
 public class MainActivity extends AppCompatActivity {
 
     private Button mButton;
@@ -72,8 +75,31 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-```
 
+</code></pre>
+<pre><code class="language-kotlin">
+
+class MainActivity : AppCompatActivity() {
+    private lateinit var mButton: Button
+    private lateinit var mTextView: TextView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        // Initializing mButton and mTextView
+        mButton = findViewById(R.id.button_send)
+        mTextView = findViewById(R.id.text_after)
+
+        mButton.setOnClickListener {
+            // Acest cod este chemat la apasarea unui buton
+            mTextView.text = "This is the after Result"
+        }
+    }
+}
+
+</code></pre>
+</div>
 
 > În cazul folosirii de clase interne, membrii din clasa
 părinte ce se doresc a fi accesați trebuie să aibă imutabili (trebuie

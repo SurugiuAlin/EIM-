@@ -1,8 +1,8 @@
-## Activitate de Laborator
+# Activitate de Laborator
 
 Se dorește implementarea unei aplicații Android, conținând o singură
-activitate, care să ofere utilizatorilor funcționalitatea necesară
-pentru formarea unui număr de telefon (PhoneDialer).
+activitate, care să ofere utilizatorilor funcționalitatea necesară pentru
+formarea unui număr de telefon (PhoneDialer).
 
 ![](images/phonedialer_portrait.png)
 
@@ -22,23 +22,13 @@ Se indică platforma pentru care se dezvoltă aplicația Android (se
 bifează doar *Phone and Tablet*), iar SDK-ul Android (minim) pentru care
 se garantează funcționarea este API 24 (Nougat, 7.0).
 
-Se creează o activitate care inițial nu va conține nimic (*Empty
-Activity*):
+> Vom folosi template-ul **Empty View Activity**
 
 pentru care se precizează:
 
 -   **Activity Name** (denumirea activității) - `PhoneDialerActivity`;
 -   **Layout Name** (denumirea fișierului XML din `res/layout` în care
     va fi construită interfața grafică) - `activity_phone_dialer.xml`.
-
-De asemeena:
-
--   se bifează opțiunea de a se genera în mod automat fișierul XML care
-    conține descrierea interfeței grafice (*Generate Layout File*);
--   folosirea claselor din bibliotecile de suport care asigură
-    posibilitatea de folosire a unor funcționalități din SDK-uri mai
-    recente pe dispozitive mobile cu nivele de API mai vechi (*Backwards
-    Compatibility (AppCompat)*).
 
 **2.** În fișierul `activity_phone_dialer` din directorul `res/layout`
 se construiește interfața grafică folosind:
@@ -68,18 +58,21 @@ virtuală va fi realizată printr-un obiect de tip `GridLayout` cu 6 linii
 
 **3.** În clasa `PhoneDialerActivity` din pachetul
 `ro.pub.cs.systems.eim.lab03.phonedialer`, să se implementeze o clasă
-ascultător pentru tratarea evenimentelor de tip apăsare de buton.
+`Listener` pentru tratarea evenimentelor de tip `Click`.
 
 -   pentru butoanele ce conțin cifre sau caracterele `*` / `#`, se va
     adăuga simbolul corespunzător la numărul de telefon care se dorește
     format;
 -   pentru butonul de corecție, se va șterge ultimul caracter (în cazul
     în care numărul de telefon nu este vid);
+-   pentru butonul de oprire, se va închide activitatea (se va apela
+    metoda `finish()`);
 -   pentru butonul de apel, se va invoca intenția care realizează
     legătura telefonică; întrucât se compilează proiectul Android
     folosind o versiune mai mare decât Marshmelow (6.0), este necesar să
     fie solicitată permisiunea de efectuare a apelului telefonic la
     momentul rulării:
+
 <div class="tabbed-blocks">
 
   <pre><code class="language-java">
@@ -119,23 +112,20 @@ Se va defini o clasă internă cu nume, ce implementează
 interfața `View.OnClickListener` (implementează metoda
 `public void onClick(View view)`. Instanța acesteia va fi utilizată
 pentru **toate** obiectele de tip buton din cadrul interfeței
-grafice.\
+grafice.
 
----
-**Note**
-
-Pentru a putea apela, în fișierul `AndroidManifest.xml`
+> Pentru a putea apela, în fișierul `AndroidManifest.xml`
 trebuie să se specifice o permisiune explicită în acest sens:  
-`<uses-permission android:name="android.permission.CALL_PHONE" />`\
-
--   pentru butonul de oprire, se va închide activitatea (se va apela
-    metoda `finish()`);
-
----
+`<uses-permission android:name="android.permission.CALL_PHONE" />`
 
 
-**4.** Să se gestioneze corespunzător evenimentul de tip rotire a
-ecranului;
+**4.** Pentru a fi inovativi, in aplicatia noastra vom aduce optiunea sa poti
+vedea acceleratia pe axa Ox in timp ce tastezi. Pentru acest lucru, vom adauga
+un nou camp de tip `TextView` in care vom afisa aceasta acceleratie.
+
+
+**5.** Să se gestioneze corespunzător evenimentul de tip rotire a
+ecranului
 
 1.  să se blocheze tranziția între modurile portrait și landscape:
     1.  în fișierul AndroidManifest.xml 
@@ -160,7 +150,7 @@ ecranului;
           * ..
         }
         ````
-2.  să se definească, în directorul `res/layout-land` o interfață
+2. Să se definească, în directorul `res/layout-land` o interfață
     grafică adecvată acestei configurații a dispozitivului de afișare:
 
 ![](images/phonedialer_landscape.png)

@@ -18,6 +18,21 @@ modul de dispunere:
 | `layout_x`            | `View` / `ViewGroup` | poziția pe coordonata x                                                            |
 | `layout_y`            | `View` / `ViewGroup` | poziția pe coordonata y                                                            |
 
+```xml
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_gravity="center"
+    android:layout_weight="1"
+    android:layout_x="100dp"
+    android:layout_y="100dp"
+    android:text="Example TextView" />
+```
+
 Unele dintre aceste proprietăți pot fi specificate și pentru
 containerele în care sunt cuprinse controalele, derivate din clasa
 `android.view.ViewGroup`.
@@ -28,64 +43,27 @@ sunt:
 -   `match_parent` - dacă se dorește ca obiectul să ocupe tot spațiul pe
     care îl pune la dispoziție containerul său;
 
----
-**Note**
-
-Deși există și posibilitatea de a indica valoarea
-`fill_parent` pentru lățimea și înălțimea unui control, aceasta trebuie
-evitată, întrucât a fost înlocuită începând cu nivelul de API 8.\
-
----
-
 -   `wrap_content` - dacă se dorește ca obiectul să fie restrâns la
     dimensiunile conținutului său.
 
 În situația în care nu se specifică cel puțin valorile
 `layout_width` și `layout_height` pentru un anumit control, se va genera
 o excepție întrucât interfața grafică nu poate fi încărcată
-corespunzător.\
-
----
+corespunzător.
 
 De asemenea, pot fi specificate valori absolute, exprimate în una din
 unitățile de măsură:
 
 -   `dp` - **pixel independent de rezoluție**
 
----
-**Note**
-
 Se recomandă să se utilizeze această unitate de măsură în
 momentul în care se specifică dimensiunea unui control în cadrul unui
 container. Se asigură astfel faptul că se utilizează o proporție
 adecvată pentru un control, indiferent de rezoluția ecranului, Android
-scalându-i dimensiunea automat.\
-
----
+scalându-i dimensiunea automat.
 
 -   `sp` - **pixel independent de scală**, echivalent cu `dp`
 
----
-**Note**
-
-Se recomandă să se utilizeze această unitate de măsură în
-momentul în care se specifică dimensiunea unui set de caractere, cu care
-va fi afișat un text.\
-
----
-
--   `pt` - **punct**, echivalent cu 1/72 inchi, bazat pe dimensiunile
-    ecranului
--   `px` - **pixel**, corespunzător unui pixel al dispozitivului mobil
-
----
-**Note**
-
-Utilizarea acestei unități de măsură nu este recomandată,
-întrucât interfața grafică definită în acești termeni nu se va afișa
-corect pe dispozitive mobile cu altă rezoluție a ecranului.\
-
----
 
 Specificarea dimensiunii ecranului unui dispozitiv mobil se face prin
 indicarea numărului de pixeli pe orizontală și pe verticală. Pentru a
@@ -104,12 +82,11 @@ rezoluție:
 Formula de conversie între pixeli (`px`) și pixeli independenți de
 rezoluție (`dp`) este:
 
-px = dp \* (resolution_category) / 160
+px = dp * (resolution_category) / 160
 
 Se observă că 1 `px` este echivalent cu 1 `dp` pe un ecran cu
 rezoluția 160 dpi, considerată drept referință în Android.
 
----
 
 Dimensiunea (exprimată în pixeli) a unui control poate fi obținută
 apelând metodele `getWidth()`, respectiv `getHeight()`.

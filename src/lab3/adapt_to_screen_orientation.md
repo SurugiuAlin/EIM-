@@ -17,26 +17,9 @@ abordări:
     `layout_alignParentRight`, `layout_centerHorizontal`,
     `layout_centerVertical`
 2.  **redimensionarea și repoziționarea**
-    1.  creând un fișier XML corespunzător fiecărei activități pentru
+    creând un fișier XML corespunzător fiecărei activități pentru
         fiecare orientare a ecranului, plasate în `/res/layout`,
         respectiv în `/res/layout-land`
-    2.  programatic, detectând modificarea dimensiunilor dispozitivului
-        de afișare în metoda `onCreate()`
-
-        ```java
-        @Override
-        public void onCreate(Bundle state) {
-          super.onCreate(state);
-          WindowManager windowManager = getWindowManager();
-          Display display = windowManager.getDefaultDisplay();
-          if (display.getWidth() <= display.getHeight()) {
-            * create graphic user interface for portrait mode
-          }
-          else {
-            * create graphic user interface for landscape mode
-          }
-        }
-        ```
 
 De asemenea, o activitate poate fi forțată să afișeze conținutul
 folosind un singur tip de orientare, indiferent de poziția în care se
