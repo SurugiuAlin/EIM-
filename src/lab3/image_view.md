@@ -13,14 +13,26 @@ aceasta putând proveni:
             încărcat din resursa respectivă, ulterior putând fi
             realizate și unele modificări
 
-``` java
+
+<div class="tabbed-blocks">
+
+  <pre><code class="language-java">
 ImageView someImageView = (ImageView)findViewById(R.id.some_image_view);
 Bitmap someBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.some_image);
 
 * realizeaza modificari asupra obiectului Bitmap
 
 someImageView.setImageBitmap(someBitmap);
-```
+</code></pre>
+<pre><code class="language-kotlin">
+
+val someImageView = findViewById(R.id.some_image_view) as ImageView
+val someBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.some_image)
+// realizeaza modificari asupra obiectului Bitmap
+someImageView.setImageBitmap(someBitmap)
+
+</code></pre>
+</div>
 
 ---
 **Note**
