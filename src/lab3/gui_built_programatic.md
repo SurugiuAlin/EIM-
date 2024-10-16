@@ -28,7 +28,9 @@ prin intermediul metodei `addView()`, specificându-se modul în care va
 fi poziționat (precum și dimensiunile sale) prin intermediul unui obiect
 de tip `LayoutParams`, specific mecanismului de dispunere respectiv.
 
-``` java
+<div class="tabbed-blocks">
+
+  <pre><code class="language-java">
 public class LayoutSample2Activity extends Activity {
 
   final private static long TRANSPARENCY_EFFECT_DURATION = 5000;
@@ -97,4 +99,104 @@ public class LayoutSample2Activity extends Activity {
   * ...
 
 }
-```
+
+</code></pre>
+<pre><code class="language-kotlin">
+
+class LayoutSample2Activity : Activity() {
+    protected fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val container: RelativeLayout = RelativeLayout(this)
+        container.setLayoutParams(
+            LayoutParams(
+                LayoutParams.MATCH_PARENT,
+                LayoutParams.MATCH_PARENT
+            )
+        )
+
+        val introduceYourselfEditText: EditText = EditText(this)
+        introduceYourselfEditText.setId(1)
+        introduceYourselfEditText.setEms(10)
+        introduceYourselfEditText.setHint(getString(R.string.introduce_yourself))
+        introduceYourselfEditText.setInputType(InputType.TYPE_CLASS_TEXT)
+        introduceYourselfEditText.setFocusable(true)
+        val introduceYourselfEditTextLayoutParams: RelativeLayout.LayoutParams = LayoutParams(
+            RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
+        )
+        container.addView(introduceYourselfEditText, introduceYourselfEditTextLayoutParams)
+
+        val displayIdentityCheckBox: CheckBox = CheckBox(this)
+        displayIdentityCheckBox.setId(2)
+        displayIdentityCheckBox.setText(getString(R.string.display_identity))
+        val displayIdentityCheckBoxLayoutParams: RelativeLayout.LayoutParams = LayoutParams(
+            RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
+        )
+        displayIdentityCheckBoxLayoutParams.addRule(
+            RelativeLayout.ALIGN_LEFT,
+            introduceYourselfEditText.getId()
+        )
+        displayIdentityCheckBoxLayoutParams.addRule(
+            RelativeLayout.BELOW,
+            introduceYourselfEditText.getId()
+        )
+        container.addView(displayIdentityCheckBox, displayIdentityCheckBoxLayoutParams)
+
+        val submitButton: Button = Button(this)
+        submitButton.setId(3)
+        submitButton.setText(getString(R.string.submit))
+        val submitButtonLayoutParams: RelativeLayout.LayoutParams = LayoutParams(
+            RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
+        )
+        submitButtonLayoutParams.addRule(
+            RelativeLayout.ALIGN_LEFT,
+            displayIdentityCheckBox.getId()
+        )
+        submitButtonLayoutParams.addRule(RelativeLayout.BELOW, displayIdentityCheckBox.getId())
+        container.addView(submitButton, submitButtonLayoutParams)
+
+        val greetingTextView: TextView = TextView(this)
+        greetingTextView.setId(4)
+        greetingTextView.setText(getString(R.string.greeting))
+        greetingTextView.setTextSize(32)
+        greetingTextView.setGravity(Gravity.CENTER)
+        greetingTextView.setAlpha(0)
+        val greetingTextViewLayoutParams: RelativeLayout.LayoutParams = LayoutParams(
+            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.MATCH_PARENT
+        )
+        greetingTextViewLayoutParams.addRule(RelativeLayout.ALIGN_LEFT, submitButton.getId())
+        greetingTextViewLayoutParams.addRule(RelativeLayout.BELOW, submitButton.getId())
+        container.addView(greetingTextView, greetingTextViewLayoutParams)
+
+        submitButton.setOnClickListener(object : OnClickListener() {
+            fun onClick(view: View?) {
+                val identity: String = introduceYourselfEditText.getText().toString()
+                greetingTextView.setText(
+                    getResources().getString(R.string.greeting).replace(
+                        "???",
+                        if ((displayIdentityCheckBox.isChecked())) identity else getResources().getString(
+                            R.string.anonymous
+                        )
+                    )
+                )
+                greetingTextView.setAlpha(1)
+                val fadeEffect: AlphaAnimation = AlphaAnimation(1.0f, 0.0f)
+                fadeEffect.setDuration(TRANSPARENCY_EFFECT_DURATION)
+                fadeEffect.setFillAfter(true)
+                greetingTextView.setAnimation(fadeEffect)
+            }
+        })
+
+        setContentView(container)
+    }
+
+    companion object {
+        private const val TRANSPARENCY_EFFECT_DURATION: Long = 5000
+    }
+}
+</code></pre>
+</div>
