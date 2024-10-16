@@ -12,17 +12,6 @@ asociindu-i-se și un identificator (uzual, acesta poate fi orice număr
 întreg). Pentru fiecare proprietate a unui control grafic, sunt definite
 programatic metodele de tip getter și setter corespunzătoare.
 
----
-**Note**
-
-În situația în care unui control nu i se asociază un
-identificator prin apelul metodei `setId()`, valoarea acestui parametru
-va fi `NO_ID`, astfel încât acesta nu va mai putea fi referit în cod
-(spre exemplu, pentru poziționarea elementelor interfeței grafice
-relativ, unele față de altele).
-
----
-
 Ulterior, controlul va trebui asociat containerului din care face parte,
 prin intermediul metodei `addView()`, specificându-se modul în care va
 fi poziționat (precum și dimensiunile sale) prin intermediul unui obiect

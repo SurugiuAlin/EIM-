@@ -2,33 +2,32 @@
 
 O interfață grafică poate fi construită în mai multe moduri:
 
-a) View files based: 
-1.  prin definirea elementelor componente și a modului lor de dispunere
+
+**I. Android View**
+
+![](images/android_views.png)
+
+1.  prin definirea componentelor UI și a modului lor de dispunere
     în cadrul unui fișier .xml, asociat fiecarei activități (sau
     fragment) în parte, situație adecvată cazurilor în care interfața
     grafică este statică;
-2.  programatic, prin instanțierea unor obiecte de tipul elementelor
-    componente direct în codul sursă (cu stabilirea proprietăților
+2.  programatic, prin instanțierea unor componente UI
+    direct în codul sursă (cu stabilirea proprietăților
     respective) al activității (sau fragmentului), abordare potrivită
     pentru situațiile în care interfața grafică are o structură dinamică
     (este actualizată în funcție de unele condiții specifice
     identificate în momentul execuției).
 
-b) Compose based:
-    Jetpack Compose este noul  toolkit recomandat de Android pentru construirea UI.
-    acesta ajuta la implementarea aplicatiilor in timp mai scurt, cod mai succint,
-    programe puternice de analiza si profiling/
+**II. Jetpack Compose:**
 
-Pentru a putea oferii oportunitatea de a coda atat in Java cat si in Kotlin, acest
-laborator se va concentra pe metoda "View file based", aceasta find compatibila cu ambele
-limbaje de programare. (Compose este folosibil doar cu Kotlin)
-De regulă, se preferă ca interfața grafică să fie definită în cadrul
-unui fișier `.xml` pentru fiecare fereastră din cadrul aplicației
-Android, întrucât acesta este mult mai ușor de întreținut, separând
-sarcinile ce țin de proiectare propriu-zisă de cele care țin de
-programare (putând fi realizate astfel de persoane diferite). Totuși,
-pentru situațiile în care interfața grafică nu este cunoscută la
-momentul compilării sau pentru cazul în care interfața grafică trebuie
-modificată în funcție de anumite condiții identificate în momentul
-compilării, pot fi utilizate metode programatice spre a obține o astfel
-de funcționalitate.
+![](images/android_compose.png)
+
+Este complet declarativ, ceea ce înseamnă că descrieți UI-ul prin apelarea
+unei serii de functions care transformă datele într-o ierarhie UI. Când
+datele se schimbă, framework-ul reexecută automat aceste functii,
+actualizând UI-ul.
+
+> Pentru a putea oferii oportunitatea de a coda atat in Java cat si in Kotlin,
+acest laborator se va concentra pe metoda "View file based", aceasta find
+compatibila cu ambele limbaje de programare. (Compose este folosibil doar cu
+Kotlin) 
