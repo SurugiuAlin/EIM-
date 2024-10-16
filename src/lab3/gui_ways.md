@@ -1,7 +1,8 @@
 ## Mecanisme pentru construirea unei interfețe grafice
 
-O interfață grafică poate fi construită în două moduri:
+O interfață grafică poate fi construită în mai multe moduri:
 
+a) View files based: 
 1.  prin definirea elementelor componente și a modului lor de dispunere
     în cadrul unui fișier .xml, asociat fiecarei activități (sau
     fragment) în parte, situație adecvată cazurilor în care interfața
@@ -13,6 +14,14 @@ O interfață grafică poate fi construită în două moduri:
     (este actualizată în funcție de unele condiții specifice
     identificate în momentul execuției).
 
+b) Compose based:
+    Jetpack Compose este noul  toolkit recomandat de Android pentru construirea UI.
+    acesta ajuta la implementarea aplicatiilor in timp mai scurt, cod mai succint,
+    programe puternice de analiza si profiling/
+
+Pentru a putea oferii oportunitatea de a coda atat in Java cat si in Kotlin, acest
+laborator se va concentra pe metoda "View file based", aceasta find compatibila cu ambele
+limbaje de programare. (Compose este folosibil doar cu Kotlin)
 De regulă, se preferă ca interfața grafică să fie definită în cadrul
 unui fișier `.xml` pentru fiecare fereastră din cadrul aplicației
 Android, întrucât acesta este mult mai ușor de întreținut, separând
