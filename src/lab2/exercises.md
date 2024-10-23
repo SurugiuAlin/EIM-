@@ -46,6 +46,24 @@ următoarelor evenimente:
       - se apasă butonul *lista app* 
 
 
+<details>
+  <summary>genymotion, Nexus 5X API 24, butoane "hardware"</summary>
+  
+|  |  onC rea te()  |  onR est ar t()  |  onS tar t()  |  onR esu me ()  |  onP aus e()  |  onS top ()  |  onD est roy ()  | onS ave Ins t()  | onR est ore Ins t()  |
+|-|-|-|-|-|-|-|-|-|-|
+| buton _Home_ |   |   |    |    |  1  |  3  |   |  2  |   |
+| buton _Back_ |   |   |    |    |  1  |  2  |  3  |     |   |
+| buton _OK_in app |  nici | una   | din tre   | met ode  | nu   | se  | ape lea ză  |
+| buton _lista app_  |   |   |   |   |  1  |  3  |   |  2  | |  
+| apel tele fonic |   | | | |  1  |  3  | |  2  | |  
+| acce ptare |   |  1  |  2  |   |    |    |   |  |  | 
+| resp ingere |   |   |   |   |   |   |   |
+| rotire ecran |  5  |   |  6  |   |  1  |  3  |  4  |  2  |  7  |
+
+</details>
+
+
+
 **6.** Să se dezactiveze opțiunea de salvare a stării.  În fișierul `activity_lifecycle_monitor.xml`, pentru fiecare
 dintre elementele grafice pentru care se dorește să se dezactiveze
 opțiunea de salvare a stării, se va completa proprietatea
