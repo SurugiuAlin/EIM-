@@ -20,16 +20,19 @@ responsabile cu procesarea acestora.
 
 ---
 
-``` java
+<div class="tabbed-blocks">
+
+  <pre><code class="language-java">
+
 final public static String SOME_ACTION = "ro.pub.cs.systems.eim.lab04.SomeAction.SOME_ACTION";
 
 Intent intent = new Intent(SOME_ACTION);
 intent.putExtra("someKey", someValue);
 sendBroadcast(intent);
-```
 
-*Kotlin*
-```Kotlin
+</code></pre>
+<pre><code class="language-kotlin">
+
 companion object {
     const val SOME_ACTION = "ro.pub.cs.systems.eim.lab04.SomeAction.SOME_ACTION"
 }
@@ -38,4 +41,6 @@ val intent = Intent(SOME_ACTION).apply {
     putExtra("someKey", someValue)
 }
 sendBroadcast(intent)
-```
+
+</code></pre>
+</div>
