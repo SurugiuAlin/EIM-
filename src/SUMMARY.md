@@ -81,7 +81,7 @@
   - [Transmiterea de broadcast](lab4/sending_broadcast.md)
   - [Primirea unui broadcast](lab4/receive_broadcast.md)
   - [Exercitii](lab4/exercises.md)
-  - [Exercitii(Kotlin)](lab4/exercises-kotlin.md)
+
 - [5. Servicii](lab5/servicies.md)
   - [Tipuri de Servicii](lab5/types.md)
   - [Gestiunea unui Serviciu](lab5/build_service.md)
