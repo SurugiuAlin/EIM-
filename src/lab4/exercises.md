@@ -10,15 +10,7 @@ vom folosi documentatia oficiala Android despre [Intents](https://developer.andr
 <img src="images/09contacts_manager_large.png" width="25%" alt="Large Contacts Manager"/>
 
 
-
 **1.** Să se creeze un proiect Android Studio denumit *ContactsManager* (se selectează *Start a new Android Studio project -> Empty View Activity* -> pentru proiect **XML**).
-
-Pentru un proiect cu **Jetpack Compose**, se selecteaza: *Start a new Android Studio project -> Empty Activity*
-<details>
-<summary>Imagini cu pasii</summary>
-
-![](images/2024_android_studio_new_project_step1.png)
-</details>
 
 **2.** În fișierul `activity_contacts_manager` din directorul `res/layout` să se construiască interfața grafică folosind:
 
@@ -75,43 +67,100 @@ Să se implementeaze interacțiunea cu utilizatorul a aplicației.
     -   butonul *Save* - lansează în execuție aplicația Android nativă
         pentru stocarea unui contact în agenda telefonică, după ce în
         prealabil au fost preluate informațiile din controalele grafice:
-        ```java
-        Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
-        intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
-        if (name != null) {
-          intent.putExtra(ContactsContract.Intents.Insert.NAME, name);
+
+        
+        <div class="tabbed-blocks">
+
+            <pre><code class="language-java">
+
+            Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
+            intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
+            if (name != null) {
+            intent.putExtra(ContactsContract.Intents.Insert.NAME, name);
+            }
+            if (phone != null) {
+            intent.putExtra(ContactsContract.Intents.Insert.PHONE, phone);
+            }
+            if (email != null) {
+            intent.putExtra(ContactsContract.Intents.Insert.EMAIL, email);
+            }
+            if (address != null) {
+            intent.putExtra(ContactsContract.Intents.Insert.POSTAL, address);
+            }
+            if (jobTitle != null) {
+            intent.putExtra(ContactsContract.Intents.Insert.JOB_TITLE, jobTitle);
+            }
+            if (company != null) {
+            intent.putExtra(ContactsContract.Intents.Insert.COMPANY, company);
+            }
+            ArrayList<ContentValues> contactData = new ArrayList<ContentValues>();
+            if (website != null) {
+            ContentValues websiteRow = new ContentValues();
+            websiteRow.put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Website.CONTENT_ITEM_TYPE);
+            websiteRow.put(ContactsContract.CommonDataKinds.Website.URL, website);
+            contactData.add(websiteRow);
+            }
+            if (im != null) {
+            ContentValues imRow = new ContentValues();
+            imRow.put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Im.CONTENT_ITEM_TYPE);
+            imRow.put(ContactsContract.CommonDataKinds.Im.DATA, im);
+            contactData.add(imRow);
+            }
+            intent.putParcelableArrayListExtra(ContactsContract.Intents.Insert.DATA, contactData);
+            startActivity(intent);
+
+            </code></pre>
+            <pre><code class="language-kotlin">
+
+                val intent = Intent(ContactsContract.Intents.Insert.ACTION).apply {
+            setType(ContactsContract.RawContacts.CONTENT_TYPE)
+            
+            name?.let {
+                putExtra(ContactsContract.Intents.Insert.NAME, it)
+            }
+            
+            phone?.let {
+                putExtra(ContactsContract.Intents.Insert.PHONE, it)
+            }
+            
+            email?.let {
+                putExtra(ContactsContract.Intents.Insert.EMAIL, it)
+            }
+            
+            address?.let {
+                putExtra(ContactsContract.Intents.Insert.POSTAL, it)
+            }
+            
+            jobTitle?.let {
+                putExtra(ContactsContract.Intents.Insert.JOB_TITLE, it)
+            }
+            
+            company?.let {
+                putExtra(ContactsContract.Intents.Insert.COMPANY, it)
+            }
         }
-        if (phone != null) {
-          intent.putExtra(ContactsContract.Intents.Insert.PHONE, phone);
+
+        val contactData = ArrayList<ContentValues>().apply {
+            website?.let {
+                add(ContentValues().apply {
+                    put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Website.CONTENT_ITEM_TYPE)
+                    put(ContactsContract.CommonDataKinds.Website.URL, it)
+                })
+            }
+            
+            im?.let {
+                add(ContentValues().apply {
+                    put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Im.CONTENT_ITEM_TYPE)
+                    put(ContactsContract.CommonDataKinds.Im.DATA, it)
+                })
+            }
         }
-        if (email != null) {
-          intent.putExtra(ContactsContract.Intents.Insert.EMAIL, email);
-        }
-        if (address != null) {
-          intent.putExtra(ContactsContract.Intents.Insert.POSTAL, address);
-        }
-        if (jobTitle != null) {
-          intent.putExtra(ContactsContract.Intents.Insert.JOB_TITLE, jobTitle);
-        }
-        if (company != null) {
-          intent.putExtra(ContactsContract.Intents.Insert.COMPANY, company);
-        }
-        ArrayList<ContentValues> contactData = new ArrayList<ContentValues>();
-        if (website != null) {
-          ContentValues websiteRow = new ContentValues();
-          websiteRow.put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Website.CONTENT_ITEM_TYPE);
-          websiteRow.put(ContactsContract.CommonDataKinds.Website.URL, website);
-          contactData.add(websiteRow);
-        }
-        if (im != null) {
-          ContentValues imRow = new ContentValues();
-          imRow.put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Im.CONTENT_ITEM_TYPE);
-          imRow.put(ContactsContract.CommonDataKinds.Im.DATA, im);
-          contactData.add(imRow);
-        }
-        intent.putParcelableArrayListExtra(ContactsContract.Intents.Insert.DATA, contactData);
-        startActivity(intent);
-        ```
+
+        intent.putParcelableArrayListExtra(ContactsContract.Intents.Insert.DATA, contactData)
+        startActivity(intent)
+
+        </code></pre>
+        </div>
         - Intenția pentru realizarea acestei operații are asociată
         acțiunea `ContactsContract.Intents.Insert.ACTION` și tipul
         `ContactsContract.RawContacts.CONTENT_TYPE`. Informațiile care
