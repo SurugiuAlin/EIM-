@@ -68,10 +68,8 @@ Să se implementeaze interacțiunea cu utilizatorul a aplicației.
         pentru stocarea unui contact în agenda telefonică, după ce în
         prealabil au fost preluate informațiile din controalele grafice:
 
-        
-        <div class="tabbed-blocks">
-
-            <pre><code class="language-java">
+<div class="tabbed-blocks">
+    <pre><code class="language-java">
 
             Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
             intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
@@ -109,8 +107,8 @@ Să se implementeaze interacțiunea cu utilizatorul a aplicației.
             intent.putParcelableArrayListExtra(ContactsContract.Intents.Insert.DATA, contactData);
             startActivity(intent);
 
-            </code></pre>
-            <pre><code class="language-kotlin">
+</code></pre>
+<pre><code class="language-kotlin">
 
                 val intent = Intent(ContactsContract.Intents.Insert.ACTION).apply {
             setType(ContactsContract.RawContacts.CONTENT_TYPE)
@@ -159,8 +157,9 @@ Să se implementeaze interacțiunea cu utilizatorul a aplicației.
         intent.putParcelableArrayListExtra(ContactsContract.Intents.Insert.DATA, contactData)
         startActivity(intent)
 
-        </code></pre>
-        </div>
+</code></pre>
+</div>
+
         - Intenția pentru realizarea acestei operații are asociată
         acțiunea `ContactsContract.Intents.Insert.ACTION` și tipul
         `ContactsContract.RawContacts.CONTENT_TYPE`. Informațiile care
