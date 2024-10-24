@@ -93,7 +93,6 @@
   - [Utilizarea clasei Service](lab5/service_class.md)
   - [Prioritatea](lab5/priority.md)
   - [Activitate de Laborator](lab5/exercises.md)
-  - [Activitate de Laborator (Kotlin)](lab5/exercises-kotlin.md)
 
 ----
 - [C O L O C V I U   1]()

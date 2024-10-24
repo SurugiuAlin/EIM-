@@ -32,7 +32,10 @@ Acesta poate fi precizat:
     `private SomeEventBroadcastReceiver someEventBroadcastReceiver = new SomeEventBroadcastReceiver();
     private IntentFilter intentFilter = new IntentFilter(SOME_ACTION);
 
-    ```java
+<div class="tabbed-blocks">
+
+    <pre><code class="language-java">
+
     @Override
     protected void onResume() {
       super.onResume();
@@ -46,7 +49,24 @@ Acesta poate fi precizat:
       
       unregisterReceiver(someEventBroadcastReceiver);
     }
-    ```
+
+</code></pre>
+<pre><code class="language-kotlin">
+
+override fun onResume() {
+    super.onResume()
+    
+    registerReceiver(someEventBroadcastReceiver, intentFilter)
+}
+
+override fun onPause() {
+    super.onPause()
+    
+    unregisterReceiver(someEventBroadcastReceiver)
+}
+
+</code></pre>
+</div>
 
 ---
 
@@ -54,7 +74,10 @@ O clasă capabilă să proceseze intenții cu difuzare este derivată din
 `android.content.BroadcastReceiver`, implementând metoda `onReceive()`
 pe care realizează rutina de tratare propriu-zisă:
 
-``` java
+<div class="tabbed-blocks">
+
+  <pre><code class="language-java">
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -62,10 +85,25 @@ import android.content.Intent;
 public class SomeEventBroadcastReceiver extends BroadcastReceiver {
   @Override
   public void onReceive(Context context, Intent intent) {
-    * ...
+    // ...
   }
 }
-```
+
+</code></pre>
+<pre><code class="language-kotlin">
+
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+
+class SomeEventBroadcastReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        // ...
+    }
+}
+
+</code></pre>
+</div>
 
 Metoda `onReceive()` va fi invocată în mod automat în momentul în care
 este primită o intenție cu difuzare, fiind executată pe firul de
