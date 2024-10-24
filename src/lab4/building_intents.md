@@ -8,8 +8,10 @@ Un intent explicit este unul pe care îl folosești pentru a lansa un component 
 
 De exemplu, dacă vrem sa pornim o activitate SecondActivity la apasarea unui buton vom folosi urmatorul cod:
 
-*Java* 
-```java
+<div class="tabbed-blocks">
+
+  <pre><code class="language-java">
+
 // Vom porni o a doua activitate la apasarea unui buton
 // A doua activitatea a fost creata folosind Click Dreapta pe directorul cu activitati ->
 // New View Empty Activity
@@ -21,15 +23,18 @@ btn.setOnClickListener(new View.OnClickListener() {
             startActivity(new Intent(MainActivity.this, SecondActivity.class));
         }
 });
-```
-*Kotlin* 
-```kotlin
+
+</code></pre>
+<pre><code class="language-kotlin">
+
 val btn = findViewById<Button>(R.id.open_activity_button)
 
 btn.setOnClickListener { 
     startActivity(Intent(this@MainActivity, SecondActivity::class.java)) 
 }
-```
+
+</code></pre>
+</div>
 
 ## Intent implicit
 
