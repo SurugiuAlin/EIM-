@@ -1,9 +1,66 @@
 # Gestiunea unui Serviciu
 
+Pentru a crea un serviciu, trebuie să creezi o subclasă a `Service` sau să folosești una dintre subclasele existente ale acesteia. În implementare, trebuie să suprascrii câteva metode callback care gestionează aspecte cheie ale ciclului de viață al serviciului și să oferi un mecanism care permite componentelor să se lege de serviciu, dacă este cazul.
+
+
+``` java
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+
+public class SomeStartedService extends Service {
+
+  private int startMode;
+
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    // ...
+  }
+
+  @Override
+  public int onStartCommand(Intent intent, 
+                            int flags,
+                            int startId) {
+    // start a new thread here and run your code
+    // from here you can send broadcasts to update the UI in a interface
+    return startMode;
+  }
+
+  @Override
+  public IBinder onBind(Intent intent) {
+    // ...
+    return null;
+  }
+  
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    // ...
+  }
+}
+```
+
+Acestea sunt cele mai importante metode callback pe care ar trebui să le suprascrii:
+
+-   [onCreate()](http://developer.android.com/reference/android/app/Service.html#onCreate%28%29) -
+    Sistemul invocă această metodă pentru a efectua proceduri de configurare care au loc o singură dată când serviciul este creat inițial (înainte de a apela fie `onStartCommand()` sau `onBind()`). Dacă serviciul rulează deja, această metodă nu este apelată.
+
+-   [onStartCommand()](http://developer.android.com/reference/android/app/Service.html#onStartCommand%28android.content.Intent,%20int,%20int%29) -
+    Sistemul invocă această metodă prin apelarea `startService()` când o altă componentă (cum ar fi o activitate) solicită pornirea serviciului. Când această metodă se execută, serviciul este pornit și poate rula în background pe termen nedefinit. Dacă implementezi această metodă, este responsabilitatea ta să oprești serviciul când munca sa este completă prin apelarea `stopSelf()` sau `stopService()`. **Dacă dorești doar să oferi binding, nu trebuie să implementezi această metodă.**
+    
+-   [onBind()](http://developer.android.com/reference/android/app/Service.html#onBind%28android.content.Intent%29) -
+    Sistemul invocă această metodă prin apelarea `bindService()` când o altă componentă dorește să se lege de serviciu (cum ar fi pentru a efectua Remote Procedure Calls (RPC)). În implementarea acestei metode, trebuie să oferi o interfață pe care clienții o folosesc pentru a comunica cu serviciul prin returnarea unui `IBinder`. Trebuie să implementezi întotdeauna această metodă; totuși, dacă nu dorești să permiți binding-ul, ar trebui să returnezi null.
+
+-   [onDestroy()](http://developer.android.com/reference/android/app/Service.html#onDestroy%28%29) -
+    Sistemul invocă această metodă când serviciul nu mai este folosit și urmează să fie distrus. Serviciul tău ar trebui să implementeze această metodă pentru a elibera orice resurse precum thread-uri, listeners înregistrați sau receivers. Aceasta este ultima apelare pe care serviciul o primește.
+
+
+### Declararea unui serviciu în manifest
 
 Pentru a putea fi utilizat, orice serviciu trebuie să fie declarat în
 cadrul fișierului `AndroidManifest.xml`, prin intermediul etichetei
-[\<service>](http:*developer.android.com/guide/topics/manifest/service-element.html)
+[\<service>](http://developer.android.com/guide/topics/manifest/service-element.html)
 în cadrul elementului
 [\<application>](http:*developer.android.com/guide/topics/manifest/application-element.html).
 Eventual, se poate indica o permisiune necesară pentru pornirea și
@@ -54,135 +111,3 @@ cadrul intențiilor transmise ca argumente metodelor utilizate pentru a
 invoca serviciul respectiv (`startService()`, respectiv
 `bindService()`), altfel intenția respectivă nu va fi livrată către
 serviciu.
-
-Alte atribute ale elementului `<service>` sunt: `android:icon`,
-`android:isolatedProcess`, `android:label`, `android:process`.
-
-Un serviciu este o clasă derivată din `android.app.Service` (sau din
-subclasele sale), implementând o serie de metode din ciclul de viață al
-serviciului. Mai jos avem doua exemple de cod pentru doua tipuri de servicii:
-
-``` java
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
-
-public class SomeStartedService extends Service {
-
-  private int startMode;
-
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    * ...
-  }
-
-  @Override
-  public int onStartCommand(Intent intent, 
-                            int flags,
-                            int startId) {
-    * ...
-    return startMode;
-  }
-
-  @Override
-  public IBinder onBind(Intent intent) {
-    * ...
-    return null;
-  }
-  
-  @Override
-  public void onDestroy() {
-    super.onDestroy();
-    * ...
-  }
-}
-```
-
-
-``` java
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
-
-public class SomeBoundedService extends Service {
-  
-  private IBinder iBinder;
-  private boolean allowRebind;
-
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    * ...
-  }
-
-  @Override
-  public IBinder onBind(Intent intent) {
-    * ...
-    return iBinder;
-  }
-  
-  @Override
-  public boolean onUnbind(Intent intent) {
-    * ...
-    return allowRebind;
-  }
-  
-  @Override
-  public void onRebind(Intent intent) {
-    * ...
-  }
-  
-  @Override
-  public void onDestroy() {
-    super.onDestroy();
-    * ...
-  }
-}
-```
-
-Metode din ciclul de viață al serviciului sunt urmatoarele:
-
--   [onCreate()](http://developer.android.com/reference/android/app/Service.html#onCreate%28%29) -
-    realizând operațiile (unice) asociate construirii serviciului
-    respectiv (legate de configurarea sa); această metodă este invocată
-    doar atunci când este realizată o nouă instanță a serviciului; în
-    situația în care serviciul este invocat, însă acesta există deja în
-    memorie, metoda nu va mai fi apelată;
--   [onStartCommand()](http://developer.android.com/reference/android/app/Service.html#onStartCommand%28android.content.Intent,%20int,%20int%29) -
-    apelată în mod automat, **numai pentru serviciile de tip started**,
-    în momentul în care serviciul este invocat printr-un apel al metodei
-    `startService()`; serviciul va fi executat imediat după această
-    metodă; **este responsabilitatea programatorului să oprească
-    serviciul printr-un apel al uneiea dintre metodele `stopSelf()`,
-    respectiv `stopService()`**, altfel serviciul va rula pentru o
-    perioadă de timp nedefinită; nu este necesar ca metoda să fie
-    implementată, dacă serviciul este de tip bounded;
--   [onBind()](http://developer.android.com/reference/android/app/Service.html#onBind%28android.content.Intent%29) -
-    apelată în mod automat, **numai pentru serviciile de tip bounded**,
-    în momentul în care o componentă a fost atașată unui serviciu
-    printr-un apel al metodei `bindService()`; implementarea acestei
-    metode trebuie să furnizeze un obiect ce implementează interfața
-    [ΙBinder](http:*developer.android.com/reference/android/os/IBinder.html),
-    prin intermediul căruia serviciul să poată interacționa cu
-    componenta care l-a invocat, punând la dispoziție o anumită
-    funcționalitate, descrisă de metode publice; **toate tipurile de
-    serviciu trebuie să implementeze această metodă**, însă pentru
-    serviciile de tip started, valoarea întoarsă va fi `null`;
--   [onUnbind()](http://developer.android.com/reference/android/app/Service.html#onUnbind%28android.content.Intent%29) -
-    apelată în mod automat, **numai pentru serviciile de tip bounded**,
-    în momentul în care toate componentele au fost detașate unui
-    serviciu;
--   [onRebind()](http://developer.android.com/reference/android/app/Service.html#onRebind%28android.content.Intent%29) -
-    apelată în mod automat, **numai pentru serviciile de tip bounded**,
-    în momentul în care o componentă a fost atașată unui serviciu după
-    ce acesta a fost notificat anterior că toate componentele care îi
-    erau asociate au fost detașate (s-a apelat metoda `οnUnbind()`); o
-    astfel de metodă va fi invocată numai dacă rezultatul întors de
-    metoda `οnUnbind()` este `true`;
--   [onDestroy()](http://developer.android.com/reference/android/app/Service.html#onDestroy%28%29) -
-    realizând operațiile asociate distrugerii serviciului respectiv,
-    atunci când acesta nu mai este utilizat (a fost oprit sau sistemul
-    de operare Android solicită memoria pe care o folosește); în cadrul
-    acestei metode sunt eliberate resursele utilizate de serviciu (fire
-    de execuție, obiecte, fluxuri de intrare / ieșire).
