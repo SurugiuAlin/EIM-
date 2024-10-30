@@ -29,7 +29,11 @@ public class HelloService extends Service {
   private Looper serviceLooper;
   private ServiceHandler serviceHandler;
 
+  // A handler is a cool class that we can use to send and receive
+  // messages between objects. For example, this is a 
   // Handler that receives messages from the thread
+  // Combined with a Looper it's a easy way to run some work on a thread and
+  // get the results back via the handler.
   private final class ServiceHandler extends Handler {
       public ServiceHandler(Looper looper) {
           super(looper);
@@ -61,6 +65,7 @@ public class HelloService extends Service {
     thread.start();
 
     // Get the HandlerThread's Looper and use it for our Handler
+    // The looper is basically the "code" that loops for the thread,
     serviceLooper = thread.getLooper();
     serviceHandler = new ServiceHandler(serviceLooper);
   }

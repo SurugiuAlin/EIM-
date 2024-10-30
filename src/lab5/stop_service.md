@@ -7,14 +7,10 @@ Un serviciu poate fi oprit:
     apel al metodei `stopService()`, ce primește ca parametru un obiect
     de tip `Intent` care poate fi creat explicit sau implicit;
 
----
-**Note**
-
-Întrucât apelurile metodei `startService()` nu sunt
+> Întrucât apelurile metodei `startService()` nu sunt
 imbricate, invocarea metodei `stopService()` oprește numai serviciul
-corespunzător (dacă se află în execuție).\
+corespunzător (dacă se află în execuție).
 
----
 
 -   chiar de el însuși, în momentul în care procesările pe care trebuie
     să le realizeze s-au terminat, printr-un apel al metodei

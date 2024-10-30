@@ -87,11 +87,8 @@
   - [Gestiunea unui Serviciu](lab5/build_service.md)
     - [Exemplu de serviciu](lab5/service_example.md)
   - [Lifecycle](lab5/lifecycle.md)
-  - [Servicii de tip Started](lab5/started_type.md)
   - [Pornirea unui Serviciu](lab5/start_service.md)
-  - [Oprirea unui Serviciu](lab5/stop_service.md)
-  - [Utilizarea clasei IntentService](lab5/intent_service.md)
-  - [Utilizarea clasei Service](lab5/service_class.md)
+  - [Threads](lab5/threads.md)
   - [Prioritatea](lab5/priority.md)
   - [Activitate de Laborator](lab5/exercises.md)
 
