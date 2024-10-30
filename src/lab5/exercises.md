@@ -32,11 +32,6 @@ pachetul `ro.pub.cs.systems.eim.lab05.startedservice.service`, să se
 completeze metoda `onStartCommand()` astfel încât aceasta să pornească
 un thrad în cadrul căruia să fie trimise 3 broadcast intents la nivelul sistemului de operare Android.
 
-- puteți testa recepția mesajelor de broadcast folosind comanda shell
-``` shell
-adb shell 'am broadcast -a "ro.pub.cs.systems.eim.lab05.startedservice.string" --es  "ro.pub.cs.systems.eim.lab05.startedservice.data" "******** hello world!"'
-```
-
 Pentru fiecare broadcast intent, se vor specifica:
 
 -   **acțiunea**, care va avea valorile definite în interfața
@@ -225,6 +220,11 @@ din cadrul interfeței grafice.
     ([getStringExtra()](http://developer.android.com/reference/android/content/Intent.html#getStringExtra%28java.lang.String%29),
     [getIntExtra()](http://developer.android.com/reference/android/content/Intent.html#getIntExtra%28java.lang.String,%20int%29),
     [getStringArrayListExtra()](http:*developer.android.com/reference/android/content/Intent.html#getStringArrayListExtra%28java.lang.String%29)).
+
+- puteți testa recepția mesajelor de broadcast folosind comanda shell
+``` shell
+adb shell 'am broadcast -a "ro.pub.cs.systems.eim.lab05.startedservice.string" --es  "ro.pub.cs.systems.eim.lab05.startedservice.data" "******** hello world!"'
+```
 
 Acestea vor fi afișate în cadrul câmpului text din cadrul interfeței
 grafice (`messageTextView`), transmis ca argument la instanțierea
