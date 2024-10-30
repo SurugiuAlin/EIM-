@@ -221,7 +221,7 @@ din cadrul interfeței grafice.
     [getIntExtra()](http://developer.android.com/reference/android/content/Intent.html#getIntExtra%28java.lang.String,%20int%29),
     [getStringArrayListExtra()](http:*developer.android.com/reference/android/content/Intent.html#getStringArrayListExtra%28java.lang.String%29)).
 
-- puteți testa recepția mesajelor de broadcast folosind comanda shell
+Puteți testa recepția mesajelor de broadcast folosind comanda shell
 ``` shell
 adb shell 'am broadcast -a "ro.pub.cs.systems.eim.lab05.startedservice.string" --es  "ro.pub.cs.systems.eim.lab05.startedservice.data" "******** hello world!"'
 ```
