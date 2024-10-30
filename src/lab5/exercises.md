@@ -22,6 +22,9 @@ directorul `labtasks/StartedService`.
     valori sunt transmise prin intermediul unor intenții cu difuzare
     (*eng.* broadcast intents), la nivelul întregului sistem de operare
     Android.
+
+> **Aplicația StartedService nu are o activitate atașată. Astfel, aplicația pornită nu va avea o interfață grafică. Când o pornim, nu vom observa nimic pe partea de GUI.**
+
 -   Proiectul *StartedServiceActivity* conține codul sursă pentru o
     aplicație Android care utilizează un ascultător pentru intenții cu
     difuzare (*eng.* BroadcastReceiver), pentru tipurile de mesaje
