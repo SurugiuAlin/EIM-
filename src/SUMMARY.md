@@ -85,6 +85,7 @@
 - [5. Servicii](lab5/servicies.md)
   - [Tipuri de Servicii](lab5/types.md)
   - [Gestiunea unui Serviciu](lab5/build_service.md)
+    - [Exemplu de serviciu](lab5/service_example.md)
   - [Lifecycle](lab5/lifecycle.md)
   - [Servicii de tip Started](lab5/started_type.md)
   - [Pornirea unui Serviciu](lab5/start_service.md)
