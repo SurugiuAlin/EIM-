@@ -1,27 +1,18 @@
 # Activitate de Laborator
 
 
-**1.** Să se cloneze în directorul de pe discul local conținutul
-depozitului la [distanță](https://www.github.com/eim-lab/Laborator05).
- În urma acestei operații,
-directorul Laborator05 va trebui să se conțină un director `labtasks` ce
-va deține proiectele AndroidStudio, fișierul README.md și un fișier
-.gitignore care indică tipurile de fișiere (extensiile) ignorate.
+**1.** Vom porni de la urmatorul [schelet](https://www.github.com/eim-lab/Laborator05).
 
-    student@eim:~$ git clone https://www.github.com/eim-lab/Laborator05.git
-
-
-**2.** Să se încarce în mediul integrat de dezvoltare Android Studio
-proiectele **StartedService** respectiv **StartedServiceActivity** din
+**2.** Astazi vom lucra cu doua proiecte in paralel, 
+proiectel **StartedService**, respectiv **StartedServiceActivity** din
 directorul `labtasks/StartedService`.
 
 -   Proiectul *StartedService* conține codul sursă pentru un serviciu de
     tip started care transmite mai multe valori, de diferite tipuri (șir
     de caractere, întreg, vector), temporizate la un anumit interval
     (dată de valoarea `SLEEP_TIME` din interfața `Constants`). Aceste
-    valori sunt transmise prin intermediul unor intenții cu difuzare
-    (*eng.* broadcast intents), la nivelul întregului sistem de operare
-    Android.
+    valori sunt transmise prin intermediul unor broadcast intents,
+    la nivelul întregului sistem de operare Android.
 
 > **Aplicația StartedService nu are o activitate atașată. Astfel, aplicația pornită nu va avea o interfață grafică. Când o pornim, nu vom observa nimic pe partea de GUI.**
 
@@ -33,18 +24,20 @@ directorul `labtasks/StartedService`.
     text.
 
 ![](images/startedservice.png)
-- puteți testa recepția mesajelor de broadcast folosind comanda shell
-``` shell
-adb shell 'am broadcast -a "ro.pub.cs.systems.eim.lab05.startedservice.string" --es  "ro.pub.cs.systems.eim.lab05.startedservice.data" "******** hello world!"'
 
-```
+
+
 **3.** În proiectul *StartedService*, în clasa `StartedService` din
 pachetul `ro.pub.cs.systems.eim.lab05.startedservice.service`, să se
 completeze metoda `onStartCommand()` astfel încât aceasta să pornească
-un fir de execuție în cadrul căruia să fie propagate 3 intenții cu
-difuzare la nivelul sistemului de operare Android.
+un thrad în cadrul căruia să fie trimise 3 broadcast intents la nivelul sistemului de operare Android.
 
-Pentru fiecare intenție, se vor specifica:
+- puteți testa recepția mesajelor de broadcast folosind comanda shell
+``` shell
+adb shell 'am broadcast -a "ro.pub.cs.systems.eim.lab05.startedservice.string" --es  "ro.pub.cs.systems.eim.lab05.startedservice.data" "******** hello world!"'
+```
+
+Pentru fiecare broadcast intent, se vor specifica:
 
 -   **acțiunea**, care va avea valorile definite în interfața
     `Constants` (`Constants.ACTION_STRING`, `Constants.ACTION_INTEGER`,
@@ -57,8 +50,15 @@ Pentru fiecare intenție, se vor specifica:
     [putExtra()](http:*developer.android.com/reference/android/content/Intent.html#putExtra%28java.lang.String,%20android.os.Bundle%29)
     care primește ca argumente cheia și valoarea.
 
-Transmiterea propriu-zisă a intenției se face prin intermediul metodei
-[sendBroadcast()](http://developer.android.com/reference/android/content/Context.html#sendBroadcast%28android.content.Intent%29).
+Transmiterea propriu-zisă a intenției se face prin intermediul metodeih
+[sendBroadcast()](https://developer.android.com/develop/background-work/background-tasks/broadcasts#sending-broadcasts).
+
+```java
+Intent intent = new Intent();
+intent.setAction("com.example.broadcast.MY_NOTIFICATION");
+intent.putExtra("data", "Nothing to see here, move along.");
+sendBroadcast(intent);
+```
 
 Cele trei mesaje vor fi temporizate la intervalul indicat de valoarea
 `Constants.SLEEP_TIME` (propagarea mesajelor va fi intercalată de
@@ -125,7 +125,6 @@ public class ProcessingThread extends Thread {
   }
 }
 ```
-
 
 Monitorizați ciclurile din Thread.run() in logcat:
 
