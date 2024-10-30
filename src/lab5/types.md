@@ -1,58 +1,9 @@
 # Tipuri de Servicii
 
-În programarea Android, există două tipuri de servicii:
+În programarea Android, există trei tipuri de servicii:
 
-1.  servicii **Started**, lansate în execuție
-    prin intermediul metodei
-    [startService()](http://developer.android.com/reference/android/content/Context.html#startService%28android.content.Intent%29),
-    invocată din contextul unei componente (activitate, serviciu,
-    ascultător al unor mesaje cu difuzare); astfel de servicii nu
-    furnizează un rezultat (către componenta care l-a apelat), fiind
-    utilizate pentru a realiza o anumită operație la finalizarea căreia,
-    de regulă, sunt terminate (apelându-se, în rutina lor, metoda
-    [stopSelf()](http:*developer.android.com/reference/android/app/Service.html#stopSelf%28int%29));
-    există posibilitatea ca o altă componentă să îl oprească explicit
-    prin metoda
-    [stopService()](http://developer.android.com/reference/android/content/Context.html#stopService%28android.content.Intent%29);
-    **un serviciu de tip started continuă să ruleze chiar și în situația
-    în care componenta care l-a invocat nu mai există**;
-2.  servicii **Bounded** sunt
-    lansate în execuție prin intermediul metodei
-    [bindService()](http://developer.android.com/reference/android/content/Context.html#bindService%28android.content.Intent,%20android.content.ServiceConnection,%20int%29),
-    invocată din contextul unei componente (activitate, serviciu,
-    ascultător al unor mesaje cu difuzare) care interacționează cu
-    acesta prin funcționalități pe care le expune; la un moment dat, pot
-    exista mai multe componente atașate aceluiași serviciu; detașarea
-    unei componente la un serviciu se realizează prin intermediul
-    metodei
-    [unbindService()](http:*developer.android.com/reference/android/content/Context.html#unbindService%28android.content.ServiceConnection%29);
-    **atunci când nu mai există nici o componentă asociată serviciului,
-    acesta se consideră încheiat**.
+1. de tip **Foreground** - Un serviciu foreground efectuează operații care sunt vizibile pentru utilizator. De exemplu, o aplicație audio ar folosi un serviciu foreground pentru a reda o piesă audio. Serviciile foreground trebuie să afișeze o Notification. Serviciile foreground continuă să ruleze chiar și când utilizatorul nu interacționează cu aplicația.
+Când folosești un serviciu foreground, trebuie să afișezi o notificare pentru ca utilizatorii să fie conștienți că serviciul rulează. Această notificare nu poate fi închisă decât dacă serviciul este oprit sau eliminat din foreground.
+2. de tip **Background** - Un serviciu background efectuează o operație care nu este observată direct de utilizator. De exemplu, dacă o aplicație folosește un serviciu pentru a-și compacta spațiul de stocare, acesta ar fi de obicei un serviciu background.
 
-Un serviciu poate avea, în același timp, ambele tipuri (started și
-bounded). Acesta va putea rula o perioadă de timp nedefinită (până în
-momentul în care procesarea pe care o realizează este încheiată),
-permițând totodată componentelor unei aplicații Android să
-interacționeze cu el prin intermediul unor metode pe care le expune.
-
-Indiferent de modul în care este folosit un serviciu, invocarea sa este
-realizată, ca pentru orice componentă Android, prin intermediul unei
-intenții. În cazul serviciilor, se preferă să se utilizeze intenții
-explicite, în detrimentul intențiilor implicite, din motive de
-securitate.
-
-Categoria în care se încadrează un anumit serviciu este determinată de
-metodele pe care acesta le implementează:
-
-1.  pentru un serviciu de tip started, va fi implementată metoda
-    [onStartCommand()](http://developer.android.com/reference/android/app/Service.html#onStartCommand%28android.content.Intent,%20int,%20int%29),
-    apelată în mod automat în momentul în care serviciul este pornit
-    prin intermediul metodei `startService()`;
-2.  pentru un serviciu de tip bounded, vor fi implementate metodele:
-    -   [onBind()](http://developer.android.com/reference/android/app/Service.html#onBind%28android.content.Intent%29),
-        apelată în mod automat în momentul în care o componentă este
-        atașată serviciului, prin intermediul metodei `bindService()`;
-    -   [onUnbind()](http://developer.android.com/reference/android/app/Service.html#onUnbind%28android.content.Intent%29),
-        apelată în mod automat în momentul în care o componentă este
-        detașată de la serviciu, prin intermediul metodei
-        `unbindService()`.
+3. de tip **Bound** - Un serviciu este bound când o componentă a aplicației se leagă de acesta prin apelarea bindService(). Un serviciu bound oferă o interfață client-server care permite componentelor să interacționeze cu serviciul, să trimită cereri, să primească rezultate și chiar să facă acest lucru între procese prin comunicare între procese (IPC). Un serviciu bound rulează doar atât timp cât o altă componentă a aplicației este legată de acesta. Mai multe componente se pot lega de serviciu simultan, dar când toate se dezleagă, serviciul este distrus.
